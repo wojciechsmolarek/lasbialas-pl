@@ -311,8 +311,8 @@ const t = translations[lang];
   function initCookieConsent() {
     if (typeof CookieConsent !== 'undefined' && window.CookieConsentConfig) {
       try {
-        const cc = new CookieConsent(window.CookieConsentConfig);
-        cc.run(window.CookieConsentConfig);
+        // CookieConsent v3 API: global object with .run(), not a constructor
+        CookieConsent.run(window.CookieConsentConfig);
         console.log('[CookieConsent] Initialized successfully');
       } catch (e) {
         console.error('[CookieConsent] Initialization error:', e);

@@ -111,7 +111,8 @@ const hreflangs = [
 
     <!-- Bookero Reservation System -->
     <script is:inline define:vars={{ lang }}>
-      var bookero_config = {
+      // Bookero configuration - works only on production domains
+      window.bookero_config = {
         id: 'WmRe79H4lKFz',
         container: 'bookero',
         type: 'sticky',
@@ -120,13 +121,26 @@ const hreflangs = [
         lang: lang
       };
 
-      // Load immediately but don't block rendering
+      // Simple openReservation function
+      window.openReservation = function() {
+        if (typeof window.bookero_open === 'function') {
+          window.bookero_open();
+          return;
+        }
+        if (window.Bookero && window.Bookero.API && typeof window.Bookero.API.openCalendar === 'function') {
+          window.Bookero.API.openCalendar();
+          return;
+        }
+        // Fallback: click sticky button
+        var toggle = document.querySelector('.bookero-sticky-plugin-toggle');
+        if (toggle) toggle.click();
+      };
+
+      // Load Bookero script
       (function() {
-        var s = document.createElement('script');
+        var d = document, s = d.createElement('script');
         s.src = 'https://cdn.bookero.pl/plugin/v2/js/bookero-compiled.js';
-        s.async = true;
-        s.defer = true;
-        document.body.appendChild(s);
+        d.body.appendChild(s);
       })();
     </script>
 

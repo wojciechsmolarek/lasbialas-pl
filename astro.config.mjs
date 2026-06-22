@@ -26,7 +26,9 @@ export default defineConfig({
           en: 'en',
           de: 'de'
         }
-      }
+      },
+      changefreq: 'weekly',
+      lastmod: new Date()
     })
   ]
 });

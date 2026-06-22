@@ -6,10 +6,7 @@ export const languages = {
 
 export const defaultLang = 'pl';
 
-/**
- * UI translations - only language-dependent text
- * For constants (phones, emails, URLs), use src/config/site.ts
- */
+
 export const ui = {
   // ===== NAVIGATION =====
   'nav.home': {
@@ -505,62 +502,7 @@ export const ui = {
   },
 
   // ===== TOP BOXES =====
-  'topboxes.next_dates': {
-    pl: 'Najbliższe wolne terminy',
-    en: 'Next Available Dates',
-    de: 'Nächste verfügbare Termine'
-  },
-  'topboxes.discount_code': {
-    pl: '-10% z kodem',
-    en: 'with 10% discount code',
-    de: 'mit 10% Rabattcode'
-  },
-  'topboxes.or_check': {
-    pl: 'lub sprawdź inne',
-    en: 'or check other',
-    de: 'oder prüfen Sie andere'
-  },
-  'topboxes.available_dates': {
-    pl: 'dostępne terminy',
-    en: 'available dates',
-    de: 'verfügbare Termine'
-  },
-  'topboxes.select_cabin': {
-    pl: '(wybierając domek D1 lub D2).',
-    en: '(selecting cabin D1 or D2).',
-    de: '(Auswahl des Hauses D1 oder D2).'
-  },
-  'topboxes.summer_2026': {
-    pl: 'Urlopy lato 2026',
-    en: 'Summer 2026 Holidays',
-    de: 'Sommerurlaub 2026'
-  },
-  'topboxes.july_dates': {
-    pl: 'Wolne terminy <span class="promo-code">lipiec</span>',
-    en: 'Available dates <span class="promo-code">July</span>',
-    de: 'Verfügbare Termine <span class="promo-code">Juli</span>'
-  },
-  'topboxes.august_dates': {
-    pl: 'Wolne terminy <span class="promo-code">sierpień</span>',
-    en: 'Available dates <span class="promo-code">August</span>',
-    de: 'Verfügbare Termine <span class="promo-code">August</span>'
-  },
-  'topboxes.on_site': {
-    pl: 'Na miejscu',
-    en: 'On site',
-    de: 'Vor Ort'
-  },
-  'topboxes.contact_info': {
-    pl: 'Aby zarezerwować pobyt prosimy o kontakt telefoniczny albo WhatsApp.',
-    en: 'To make a reservation, please contact us by phone or WhatsApp.',
-    de: 'Um eine Reservierung vorzunehmen, kontaktieren Sie uns bitte telefonisch oder über WhatsApp.'
-  },
-  'topboxes.summer_bookings': {
-    pl: 'Rezerwacje na lato',
-    en: 'Summer Bookings',
-    de: 'Sommerreservierungen'
-  },
-
+  
   // ===== AMENITIES (for top boxes) =====
   'amenities.private_jacuzzi': {
     pl: 'prywatne jacuzzi',

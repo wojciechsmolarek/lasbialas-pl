@@ -1,332 +1,273 @@
 ---
 interface Props {
-  lang?: 'pl' | 'en' | 'de';
+  lang: 'pl' | 'en' | 'de';
 }
 
-const { lang = 'pl' } = Astro.props;
+const { lang } = Astro.props;
 
-// Translations for CookieConsent
+// Tłumaczenia dla cookies - styl talem.eu
 const translations = {
   pl: {
-    consent_modal: {
-      title: 'Używamy plików cookie',
-      description: 'Ta strona używa plików cookie do analizy ruchu oraz poprawy funkcjonalności. Kliknij „Akceptuję wszystkie", aby zaakceptować wszystkie pliki cookie, lub wybierz preferencje.',
-      primary_btn: {
-        text: 'Akceptuję wszystkie',
-        role: 'accept_all'
-      },
-      secondary_btn: {
-        text: 'Ustawienia',
-        role: 'settings'
-      },
-      revision_message: 'Nasza polityka plików cookie uległa zmianie. Prosimy o ponowną akceptację.'
-    },
-    settings_modal: {
-      title: 'Preferencje plików cookie',
-      save_settings_btn: 'Zapisz ustawienia',
-      accept_all_btn: 'Akceptuję wszystkie',
-      reject_all_btn: 'Odrzuć wszystkie',
-      close_btn_label: 'Zamknij',
-      cookie_table_headers: {
-        name: 'Nazwa',
-        domain: 'Domena',
-        expiration: 'Ważność',
-        description: 'Opis'
-      },
-      blocks: [
-        {
-          title: 'Wykorzystanie plików cookie',
-          description: 'Używamy plików cookie do poprawy Twojego doświadczenia na stronie. Możesz dostosować swoje preferencje poniżej.'
-        },
-        {
-          title: 'Niezbędne pliki cookie',
-          description: 'Te pliki cookie są wymagane do prawidłowego działania strony i nie mogą zostać wyłączone.',
-          toggle: {
-            value: 'necessary',
-            enabled: true,
-            readonly: true
-          }
-        },
-        {
-          title: 'Analityka i statystyki',
-          description: 'Te pliki cookie pozwalają nam zliczać wizyty i źródła ruchu, aby móc mierzyć i poprawiać wydajność naszej strony.',
-          toggle: {
-            value: 'analytics',
-            enabled: false,
-            readonly: false
-          },
-          cookie_table: [
-            {
-              name: '_ga',
-              domain: '.lasbialas.pl',
-              expiration: '2 lata',
-              description: 'Google Analytics - identyfikator użytkownika'
-            },
-            {
-              name: '_ga_*',
-              domain: '.lasbialas.pl',
-              expiration: '2 lata',
-              description: 'Google Analytics - identyfikator sesji'
-            }
-          ]
-        },
-        {
-          title: 'Marketing i reklamy',
-          description: 'Te pliki cookie mogą być ustawiane przez naszych partnerów reklamowych do wyświetlania spersonalizowanych reklam.',
-          toggle: {
-            value: 'marketing',
-            enabled: false,
-            readonly: false
-          }
-        }
-      ]
-    }
+    title: 'Używamy plików cookie',
+    description: 'Ta strona wykorzystuje pliki cookie w celu zapewnienia najlepszego doświadczenia użytkownika oraz analizy ruchu.',
+    acceptAll: 'Zaakceptuj wszystkie',
+    necessaryOnly: 'Tylko niezbędne',
+    managePreferences: 'Zarządzaj preferencjami',
+    privacy: 'Polityka prywatności',
+    preferencesTitle: 'Zarządzaj preferencjami plików cookie',
+    necessary: 'Niezbędne',
+    analytics: 'Analityczne',
+    marketing: 'Marketingowe',
+    necessaryDesc: 'Wymagane do działania strony',
+    analyticsDesc: 'Pomagają nam zrozumieć, jak korzystasz ze strony',
+    marketingDesc: 'Używane do wyświetlania spersonalizowanych reklam',
+    savePreferences: 'Zapisz preferencje'
   },
   en: {
-    consent_modal: {
-      title: 'We use cookies',
-      description: 'This website uses cookies to analyze traffic and improve functionality. Click "Accept all" to accept all cookies, or customize your preferences.',
-      primary_btn: {
-        text: 'Accept all',
-        role: 'accept_all'
-      },
-      secondary_btn: {
-        text: 'Settings',
-        role: 'settings'
-      },
-      revision_message: 'Our cookie policy has changed. Please accept again.'
-    },
-    settings_modal: {
-      title: 'Cookie Preferences',
-      save_settings_btn: 'Save settings',
-      accept_all_btn: 'Accept all',
-      reject_all_btn: 'Reject all',
-      close_btn_label: 'Close',
-      cookie_table_headers: {
-        name: 'Name',
-        domain: 'Domain',
-        expiration: 'Expiration',
-        description: 'Description'
-      },
-      blocks: [
-        {
-          title: 'Cookie Usage',
-          description: 'We use cookies to enhance your browsing experience. You can customize your preferences below.'
-        },
-        {
-          title: 'Strictly Necessary Cookies',
-          description: 'These cookies are essential for the website to function properly and cannot be disabled.',
-          toggle: {
-            value: 'necessary',
-            enabled: true,
-            readonly: true
-          }
-        },
-        {
-          title: 'Analytics and Statistics',
-          description: 'These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site.',
-          toggle: {
-            value: 'analytics',
-            enabled: false,
-            readonly: false
-          },
-          cookie_table: [
-            {
-              name: '_ga',
-              domain: '.lasbialas.pl',
-              expiration: '2 years',
-              description: 'Google Analytics - user identifier'
-            },
-            {
-              name: '_ga_*',
-              domain: '.lasbialas.pl',
-              expiration: '2 years',
-              description: 'Google Analytics - session identifier'
-            }
-          ]
-        },
-        {
-          title: 'Marketing and Advertising',
-          description: 'These cookies may be set by our advertising partners to display personalized ads.',
-          toggle: {
-            value: 'marketing',
-            enabled: false,
-            readonly: false
-          }
-        }
-      ]
-    }
+    title: 'We use cookies',
+    description: 'This website uses cookies to ensure the best user experience and traffic analysis.',
+    acceptAll: 'Accept all',
+    necessaryOnly: 'Only necessary',
+    managePreferences: 'Manage preferences',
+    privacy: 'Privacy Policy',
+    preferencesTitle: 'Manage cookie preferences',
+    necessary: 'Necessary',
+    analytics: 'Analytics',
+    marketing: 'Marketing',
+    necessaryDesc: 'Required for the website to function',
+    analyticsDesc: 'Help us understand how you use the site',
+    marketingDesc: 'Used to display personalized ads',
+    savePreferences: 'Save preferences'
   },
   de: {
-    consent_modal: {
-      title: 'Wir verwenden Cookies',
-      description: 'Diese Website verwendet Cookies zur Analyse des Traffics und zur Verbesserung der Funktionalität. Klicken Sie auf „Alle akzeptieren", um alle Cookies zu akzeptieren, oder passen Sie Ihre Einstellungen an.',
-      primary_btn: {
-        text: 'Alle akzeptieren',
-        role: 'accept_all'
-      },
-      secondary_btn: {
-        text: 'Einstellungen',
-        role: 'settings'
-      },
-      revision_message: 'Unsere Cookie-Richtlinie hat sich geändert. Bitte akzeptieren Sie erneut.'
-    },
-    settings_modal: {
-      title: 'Cookie-Einstellungen',
-      save_settings_btn: 'Einstellungen speichern',
-      accept_all_btn: 'Alle akzeptieren',
-      reject_all_btn: 'Alle ablehnen',
-      close_btn_label: 'Schließen',
-      cookie_table_headers: {
-        name: 'Name',
-        domain: 'Domain',
-        expiration: 'Gültigkeit',
-        description: 'Beschreibung'
-      },
-      blocks: [
-        {
-          title: 'Verwendung von Cookies',
-          description: 'Wir verwenden Cookies, um Ihr Surferlebnis zu verbessern. Sie können Ihre Einstellungen unten anpassen.'
-        },
-        {
-          title: 'Unbedingt erforderliche Cookies',
-          description: 'Diese Cookies sind für die ordnungsgemäße Funktion der Website erforderlich und können nicht deaktiviert werden.',
-          toggle: {
-            value: 'necessary',
-            enabled: true,
-            readonly: true
-          }
-        },
-        {
-          title: 'Analyse und Statistiken',
-          description: 'Diese Cookies ermöglichen es uns, Besuche und Verkehrsquellen zu zählen, damit wir die Leistung unserer Website messen und verbessern können.',
-          toggle: {
-            value: 'analytics',
-            enabled: false,
-            readonly: false
-          },
-          cookie_table: [
-            {
-              name: '_ga',
-              domain: '.lasbialas.pl',
-              expiration: '2 Jahre',
-              description: 'Google Analytics - Benutzerkennung'
-            },
-            {
-              name: '_ga_*',
-              domain: '.lasbialas.pl',
-              expiration: '2 Jahre',
-              description: 'Google Analytics - Sitzungskennung'
-            }
-          ]
-        },
-        {
-          title: 'Marketing und Werbung',
-          description: 'Diese Cookies können von unseren Werbepartnern gesetzt werden, um personalisierte Werbung anzuzeigen.',
-          toggle: {
-            value: 'marketing',
-            enabled: false,
-            readonly: false
-          }
-        }
-      ]
-    }
+    title: 'Wir verwenden Cookies',
+    description: 'Diese Webseite verwendet Cookies, um die beste Benutzererfahrung und Traffic-Analyse zu gewährleisten.',
+    acceptAll: 'Alle akzeptieren',
+    necessaryOnly: 'Nur notwendige',
+    managePreferences: 'Präferenzen verwalten',
+    privacy: 'Datenschutzerklärung',
+    preferencesTitle: 'Cookie-Präferenzen verwalten',
+    necessary: 'Notwendig',
+    analytics: 'Analytisch',
+    marketing: 'Marketing',
+    necessaryDesc: 'Erforderlich für die Funktionsweise der Website',
+    analyticsDesc: 'Helfen uns zu verstehen, wie Sie die Seite nutzen',
+    marketingDesc: 'Werden für personalisierte Anzeigen verwendet',
+    savePreferences: 'Präferenzen speichern'
   }
 };
 
 const t = translations[lang];
 ---
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0/dist/cookieconsent.css" />
+<!-- Mały dymek cookies na dole po prawej -->
+<div id="cookie-banner" class="fixed bottom-4 right-4 bg-white text-gray-800 p-4 rounded-lg shadow-lg z-[9999] transform translate-y-full transition-all duration-300 max-w-sm">
+  <div class="mb-3">
+    <h4 class="font-semibold text-sm mb-1">{t.title}</h4>
+    <p class="text-xs text-gray-600 leading-relaxed">{t.description}</p>
+  </div>
+  
+  <div class="flex flex-col gap-2">
+    <button 
+      id="cookie-accept-all"
+      class="w-full px-3 py-2 text-xs bg-brand-green text-white rounded hover:bg-[#2F6940] transition-colors font-medium"
+    >
+      {t.acceptAll}
+    </button>
+    <button 
+      id="cookie-necessary-only"
+      class="w-full px-3 py-2 text-xs bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition-colors"
+    >
+      {t.necessaryOnly}
+    </button>
+    <button 
+      id="cookie-manage-preferences"
+      class="w-full px-3 py-2 text-xs text-brand-green hover:text-[#2F6940] transition-colors underline"
+    >
+      {t.managePreferences}
+    </button>
+  </div>
+</div>
 
-<script define:vars={{ lang, t }}>
-  // CookieConsent configuration
-  window.CookieConsentConfig = {
-    categories: {
-      necessary: {
-        enabled: true,
-        readOnly: true
-      },
-      analytics: {
-        enabled: false,
-        readOnly: false,
-        autoClear: {
-          cookies: [
-            {
-              name: /^_ga/
-            }
-          ]
-        },
-        services: {
-          ga: {
-            label: 'Google Analytics',
-            onAccept: () => {
-              // Initialize Google Analytics when accepted
-              if (typeof gtag !== 'undefined') {
-                gtag('consent', 'update', {
-                  analytics_storage: 'granted'
-                });
-              }
-            },
-            onReject: () => {
-              // Disable Google Analytics when rejected
-              if (typeof gtag !== 'undefined') {
-                gtag('consent', 'update', {
-                  analytics_storage: 'denied'
-                });
-              }
-            }
-          }
-        }
-      },
-      marketing: {
-        enabled: false,
-        readOnly: false
-      }
-    },
-    language: {
-      default: lang,
-      translations: {
-        [lang]: t
-      }
-    },
-    guiOptions: {
-      consentModal: {
-        layout: 'cloud',
-        position: 'bottom center',
-        flipButtons: false,
-        equalWeightButtons: true
-      },
-      preferencesModal: {
-        layout: 'box'
-      }
-    }
-  };
-</script>
-
-<script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.0/dist/cookieconsent.umd.js" defer></script>
+<!-- Modalne okno zarządzania preferencjami -->
+<div id="cookie-preferences-modal" class="fixed inset-0 bg-black bg-opacity-50 z-[10000] hidden flex items-center justify-center p-4">
+  <div class="bg-white rounded-lg max-w-md w-full max-h-[90vh] overflow-y-auto">
+    <div class="p-6">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-lg font-semibold">{t.preferencesTitle}</h3>
+        <button id="close-modal" class="text-gray-400 hover:text-gray-600 text-2xl leading-none">&times;</button>
+      </div>
+      
+      <div class="space-y-4 mb-6">
+        <div class="flex items-center justify-between">
+          <div class="flex-1">
+            <label class="font-medium text-sm">{t.necessary}</label>
+            <p class="text-xs text-gray-600 mt-1">{t.necessaryDesc}</p>
+          </div>
+          <input type="checkbox" id="necessary-cookies" checked disabled class="w-4 h-4 text-brand-green rounded">
+        </div>
+        
+        <div class="flex items-center justify-between">
+          <div class="flex-1">
+            <label class="font-medium text-sm">{t.analytics}</label>
+            <p class="text-xs text-gray-600 mt-1">{t.analyticsDesc}</p>
+          </div>
+          <input type="checkbox" id="analytics-cookies" class="w-4 h-4 text-brand-green rounded">
+        </div>
+        
+        <div class="flex items-center justify-between">
+          <div class="flex-1">
+            <label class="font-medium text-sm">{t.marketing}</label>
+            <p class="text-xs text-gray-600 mt-1">{t.marketingDesc}</p>
+          </div>
+          <input type="checkbox" id="marketing-cookies" class="w-4 h-4 text-brand-green rounded">
+        </div>
+      </div>
+      
+      <div class="flex gap-2">
+        <button 
+          id="save-preferences"
+          class="flex-1 px-4 py-2 text-sm bg-brand-green text-white rounded hover:bg-[#2F6940] transition-colors"
+        >
+          {t.savePreferences}
+        </button>
+        <a 
+          href={lang === 'pl' ? '/polityka-prywatnosci' : lang === 'en' ? '/en/privacy-policy' : '/de/datenschutzerklarung'}
+          class="flex-1 px-4 py-2 text-sm text-center text-gray-600 hover:text-gray-800 underline transition-colors"
+        >
+          {t.privacy}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script is:inline>
-  // Initialize CookieConsent with retry
-  function initCookieConsent() {
-    if (typeof CookieConsent !== 'undefined' && window.CookieConsentConfig) {
-      try {
-        // CookieConsent v3 API: global object with .run(), not a constructor
-        CookieConsent.run(window.CookieConsentConfig);
-        console.log('[CookieConsent] Initialized successfully');
-      } catch (e) {
-        console.error('[CookieConsent] Initialization error:', e);
-      }
-    } else {
-      // Retry after 500ms if script not loaded yet
-      setTimeout(initCookieConsent, 500);
-    }
-  }
+  // Cookie Consent Functionality - styl talem.eu
+  (function() {
+    const cookieName = 'cc_cookies';
+    const banner = document.getElementById('cookie-banner');
+    const modal = document.getElementById('cookie-preferences-modal');
+    const acceptAllBtn = document.getElementById('cookie-accept-all');
+    const necessaryOnlyBtn = document.getElementById('cookie-necessary-only');
+    const managePreferencesBtn = document.getElementById('cookie-manage-preferences');
+    const closeModalBtn = document.getElementById('close-modal');
+    const savePreferencesBtn = document.getElementById('save-preferences');
+    const analyticsCheckbox = document.getElementById('analytics-cookies');
+    const marketingCheckbox = document.getElementById('marketing-cookies');
 
-  // Start initialization
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initCookieConsent);
-  } else {
-    initCookieConsent();
-  }
+    // Check if consent already given
+    if (document.cookie.includes(cookieName + '=')) {
+      return; // Don't show banner if consent already given
+    }
+
+    // Show banner after delay
+    setTimeout(() => {
+      if (banner) {
+        banner.style.transform = 'translateY(0)';
+      }
+    }, 1000);
+
+    // Set cookie function
+    function setCookie(value, days = 365) {
+      const date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      const expires = 'expires=' + date.toUTCString();
+      document.cookie = cookieName + '=' + value + ';' + expires + ';path=/;SameSite=Lax';
+    }
+
+    // Hide banner function
+    function hideBanner() {
+      if (banner) {
+        banner.style.transform = 'translateY(100%)';
+        setTimeout(() => {
+          banner.style.display = 'none';
+        }, 300);
+      }
+    }
+
+    // Show modal
+    function showModal() {
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+    }
+
+    // Hide modal
+    function hideModal() {
+      if (modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    }
+
+    // Update Google Analytics consent
+    function updateAnalyticsConsent(allowed) {
+      if (typeof gtag !== 'undefined') {
+        gtag('consent', 'update', {
+          'analytics_storage': allowed ? 'granted' : 'denied'
+        });
+      }
+    }
+
+    // Accept all cookies
+    if (acceptAllBtn) {
+      acceptAllBtn.addEventListener('click', function() {
+        setCookie('all');
+        hideBanner();
+        updateAnalyticsConsent(true);
+      });
+    }
+
+    // Accept only necessary cookies
+    if (necessaryOnlyBtn) {
+      necessaryOnlyBtn.addEventListener('click', function() {
+        setCookie('necessary');
+        hideBanner();
+        updateAnalyticsConsent(false);
+      });
+    }
+
+    // Show preferences modal
+    if (managePreferencesBtn) {
+      managePreferencesBtn.addEventListener('click', function() {
+        showModal();
+      });
+    }
+
+    // Close modal
+    if (closeModalBtn) {
+      closeModalBtn.addEventListener('click', hideModal);
+    }
+
+    // Click outside modal to close
+    if (modal) {
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+          hideModal();
+        }
+      });
+    }
+
+    // Save preferences
+    if (savePreferencesBtn) {
+      savePreferencesBtn.addEventListener('click', function() {
+        const analyticsEnabled = analyticsCheckbox.checked;
+        const marketingEnabled = marketingCheckbox.checked;
+        
+        let consentValue = 'necessary';
+        if (analyticsEnabled && marketingEnabled) {
+          consentValue = 'all';
+        } else if (analyticsEnabled) {
+          consentValue = 'analytics';
+        }
+        
+        setCookie(consentValue);
+        hideBanner();
+        hideModal();
+        updateAnalyticsConsent(analyticsEnabled);
+      });
+    }
+  })();
 </script>

@@ -10,8 +10,7 @@ const localeRecord = z.object({
 
 const topBoxesData = z.object({
   availabilityBlock: z.string(),
-  summerBlock: z.string(),
-  amenitiesBlock: z.string()
+  infoBlock: z.string()
 });
 
 const site = defineCollection({

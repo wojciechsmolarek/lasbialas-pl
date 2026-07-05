@@ -11,38 +11,50 @@ const t = {
   pl: {
     carTitle: 'Dojazd samochodem',
     carBtn: 'Wyznacz trasę',
-    carText: 'Godzinę przyjazdu i wyjazdu uzgadniamy indywidualnie. Nie obsługujemy check-inów automatycznych.',
+    carText: 'Wyznaczając trasę dojazdu przez powyższy link, nawigacja Google Maps doprowadzi Cię do miejsca oddalonego o około 200 metrów od domków. Następnie skorzystaj z mapki z drogą <a href="/dojazd" class="text-[#328247] no-underline hover:underline">dojazdu na miejscu</a>.',
     trainTitle: 'Dojazd pociągiem',
     trainBtn: 'Do stacji kolejowej MIAŁY',
-    trainText: 'Transfer ze stacji kolejowej Miały (10 km od Białej) do domków i z powrotem - bezpłatnie dla Gości korzystających z kolei.',
-    locationTitle: 'Nasza lokalizacja',
+    trainText: 'Gościom zapewniamy zarówno transfer ze stacji kolejowej Miały (10 km od Białej) do domków Las Biala\'s, jak i transfer powrotny w dniu wyjazdu. Jeśli planujesz przyjazd pociągiem, skontaktuj się z nami aby ustalić szczegóły.',
+    locationTitle: 'Lokalizacja domków',
     locationText: '64-730 Biała, Puszcza Notecka, Wielkopolska',
     mapBtn: 'Mapka dojazdu na miejscu',
     mapHref: '/dojazd',
+    areaTitle: 'Biała i okolice',
+    areaText: 'Biała to niewielka wieś położona w gminie Wieleń, w zachodniej części Puszczy Noteckiej, tuż nad Jeziorem Białym. Otoczona lasami i oddalona od głównych szlaków komunikacyjnych, stanowi dobre miejsce dla osób szukających spokojnego wypoczynku w naturalnym otoczeniu. Najbliższa okolica sprzyja aktywnemu wypoczynkowi. Liczne leśne dróżki i szlaki idealnie nadają się na wycieczki rowerowe, bieganie oraz spacery. W sezonie grzybowym tutejsze lasy przyciągają miłośników grzybobrania. Miejscowe jezioro oraz pobliskie akweny oferują możliwość kąpieli, plażowania, wędkowania, a także uprawiania sportów wodnych – kajakarstwa (w tym spływów kajakowych), SUP-a czy windsurfingu.',
+    guideBtn: 'Przewodnik',
+    guideHref: 'https://lasbialas.pl/info/',
   },
   en: {
-    carTitle: 'By Car',
+    carTitle: 'Arrival by car',
     carBtn: 'Plan route',
-    carText: 'Arrival and departure times are arranged individually. We do not handle automatic check-ins.',
-    trainTitle: 'By Train',
+    carText: 'When planning the route using the link above, Google Maps will guide you to a spot located about 200 meters from the cottages. Then follow the map with the <a href="/en/local-directions.html" class="text-[#328247] no-underline hover:underline">local access road</a>.',
+    trainTitle: 'Arrival by train',
     trainBtn: 'To MIAŁY station',
-    trainText: 'Transfer from Miały railway station (10 km from Biała) to the cottages and back - free for guests using the train.',
-    locationTitle: 'Our Location',
+    trainText: 'We provide guests with a transfer from the Miały railway station (10 km from Biała) to the Las Biala\'s cottages, as well as a return transfer on the departure day. If you plan to arrive by train, please contact us to arrange details.',
+    locationTitle: 'Location of Las Biala\'s cottages',
     locationText: '64-730 Biała, Noteć Forest, Greater Poland',
     mapBtn: 'Local access map',
     mapHref: '/en/local-directions.html',
+    areaTitle: 'Biała and Surroundings',
+    areaText: 'Biała is a small village located in the Wieleń commune, in the western part of the Noteć Forest, right by Lake Białe. Surrounded by forests and away from main roads, it is an ideal place for those seeking a peaceful stay in a natural environment. The surrounding area is perfect for active recreation. Numerous forest paths and trails are ideal for cycling, running, and walking. During mushroom season, the local forests attract mushroom-picking enthusiasts. The nearby lake and other local water bodies offer opportunities for swimming, sunbathing, fishing, and water sports such as kayaking (including river trips), stand-up paddleboarding (SUP), and windsurfing.',
+    guideBtn: 'Guide',
+    guideHref: 'https://lasbialas.pl/info/en/',
   },
   de: {
-    carTitle: 'Mit dem Auto',
+    carTitle: 'Anreise mit dem Auto',
     carBtn: 'Route planen',
-    carText: 'Ankunfts- und Abfahrtszeiten werden individuell vereinbart. Wir bieten keine automatischen Check-ins an.',
-    trainTitle: 'Mit dem Zug',
+    carText: 'Wenn Sie die Route über den obigen Link planen, führt Sie Google Maps zu einem Punkt, der sich etwa 200 Meter von den Häusern entfernt befindet. Verwenden Sie anschließend die Karte mit der <a href="/de/anfahrt-vor-ort.html" class="text-[#328247] no-underline hover:underline">Anfahrt vor Ort</a>.',
+    trainTitle: 'Anreise mit dem Zug',
     trainBtn: 'Zum Bahnhof MIAŁY',
-    trainText: 'Transfer vom Bahnhof Miały (10 km von Biała entfernt) zu den Häusern und zurück - kostenlos für Gäste, die mit dem Zug anreisen.',
-    locationTitle: 'Unsere Lage',
+    trainText: 'Wir bieten unseren Gästen einen Transfer vom Bahnhof MIAŁY (10 km von Biała entfernt) zu den Häusern Las Biala\'s sowie den Rücktransfer am Abreisetag an. Wenn Sie mit dem Zug anreisen, kontaktieren Sie uns bitte zur Absprache der Details.',
+    locationTitle: 'Standort Las Biala\'s',
     locationText: '64-730 Biała, Puszcza Notecka, Großpolen',
     mapBtn: 'Karte - Anfahrt vor Ort',
     mapHref: '/de/anfahrt-vor-ort.html',
+    areaTitle: 'Biała und Umgebung',
+    areaText: 'Biała ist ein kleines Dorf in der Gemeinde Wieleń, im westlichen Teil der Puszcza Notecka, direkt am See Białe. Umgeben von Wäldern, abseits der Hauptverkehrswege, ist es ein idealer Ort für alle, die Ruhe in natürlicher Umgebung suchen. Die Umgebung ist ideal für aktive Erholung. Zahlreiche Waldwege und Pfade eignen sich perfekt zum Radfahren, Laufen und Spazierengehen. In der Pilzsaison ziehen die umliegenden Wälder viele Pilzliebhaber an. Der nahegelegene See und andere Gewässer bieten Möglichkeiten zum Baden, Sonnenbaden, Angeln sowie für Wassersportarten wie Kajakfahren (einschließlich Kanutouren), Stand-Up-Paddling (SUP) und Windsurfen.',
+    guideBtn: 'Reiseführer',
+    guideHref: 'https://lasbialas.pl/info/de/',
   },
 }[lang];
 
@@ -97,4 +109,11 @@ const trainHref = 'https://www.google.pl/maps/place/Mia%C5%82y/@52.8296365,16.24
       width="100%"
     ></iframe>
   </section>
+
+  {/* Biała i okolice */}
+  <h2 class="text-[24px] text-center mt-[40px] mb-5 text-brand-black font-bold">{t.areaTitle}</h2>
+  <p class="text-base leading-[1.6]">{t.areaText}</p>
+  <div class="flex justify-center mt-[20px] mb-[20px]">
+    <a class="inline-flex justify-center items-center w-auto h-[46px] text-base font-normal text-white bg-[#2F6940] border-none text-center no-underline normal-case cursor-pointer px-[20px] hover:bg-[#40a95c] transition-colors" href={t.guideHref} target="_blank">{t.guideBtn}</a>
+  </div>
 </div>

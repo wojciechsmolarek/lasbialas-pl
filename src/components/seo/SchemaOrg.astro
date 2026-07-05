@@ -3,8 +3,6 @@ interface Props {
   lang: 'pl' | 'en' | 'de';
 }
 
-const { lang } = Astro.props;
-
 const schemaNames = {
   pl: "Las Biala's - Domki z sauną i jacuzzi na wynajem w Puszczy Noteckiej",
   en: "Las Biala's – Cottages with sauna and jacuzzi for rent in the Noteć Forest",
@@ -162,4 +160,4 @@ const schema = {
 };
 ---
 
-<script type="application/ld+json" set:html={JSON.stringify(schema)} />
+<script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />

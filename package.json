@@ -13,13 +13,12 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
-    "astro": "^5.18.2",
-    "astro-seo": "^1.1.0"
+    "astro": "^7.0.6",
+    "astro-seo": "^1.1.0",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@astrojs/tailwind": "^6.0.2",
-    "@tailwindcss/postcss": "^4.3.1",
-    "lightningcss": "^1.32.0",
+    "autoprefixer": "^10.4.20",
     "tailwindcss": "^3.4.19"
   }
 }

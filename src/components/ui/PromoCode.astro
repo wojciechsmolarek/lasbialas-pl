@@ -42,13 +42,12 @@ const { code, id } = Astro.props;
 </span>
 
 <script is:inline>
-  function copyCode(elementId, button) {
+  window.copyCode = function (elementId, button) {
     const codeElement = document.getElementById(elementId);
     if (codeElement) {
       const code = codeElement.textContent;
       navigator.clipboard.writeText(code).then(
         function () {
-          // Visual feedback
           const originalText = button.title;
           button.title = 'Skopiowano!';
           button.style.color = '#2F6940';
@@ -63,5 +62,5 @@ const { code, id } = Astro.props;
         }
       );
     }
-  }
+  };
 </script>

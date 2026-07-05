@@ -179,15 +179,15 @@ const hreflangs = [
         }
 
         function initValidation() {
-          document.body.addEventListener('bookero-plugin:days-changed', function (e) {
+          document.body.addEventListener('bookero-plugin:days-changed', function () {
             enforceMinimumDays();
           });
 
-          document.body.addEventListener('bookero-plugin:service-updated', function (e) {
+          document.body.addEventListener('bookero-plugin:service-updated', function () {
             enforceMinimumDays();
           });
 
-          document.body.addEventListener('bookero-plugin:loaded', function (e) {
+          document.body.addEventListener('bookero-plugin:loaded', function () {
             enforceMinimumDays();
           });
         }

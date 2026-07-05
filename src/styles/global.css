@@ -43,3 +43,117 @@
     background-color: #fff;
   }
 }
+
+/* Bookero plugin color overrides */
+body #bookero-plugin[data-mode=sticky] .bookero-sticky-plugin-toggle {
+  background: #2F6940 !important;
+  width: 220px;
+  height: 56px;
+  opacity: 0.96;
+  margin-bottom: 3px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: large;
+}
+
+@media (max-width: 960px) {
+  body #bookero-plugin[data-mode=sticky] .bookero-sticky-plugin-toggle {
+    background: #2F6940 !important;
+    width: 100vw;
+    max-width: 100vw;
+    height: 60px;
+    box-sizing: border-box;
+    margin-bottom: 12px;
+  }
+}
+
+body .bookero-plugin-hideable-part .bookero-plugin-header {
+  background: none !important;
+  color: #2F6940 !important;
+  padding: 0;
+  font-size: 32px;
+}
+
+body .bookero-plugin-form .field .multiselect__option--highlight {
+  background: #2F6940 !important;
+}
+
+body .bookero-plugin-form .calendar-days-list-cell.is-valid {
+  color: #2F6940 !important;
+  background: #f0f0f0 !important;
+  border-color: #f0f0f0 !important;
+}
+
+body .bookero-plugin-form .calendar-days-list-cell.is-selected,
+body .bookero-plugin-form .calendar-days-list-cell.is-sub-selected {
+  background: #2F6940 !important;
+  border-color: #2F6940 !important;
+  color: #fff !important;
+}
+
+body .bookero-plugin-form .calendar-days-list-cell.is-selected + .is-sub-selected:before,
+body .bookero-plugin-form .calendar-days-list-cell.is-sub-selected:before {
+  background: #2F6940 !important;
+}
+
+body .bookero-plugin-form .submit-section .submit-button {
+  background: #2F6940 !important;
+}
+
+body .bookero-plugin-form .bookero-plugin-header {
+  background: none !important;
+  color: #2F6940 !important;
+  padding: 0;
+  font-size: 32px;
+}
+
+body .bookero-plugin-form-wrapper a {
+  color: #2F6940 !important;
+  text-decoration: none !important;
+}
+
+body .bookero-plugin-form .submit-section .submit-button:active,
+body .bookero-plugin-form .submit-section .submit-button:focus,
+body .bookero-plugin-form .submit-section .submit-button:hover {
+  background: #2F6940 !important;
+}
+
+.result-popup-icon.is-waiting {
+  background: #2F6940 !important;
+}
+
+body .bookero-plugin-form .field input:active,
+body .bookero-plugin-form .field input:focus,
+body .bookero-plugin-form .field select:active,
+body .bookero-plugin-form .field select:focus,
+body .bookero-plugin-form .field textarea:active,
+body .bookero-plugin-form .field textarea:focus {
+  border-color: #2F6940 !important;
+}
+
+body #bookero-plugin .calendar-message.is-notice {
+  color: #3a3a3a !important;
+  border-color: #666 !important;
+}
+
+body #bookero-plugin .switcher.is-active {
+  border-color: #2F6940 !important;
+  background-color: #2F6940 !important;
+}
+
+body #bookero-plugin .inquiry-actions-details:after {
+  border-color: #2F6940 !important;
+}
+
+body #bookero-plugin .payment-section .payment-methods-item:hover {
+  border-color: #2F6940 !important;
+}
+
+body #bookero-plugin .payment-section .payment-methods-item.is-active {
+  border-color: #2F6940 !important;
+  background-color: #2F6940 !important;
+}
+
+body #bookero-plugin .bookero-plugin-form .field .multiselect__option,
+body #bookero-plugin .bookero-plugin-form-heading {
+  font-weight: 500;
+}

@@ -112,32 +112,32 @@ const deUrl = '/de/';
 </div>
 
 <!-- Menu mobilne -->
-<div class="fixed top-0 right-0 h-screen w-[320px] bg-white z-[1001] translate-x-full transition-transform duration-300 ease-in-out p-5 shadow-[-4px_0_12px_rgba(0,0,0,0.1)] [&.active]:translate-x-0" id="mobileContactMenu">
+<div class="fixed top-0 right-0 h-screen w-[320px] bg-[#2F6940] z-[1001] translate-x-full transition-transform duration-300 ease-in-out p-5 shadow-[-4px_0_12px_rgba(0,0,0,0.1)] [&.active]:translate-x-0" id="mobileContactMenu">
   <!-- Nagłówek menu -->
   <div class="flex justify-between items-center mb-6 pb-4 border-b border-gray-200">
-    <h3 class="text-lg font-semibold text-brand-black">Menu</h3>
+    <h3 class="text-lg font-semibold text-white">Menu</h3>
     <button 
-      class="close-menu p-2 rounded-full hover:bg-gray-100 transition-colors border-0 bg-transparent"
+      class="close-menu p-2 rounded-full hover:bg-white/20 transition-colors border-0 bg-transparent"
       onclick="toggleMenu()"
       aria-label="Zamknij menu"
     >
       <div class="w-6 h-6 relative">
-        <span class="absolute top-1/2 left-0 w-full h-0.5 bg-brand-black rounded-sm transform -translate-y-1/2 rotate-45"></span>
-        <span class="absolute top-1/2 left-0 w-full h-0.5 bg-brand-black rounded-sm transform -translate-y-1/2 -rotate-45"></span>
+        <span class="absolute top-1/2 left-0 w-full h-0.5 bg-white rounded-sm transform -translate-y-1/2 rotate-45"></span>
+        <span class="absolute top-1/2 left-0 w-full h-0.5 bg-white rounded-sm transform -translate-y-1/2 -rotate-45"></span>
       </div>
     </button>
   </div>
 
   <!-- Języki -->
   <div class="flex items-center gap-2 mb-6">
-    {lang !== 'pl' && <a href={plUrl} class="px-3 py-2 text-sm font-medium text-brand-black bg-white border border-gray-300 rounded hover:bg-gray-100 transition-all no-underline">PL</a>}
-    {lang !== 'en' && <a href={enUrl} class="px-3 py-2 text-sm font-medium text-brand-black bg-white border border-gray-300 rounded hover:bg-gray-100 transition-all no-underline">EN</a>}
-    {lang !== 'de' && <a href={deUrl} class="px-3 py-2 text-sm font-medium text-brand-black bg-white border border-gray-300 rounded hover:bg-gray-100 transition-all no-underline">DE</a>}
+    {lang !== 'pl' && <a href={plUrl} class="px-3 py-2 text-sm font-medium text-[#2F6940] bg-white border border-white/30 rounded hover:bg-white/90 transition-all no-underline">PL</a>}
+    {lang !== 'en' && <a href={enUrl} class="px-3 py-2 text-sm font-medium text-[#2F6940] bg-white border border-white/30 rounded hover:bg-white/90 transition-all no-underline">EN</a>}
+    {lang !== 'de' && <a href={deUrl} class="px-3 py-2 text-sm font-medium text-[#2F6940] bg-white border border-white/30 rounded hover:bg-white/90 transition-all no-underline">DE</a>}
   </div>
 
   <!-- Kontakt -->
   <div class="space-y-1">
-    <a href="tel:+48789773285" class="flex items-center gap-3 py-3 text-brand-black no-underline hover:bg-gray-50 rounded-lg transition-colors px-2">
+    <a href="tel:+48789773285" class="flex items-center gap-3 py-3 text-white no-underline hover:bg-white/15 rounded-lg transition-colors px-2">
       <Picture
         alt="Telefon"
         src="/images/telefon-g.png"
@@ -149,11 +149,11 @@ const deUrl = '/de/';
       />
       <div>
         <div class="font-medium">+48 789 773 285</div>
-        <div class="text-xs text-gray-500">Telefon</div>
+        <div class="text-xs text-white/70">Telefon</div>
       </div>
     </a>
 
-    <a href="https://wa.me/48660194187" class="flex items-center gap-3 py-3 text-brand-black no-underline hover:bg-gray-50 rounded-lg transition-colors px-2">
+    <a href="https://wa.me/48660194187" class="flex items-center gap-3 py-3 text-white no-underline hover:bg-white/15 rounded-lg transition-colors px-2">
       <Picture
         alt="WhatsApp"
         src="/images/whatsapp-green.png"
@@ -165,11 +165,11 @@ const deUrl = '/de/';
       />
       <div>
         <div class="font-medium">660 194 187</div>
-        <div class="text-xs text-gray-500">WhatsApp</div>
+        <div class="text-xs text-white/70">WhatsApp</div>
       </div>
     </a>
 
-    <a href="mailto:domki@lasbialas.pl" class="flex items-center gap-3 py-3 text-brand-black no-underline hover:bg-gray-50 rounded-lg transition-colors px-2">
+    <a href="mailto:domki@lasbialas.pl" class="flex items-center gap-3 py-3 text-white no-underline hover:bg-white/15 rounded-lg transition-colors px-2">
       <Picture
         alt="Mail"
         src="/images/mail-g.png"
@@ -181,7 +181,7 @@ const deUrl = '/de/';
       />
       <div>
         <div class="font-medium">domki@lasbialas.pl</div>
-        <div class="text-xs text-gray-500">Email</div>
+        <div class="text-xs text-white/70">Email</div>
       </div>
     </a>
 
@@ -189,7 +189,7 @@ const deUrl = '/de/';
       href="https://www.instagram.com/lasbialas"
       rel="nofollow noopener noreferrer"
       target="_blank"
-      class="flex items-center gap-3 py-3 text-brand-black no-underline hover:bg-gray-50 rounded-lg transition-colors px-2"
+      class="flex items-center gap-3 py-3 text-white no-underline hover:bg-white/15 rounded-lg transition-colors px-2"
     >
       <Picture
         alt="Instagram Las Biala's"
@@ -202,15 +202,15 @@ const deUrl = '/de/';
       />
       <div>
         <div class="font-medium">@lasbialas</div>
-        <div class="text-xs text-gray-500">Instagram</div>
+        <div class="text-xs text-white/70">Instagram</div>
       </div>
     </a>
   </div>
 
   <!-- Przycisk rezerwacji -->
-  <div class="mt-6 pt-6 border-t border-gray-200">
+  <div class="mt-6 pt-6 border-t border-white/20">
     <button
-      class="w-full py-3 px-4 bg-brand-green text-white rounded-lg hover:bg-[#2F6940] transition-colors font-medium border-0 cursor-pointer"
+      class="w-full py-3 px-4 bg-white/15 text-white rounded-lg hover:bg-white/25 transition-colors font-medium border-0 cursor-pointer"
       onclick="openReservation(); toggleMenu();"
     >
       Rezerwuj teraz

@@ -1,4 +1,6 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
+import { z } from 'zod';
+import { file } from 'astro/loaders';
 
 const localeRecord = z.object({
   pl: z.string(),
@@ -13,7 +15,9 @@ const topBoxesData = z.object({
 });
 
 const site = defineCollection({
-  type: 'data',
+  loader: file('src/content/site/config.json', {
+    parser: (text) => ({ config: JSON.parse(text) }),
+  }),
   schema: z.object({
     promoBar: z.object({
       enabled: z.boolean(),

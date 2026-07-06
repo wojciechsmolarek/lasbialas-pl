@@ -12,12 +12,12 @@ const topBoxes: any = siteConfig?.data.topBoxes ?? {};
 const currentData = topBoxes[lang] ?? {};
 ---
 
-<div class="flex gap-[20px] items-stretch max-w-[73%] mx-auto flex-wrap max-[1367px]:flex-col max-[1367px]:max-w-full max-[1367px]:gap-[1px]">
-  <div class="flex-[0_0_49%] max-[1367px]:flex-[0_0_100%] max-[1367px]:w-full border border-[#ccc] rounded-[5px] py-[10px] px-[40px] mb-5 bg-white text-base text-center max-[768px]:max-w-[96vw] max-[768px]:p-5 max-[768px]:my-[1px] max-[768px]:text-[0.6rem]">
+<div class="flex gap-[20px] items-stretch max-w-[73%] mx-auto flex-wrap max-[1367px]:flex-col max-[1367px]:max-w-full max-[1367px]:gap-[1px] max-[1367px]:px-4">
+  <div class="flex-[0_0_49%] max-[1367px]:flex-[0_0_100%] max-[1367px]:w-full border border-[#ccc] rounded-[5px] py-[10px] px-[40px] mb-5 bg-white text-base text-center max-[768px]:max-w-[92vw] max-[768px]:mx-auto max-[768px]:p-5 max-[768px]:my-[1px] max-[768px]:text-[0.75rem]">
     <Fragment set:html={currentData.availabilityBlock} />
   </div>
 
-  <div class="flex-[0_0_49%] max-[1367px]:flex-[0_0_100%] max-[1367px]:w-full border border-[#ccc] rounded-[5px] py-[10px] px-[40px] mb-5 bg-white text-base text-center max-[768px]:max-w-[96vw] max-[768px]:p-5 max-[768px]:my-[1px] max-[768px]:text-[0.6rem]">
+  <div class="flex-[0_0_49%] max-[1367px]:flex-[0_0_100%] max-[1367px]:w-full border border-[#ccc] rounded-[5px] py-[10px] px-[40px] mb-5 bg-white text-base text-center max-[768px]:max-w-[92vw] max-[768px]:mx-auto max-[768px]:p-5 max-[768px]:my-[1px] max-[768px]:text-[0.75rem]">
     <Fragment set:html={currentData.infoBlock} />
   </div>
 </div>

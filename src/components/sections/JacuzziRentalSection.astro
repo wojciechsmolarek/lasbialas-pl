@@ -66,51 +66,51 @@ const t = {
 }[lang];
 ---
 
-<div class="max-w-[73%] border border-[#ccc] rounded-[5px] py-[10px] px-[80px] mx-auto mb-5 bg-white text-base text-center max-[768px]:max-w-[96vw] max-[768px]:p-5 max-[768px]:my-[1px] max-[768px]:mb-5 max-[768px]:text-[0.6rem]">
-  <h2 class="text-[24px] text-center mt-[30px] mb-5 text-brand-black font-bold" id="cennik-jacuzzi">{t.title}</h2>
-  <p class="text-base leading-[1.6]" set:html={t.intro}></p>
+<div class="max-w-[73%] border border-[#ccc] rounded-[5px] py-[10px] px-[80px] mx-auto mb-5 bg-white text-base text-center max-[768px]:max-w-[96vw] max-[768px]:p-5 max-[768px]:my-[1px] max-[768px]:mb-5 max-[768px]:text-[0.75rem]">
+  <h2 class="text-[24px] max-[768px]:text-[1.1rem] text-center mt-[30px] mb-5 text-brand-black font-bold" id="cennik-jacuzzi">{t.title}</h2>
+  <p class="text-base max-[768px]:text-[0.8rem] leading-[1.6]" set:html={t.intro}></p>
 
   {/* Pricing table */}
-  <table class="w-full max-w-[900px] border-collapse overflow-hidden text-base my-[30px] mx-auto bg-[#f4f4f4] border-2 border-white text-center table-fixed">
+  <table class="w-full max-w-[900px] border-collapse text-base max-[768px]:text-[0.8rem] my-[30px] mx-auto bg-[#f4f4f4] border-2 border-white text-center table-fixed max-[768px]:table-auto">
     <thead>
       <tr>
-        <th rowspan="2" class="bg-[#362e27] text-white font-semibold px-[6px] py-[4px] h-[40px] border-2 border-white align-middle w-[40%] max-[768px]:w-[20%]">{t.colsHeader[0]}</th>
-        <th colspan="2" class="bg-[#362e27] text-white font-semibold px-[6px] py-[4px] h-[40px] border-2 border-white align-middle">{t.colsHeader[1]}</th>
+        <th rowspan="2" class="bg-[#362e27] text-white font-semibold px-[6px] py-[4px] h-[40px] border-2 border-white align-middle w-[40%] max-[768px]:w-auto max-[768px]:text-[0.7rem] max-[768px]:leading-[1.2] max-[768px]:break-words max-[768px]:whitespace-normal">{t.colsHeader[0]}</th>
+        <th colspan="2" class="bg-[#362e27] text-white font-semibold px-[6px] py-[4px] h-[40px] border-2 border-white align-middle max-[768px]:text-[0.7rem] max-[768px]:leading-[1.2] max-[768px]:break-words max-[768px]:whitespace-normal">{t.colsHeader[1]}</th>
       </tr>
       <tr>
-        <th class="bg-[#362e27] text-white font-semibold px-[6px] py-[4px] h-[40px] border-2 border-white align-middle w-[30%] max-[768px]:w-[26.66%]">{t.colsSub[0]}</th>
-        <th class="bg-[#362e27] text-white font-semibold px-[6px] py-[4px] h-[40px] border-2 border-white align-middle w-[30%] max-[768px]:w-[26.66%]">{t.colsSub[1]}</th>
+        <th class="bg-[#362e27] text-white font-semibold px-[6px] py-[4px] h-[40px] border-2 border-white align-middle w-[30%] max-[768px]:w-auto max-[768px]:text-[0.7rem] max-[768px]:leading-[1.2]">{t.colsSub[0]}</th>
+        <th class="bg-[#362e27] text-white font-semibold px-[6px] py-[4px] h-[40px] border-2 border-white align-middle w-[30%] max-[768px]:w-auto max-[768px]:text-[0.7rem] max-[768px]:leading-[1.2]">{t.colsSub[1]}</th>
       </tr>
     </thead>
     <tbody>
       {t.rows.map((row: string[]) => (
         <tr>
-          {row.map((cell: string) => <td class="h-[60px] p-[6px] border-2 border-white align-middle max-[768px]:text-[0.95rem]" set:html={cell}></td>)}
+          {row.map((cell: string) => <td class="h-[60px] p-[6px] border-2 border-white align-middle max-[768px]:text-[0.75rem] max-[768px]:h-[48px] max-[768px]:break-words" set:html={cell}></td>)}
         </tr>
       ))}
     </tbody>
   </table>
 
   {/* Fees table */}
-  <table class="w-full max-w-[900px] border-collapse overflow-hidden text-base my-[30px] mx-auto bg-[#f4f4f4] border-2 border-white text-center table-fixed">
+  <table class="w-full max-w-[900px] border-collapse text-base max-[768px]:text-[0.8rem] my-[30px] mx-auto bg-[#f4f4f4] border-2 border-white text-center table-fixed max-[768px]:table-auto">
     <thead>
       <tr>
-        {t.feesHeader.map((h: string) => <th class="bg-[#362e27] text-white font-semibold px-[6px] py-[4px] h-[40px] border-2 border-white align-middle">{h}</th>)}
+        {t.feesHeader.map((h: string) => <th class="bg-[#362e27] text-white font-semibold px-[6px] py-[4px] h-[40px] border-2 border-white align-middle max-[768px]:text-[0.7rem] max-[768px]:leading-[1.2] max-[768px]:break-words max-[768px]:whitespace-normal">{h}</th>)}
       </tr>
     </thead>
     <tbody>
       {t.feesRows.map((row: string[]) => (
         <tr>
-          {row.map((cell: string) => <td class="h-[60px] p-[6px] border-2 border-white align-middle max-[768px]:text-[0.95rem]">{cell}</td>)}
+          {row.map((cell: string) => <td class="h-[60px] p-[6px] border-2 border-white align-middle max-[768px]:text-[0.75rem] max-[768px]:h-[48px] max-[768px]:break-words">{cell}</td>)}
         </tr>
       ))}
     </tbody>
   </table>
 
-  <div class="max-w-[82%] max-[768px]:max-w-[98vw] border border-[#328247] rounded-[5px] p-[5px] my-[5px] mx-auto bg-white text-[1.2rem] text-[#328247] text-center">
+  <div class="max-w-[82%] max-[768px]:max-w-[98vw] border border-[#328247] rounded-[5px] p-[5px] my-[5px] mx-auto bg-white text-[1.2rem] max-[768px]:text-[0.8rem] text-[#328247] text-center">
     <p class="my-[5px]">{t.note}</p>
   </div>
 
-  <h3 class="text-[1.3rem] text-center mt-[50px] mb-[5px] font-semibold text-[#2c2c2c]">{t.petTitle}</h3>
-  <p class="text-base leading-[1.6]" set:html={t.petText}></p>
+  <h3 class="text-[1.3rem] max-[768px]:text-[1rem] text-center mt-[50px] mb-[5px] font-semibold text-[#2c2c2c]">{t.petTitle}</h3>
+  <p class="text-base max-[768px]:text-[0.8rem] leading-[1.6]" set:html={t.petText}></p>
 </div>

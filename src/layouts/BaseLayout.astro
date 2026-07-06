@@ -44,6 +44,8 @@ const hreflangs = [
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <link rel="preconnect" href="https://collect.yabrix.com" />
     <link rel="dns-prefetch" href="https://collect.yabrix.com" />
+    <link rel="preconnect" href="https://lasbialas.pl/info/" />
+    <link rel="dns-prefetch" href="https://lasbialas.pl/info/" />
 
     <SEO
       title={title}
@@ -227,11 +229,18 @@ const hreflangs = [
       id="bookero-sticky-fallback"
       onclick="openReservation()"
       class="fixed bottom-0 right-0 z-[99998] bg-[#2F6940] text-white border-0 cursor-pointer font-montserrat transition-colors hover:bg-[#40a95c]"
-      style="width:220px;height:56px;opacity:0.96;margin-bottom:3px;font-size:large;border-radius:0;"
     >
       {lang === 'pl' ? 'Rezerwuj' : lang === 'en' ? 'Book Now' : 'Reservieren'}
     </button>
     <style>
+      #bookero-sticky-fallback {
+        width: 220px;
+        height: 56px;
+        opacity: 0.96;
+        margin-bottom: 3px;
+        font-size: large;
+        border-radius: 0;
+      }
       @media (max-width: 960px) {
         #bookero-sticky-fallback {
           width: 100vw !important;

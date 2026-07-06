@@ -61,7 +61,7 @@ const t = translations[lang];
 ---
 
 <!-- Mały dymek cookies na dole po lewej -->
-<div id="cookie-banner" class="fixed bottom-4 left-4 bg-white text-gray-800 p-4 rounded-lg shadow-lg z-[100000] transform translate-y-full transition-all duration-300 max-w-sm">
+<div id="cookie-banner" class="fixed bottom-4 left-4 bg-white text-gray-800 p-4 rounded-lg shadow-lg z-[100000] hidden transform transition-all duration-300 max-w-sm">
   <div class="mb-3">
     <h4 class="font-semibold text-sm mb-1">{t.title}</h4>
     <p class="text-xs text-gray-600 leading-relaxed">{t.description}</p>
@@ -158,13 +158,15 @@ const t = translations[lang];
 
     // Check if consent already given
     if (document.cookie.includes(cookieName + '=')) {
+      if (banner) banner.style.display = 'none';
       return; // Don't show banner if consent already given
     }
 
     // Show banner after delay
     setTimeout(() => {
       if (banner) {
-        banner.style.transform = 'translateY(0)';
+        banner.classList.remove('hidden');
+        banner.classList.add('flex');
       }
     }, 1000);
 
@@ -179,10 +181,8 @@ const t = translations[lang];
     // Hide banner function
     function hideBanner() {
       if (banner) {
-        banner.style.transform = 'translateY(100%)';
-        setTimeout(() => {
-          banner.style.display = 'none';
-        }, 300);
+        banner.classList.add('hidden');
+        banner.classList.remove('flex');
       }
     }
 

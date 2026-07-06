@@ -2,9 +2,9 @@
   "promoBar": {
     "enabled": true,
     "messages": {
-      "pl": "<strong>Wolny termin</strong><span class=\"inline-block rounded bg-[#d4edda] px-1.5 py-0.5 mx-1 font-bold text-[#155724]\">5-9 LIPIEC</span>",
-      "en": "<strong>Bookings for</strong><span class=\"inline-block rounded bg-[#d4edda] px-1.5 py-0.5 mx-1 font-bold text-[#155724]\">JULY</span><span class=\"inline-block rounded bg-[#d4edda] px-1.5 py-0.5 mx-1 font-bold text-[#155724]\">AUGUST</span> <strong>by phone only</strong>",
-      "de": "<strong>Reservierungen für</strong><span class=\"inline-block rounded bg-[#d4edda] px-1.5 py-0.5 mx-1 font-bold text-[#155724]\">JULI</span><span class=\"inline-block rounded bg-[#d4edda] px-1.5 py-0.5 mx-1 font-bold text-[#155724]\">AUGUST</span> <strong>nur telefonisch</strong>"
+      "pl": "<span class=\"text-white\">Wolny termin</span><span class=\"inline-block rounded bg-[#d4edda] px-1.5 py-0.5 mx-1 font-bold text-[#155724]\">5-9 LIPIEC</span>",
+      "en": "<span class=\"text-white\">Bookings for</span><span class=\"inline-block rounded bg-[#d4edda] px-1.5 py-0.5 mx-1 font-bold text-[#155724]\">JULY</span><span class=\"inline-block rounded bg-[#d4edda] px-1.5 py-0.5 mx-1 font-bold text-[#155724]\">AUGUST</span> <strong>by phone only</strong>",
+      "de": "<span class=\"text-white\">Reservierungen für</span><span class=\"inline-block rounded bg-[#d4edda] px-1.5 py-0.5 mx-1 font-bold text-[#155724]\">JULI</span><span class=\"inline-block rounded bg-[#d4edda] px-1.5 py-0.5 mx-1 font-bold text-[#155724]\">AUGUST</span> <strong>nur telefonisch</strong>"
     }
   },
   "availability": {

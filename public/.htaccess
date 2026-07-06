@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteRule ^dojazd/?$ https://lasbialas.pl/info/#/przed-przyjazdem/38 [R=301,L]
+RewriteRule ^en/local-directions/?$ https://lasbialas.pl/info/en/#/before-arrival/1038 [R=301,L]
+RewriteRule ^de/anfahrt-vor-ort/?$ https://lasbialas.pl/info/de/#/vor-der-anreise/721 [R=301,L]

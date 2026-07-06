@@ -1,86 +1,21 @@
 ---
-const imageSrc = '/de/foto/anfahrt-vor-ort-LB.webp';
-const imageAlt = 'Anfahrt zu den Ferienhäusern, Las Biala\'s';
-const title = 'Anfahrt zu den Ferienhäusern, Las Biala\'s';
-const homeLabel = 'Startseite';
-const homeHref = '/de/';
+import PageLayout from '../../layouts/PageLayout.astro';
+const lang = 'de';
 ---
 
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Lage und Anfahrt zu den Ferienhäusern Las Biala's in Biała, Puszcza Notecka. Karte der Anfahrt vor Ort." />
-  <title>Lage und Anfahrt zu den Ferienhäusern, Las Biala's</title>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600;700&display=swap" rel="stylesheet" />
-  <style>
-    * { box-sizing: border-box; }
-    body { margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; }
-    .top-bar {
-      background-color: #41A55B;
-      color: white;
-      height: 44px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      padding: 0 10px;
-      font-size: 16px;
-      z-index: 1000;
-    }
-    .top-bar h1 {
-      margin: 0;
-      font-weight: 400;
-      font-size: 20px;
-      text-align: center;
-    }
-    .home-link {
-      display: inline-flex;
-      font-weight: 400;
-      font-size: 20px;
-      align-items: center;
-      margin-left: 30px;
-      color: #ffffff;
-      text-decoration: none;
-    }
-    .main-image {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    .footer {
-      background-color: #737373;
-      color: white;
-      height: 44px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 16px;
-      width: 100%;
-    }
-  </style>
-</head>
-<body>
-  <div class="top-bar">
-    <h1>{title}</h1>
-    <div style="text-align: center;">
-      <a href={homeHref} class="home-link">{homeLabel}</a>
-    </div>
+<PageLayout
+  title="Lage und Anfahrt zu den Ferienhäusern, Las Biala's"
+  description="Lage und Anfahrt zu den Ferienhäusern Las Biala's in Biała, Puszcza Notecka. Karte der Anfahrt vor Ort."
+  lang={lang}
+>
+  <div class="container mx-auto max-w-5xl px-4 py-8">
+    <h1 class="mb-6 text-3xl font-semibold text-center">Anfahrt zu den Ferienhäusern, Las Biala's</h1>
+    <img
+      src="/de/foto/anfahrt-vor-ort-LB.webp"
+      alt="Anfahrt zu den Ferienhäusern, Las Biala's"
+      width="1920"
+      height="1125"
+      class="w-full h-auto rounded-[5px]"
+    />
   </div>
-
-  <img src={imageSrc} alt={imageAlt} class="main-image" width="1920" height="1125" />
-
-  <div class="footer">
-    <p>&copy; <span id="year"></span> Las Biala's</p>
-  </div>
-
-  <script is:inline>
-    document.getElementById('year').innerText = new Date().getFullYear();
-  </script>
-</body>
-</html>
+</PageLayout>

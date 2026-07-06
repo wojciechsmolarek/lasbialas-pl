@@ -44,6 +44,11 @@ export const ui = {
     en: 'GDPR',
     de: 'DSGVO'
   },
+  'nav.blog': {
+    pl: 'Blog',
+    en: 'Blog',
+    de: 'Blog'
+  },
 
   // ===== PROMO BAR =====
   'promo.reservations': {
@@ -452,9 +457,9 @@ export const ui = {
     de: 'Biała und Umgebung'
   },
   'surroundings.text': {
-    pl: 'Biała to niewielka wieś położona w gminie Wieleń, w zachodniej części Puszczy Noteckiej, tuż nad Jeziorem Białym. Otoczona lasami i oddalona od głównych szlaków komunikacyjnych, stanowi dobre miejsce dla osób szukających spokojnego wypoczynku w naturalnym otoczeniu.',
-    en: 'Biała is a small village located in the Wieleń commune, in the western part of the Noteć Forest, right by Lake Białe. Surrounded by forests and away from main roads, it is an ideal place for those seeking a peaceful stay in a natural environment.',
-    de: 'Biała ist ein kleines Dorf in der Gemeinde Wieleń, im westlichen Teil der Puszcza Notecka, direkt am See Białe. Umgeben von Wäldern, abseits der Hauptverkehrswege, ist es ein idealer Ort für alle, die Ruhe in natürlicher Umgebung suchen.'
+    pl: 'Biała to niewielka wieś położona w gminie Wieleń, w zachodniej części Puszczy Noteckiej, tuż nad Jeziorem Białym. Otoczona lasami i oddalona od głównych szlaków komunikacyjnych, stanowi dobre miejsce dla osób szukających spokojnego wypoczynku w naturalnym otoczeniu.<br><br>Najbliższa okolica sprzyja aktywnemu wypoczynkowi. Liczne leśne dróżki i szlaki idealnie nadają się na wycieczki rowerowe, bieganie oraz spacery. W sezonie grzybowym tutejsze lasy przyciągają miłośników grzybobrania. Miejscowe jezioro oraz pobliskie akweny oferują możliwość kąpieli, plażowania, wędkowania, a także uprawiania sportów wodnych – kajakarstwa (w tym spływów kajakowych), SUP-a czy windsurfingu.',
+    en: 'Biała is a small village located in the Wieleń commune, in the western part of the Noteć Forest, right by Lake Białe. Surrounded by forests and away from main roads, it is an ideal place for those seeking a peaceful stay in a natural environment. The surrounding area is perfect for active recreation. Numerous forest paths and trails are ideal for cycling, running, and walking. During mushroom season, the local forests attract mushroom-picking enthusiasts. The nearby lake and other local water bodies offer opportunities for swimming, sunbathing, fishing, and water sports such as kayaking (including river trips), stand-up paddleboarding (SUP), and windsurfing.',
+    de: 'Biała ist ein kleines Dorf in der Gemeinde Wieleń, im westlichen Teil der Puszcza Notecka, direkt am See Białe. Umgeben von Wäldern, abseits der Hauptverkehrswege, ist es ein idealer Ort für alle, die Ruhe in natürlicher Umgebung suchen. Die Umgebung ist ideal für aktive Erholung. Zahlreiche Waldwege und Pfade eignen sich perfekt zum Radfahren, Laufen und Spazierengehen. In der Pilzsaison ziehen die umliegenden Wälder viele Pilzliebhaber an. Der nahegelegene See und andere Gewässer bieten Möglichkeiten zum Baden, Sonnenbaden, Angeln sowie für Wassersportarten wie Kajakfahren (einschließlich Kanutouren), Stand-Up-Paddling (SUP) und Windsurfen.'
   },
 
   // ===== BENEFITS =====

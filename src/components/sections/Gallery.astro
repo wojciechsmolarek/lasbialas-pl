@@ -91,5 +91,31 @@ const galleryImages = [
 </div>
 
 <script>
-  import '../../scripts/lightbox';
+  // Lazy load lightbox only when user interacts with gallery
+  let lightboxLoaded = false;
+  function loadLightboxAndOpen(index: number) {
+    if (lightboxLoaded && typeof (window as any).openImage === 'function') {
+      (window as any).openImage(index);
+      return;
+    }
+    import('../../scripts/lightbox').then(() => {
+      lightboxLoaded = true;
+      if (typeof (window as any).openImage === 'function') {
+        (window as any).openImage(index);
+      }
+    });
+  }
+  // Override onclick handlers with lazy-loaded version
+  document.querySelectorAll('[onclick^="openImage"]').forEach(el => {
+    const onclickAttr = el.getAttribute('onclick') || '';
+    const match = onclickAttr.match(/openImage\((\d+)\)/);
+    if (match) {
+      const idx = parseInt(match[1], 10);
+      el.removeAttribute('onclick');
+      el.addEventListener('click', function(e) {
+        e.preventDefault();
+        loadLightboxAndOpen(idx);
+      });
+    }
+  });
 </script>

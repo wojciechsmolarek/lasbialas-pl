@@ -1,5 +1,5 @@
 ---
-import { getEntry } from 'astro:content';
+import { siteConfig } from '../../content/site/config';
 
 interface Props {
   lang: 'pl' | 'en' | 'de';
@@ -7,8 +7,7 @@ interface Props {
 
 const { lang } = Astro.props;
 
-const siteConfig = await getEntry('site', 'config');
-const topBoxes: any = siteConfig?.data.topBoxes ?? {};
+const topBoxes = siteConfig.topBoxes;
 const currentData = topBoxes[lang] ?? {};
 ---
 

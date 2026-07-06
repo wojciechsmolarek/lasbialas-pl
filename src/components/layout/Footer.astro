@@ -23,7 +23,9 @@ const gdprPath = lang === 'pl' ? '/rodo' : lang === 'en' ? '/en/rodo' : '/de/rod
     <p class="m-0 max-[768px]:mt-2.5 max-[768px]:mb-0">© <span id="year"></span> Las Biala's</p>
 
     <div class="flex gap-3 flex-wrap justify-center max-[768px]:flex-col max-[768px]:gap-1.5 max-[768px]:mt-2.5">
-      <a href={blogUrl} target="_blank" rel="noopener noreferrer" class="text-white no-underline hover:underline">{t('nav.blog')}</a>
+      {lang === 'pl' && (
+        <a href={blogUrl} target="_blank" rel="noopener noreferrer" class="text-white no-underline hover:underline">{t('nav.blog')}</a>
+      )}
       <a href={guideUrl} target="_blank" rel="noopener noreferrer" class="text-white no-underline hover:underline">{t('nav.guide')}</a>
       <a href={termsPath} class="text-white no-underline hover:underline">{t('nav.terms')}</a>
       <a href={privacyPath} class="text-white no-underline hover:underline">{t('nav.privacy')}</a>

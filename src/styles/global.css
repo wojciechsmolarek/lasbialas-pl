@@ -161,3 +161,88 @@ body #bookero-plugin .bookero-plugin-form .field .multiselect__option,
 body #bookero-plugin .bookero-plugin-form-heading {
   font-weight: 500;
 }
+
+/* Prose styling for content pages (regulamin, privacy policy, RODO) */
+.prose {
+  --tw-prose-body: #374151;
+  --tw-prose-headings: #131212;
+  --tw-prose-links: #2F6940;
+  --tw-prose-bold: #131212;
+  --tw-prose-bullets: #2F6940;
+  --tw-prose-counters: #2F6940;
+  --tw-prose-quotes: #131212;
+  --tw-prose-quote-borders: #2F6940;
+}
+
+.prose a {
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.prose a:hover {
+  color: #40a95c;
+}
+
+.prose p {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+  line-height: 1.75;
+}
+
+.prose h2 {
+  margin-top: 2em;
+  margin-bottom: 1em;
+  font-weight: 600;
+  font-size: 1.5em;
+  color: #131212;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 0.3em;
+}
+
+.prose h3 {
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+  font-weight: 600;
+  color: #131212;
+}
+
+.prose ul {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+  padding-left: 1.5em;
+  list-style-type: disc;
+}
+
+.prose ul li {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  padding-left: 0.25em;
+  line-height: 1.7;
+}
+
+.prose ol {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+  padding-left: 1.5em;
+  list-style-type: decimal;
+}
+
+.prose ol li {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  padding-left: 0.25em;
+  line-height: 1.7;
+}
+
+.prose li::marker {
+  color: #2F6940;
+}
+
+.prose strong {
+  font-weight: 600;
+  color: #131212;
+}
+
+.prose h1 {
+  margin-bottom: 0.8em;
+}

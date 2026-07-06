@@ -1,13 +1,12 @@
 ---
-import { getEntry } from 'astro:content';
+import { siteConfig } from '../../content/site/config';
 
 interface Props {
   lang: 'pl' | 'en' | 'de';
 }
 
 const { lang } = Astro.props;
-const siteConfig = await getEntry('site', 'config');
-const promoBar: any = siteConfig?.data.promoBar ?? { enabled: false, messages: {} };
+const promoBar = siteConfig.promoBar;
 const currentMessage = promoBar.messages[lang] ?? '';
 ---
 

@@ -1,5 +1,5 @@
 ---
-import { getEntry } from 'astro:content';
+import { siteConfig } from '../../content/site/config';
 import { useTranslations } from '../../i18n/utils';
 import type { languages } from '../../i18n/ui';
 import DescriptionBox from '../ui/DescriptionBox.astro';
@@ -13,8 +13,7 @@ interface Props {
 const { lang } = Astro.props;
 const t = useTranslations(lang);
 
-const siteConfig = await getEntry('site', 'config');
-const availability: any = siteConfig?.data.availability ?? {};
+const availability = siteConfig.availability;
 const availabilityBlock = availability.block?.[lang] ?? '';
 ---
 

@@ -63,7 +63,6 @@ const t = translations[lang];
 <!-- Mały dymek cookies na dole po lewej -->
 <div id="cookie-banner" class="fixed bottom-4 left-4 bg-white text-gray-800 p-4 rounded-lg shadow-lg z-[100000] hidden transition-all duration-300 max-w-sm">
   <div class="mb-3">
-    <h4 class="font-semibold text-sm mb-1">{t.title}</h4>
     <p class="text-xs text-gray-600 leading-relaxed">{t.description}</p>
   </div>
   
@@ -89,77 +88,24 @@ const t = translations[lang];
   </div>
 </div>
 
-<!-- Modalne okno zarządzania preferencjami -->
-<div id="cookie-preferences-modal" class="fixed inset-0 bg-black bg-opacity-50 z-[100001] hidden flex items-center justify-center p-4">
-  <div class="bg-white rounded-lg max-w-md w-full max-h-[90vh] overflow-y-auto">
-    <div class="p-6">
-      <div class="flex justify-between items-center mb-4">
-        <h3 class="text-lg font-semibold">{t.preferencesTitle}</h3>
-        <button id="close-modal" class="text-gray-400 hover:text-gray-600 text-2xl leading-none">&times;</button>
-      </div>
-      
-      <div class="space-y-4 mb-6">
-        <div class="flex items-center justify-between">
-          <div class="flex-1">
-            <label class="font-medium text-sm">{t.necessary}</label>
-            <p class="text-xs text-gray-600 mt-1">{t.necessaryDesc}</p>
-          </div>
-          <input type="checkbox" id="necessary-cookies" checked disabled class="w-4 h-4 text-brand-green rounded">
-        </div>
-        
-        <div class="flex items-center justify-between">
-          <div class="flex-1">
-            <label class="font-medium text-sm">{t.analytics}</label>
-            <p class="text-xs text-gray-600 mt-1">{t.analyticsDesc}</p>
-          </div>
-          <input type="checkbox" id="analytics-cookies" class="w-4 h-4 text-brand-green rounded">
-        </div>
-        
-        <div class="flex items-center justify-between">
-          <div class="flex-1">
-            <label class="font-medium text-sm">{t.marketing}</label>
-            <p class="text-xs text-gray-600 mt-1">{t.marketingDesc}</p>
-          </div>
-          <input type="checkbox" id="marketing-cookies" class="w-4 h-4 text-brand-green rounded">
-        </div>
-      </div>
-      
-      <div class="flex gap-2">
-        <button 
-          id="save-preferences"
-          class="flex-1 px-4 py-2 text-sm bg-brand-green text-white rounded hover:bg-[#2F6940] transition-colors"
-        >
-          {t.savePreferences}
-        </button>
-        <a 
-          href={lang === 'pl' ? '/polityka-prywatnosci' : lang === 'en' ? '/en/privacy-policy' : '/de/datenschutzerklarung'}
-          class="flex-1 px-4 py-2 text-sm text-center text-gray-600 hover:text-gray-800 underline transition-colors"
-        >
-          {t.privacy}
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
+<!-- Modal preferences are injected via JS only when user clicks "Manage preferences" -->
 
-<script is:inline defer>
+<script is:inline defer define:vars={{ t, lang }}>
   // Cookie Consent Functionality - styl talem.eu
   (function() {
     const cookieName = 'cc_cookies';
     const banner = document.getElementById('cookie-banner');
-    const modal = document.getElementById('cookie-preferences-modal');
     const acceptAllBtn = document.getElementById('cookie-accept-all');
     const necessaryOnlyBtn = document.getElementById('cookie-necessary-only');
     const managePreferencesBtn = document.getElementById('cookie-manage-preferences');
-    const closeModalBtn = document.getElementById('close-modal');
-    const savePreferencesBtn = document.getElementById('save-preferences');
-    const analyticsCheckbox = document.getElementById('analytics-cookies');
-    const marketingCheckbox = document.getElementById('marketing-cookies');
+
+    let modal = null;
+    let modalInjected = false;
 
     // Check if consent already given
     if (document.cookie.includes(cookieName + '=')) {
       if (banner) banner.style.display = 'none';
-      return; // Don't show banner if consent already given
+      return;
     }
 
     // Show banner after delay
@@ -184,8 +130,59 @@ const t = translations[lang];
       }
     }
 
+    // Inject modal HTML into DOM (lazy-load)
+    function injectModal() {
+      if (modalInjected) return;
+      modalInjected = true;
+
+      var privacyHref = lang === 'pl' ? '/polityka-prywatnosci' : lang === 'en' ? '/en/privacy-policy' : '/de/datenschutzerklarung';
+
+      var html = '<div id="cookie-preferences-modal" class="fixed inset-0 bg-black bg-opacity-50 z-[100001] hidden flex items-center justify-center p-4">' +
+        '<div class="bg-white rounded-lg max-w-md w-full max-h-[90vh] overflow-y-auto">' +
+          '<div class="p-6">' +
+            '<div class="flex justify-between items-center mb-4">' +
+              '<h3 class="text-lg font-semibold">' + t.preferencesTitle + '</h3>' +
+              '<button id="close-modal" class="text-gray-400 hover:text-gray-600 text-2xl leading-none">&times;</button>' +
+            '</div>' +
+            '<div class="space-y-4 mb-6">' +
+              '<div class="flex items-center justify-between">' +
+                '<div class="flex-1">' +
+                  '<label class="font-medium text-sm">' + t.necessary + '</label>' +
+                  '<p class="text-xs text-gray-600 mt-1">' + t.necessaryDesc + '</p>' +
+                '</div>' +
+                '<input type="checkbox" id="necessary-cookies" checked disabled class="w-4 h-4 text-brand-green rounded">' +
+              '</div>' +
+              '<div class="flex items-center justify-between">' +
+                '<div class="flex-1">' +
+                  '<label class="font-medium text-sm">' + t.analytics + '</label>' +
+                  '<p class="text-xs text-gray-600 mt-1">' + t.analyticsDesc + '</p>' +
+                '</div>' +
+                '<input type="checkbox" id="analytics-cookies" class="w-4 h-4 text-brand-green rounded">' +
+              '</div>' +
+              '<div class="flex items-center justify-between">' +
+                '<div class="flex-1">' +
+                  '<label class="font-medium text-sm">' + t.marketing + '</label>' +
+                  '<p class="text-xs text-gray-600 mt-1">' + t.marketingDesc + '</p>' +
+                '</div>' +
+                '<input type="checkbox" id="marketing-cookies" class="w-4 h-4 text-brand-green rounded">' +
+              '</div>' +
+            '</div>' +
+            '<div class="flex gap-2">' +
+              '<button id="save-preferences" class="flex-1 px-4 py-2 text-sm bg-brand-green text-white rounded hover:bg-[#2F6940] transition-colors">' + t.savePreferences + '</button>' +
+              '<a href="' + privacyHref + '" class="flex-1 px-4 py-2 text-sm text-center text-gray-600 hover:text-gray-800 underline transition-colors">' + t.privacy + '</a>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+
+      document.body.insertAdjacentHTML('beforeend', html);
+      modal = document.getElementById('cookie-preferences-modal');
+      bindModalEvents();
+    }
+
     // Show modal
     function showModal() {
+      injectModal();
       if (modal) {
         modal.classList.remove('hidden');
         modal.classList.add('flex');
@@ -197,6 +194,45 @@ const t = translations[lang];
       if (modal) {
         modal.classList.add('hidden');
         modal.classList.remove('flex');
+      }
+    }
+
+    // Bind events to dynamically injected modal elements
+    function bindModalEvents() {
+      var closeModalBtn = document.getElementById('close-modal');
+      var savePreferencesBtn = document.getElementById('save-preferences');
+
+      if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', hideModal);
+      }
+
+      if (modal) {
+        modal.addEventListener('click', function(e) {
+          if (e.target === modal) {
+            hideModal();
+          }
+        });
+      }
+
+      if (savePreferencesBtn) {
+        savePreferencesBtn.addEventListener('click', function() {
+          var analyticsCheckbox = document.getElementById('analytics-cookies');
+          var marketingCheckbox = document.getElementById('marketing-cookies');
+          var analyticsEnabled = analyticsCheckbox && analyticsCheckbox.checked;
+          var marketingEnabled = marketingCheckbox && marketingCheckbox.checked;
+
+          var consentValue = 'necessary';
+          if (analyticsEnabled && marketingEnabled) {
+            consentValue = 'all';
+          } else if (analyticsEnabled) {
+            consentValue = 'analytics';
+          }
+
+          setCookie(consentValue);
+          hideBanner();
+          hideModal();
+          updateAnalyticsConsent(analyticsEnabled);
+        });
       }
     }
 
@@ -227,44 +263,10 @@ const t = translations[lang];
       });
     }
 
-    // Show preferences modal
+    // Show preferences modal (lazy inject on click)
     if (managePreferencesBtn) {
       managePreferencesBtn.addEventListener('click', function() {
         showModal();
-      });
-    }
-
-    // Close modal
-    if (closeModalBtn) {
-      closeModalBtn.addEventListener('click', hideModal);
-    }
-
-    // Click outside modal to close
-    if (modal) {
-      modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-          hideModal();
-        }
-      });
-    }
-
-    // Save preferences
-    if (savePreferencesBtn) {
-      savePreferencesBtn.addEventListener('click', function() {
-        const analyticsEnabled = analyticsCheckbox.checked;
-        const marketingEnabled = marketingCheckbox.checked;
-        
-        let consentValue = 'necessary';
-        if (analyticsEnabled && marketingEnabled) {
-          consentValue = 'all';
-        } else if (analyticsEnabled) {
-          consentValue = 'analytics';
-        }
-        
-        setCookie(consentValue);
-        hideBanner();
-        hideModal();
-        updateAnalyticsConsent(analyticsEnabled);
       });
     }
   })();

@@ -61,7 +61,7 @@ const t = translations[lang];
 ---
 
 <!-- Mały dymek cookies na dole po lewej -->
-<div id="cookie-banner" class="fixed bottom-4 left-4 bg-white text-gray-800 p-4 rounded-lg shadow-lg z-[100000] hidden transform transition-all duration-300 max-w-sm">
+<div id="cookie-banner" class="fixed bottom-4 left-4 bg-white text-gray-800 p-4 rounded-lg shadow-lg z-[100000] hidden transition-all duration-300 max-w-sm">
   <div class="mb-3">
     <h4 class="font-semibold text-sm mb-1">{t.title}</h4>
     <p class="text-xs text-gray-600 leading-relaxed">{t.description}</p>
@@ -166,7 +166,6 @@ const t = translations[lang];
     setTimeout(() => {
       if (banner) {
         banner.classList.remove('hidden');
-        banner.classList.add('flex');
       }
     }, 1000);
 
@@ -182,7 +181,6 @@ const t = translations[lang];
     function hideBanner() {
       if (banner) {
         banner.classList.add('hidden');
-        banner.classList.remove('flex');
       }
     }
 

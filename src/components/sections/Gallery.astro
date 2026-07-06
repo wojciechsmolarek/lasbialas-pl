@@ -57,7 +57,7 @@ const galleryImages = [
     alt: lang === 'pl' ? 'Widok salonu w domku' : lang === 'en' ? 'Living room view' : 'Wohnzimmer Ansicht',
     tooltip: t('gallery.living_room'),
     index: 2,
-    loading: 'lazy' as const
+    fetchpriority: 'high'
   },
   {
     src: '/foto/webp-1280/lasbialas8.webp',
@@ -105,17 +105,24 @@ const galleryImages = [
       }
     });
   }
-  // Override onclick handlers with lazy-loaded version
-  document.querySelectorAll('[onclick^="openImage"]').forEach(el => {
-    const onclickAttr = el.getAttribute('onclick') || '';
-    const match = onclickAttr.match(/openImage\((\d+)\)/);
-    if (match) {
-      const idx = parseInt(match[1], 10);
-      el.removeAttribute('onclick');
-      el.addEventListener('click', function(e) {
-        e.preventDefault();
-        loadLightboxAndOpen(idx);
-      });
-    }
-  });
+  // Override onclick handlers with lazy-loaded version (deferred)
+  function initGalleryClickHandlers() {
+    document.querySelectorAll('[onclick^="openImage"]').forEach(el => {
+      const onclickAttr = el.getAttribute('onclick') || '';
+      const match = onclickAttr.match(/openImage\((\d+)\)/);
+      if (match) {
+        const idx = parseInt(match[1], 10);
+        el.removeAttribute('onclick');
+        el.addEventListener('click', function(e) {
+          e.preventDefault();
+          loadLightboxAndOpen(idx);
+        });
+      }
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initGalleryClickHandlers, { once: true });
+  } else {
+    initGalleryClickHandlers();
+  }
 </script>

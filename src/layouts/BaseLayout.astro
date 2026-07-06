@@ -37,6 +37,10 @@ const hreflangs = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
     <meta name="robots" content="noindex, nofollow" />
 
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="/fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Montserrat-SemiBold.woff2" as="font" type="font/woff2" crossorigin />
+
     <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://cdn.bookero.pl" />
     <link rel="dns-prefetch" href="https://cdn.bookero.pl" />
@@ -89,13 +93,22 @@ const hreflangs = [
     <!-- Schema.org Structured Data -->
     <SchemaOrg lang={lang} />
 
-    <!-- Yabrix Analytics -->
-    <script
-      src="https://collect.yabrix.com/js/yabrix.min.js"
-      data-yx="1f3667d27b92c8b9"
-      defer
-      is:inline
-    ></script>
+    <!-- Yabrix Analytics (Lazy Load to avoid forced reflow) -->
+    <script is:inline>
+      (function() {
+        function loadYabrix() {
+          var s = document.createElement('script');
+          s.src = 'https://collect.yabrix.com/js/yabrix.min.js';
+          s.setAttribute('data-yx', '1f3667d27b92c8b9');
+          s.async = true;
+          document.body.appendChild(s);
+        }
+        window.addEventListener('scroll', loadYabrix, { once: true, passive: true });
+        window.addEventListener('mousemove', loadYabrix, { once: true });
+        window.addEventListener('touchstart', loadYabrix, { once: true, passive: true });
+        setTimeout(loadYabrix, 5000);
+      })();
+    </script>
 
     <!-- Google Analytics (Lazy Load) -->
     <script is:inline>

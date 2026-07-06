@@ -11,7 +11,7 @@ const t = {
   pl: {
     carTitle: 'Dojazd samochodem',
     carBtn: 'Wyznacz trasę',
-    carText: 'Wyznaczając trasę dojazdu przez powyższy link, nawigacja Google Maps doprowadzi Cię do miejsca oddalonego o około 200 metrów od domków. Następnie skorzystaj z mapki z drogą <a href="https://lasbialas.pl/info/#/przed-przyjazdem/38" class="text-brand-dark-green underline">dojazdu na miejscu</a>.',
+    carText: 'Wyznaczając trasę dojazdu przez powyższy link, nawigacja Google Maps doprowadzi Cię do miejsca oddalonego o około 200 metrów od domków. Następnie skorzystaj z mapki z drogą <a href="https://lasbialas.pl/info/#/przed-przyjazdem/38" class="text-brand-green underline">dojazdu na miejscu</a>.',
     trainTitle: 'Dojazd pociągiem',
     trainBtn: 'Do stacji kolejowej MIAŁY',
     trainText: 'Gościom zapewniamy zarówno transfer ze stacji kolejowej Miały (10 km od Białej) do domków Las Biala\'s, jak i transfer powrotny w dniu wyjazdu. Jeśli planujesz przyjazd pociągiem, skontaktuj się z nami aby ustalić szczegóły.',
@@ -23,7 +23,7 @@ const t = {
   en: {
     carTitle: 'Arrival by car',
     carBtn: 'Plan route',
-    carText: 'When planning the route using the link above, Google Maps will guide you to a spot located about 200 meters from the cottages. Then follow the map with the <a href="https://lasbialas.pl/info/en/#/before-arrival/1038" class="text-brand-dark-green underline">local access road</a>.',
+    carText: 'When planning the route using the link above, Google Maps will guide you to a spot located about 200 meters from the cottages. Then follow the map with the <a href="https://lasbialas.pl/info/en/#/before-arrival/1038" class="text-brand-green underline">local access road</a>.',
     trainTitle: 'Arrival by train',
     trainBtn: 'To MIAŁY station',
     trainText: 'We provide guests with a transfer from the Miały railway station (10 km from Biała) to the Las Biala\'s cottages, as well as a return transfer on the departure day. If you plan to arrive by train, please contact us to arrange details.',
@@ -35,7 +35,7 @@ const t = {
   de: {
     carTitle: 'Anreise mit dem Auto',
     carBtn: 'Route planen',
-    carText: 'Wenn Sie die Route über den obigen Link planen, führt Sie Google Maps zu einem Punkt, der sich etwa 200 Meter von den Häusern entfernt befindet. Verwenden Sie anschließend die Karte mit der <a href="https://lasbialas.pl/info/de/#/vor-der-anreise/721" class="text-brand-dark-green underline">Anfahrt vor Ort</a>.',
+    carText: 'Wenn Sie die Route über den obigen Link planen, führt Sie Google Maps zu einem Punkt, der sich etwa 200 Meter von den Häusern entfernt befindet. Verwenden Sie anschließend die Karte mit der <a href="https://lasbialas.pl/info/de/#/vor-der-anreise/721" class="text-brand-green underline">Anfahrt vor Ort</a>.',
     trainTitle: 'Anreise mit dem Zug',
     trainBtn: 'Zum Bahnhof MIAŁY',
     trainText: 'Wir bieten unseren Gästen einen Transfer vom Bahnhof MIAŁY (10 km von Biała entfernt) zu den Häusern Las Biala\'s sowie den Rücktransfer am Abreisetag an. Wenn Sie mit dem Zug anreisen, kontaktieren Sie uns bitte zur Absprache der Details.',
@@ -54,7 +54,7 @@ const trainHref = 'https://www.google.pl/maps/place/Mia%C5%82y/@52.8296365,16.24
   {/* Car */}
   <h2 class="text-[24px] text-center mt-5 mb-5 text-brand-black font-bold">{t.carTitle}</h2>
   <div class="text-center mt-2.5 mb-5">
-    <a href={carHref} rel="nofollow noopener noreferrer" class="inline-flex items-center text-[18px] text-[#328247] no-underline" target="_blank">
+    <a href={carHref} rel="nofollow noopener noreferrer" class="inline-flex items-center text-[18px] text-brand-green no-underline" target="_blank">
       <Picture alt="Car" height={45} width={45} src="/images/car.png" formats={['avif', 'webp']} class="mr-[5px] align-middle" />
       <span class="leading-none">{t.carBtn}</span>
     </a>
@@ -66,7 +66,7 @@ const trainHref = 'https://www.google.pl/maps/place/Mia%C5%82y/@52.8296365,16.24
   {/* Train */}
   <h2 class="text-[24px] text-center mt-5 mb-5 text-brand-black font-bold">{t.trainTitle}</h2>
   <div class="text-center mt-2.5 mb-5">
-    <a href={trainHref} rel="nofollow noopener noreferrer" class="inline-flex items-center text-[18px] text-[#328247] no-underline" target="_blank">
+    <a href={trainHref} rel="nofollow noopener noreferrer" class="inline-flex items-center text-[18px] text-brand-green no-underline" target="_blank">
       <Picture alt="Train" height={45} width={45} src="/images/train.png" formats={['avif', 'webp']} class="mr-[5px] align-middle" />
       <span class="leading-none">{t.trainBtn}</span>
     </a>
@@ -79,7 +79,7 @@ const trainHref = 'https://www.google.pl/maps/place/Mia%C5%82y/@52.8296365,16.24
   <h2 class="text-[24px] text-center mt-5 mb-5 text-brand-black font-bold">{t.locationTitle}</h2>
   <p class="text-base leading-[1.6]">{t.locationText}</p>
   <div class="text-center mt-2.5">
-    <a href={t.mapHref} class="inline-flex items-center text-[18px] text-[#328247] no-underline" target="_blank">
+    <a href={t.mapHref} class="inline-flex items-center text-[18px] text-brand-green no-underline" target="_blank">
       <Picture alt="Map" height={42} width={42} src="/foto/dojazd-lokalny.png" formats={['avif', 'webp']} class="mr-[5px] align-middle" />
       <span class="leading-none">{t.mapBtn}</span>
     </a>

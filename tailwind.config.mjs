@@ -11,8 +11,8 @@ export default {
           green: '#2F6940',
           'green-light': '#40a95c',
           'dark-green': '#328247',
-          orange: '#e97e2d',
-          'orange-light': '#f98847',
+          orange: '#a85214',
+          'orange-light': '#c4621a',
           brown: '#362e27',
           gray: '#999999',
           'light-gray': '#f2f2f2',
@@ -26,7 +26,7 @@ export default {
         primary: {
           red: '#e51e50',
           green: '#2F6940',
-          orange: '#e97e2d'
+          orange: '#a85214'
         },
         neutral: {
           dark: '#131212',

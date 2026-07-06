@@ -98,15 +98,15 @@ const guideHref = {
   de: 'https://info.lasbialas.pl/de/',
 }[lang];
 
-const colW = ['w-[40%] max-[768px]:w-[20%]', 'w-[30%] max-[768px]:w-[26.66%]', 'w-[30%] max-[768px]:w-[26.66%]'];
+const colW = ['w-[40%] max-[768px]:w-[38%]', 'w-[30%] max-[768px]:w-[30%]', 'w-[30%] max-[768px]:w-[32%]'];
 
-const tableClass = 'w-full max-w-[900px] border-collapse overflow-hidden text-base my-[30px] mx-auto bg-[#f4f4f4] border-2 border-white text-center table-fixed';
-const thClass = 'bg-[#362e27] text-white font-semibold px-[6px] py-[4px] h-[40px] border-2 border-white align-middle';
-const tdClass = 'h-[60px] p-[6px] border-2 border-white align-middle max-[768px]:text-[0.95rem]';
+const tableClass = 'w-full max-w-[900px] border-collapse overflow-hidden text-base max-[768px]:text-[0.8rem] my-[30px] mx-auto bg-[#f4f4f4] border-2 border-white text-center table-fixed';
+const thClass = 'bg-[#362e27] text-white font-semibold px-[6px] py-[4px] h-[40px] border-2 border-white align-middle max-[768px]:text-[0.7rem] max-[768px]:leading-[1.2]';
+const tdClass = 'h-[60px] p-[6px] border-2 border-white align-middle max-[768px]:text-[0.75rem] max-[768px]:h-[48px]';
 ---
 
-<div class="max-w-[73%] border border-[#ccc] rounded-[5px] py-[10px] px-[80px] mx-auto mb-5 bg-white text-base text-center max-[768px]:max-w-[96vw] max-[768px]:p-5 max-[768px]:my-[1px] max-[768px]:mb-5 max-[768px]:text-[0.6rem]">
-  <h2 class="text-[24px] text-center mt-5 mb-5 text-brand-black font-bold">{t.title}</h2>
+<div class="max-w-[73%] border border-[#ccc] rounded-[5px] py-[10px] px-[80px] mx-auto mb-5 bg-white text-base text-center max-[768px]:max-w-[96vw] max-[768px]:p-5 max-[768px]:my-[1px] max-[768px]:mb-5 max-[768px]:text-[0.75rem]">
+  <h2 class="text-[24px] max-[768px]:text-[1.1rem] text-center mt-5 mb-5 text-brand-black font-bold">{t.title}</h2>
 
   {/* Main pricing table */}
   <table class={tableClass}>
@@ -129,7 +129,7 @@ const tdClass = 'h-[60px] p-[6px] border-2 border-white align-middle max-[768px]
   </table>
 
   {/* Notes */}
-  <div class="max-w-[82%] max-[768px]:max-w-[98vw] border border-[#328247] rounded-[5px] p-[5px] my-[5px] mx-auto bg-white text-[1.2rem] text-[#328247] text-center">
+  <div class="max-w-[82%] max-[768px]:max-w-[98vw] border border-[#328247] rounded-[5px] p-[5px] my-[5px] mx-auto bg-white text-[1.2rem] max-[768px]:text-[0.8rem] text-[#328247] text-center">
     {t.notes.map((note: string) => (
       <p class="my-[5px]" set:html={note}></p>
     ))}
@@ -159,7 +159,7 @@ const tdClass = 'h-[60px] p-[6px] border-2 border-white align-middle max-[768px]
   </div>
 
   {/* Free items */}
-  <h3 class="text-[1.3rem] text-center mt-[40px] mb-[5px] font-semibold text-[#2c2c2c]">{t.freeTitle}</h3>
+  <h3 class="text-[1.3rem] max-[768px]:text-[1rem] text-center mt-[40px] mb-[5px] font-semibold text-[#2c2c2c]">{t.freeTitle}</h3>
   <div class="text-base leading-[1.6] text-brand-black">
     <ul class="flex flex-wrap justify-center gap-y-[6px] gap-x-[16px] my-2.5 p-0 list-none">
       {t.freeItems.map((item: string) => (

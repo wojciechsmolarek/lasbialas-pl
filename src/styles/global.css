@@ -246,3 +246,126 @@ body #bookero-plugin .bookero-plugin-form-heading {
 .prose h1 {
   margin-bottom: 0.8em;
 }
+
+/* ===== Config component styles (promoBar, topBoxes, availability) ===== */
+
+.promo-label {
+  display: inline-block;
+  border-radius: 0.25rem;
+  background-color: #d4edda;
+  padding: 0.125rem 0.375rem;
+  margin: 0 0.25rem;
+  font-weight: 700;
+  color: #155724;
+  font-size: 0.8rem;
+}
+
+.promo-h2 {
+  font-size: 24px;
+  text-align: center;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  color: #131212;
+  font-weight: 700;
+}
+
+.promo-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  row-gap: 6px;
+  column-gap: 16px;
+  margin: 0.625rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.promo-list-item {
+  margin: 0;
+  line-height: 1.4;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.promo-bullet {
+  display: inline-block;
+  width: 0.45rem;
+  height: 0.45rem;
+  background-color: #2F6940;
+  margin-right: 0.5em;
+  flex-shrink: 0;
+}
+
+.promo-contact-list {
+  display: flex;
+  justify-content: center;
+  column-gap: 16px;
+  margin: 0.625rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.promo-contact-item {
+  margin: 0;
+  line-height: 1.4;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.promo-contact-item img {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+}
+
+.promo-link {
+  color: #2F6940;
+  text-decoration: underline;
+}
+
+.promo-link-bold {
+  color: #2F6940;
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+.promo-code-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.promo-code {
+  display: inline-block;
+  border-radius: 0.125rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 0.125rem 0.5rem;
+  font-weight: 600;
+}
+
+.copy-btn {
+  cursor: pointer;
+  border-radius: 0.25rem;
+  border: 0;
+  background: transparent;
+  padding: 0.25rem;
+  color: #131212;
+  transition: color 0.2s;
+}
+
+.copy-btn:hover {
+  color: #2F6940;
+}
+
+.copy-btn::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Crect x='7' y='15' width='10' height='10' rx='2'/%3E%3Crect x='3' y='11' width='10' height='10' rx='2'/%3E%3C/svg%3E") no-repeat center / contain;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2'%3E%3Crect x='7' y='15' width='10' height='10' rx='2'/%3E%3Crect x='3' y='11' width='10' height='10' rx='2'/%3E%3C/svg%3E") no-repeat center / contain;
+}

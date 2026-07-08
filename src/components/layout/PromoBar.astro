@@ -12,7 +12,7 @@ const currentMessage = promoBar.messages[lang] ?? '';
 
 {
   promoBar.enabled && currentMessage && (
-    <div class="w-full bg-brand-orange py-[10px] px-[15px] text-brand-black text-center text-[15px] relative z-[3000]">
+    <div class="w-full bg-[#E97E2D] py-[10px] px-[15px] text-brand-black text-center text-[15px] relative z-[3000]">
       <Fragment set:html={currentMessage} />
     </div>
   )

@@ -18,11 +18,11 @@ const privacyPath = lang === 'pl' ? '/polityka-prywatnosci' : lang === 'en' ? '/
 const gdprPath = lang === 'pl' ? '/rodo' : lang === 'en' ? '/en/rodo' : '/de/rodo';
 ---
 
-<div class="bg-[#323131] text-white text-base font-normal [text-shadow:0px_0px_1px_rgba(0,0,0,0.2),0px_-1px_1px_rgba(0,0,0,0.1)] relative bottom-0 left-0 w-full mt-5 py-[18px] px-[19px] max-[1024px]:mb-[60px]">
-  <div class="flex justify-between items-center flex-wrap gap-2 w-full max-w-[1024px] mx-auto max-[768px]:flex-col max-[768px]:items-center max-[768px]:text-center">
-    <p class="m-0 max-[768px]:mt-2.5 max-[768px]:mb-0">© <span id="year"></span> Las Biala's</p>
+<div class="bg-[#323131] text-white text-base font-normal [text-shadow:0px_0px_1px_rgba(0,0,0,0.2),0px_-1px_1px_rgba(0,0,0,0.1)] relative bottom-0 left-0 w-full mt-5 py-[18px] px-[19px] mb-[60px]">
+  <div class="flex flex-col items-center justify-center gap-1.5 w-full max-w-[1024px] mx-auto text-center">
+    <p class="m-0">© <span id="year"></span> Las Biala's</p>
 
-    <div class="flex gap-3 flex-wrap justify-center max-[768px]:flex-col max-[768px]:gap-1.5 max-[768px]:mt-2.5">
+    <div class="flex gap-2.5 flex-wrap justify-center">
       {lang === 'pl' && (
         <a href={blogUrl} target="_blank" rel="noopener noreferrer" class="text-white no-underline hover:underline">{t('nav.blog')}</a>
       )}

@@ -1,0 +1,121 @@
+---
+import { faqData } from '../../data/faqData';
+
+interface Props {
+  lang: 'pl' | 'en' | 'de';
+}
+
+const { lang } = Astro.props;
+
+const t = {
+  pl: { title: 'FAQ — najczęściej zadawane pytania' },
+  en: { title: 'FAQ — Frequently Asked Questions' },
+  de: { title: 'FAQ — Häufig gestellte Fragen' },
+}[lang];
+
+const categories = faqData[lang];
+---
+
+<div class="max-w-[73%] border border-[#ccc] rounded-[5px] py-[10px] px-[80px] mx-auto mb-5 bg-white text-base text-center max-[768px]:max-w-[96vw] max-[768px]:p-5 max-[768px]:my-[1px] max-[768px]:mb-5 max-[768px]:text-[0.6rem]">
+  <h2 class="text-[24px] text-center mt-5 mb-5 text-brand-black font-bold">{t.title}</h2>
+
+  <div class="faq-container text-left max-w-[900px] mx-auto">
+    {categories.map((cat: any, ci: number) => (
+      <div class="faq-category mb-3 border border-[#e0e0e0] rounded-[5px] overflow-hidden" data-category={ci}>
+        <button
+          class="faq-category-btn w-full flex items-center justify-between px-[20px] py-[14px] bg-[#f8f8f8] hover:bg-[#f0f0f0] transition-colors cursor-pointer border-0 text-left"
+          onclick="faqToggleCategory(this)"
+          aria-expanded={ci === 0 ? 'true' : 'false'}
+        >
+          <span class="text-[1.1rem] font-semibold text-[#2c2c2c]">{cat.title}</span>
+          <span class="faq-arrow text-[#2F6940] text-[1.2rem] transition-transform duration-300">▶</span>
+        </button>
+        <div class={`faq-questions overflow-hidden transition-all duration-300 ${ci === 0 ? 'max-h-[2000px]' : 'max-h-0'}`}>
+          {cat.questions.map((item: any, qi: number) => (
+            <div class="faq-question-wrapper border-t border-[#eee]" data-question={`${ci}-${qi}`}>
+              <button
+                class="faq-question-btn w-full flex items-center justify-between px-[20px] py-[12px] bg-white hover:bg-[#fafafa] transition-colors cursor-pointer border-0 text-left"
+                onclick="faqToggleQuestion(this)"
+                aria-expanded={ci === 0 && qi === 0 ? 'true' : 'false'}
+              >
+                <span class="text-[0.95rem] text-[#2c2c2c] pr-[10px]">{item.q}</span>
+                <span class="faq-q-arrow text-[#2F6940] text-[1rem] transition-transform duration-300 shrink-0">▶</span>
+              </button>
+              <div class={`faq-answer overflow-hidden transition-all duration-300 ${ci === 0 && qi === 0 ? 'max-h-[1000px]' : 'max-h-0'}`}>
+                <div class="px-[20px] py-[12px] text-[0.9rem] leading-[1.7] text-[#555]">
+                  {item.a}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<script is:inline>
+  function faqToggleCategory(btn) {
+    var category = btn.closest('.faq-category');
+    var questions = category.querySelector('.faq-questions');
+    var arrow = btn.querySelector('.faq-arrow');
+    var isOpen = questions.classList.contains('max-h-[2000px]');
+
+    // Close all categories
+    document.querySelectorAll('.faq-questions').forEach(function(el) {
+      el.classList.remove('max-h-[2000px]');
+      el.classList.add('max-h-0');
+    });
+    document.querySelectorAll('.faq-arrow').forEach(function(el) {
+      el.style.transform = 'rotate(0deg)';
+    });
+    document.querySelectorAll('.faq-category-btn').forEach(function(el) {
+      el.setAttribute('aria-expanded', 'false');
+    });
+
+    // Close all answers when switching categories
+    document.querySelectorAll('.faq-answer').forEach(function(el) {
+      el.classList.remove('max-h-[1000px]');
+      el.classList.add('max-h-0');
+    });
+    document.querySelectorAll('.faq-q-arrow').forEach(function(el) {
+      el.style.transform = 'rotate(0deg)';
+    });
+    document.querySelectorAll('.faq-question-btn').forEach(function(el) {
+      el.setAttribute('aria-expanded', 'false');
+    });
+
+    if (!isOpen) {
+      questions.classList.remove('max-h-0');
+      questions.classList.add('max-h-[2000px]');
+      arrow.style.transform = 'rotate(90deg)';
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  }
+
+  function faqToggleQuestion(btn) {
+    var wrapper = btn.closest('.faq-question-wrapper');
+    var answer = wrapper.querySelector('.faq-answer');
+    var arrow = btn.querySelector('.faq-q-arrow');
+    var isOpen = answer.classList.contains('max-h-[1000px]');
+
+    // Close all other answers
+    document.querySelectorAll('.faq-answer').forEach(function(el) {
+      el.classList.remove('max-h-[1000px]');
+      el.classList.add('max-h-0');
+    });
+    document.querySelectorAll('.faq-q-arrow').forEach(function(el) {
+      el.style.transform = 'rotate(0deg)';
+    });
+    document.querySelectorAll('.faq-question-btn').forEach(function(el) {
+      el.setAttribute('aria-expanded', 'false');
+    });
+
+    if (!isOpen) {
+      answer.classList.remove('max-h-0');
+      answer.classList.add('max-h-[1000px]');
+      arrow.style.transform = 'rotate(90deg)';
+      btn.setAttribute('aria-expanded', 'true');
+    }
+  }
+</script>

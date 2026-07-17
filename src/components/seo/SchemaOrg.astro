@@ -1,7 +1,11 @@
 ---
+import { faqData } from '../../data/faqData';
+
 interface Props {
   lang: 'pl' | 'en' | 'de';
 }
+
+const { lang } = Astro.props;
 
 const schemaNames = {
   pl: "Las Biala's - Domki z sauną i jacuzzi na wynajem w Puszczy Noteckiej",
@@ -45,20 +49,7 @@ const schema = {
     {
       "@type": "LodgingBusiness",
       "@id": "https://lasbialas.pl#lodging",
-      "name": [
-        {
-          "@value": schemaNames.pl,
-          "@language": "pl"
-        },
-        {
-          "@value": schemaNames.en,
-          "@language": "en"
-        },
-        {
-          "@value": schemaNames.de,
-          "@language": "de"
-        }
-      ],
+      "name": schemaNames[lang],
       "url": "https://lasbialas.pl",
       "image": "https://lasbialas.pl/foto/lasbialas8.webp",
       "address": {
@@ -74,34 +65,8 @@ const schema = {
       "makesOffer": [
         {
           "@type": "Offer",
-          "name": [
-            {
-              "@value": offerNames.pl.main,
-              "@language": "pl"
-            },
-            {
-              "@value": offerNames.en.main,
-              "@language": "en"
-            },
-            {
-              "@value": offerNames.de.main,
-              "@language": "de"
-            }
-          ],
-          "description": [
-            {
-              "@value": offerDescriptions.pl.main,
-              "@language": "pl"
-            },
-            {
-              "@value": offerDescriptions.en.main,
-              "@language": "en"
-            },
-            {
-              "@value": offerDescriptions.de.main,
-              "@language": "de"
-            }
-          ],
+          "name": offerNames[lang].main,
+          "description": offerDescriptions[lang].main,
           "priceSpecification": {
             "@type": "UnitPriceSpecification",
             "price": "490",
@@ -118,34 +83,8 @@ const schema = {
         },
         {
           "@type": "Offer",
-          "name": [
-            {
-              "@value": offerNames.pl.jacuzzi,
-              "@language": "pl"
-            },
-            {
-              "@value": offerNames.en.jacuzzi,
-              "@language": "en"
-            },
-            {
-              "@value": offerNames.de.jacuzzi,
-              "@language": "de"
-            }
-          ],
-          "description": [
-            {
-              "@value": offerDescriptions.pl.jacuzzi,
-              "@language": "pl"
-            },
-            {
-              "@value": offerDescriptions.en.jacuzzi,
-              "@language": "en"
-            },
-            {
-              "@value": offerDescriptions.de.jacuzzi,
-              "@language": "de"
-            }
-          ],
+          "name": offerNames[lang].jacuzzi,
+          "description": offerDescriptions[lang].jacuzzi,
           "priceSpecification": {
             "@type": "UnitPriceSpecification",
             "price": "350",
@@ -156,6 +95,20 @@ const schema = {
           "url": "https://lasbialas.pl#jacuzzi"
         }
       ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://lasbialas.pl#faq",
+      "mainEntity": faqData[lang].flatMap((cat) =>
+        cat.questions.map((item) => ({
+          "@type": "Question",
+          "name": item.q,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": item.a
+          }
+        }))
+      )
     }
   ]
 };

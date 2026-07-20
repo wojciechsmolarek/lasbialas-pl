@@ -163,6 +163,10 @@ const hreflangs = [
                 var toggle = document.querySelector('.bookero-sticky-plugin-toggle');
                 if (toggle) toggle.click();
               }
+              // Enforce minimum 3 nights after plugin opens
+              if (typeof window.enforceBookeroMinDays === 'function') {
+                window.enforceBookeroMinDays();
+              }
             }, 200);
           }
         };
@@ -174,14 +178,17 @@ const hreflangs = [
         if (bookeroLoaded) {
           if (typeof window.bookero_open === 'function') {
             window.bookero_open();
+            if (typeof window.enforceBookeroMinDays === 'function') window.enforceBookeroMinDays();
             return;
           }
           if (window.Bookero && window.Bookero.API && typeof window.Bookero.API.openCalendar === 'function') {
             window.Bookero.API.openCalendar();
+            if (typeof window.enforceBookeroMinDays === 'function') window.enforceBookeroMinDays();
             return;
           }
           var toggle = document.querySelector('.bookero-sticky-plugin-toggle');
           if (toggle) toggle.click();
+          if (typeof window.enforceBookeroMinDays === 'function') window.enforceBookeroMinDays();
         } else {
           bookeroPendingClick = true;
           loadBookeroScript();
@@ -189,23 +196,30 @@ const hreflangs = [
       };
     </script>
 
-    <!-- Bookero Validation (Minimum 2 nights) -->
+    <!-- Bookero Validation (Minimum 3 nights) -->
     <script is:inline>
       (function() {
         function enforceMinimumDays() {
-          var daysInput = document.getElementById('bookero-plugin-days-number');
-          if (daysInput) {
-            var days = parseInt(daysInput.value) || 10;
-            if (days < 3) {
-              setTimeout(function () {
+          var attempts = 0;
+          function tryEnforce() {
+            var daysInput = document.getElementById('bookero-plugin-days-number');
+            if (daysInput) {
+              var days = parseInt(daysInput.value) || 1;
+              if (days < 3) {
                 daysInput.value = 3;
-                setTimeout(function () {
-                  var event = new Event('input');
-                  daysInput.dispatchEvent(event);
-                }, 100);
-              }, 100);
+                var event = new Event('input', { bubbles: true });
+                daysInput.dispatchEvent(event);
+                var changeEvent = new Event('change', { bubbles: true });
+                daysInput.dispatchEvent(changeEvent);
+              }
+            } else {
+              attempts++;
+              if (attempts < 20) {
+                setTimeout(tryEnforce, 200);
+              }
             }
           }
+          tryEnforce();
         }
 
         function initValidation() {
@@ -221,6 +235,8 @@ const hreflangs = [
             enforceMinimumDays();
           });
         }
+
+        window.enforceBookeroMinDays = enforceMinimumDays;
 
         if (document.readyState === 'loading') {
           document.addEventListener('DOMContentLoaded', initValidation);

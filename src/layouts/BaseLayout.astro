@@ -200,97 +200,45 @@ const hreflangs = [
     <script is:inline>
       (function() {
         var MIN_DAYS = 3;
-        var currentDaysEl = null;
-        var isEnforcing = false;
 
-        function enforceMin(el) {
-          if (isEnforcing) return;
-          var daysEl = el || document.getElementById('bookero-plugin-days-number');
-          if (!daysEl) return;
-          var days = parseInt(daysEl.value) || 1;
-          if (days < MIN_DAYS) {
-            isEnforcing = true;
-            daysEl.value = MIN_DAYS;
-            daysEl.dispatchEvent(new Event('input', { bubbles: true }));
-            daysEl.dispatchEvent(new Event('change', { bubbles: true }));
-            if (daysEl.tagName === 'SELECT') {
-              daysEl.dispatchEvent(new Event('blur', { bubbles: true }));
-            }
-            isEnforcing = false;
+        function enforceMin(e) {
+          var days = 10;
+          if (e && e.detail != undefined) {
+            days = e.detail.data.number;
+          } else if (document.getElementById('bookero-plugin-days-number')) {
+            days = parseInt(document.getElementById('bookero-plugin-days-number').value) || 1;
           }
-        }
 
-        function attachListeners(el) {
-          if (currentDaysEl === el) return;
-          if (currentDaysEl) {
-            currentDaysEl.removeEventListener('change', onDaysChange);
-            currentDaysEl.removeEventListener('input', onDaysChange);
-            currentDaysEl.removeEventListener('blur', onDaysChange);
+          if (days < MIN_DAYS && document.getElementById('bookero-plugin-days-number')) {
+            setTimeout(function() {
+              document.getElementById('bookero-plugin-days-number').value = MIN_DAYS;
+              setTimeout(function() {
+                var inputEvent = new Event('input');
+                document.getElementById('bookero-plugin-days-number').dispatchEvent(inputEvent);
+                var changeEvent = new Event('change');
+                document.getElementById('bookero-plugin-days-number').dispatchEvent(changeEvent);
+              }, 100);
+            }, 100);
           }
-          currentDaysEl = el;
-          // Set min attribute for browser-level validation
-          if (el.tagName === 'INPUT') {
-            el.setAttribute('min', String(MIN_DAYS));
-          }
-          // Remove options below MIN_DAYS if it's a select
-          if (el.tagName === 'SELECT') {
-            for (var i = 0; i < el.options.length; i++) {
-              if (parseInt(el.options[i].value) < MIN_DAYS) {
-                el.options[i].disabled = true;
-                el.options[i].style.display = 'none';
-              }
-            }
-          }
-          el.addEventListener('change', onDaysChange);
-          el.addEventListener('input', onDaysChange);
-          el.addEventListener('blur', onDaysChange);
-          enforceMin(el);
-        }
-
-        function onDaysChange() {
-          enforceMin(currentDaysEl);
-        }
-
-        function enforceMinimumDays() {
-          var attempts = 0;
-          function tryEnforce() {
-            var daysEl = document.getElementById('bookero-plugin-days-number');
-            if (daysEl) {
-              attachListeners(daysEl);
-            } else {
-              attempts++;
-              if (attempts < 30) setTimeout(tryEnforce, 150);
-            }
-          }
-          tryEnforce();
-        }
-
-        function watchBookeroContainer() {
-          var container = document.getElementById('bookero');
-          if (!container) {
-            setTimeout(watchBookeroContainer, 500);
-            return;
-          }
-          var containerObserver = new MutationObserver(function() {
-            var daysEl = document.getElementById('bookero-plugin-days-number');
-            if (daysEl && daysEl !== currentDaysEl) {
-              attachListeners(daysEl);
-            } else if (daysEl) {
-              enforceMin(daysEl);
-            }
-          });
-          containerObserver.observe(container, { childList: true, subtree: true });
         }
 
         function initValidation() {
-          document.body.addEventListener('bookero-plugin:days-changed', function() { enforceMin(); });
-          document.body.addEventListener('bookero-plugin:service-updated', function() { enforceMin(); });
-          document.body.addEventListener('bookero-plugin:service-changed', function() { enforceMin(); });
-          document.body.addEventListener('bookero-plugin:loaded', enforceMinimumDays);
-          watchBookeroContainer();
+          document.body.addEventListener('bookero-plugin:days-changed', enforceMin);
+          document.body.addEventListener('bookero-plugin:service-updated', function() {
+            setTimeout(function() {
+              document.body.dispatchEvent(new Event('bookero-plugin:days-changed'));
+            }, 100);
+          });
+          document.body.addEventListener('bookero-plugin:loaded', function() {
+            setTimeout(function() {
+              document.body.dispatchEvent(new Event('bookero-plugin:days-changed'));
+            }, 100);
+          });
         }
 
-        window.enforceBookeroMinDays = enforceMinimumDays;
+        window.enforceBookeroMinDays = function() {
+          document.body.dispatchEvent(new Event('bookero-plugin:days-changed'));
+        };
 
         if (document.readyState === 'loading') {
           document.addEventListener('DOMContentLoaded', initValidation);

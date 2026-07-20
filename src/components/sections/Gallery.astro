@@ -53,28 +53,32 @@ const galleryImages = [
     alt: lang === 'pl' ? 'Widok salonu w domku' : lang === 'en' ? 'View of the living room' : 'Ansicht des Wohnzimmers',
     tooltip: t('gallery.living_room_amenities'),
     index: 3,
-    loading: 'lazy' as const
+    loading: 'eager' as const,
+    fetchpriority: 'high'
   },
   {
     src: '/foto/webp-834/lasbialas6.webp',
     alt: lang === 'pl' ? 'Mała sypialnia dla 2 osób z telewizorem oraz łazienka i prysznicem' : lang === 'en' ? 'Small bedroom for 2 with TV and bathroom' : 'Kleines Schlafzimmer für 2 mit TV und Bad',
     tooltip: t('gallery.sauna_cooling'),
     index: 5,
-    loading: 'lazy' as const
+    loading: 'eager' as const,
+    fetchpriority: 'high'
   },
   {
     src: '/foto/webp-834/lasbialas3.webp',
     alt: lang === 'pl' ? 'Widok salonu w domku' : lang === 'en' ? 'Living room view' : 'Wohnzimmer Ansicht',
     tooltip: t('gallery.living_room'),
     index: 2,
-    loading: 'lazy' as const
+    loading: 'eager' as const,
+    fetchpriority: 'high'
   },
   {
     src: '/foto/webp-834/lasbialas8.webp',
     alt: lang === 'pl' ? 'Domki na wynajem w Białej' : lang === 'en' ? 'Cottages for rent in Biała' : 'Ferienhäuser zur Miete in Biała',
     tooltip: t('gallery.guest_cottages'),
     index: 7,
-    loading: 'lazy' as const
+    loading: 'eager' as const,
+    fetchpriority: 'high'
   }
 ];
 ---

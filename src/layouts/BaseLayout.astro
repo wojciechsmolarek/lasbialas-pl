@@ -37,6 +37,16 @@ const hreflangs = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
     <meta name="robots" content="noindex, nofollow" />
 
+    <style is:inline>
+      @font-face{font-display:optional;font-family:Montserrat;font-style:normal;font-weight:200;src:url(/fonts/Montserrat-Light.woff2) format('woff2')}
+      @font-face{font-display:optional;font-family:Montserrat;font-style:normal;font-weight:400;src:url(/fonts/Montserrat-Regular.woff2) format('woff2')}
+      @font-face{font-display:optional;font-family:Montserrat;font-style:normal;font-weight:600;src:url(/fonts/Montserrat-SemiBold.woff2) format('woff2')}
+    </style>
+
+    <!-- Preload critical fonts (needed for font-display: optional to load in time) -->
+    <link rel="preload" href="/fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Montserrat-Light.woff2" as="font" type="font/woff2" crossorigin />
+
     <!-- DNS prefetch for external domains (lazy-loaded, not critical) -->
     <link rel="dns-prefetch" href="https://cdn.bookero.pl" />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />

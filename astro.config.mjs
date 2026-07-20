@@ -7,6 +7,10 @@ export default defineConfig({
   site: 'https://lasbialas.pl',
   compressHTML: true,
 
+  build: {
+    inlineStylesheets: 'always',
+  },
+
   i18n: {
     defaultLocale: 'pl',
     locales: ['pl', 'en', 'de'],

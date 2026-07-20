@@ -39,7 +39,7 @@ const hreflangs = [
 
     <!-- Preload critical fonts -->
     <link rel="preload" href="/fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/fonts/Montserrat-SemiBold.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Montserrat-Light.woff2" as="font" type="font/woff2" crossorigin />
 
     <!-- Preconnect to external domains -->
     <link rel="preconnect" href="https://cdn.bookero.pl" />
@@ -81,14 +81,8 @@ const hreflangs = [
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
     <link rel="manifest" href="/favicon/site.webmanifest" />
 
-    <!-- Font Preload - only primary weight to avoid blocking -->
-    <link
-      rel="preload"
-      href="/fonts/Montserrat-Regular.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin="anonymous"
-    />
+    <!-- Preload background image used in BannerSection -->
+    <link rel="preload" as="image" href="/images/background-image.webp" />
 
     <!-- Schema.org Structured Data -->
     <SchemaOrg lang={lang} />

@@ -40,7 +40,7 @@ const t = {
   <p class="text-base leading-[1.6]" set:html={t.p1}></p>
   <p class="text-base leading-[1.6]" set:html={t.p2}></p>
 
-  <Picture alt={t.title} src="/images/background-image.webp" width={1200} height={300} loading="eager" fetchpriority="high" formats={['avif', 'webp']} sizes="(max-width: 768px) 96vw, 73vw" class="max-w-full h-auto mt-[50px]" />
+  <Picture alt={t.title} src="/images/background-image.webp" width={1200} height={300} loading="lazy" formats={['avif', 'webp']} sizes="(max-width: 768px) 96vw, 73vw" class="max-w-full h-auto mt-[50px]" />
 
   {t.guideBtn && (
     <div class="flex justify-center mt-[30px]">

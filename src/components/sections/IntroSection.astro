@@ -15,10 +15,6 @@ const t = {
     guideBtn: 'Przewodnik',
     adultTitle: 'Domki tylko dla dorosłych (18+)',
     adultText: 'Tworzymy miejsce, które sprzyja wyciszeniu, prywatności i swobodnemu odpoczynkowi. Dlatego nasza oferta skierowana jest do osób dorosłych szukających przestrzeni, miejsca, w którym można naprawdę odetchnąć, bez kompromisów, w harmonii z naturą i samym sobą. Formuła 18+ to świadomy wybór gwarantujący spokój, relaks i prawdziwą jakość wypoczynku. Jeśli szukasz ciszy, komfortu i autentycznego resetu - jesteś u siebie.',
-    badges: {
-      booking: '/images/booking-awards-blue.png',
-      reviews: '/images/lasbialas-opinie.png',
-    },
   },
   en: {
     title: 'Cottages for Rent in the Noteć Forest',
@@ -27,10 +23,6 @@ const t = {
     guideBtn: '',
     adultTitle: 'Adults-Only Cabins (18+)',
     adultText: 'We have created a place that fosters tranquility, privacy, and carefree relaxation. That\'s why our offer is dedicated to adults - those looking for a space where you can truly breathe, without compromise, in harmony with nature and yourself. The 18+ formula is a conscious choice - guaranteeing peace, relaxation, and real quality rest. If you are searching for silence, comfort, and an authentic reset - this is your place.',
-    badges: {
-      booking: '',
-      reviews: '/images/lasbialas-reviews.png',
-    },
   },
   de: {
     title: 'Ferienhäuser zur Miete in der Puszcza Notecka',
@@ -39,10 +31,6 @@ const t = {
     guideBtn: 'Reiseführer',
     adultTitle: 'Nur für Erwachsene (18+)',
     adultText: 'Wir schaffen einen Ort der Ruhe, Privatsphäre und Entspannung. Unser Angebot richtet sich daher ausschließlich an Erwachsene, die einen Platz suchen, um wirklich durchzuatmen - ohne Kompromisse, im Einklang mit der Natur und mit sich selbst. Das 18+ Konzept ist eine bewusste Entscheidung - es garantiert Stille, Entspannung und echte Qualität des Urlaubs. Wir glauben, dass Erwachsene ihren eigenen Ort verdienen: intim, bewusst und mit Intention gestaltet. Wenn Sie Ruhe, Komfort und authentische Erholung suchen - sind Sie hier genau richtig.',
-    badges: {
-      booking: '',
-      reviews: '/images/lasbialas-bewertungen.png',
-    },
   },
 }[lang];
 ---
@@ -63,12 +51,5 @@ const t = {
   <div class="mt-5">
     <h2 class="text-[24px] text-center mt-5 mb-5 text-brand-black font-bold">{t.adultTitle}</h2>
     <p class="text-base leading-[1.6]" set:html={t.adultText}></p>
-  </div>
-
-  <div class="flex justify-center items-center gap-[40px] mt-[30px] mb-2.5 max-[768px]:flex-col max-[768px]:gap-[15px]">
-    {t.badges.booking && <Picture alt="Booking Awards" height={74} width={220} loading="lazy" src={t.badges.booking} formats={['avif', 'webp']} sizes="220px" />}
-    <a href="https://search.google.com/local/reviews?placeid=ChIJgWF7dBWpBkcRjvTdTyqqcyg" rel="nofollow noopener noreferrer" target="_blank">
-      <Picture alt="Reviews" height={74} width={220} loading="lazy" src={t.badges.reviews} formats={['avif', 'webp']} sizes="220px" />
-    </a>
   </div>
 </div>

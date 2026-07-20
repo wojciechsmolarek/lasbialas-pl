@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node scripts/minify-html.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -21,6 +21,7 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.20",
     "autoprefixer": "^10.4.20",
+    "html-minifier-terser": "^7.2.0",
     "sharp": "^0.35.3",
     "tailwindcss": "^3.4.19"
   }

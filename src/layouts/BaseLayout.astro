@@ -196,9 +196,9 @@ const hreflangs = [
           var daysInput = document.getElementById('bookero-plugin-days-number');
           if (daysInput) {
             var days = parseInt(daysInput.value) || 10;
-            if (days < 2) {
+            if (days < 3) {
               setTimeout(function () {
-                daysInput.value = 2;
+                daysInput.value = 3;
                 setTimeout(function () {
                   var event = new Event('input');
                   daysInput.dispatchEvent(event);

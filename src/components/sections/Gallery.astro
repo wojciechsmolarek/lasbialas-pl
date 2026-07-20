@@ -101,28 +101,31 @@ const galleryImages = [
   }
 </div>
 
-<script>
+<script is:inline>
   // Lazy load lightbox only when user interacts with gallery
-  let lightboxLoaded = false;
-  function loadLightboxAndOpen(index: number) {
-    if (lightboxLoaded && typeof (window as any).openImage === 'function') {
-      (window as any).openImage(index);
+  var lightboxLoaded = false;
+  function loadLightboxAndOpen(index) {
+    if (lightboxLoaded && typeof window.openImage === 'function') {
+      window.openImage(index);
       return;
     }
-    import('../../scripts/lightbox').then(() => {
+    var s = document.createElement('script');
+    s.src = '/scripts/lightbox.js';
+    s.onload = function() {
       lightboxLoaded = true;
-      if (typeof (window as any).openImage === 'function') {
-        (window as any).openImage(index);
+      if (typeof window.openImage === 'function') {
+        window.openImage(index);
       }
-    });
+    };
+    document.body.appendChild(s);
   }
   // Override onclick handlers with lazy-loaded version (deferred)
   function initGalleryClickHandlers() {
-    document.querySelectorAll('[onclick^="openImage"]').forEach(el => {
-      const onclickAttr = el.getAttribute('onclick') || '';
-      const match = onclickAttr.match(/openImage\((\d+)\)/);
+    document.querySelectorAll('[onclick^="openImage"]').forEach(function(el) {
+      var onclickAttr = el.getAttribute('onclick') || '';
+      var match = onclickAttr.match(/openImage\((\d+)\)/);
       if (match) {
-        const idx = parseInt(match[1], 10);
+        var idx = parseInt(match[1], 10);
         el.removeAttribute('onclick');
         el.addEventListener('click', function(e) {
           e.preventDefault();

@@ -125,6 +125,16 @@ export const ui = {
     en: 'Rules of use',
     de: 'Nutzungsregeln'
   },
+  'button.sauna_rules': {
+    pl: 'Zasady korzystania z sauny',
+    en: 'Sauna rules',
+    de: 'Sauna-Regeln'
+  },
+  'button.jacuzzi_rules': {
+    pl: 'Zasady korzystania z jacuzzi',
+    en: 'Jacuzzi rules',
+    de: 'Jacuzzi-Regeln'
+  },
 
   // ===== GALLERY TOOLTIPS =====
   'gallery.cabin_with_jacuzzi': {

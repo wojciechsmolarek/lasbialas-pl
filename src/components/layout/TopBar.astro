@@ -227,16 +227,18 @@ const deUrl = '/de/';
     if (menu && hamburgerLines) {
       const isActive = menu.classList.toggle('active');
       
-      // Animate hamburger lines
-      if (isActive) {
-        hamburgerLines[0].style.transform = 'rotate(45deg) translateY(6px)';
-        hamburgerLines[1].style.opacity = '0';
-        hamburgerLines[2].style.transform = 'rotate(-45deg) translateY(-6px)';
-      } else {
-        hamburgerLines[0].style.transform = 'rotate(0deg) translateY(0)';
-        hamburgerLines[1].style.opacity = '1';
-        hamburgerLines[2].style.transform = 'rotate(0deg) translateY(0)';
-      }
+      // Animate hamburger lines — batch style writes in rAF to avoid forced reflow
+      requestAnimationFrame(function() {
+        if (isActive) {
+          hamburgerLines[0].style.transform = 'rotate(45deg) translateY(6px)';
+          hamburgerLines[1].style.opacity = '0';
+          hamburgerLines[2].style.transform = 'rotate(-45deg) translateY(-6px)';
+        } else {
+          hamburgerLines[0].style.transform = 'rotate(0deg) translateY(0)';
+          hamburgerLines[1].style.opacity = '1';
+          hamburgerLines[2].style.transform = 'rotate(0deg) translateY(0)';
+        }
+      });
     }
   }
 

@@ -4,7 +4,7 @@
 
 /* Local Montserrat font faces */
 @font-face {
-  font-display: swap;
+  font-display: optional;
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 200;
@@ -12,7 +12,7 @@
 }
 
 @font-face {
-  font-display: swap;
+  font-display: optional;
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 400;
@@ -20,7 +20,7 @@
 }
 
 @font-face {
-  font-display: swap;
+  font-display: optional;
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 600;

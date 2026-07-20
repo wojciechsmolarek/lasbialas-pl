@@ -1,5 +1,6 @@
 ---
 import { faqData } from '../../data/faqData';
+import { reviews } from '../../data/reviewsData';
 
 interface Props {
   lang: 'pl' | 'en' | 'de';
@@ -43,6 +44,11 @@ const offerDescriptions = {
   }
 };
 
+const totalReviews = reviews.length;
+const avgRatingRaw = reviews.reduce((sum, r) => sum + r.rating, 0) / totalReviews;
+const avgRating = Number.isInteger(avgRatingRaw) ? String(avgRatingRaw) : avgRatingRaw.toFixed(1);
+const topReviews = reviews.slice(0, 10);
+
 const schema = {
   "@context": "https://schema.org",
   "@graph": [
@@ -62,6 +68,31 @@ const schema = {
       },
       "telephone": "+48789773285",
       "priceRange": "490-840 PLN",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": avgRating,
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": totalReviews
+      },
+      "review": topReviews.map((r) => ({
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": r.author
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": r.rating,
+          "bestRating": "5",
+          "worstRating": "1"
+        },
+        "reviewBody": lang === 'en' ? r.content_en : lang === 'de' ? r.content_de : r.content,
+        "publisher": {
+          "@type": "Organization",
+          "name": r.source
+        }
+      })),
       "makesOffer": [
         {
           "@type": "Offer",

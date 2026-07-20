@@ -1,0 +1,230 @@
+---
+import { reviews, type Review } from '../../data/reviewsData';
+
+interface Props {
+  lang: 'pl' | 'en' | 'de';
+}
+
+const { lang } = Astro.props;
+
+const t = {
+  pl: {
+    title: 'Opinie gości',
+    subtitle: 'Zobacz, co o nas piszą',
+    loadMore: 'Załaduj więcej opinii',
+    noMore: 'To wszystkie opinie',
+    ratingSummary: 'Średnia',
+    outOf: 'z',
+    reviewsCount: 'opinii',
+    sourceLabel: 'Źródło',
+    translatedFrom: '',
+  },
+  en: {
+    title: 'Guest Reviews',
+    subtitle: 'See what our guests say',
+    loadMore: 'Load more reviews',
+    noMore: 'No more reviews',
+    ratingSummary: 'Average',
+    outOf: 'out of',
+    reviewsCount: 'reviews',
+    sourceLabel: 'Source',
+    translatedFrom: 'Translated from Polish',
+  },
+  de: {
+    title: 'Gästebewertungen',
+    subtitle: 'Lesen Sie, was unsere Gäste sagen',
+    loadMore: 'Weitere Bewertungen laden',
+    noMore: 'Keine weiteren Bewertungen',
+    ratingSummary: 'Durchschnitt',
+    outOf: 'von',
+    reviewsCount: 'Bewertungen',
+    sourceLabel: 'Quelle',
+    translatedFrom: 'Aus dem Polnischen übersetzt',
+  },
+}[lang];
+
+const localizedContent = (review: Review) =>
+  lang === 'en' ? review.content_en : lang === 'de' ? review.content_de : review.content;
+
+const initialCount = 6;
+
+const totalReviews = reviews.length;
+const avgRatingRaw = reviews.reduce((sum, r) => sum + r.rating, 0) / totalReviews;
+const avgRating = Number.isInteger(avgRatingRaw) ? String(avgRatingRaw) : avgRatingRaw.toFixed(1);
+
+function renderStars(rating: number): string {
+  const fullStars = Math.floor(rating);
+  const hasHalf = rating % 1 >= 0.5;
+  let html = '';
+  for (let i = 0; i < fullStars; i++) {
+    html += '<span class="text-[#FFB300]">★</span>';
+  }
+  if (hasHalf) {
+    html += '<span class="text-[#FFB300]">★</span>';
+  }
+  const remaining = 5 - fullStars - (hasHalf ? 1 : 0);
+  for (let i = 0; i < remaining; i++) {
+    html += '<span class="text-[#ccc]">★</span>';
+  }
+  return html;
+}
+
+const sourceIcon: Record<string, string> = {
+  'Google': 'data:image/svg+xml;base64,' + Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>').toString('base64'),
+  'Booking.com': 'data:image/svg+xml;base64,' + Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="#003580" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path fill="#fff" d="M14.5 8h-2v8h2c1.1 0 2-.9 2-2v-4c0-1.1-.9-2-2-2z"/><path fill="#003580" d="M14.5 9.5h-.5v5h.5c.28 0 .5-.22.5-.5v-4c0-.28-.22-.5-.5-.5z"/></svg>').toString('base64'),
+  'AlohaCamp': 'data:image/svg+xml;base64,' + Buffer.from('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#F97316"/><path fill="#fff" d="M12 6l-1.5 3h3L12 6zm-3.5 5L7 14h3l-1.5-3zm7 0L14 14h3l-1.5-3zM12 14l-1.5 3h3L12 14z"/></svg>').toString('base64'),
+};
+
+const allReviews = JSON.stringify(reviews);
+---
+
+<div class="max-w-[73%] border border-[#ccc] rounded-[5px] py-[10px] px-[80px] mx-auto mb-5 bg-white text-base text-center max-[768px]:max-w-[96vw] max-[768px]:p-5 max-[768px]:my-[1px] max-[768px]:mb-5 max-[768px]:text-[0.6rem]">
+  <h2 class="text-[24px] text-center mt-5 mb-2 text-brand-black font-bold">{t.title}</h2>
+  <p class="text-[16px] text-[#666] mb-2">{t.subtitle}</p>
+  <p class="text-[15px] text-brand-green font-semibold mb-5 inline-flex items-center gap-[8px]">
+    <span class="text-[18px]">⭐⭐⭐⭐⭐</span>
+    <span>{t.ratingSummary} {avgRating} {t.outOf} {totalReviews} {t.reviewsCount}</span>
+  </p>
+
+  <div id="reviews-grid" class="grid grid-cols-3 gap-[20px] text-left max-[1024px]:grid-cols-2 max-[768px]:grid-cols-1">
+    {reviews.slice(0, initialCount).map((review, idx) => (
+      <div class="review-card border border-[#e0e0e0] rounded-[5px] p-5 bg-[#fafafa] hover:shadow-hover transition-shadow duration-300 flex flex-col" data-index={idx}>
+        <div class="flex items-center gap-[12px] mb-3">
+          {review.avatarUrl ? (
+            <img src={review.avatarUrl} alt={review.author} width="48" height="48" class="rounded-full w-12 h-12 object-cover shrink-0" loading="lazy" onerror={`this.onerror=null;this.style.display='none';this.nextElementSibling.style.display='flex';`} />
+          ) : null}
+          <div class={`w-12 h-12 rounded-full bg-brand-green text-white items-center justify-center text-[18px] font-bold shrink-0 ${review.avatarUrl ? 'hidden' : 'flex'}`}>
+            {review.author.charAt(0).toUpperCase()}
+          </div>
+          <div class="flex flex-col min-w-0">
+            <span class="font-semibold text-[15px] text-brand-black truncate">{review.author}</span>
+            <span class="flex items-center gap-[4px] text-[13px] text-[#999]">
+              {review.source && sourceIcon[review.source] && (
+                <img src={sourceIcon[review.source]} alt={review.source} width="14" height="14" class="inline-block" />
+              )}
+              {review.source}
+            </span>
+          </div>
+        </div>
+        <div class="mb-2 text-[16px] leading-none" set:html={renderStars(review.rating)}></div>
+        {localizedContent(review) && (
+          <p class="text-[14px] leading-[1.6] text-[#444] whitespace-pre-line line-clamp-6 overflow-hidden">{localizedContent(review)}</p>
+        )}
+        {lang !== 'pl' && localizedContent(review) && (
+          <p class="text-[12px] text-[#999] italic mt-2">{t.translatedFrom}</p>
+        )}
+      </div>
+    ))}
+  </div>
+
+  <div class="text-center mt-5 mb-5">
+    <button
+      id="reviews-load-more"
+      class="inline-flex items-center gap-[8px] px-[24px] py-[10px] bg-brand-green text-white rounded-[5px] font-semibold text-[15px] hover:bg-brand-dark-green transition-colors cursor-pointer border-0"
+      onclick="reviewsLoadMore()"
+    >
+      <span id="reviews-load-more-text">{t.loadMore}</span>
+      <svg id="reviews-spinner" class="hidden animate-spin" width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" stroke-dasharray="40" stroke-linecap="round"/></svg>
+    </button>
+    <p id="reviews-no-more" class="hidden text-[14px] text-[#999] mt-3">{t.noMore}</p>
+  </div>
+</div>
+
+<script is:inline define:vars={{ allReviews, t, sourceIcon, lang }}>
+  (function() {
+    const allData = JSON.parse(allReviews);
+    let displayed = 6;
+    const batchSize = 6;
+    const grid = document.getElementById('reviews-grid');
+    const loadMoreBtn = document.getElementById('reviews-load-more');
+    const loadMoreText = document.getElementById('reviews-load-more-text');
+    const spinner = document.getElementById('reviews-spinner');
+    const noMoreMsg = document.getElementById('reviews-no-more');
+
+    function renderStars(rating) {
+      const full = Math.floor(rating);
+      const hasHalf = rating % 1 >= 0.5;
+      let html = '';
+      for (let i = 0; i < full; i++) html += '<span class="text-[#FFB300]">★</span>';
+      if (hasHalf) html += '<span class="text-[#FFB300]">★</span>';
+      const rem = 5 - full - (hasHalf ? 1 : 0);
+      for (let i = 0; i < rem; i++) html += '<span class="text-[#ccc]">★</span>';
+      return html;
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function createCard(review, idx) {
+      const card = document.createElement('div');
+      card.className = 'review-card border border-[#e0e0e0] rounded-[5px] p-5 bg-[#fafafa] hover:shadow-hover transition-shadow duration-300 flex flex-col';
+      card.setAttribute('data-index', idx);
+
+      var initialsHtml = '<div class="w-12 h-12 rounded-full bg-brand-green text-white flex items-center justify-center text-[18px] font-bold shrink-0">' + escapeHtml(review.author.charAt(0).toUpperCase()) + '</div>';
+      var avatarHtml;
+      if (review.avatarUrl) {
+        avatarHtml = '<img src="' + review.avatarUrl + '" alt="' + escapeHtml(review.author) + '" width="48" height="48" class="rounded-full w-12 h-12 object-cover shrink-0" loading="lazy" onerror="this.onerror=null;this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\';" />' +
+          '<div class="w-12 h-12 rounded-full bg-brand-green text-white items-center justify-center text-[18px] font-bold shrink-0 hidden">' + escapeHtml(review.author.charAt(0).toUpperCase()) + '</div>';
+      } else {
+        avatarHtml = initialsHtml;
+      }
+
+      let sourceIconHtml = '';
+      if (review.source && sourceIcon[review.source]) {
+        sourceIconHtml = '<img src="' + sourceIcon[review.source] + '" alt="' + escapeHtml(review.source) + '" width="14" height="14" class="inline-block" />';
+      }
+
+      var localizedContent = lang === 'en' ? review.content_en : lang === 'de' ? review.content_de : review.content;
+      var contentHtml = localizedContent ? '<p class="text-[14px] leading-[1.6] text-[#444] whitespace-pre-line line-clamp-6 overflow-hidden">' + escapeHtml(localizedContent) + '</p>' : '';
+      if (lang !== 'pl' && localizedContent) {
+        contentHtml += '<p class="text-[12px] text-[#999] italic mt-2">' + escapeHtml(t.translatedFrom) + '</p>';
+      }
+
+      card.innerHTML =
+        '<div class="flex items-center gap-[12px] mb-3">' +
+          avatarHtml +
+          '<div class="flex flex-col min-w-0">' +
+            '<span class="font-semibold text-[15px] text-brand-black truncate">' + escapeHtml(review.author) + '</span>' +
+            '<span class="flex items-center gap-[4px] text-[13px] text-[#999]">' + sourceIconHtml + escapeHtml(review.source) + '</span>' +
+          '</div>' +
+        '</div>' +
+        '<div class="mb-2 text-[16px] leading-none">' + renderStars(review.rating) + '</div>' +
+        contentHtml;
+
+      return card;
+    }
+
+    window.reviewsLoadMore = function() {
+      if (displayed >= allData.length) {
+        loadMoreBtn.style.display = 'none';
+        noMoreMsg.classList.remove('hidden');
+        return;
+      }
+
+      loadMoreText.textContent = t.loadMore;
+      spinner.classList.remove('hidden');
+      loadMoreBtn.disabled = true;
+
+      setTimeout(function() {
+        const fragment = document.createDocumentFragment();
+        const end = Math.min(displayed + batchSize, allData.length);
+        for (let i = displayed; i < end; i++) {
+          fragment.appendChild(createCard(allData[i], i));
+        }
+        grid.appendChild(fragment);
+        displayed = end;
+
+        spinner.classList.add('hidden');
+        loadMoreBtn.disabled = false;
+
+        if (displayed >= allData.length) {
+          loadMoreBtn.style.display = 'none';
+          noMoreMsg.classList.remove('hidden');
+        }
+      }, 400);
+    };
+  })();
+</script>

@@ -199,41 +199,78 @@ const hreflangs = [
     <!-- Bookero Validation (Minimum 3 nights) -->
     <script is:inline>
       (function() {
+        var MIN_DAYS = 3;
+        var observer = null;
+        var lastEnforced = 0;
+
+        function enforceMin() {
+          var daysInput = document.getElementById('bookero-plugin-days-number');
+          if (!daysInput) return;
+          var days = parseInt(daysInput.value) || 1;
+          if (days < MIN_DAYS) {
+            daysInput.value = MIN_DAYS;
+            daysInput.dispatchEvent(new Event('input', { bubbles: true }));
+            daysInput.dispatchEvent(new Event('change', { bubbles: true }));
+            lastEnforced = Date.now();
+          }
+        }
+
         function enforceMinimumDays() {
           var attempts = 0;
           function tryEnforce() {
             var daysInput = document.getElementById('bookero-plugin-days-number');
             if (daysInput) {
-              var days = parseInt(daysInput.value) || 1;
-              if (days < 3) {
-                daysInput.value = 3;
-                var event = new Event('input', { bubbles: true });
-                daysInput.dispatchEvent(event);
-                var changeEvent = new Event('change', { bubbles: true });
-                daysInput.dispatchEvent(changeEvent);
-              }
+              enforceMin();
+              setupObserver(daysInput);
             } else {
               attempts++;
-              if (attempts < 20) {
-                setTimeout(tryEnforce, 200);
-              }
+              if (attempts < 20) setTimeout(tryEnforce, 200);
             }
           }
           tryEnforce();
         }
 
+        function setupObserver(daysInput) {
+          if (observer) observer.disconnect();
+          observer = new MutationObserver(function(mutations) {
+            for (var i = 0; i < mutations.length; i++) {
+              var m = mutations[i];
+              if (m.type === 'attributes' && m.attributeName === 'value') {
+                var days = parseInt(daysInput.value) || 1;
+                if (days < MIN_DAYS && Date.now() - lastEnforced > 500) {
+                  enforceMin();
+                }
+              }
+            }
+          });
+          observer.observe(daysInput, { attributes: true, attributeFilter: ['value'] });
+        }
+
+        function watchBookeroContainer() {
+          var container = document.getElementById('bookero');
+          if (!container) {
+            setTimeout(watchBookeroContainer, 500);
+            return;
+          }
+          var containerObserver = new MutationObserver(function() {
+            var daysInput = document.getElementById('bookero-plugin-days-number');
+            if (daysInput) {
+              var days = parseInt(daysInput.value) || 1;
+              if (days < MIN_DAYS) {
+                setTimeout(enforceMin, 100);
+              }
+              setupObserver(daysInput);
+            }
+          });
+          containerObserver.observe(container, { childList: true, subtree: true });
+        }
+
         function initValidation() {
-          document.body.addEventListener('bookero-plugin:days-changed', function () {
-            enforceMinimumDays();
-          });
-
-          document.body.addEventListener('bookero-plugin:service-updated', function () {
-            enforceMinimumDays();
-          });
-
-          document.body.addEventListener('bookero-plugin:loaded', function () {
-            enforceMinimumDays();
-          });
+          document.body.addEventListener('bookero-plugin:days-changed', enforceMin);
+          document.body.addEventListener('bookero-plugin:service-updated', enforceMin);
+          document.body.addEventListener('bookero-plugin:loaded', enforceMinimumDays);
+          document.body.addEventListener('bookero-plugin:service-changed', enforceMin);
+          watchBookeroContainer();
         }
 
         window.enforceBookeroMinDays = enforceMinimumDays;

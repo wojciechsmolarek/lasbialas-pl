@@ -6,6 +6,7 @@ import TopBoxes from '../components/sections/TopBoxes.astro';
 import IntroSection from '../components/sections/IntroSection.astro';
 import InteriorsSection from '../components/sections/InteriorsSection.astro';
 import SaunaJacuzziSection from '../components/sections/SaunaJacuzziSection.astro';
+import SaunaGallery from '../components/sections/SaunaGallery.astro';
 import PricingSection from '../components/sections/PricingSection.astro';
 import BenefitsSection from '../components/sections/BenefitsSection.astro';
 import PartnerLogos from '../components/sections/PartnerLogos.astro';
@@ -16,13 +17,6 @@ import FAQSection from '../components/sections/FAQSection.astro';
 import ReviewsSection from '../components/sections/ReviewsSection.astro';
 
 const lang = 'pl';
-
-function buildSrcset(src: string): string {
-  const match = src.match(/\/foto\/webp-834\/(.+)\.webp$/);
-  if (!match) return '';
-  const name = match[1];
-  return `/foto/webp-400/${name}.webp 400w, /foto/webp-834/${name}.webp 834w, /foto/webp-1280/${name}.webp 1280w`;
-}
 ---
 
 <PageLayout
@@ -36,21 +30,7 @@ function buildSrcset(src: string): string {
   <IntroSection lang={lang} />
   <InteriorsSection lang={lang} />
   <SaunaJacuzziSection lang={lang} />
-
-  <!-- Sauna & jacuzzi gallery -->
-  <div class="grid grid-cols-4 gap-[7px] mt-2.5 mb-2.5 max-[1024px]:grid-cols-2">
-    {[8,9,10,11,12,13,14,15].map((i, idx) => {
-      const alt = ['Jacuzzi w lesie przy domku','Sauna przy domkach Las Bialas','Jacuzzi przy tarasie domku D2','Kolorowe oświetlenie w saunie','Sauna w lesie','Jacuzzi z LED','Podświetlenie LED w saunie','Jacuzzi w ogrodzie przy domku'][idx];
-      const tip = ['Jacuzzi przy domku D1','Sauna Las Bialas w Puszczy Noteckiej','Jacuzzi przy tarasie domku D2','Podświetlenie LED w saunie','Sauna w lesie','Jacuzzi z funkcją automatycznego podgrzewania wody, aeromasażem i wielokolorowym podświetleniem LED','Podświetlenie LED w saunie','Jacuzzi w ogrodzie przy domku'][idx];
-      const src = ['/foto/webp-834/lasbialas-jacuzzi1.webp','/foto/webp-834/sauna1.webp','/foto/webp-834/lasbialas1.webp','/foto/webp-834/sauna4.webp','/foto/webp-834/sauna5.webp','/foto/webp-834/lasbialas-jacuzzi2.webp','/foto/webp-834/sauna7.webp','/foto/webp-834/lasbialas-jacuzzi3.webp'][idx];
-      return (
-        <div class="relative inline-block group">
-          <img src={src} srcset={buildSrcset(src)} alt={alt} width={834} height={470} loading="lazy" decoding="async" sizes="(max-width: 1024px) 50vw, 25vw" onclick={`openImage(${i})`} class="block w-full h-auto object-cover cursor-pointer transition-transform duration-200" />
-          <span class="invisible opacity-0 w-[320px] bg-black/70 text-white text-center rounded-[5px] p-[5px] absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-[65px] transition-opacity duration-300 font-[Arial] text-[14px] font-normal leading-[1.4] z-[1] pointer-events-none group-hover:visible group-hover:opacity-100 max-[768px]:hidden">{tip}</span>
-        </div>
-      );
-    })}
-  </div>
+  <SaunaGallery lang={lang} />
 
   <PricingSection lang={lang} />
   <BenefitsSection lang={lang} />

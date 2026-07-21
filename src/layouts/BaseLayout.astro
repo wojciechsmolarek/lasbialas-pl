@@ -2,6 +2,9 @@
 import { SEO } from 'astro-seo';
 import SchemaOrg from '../components/seo/SchemaOrg.astro';
 import '../styles/global.css';
+import lasbialas8 from '../assets/foto/lasbialas8.webp';
+import backgroundImage800 from '../assets/images/background-image-800.webp';
+import lasbialas7 from '../assets/foto/lasbialas7.webp';
 
 interface Props {
   title: string;
@@ -16,7 +19,7 @@ const {
   description,
   lang = 'pl',
   canonical,
-  ogImage = '/foto/lasbialas8.webp'
+  ogImage = lasbialas8.src
 } = Astro.props;
 
 const siteUrl = 'https://lasbialas.pl';
@@ -83,10 +86,10 @@ const hreflangs = [
     <link rel="manifest" href="/favicon/site.webmanifest" />
 
     <!-- Preload background image used in BannerSection -->
-    <link rel="preload" as="image" href="/images/background-image-800.webp" />
+    <link rel="preload" as="image" href={backgroundImage800.src} />
 
     <!-- Preload LCP image (gallery sauna) -->
-    <link rel="preload" as="image" href="/foto/webp-834/lasbialas7.webp" fetchpriority="high" />
+    <link rel="preload" as="image" href={lasbialas7.src} fetchpriority="high" />
 
     <!-- Schema.org Structured Data -->
     <SchemaOrg lang={lang} />

@@ -1,5 +1,38 @@
 ---
-// Lightbox overlay component
+import lasbialas1 from '../../assets/foto/lasbialas1.webp';
+import lasbialas2 from '../../assets/foto/lasbialas2.webp';
+import lasbialas3 from '../../assets/foto/lasbialas3.webp';
+import lasbialas4 from '../../assets/foto/lasbialas4.webp';
+import lasbialas5 from '../../assets/foto/lasbialas5.webp';
+import lasbialas6 from '../../assets/foto/lasbialas6.webp';
+import lasbialas7 from '../../assets/foto/lasbialas7.webp';
+import lasbialas8 from '../../assets/foto/lasbialas8.webp';
+import lasbialasJacuzzi1 from '../../assets/foto/lasbialas-jacuzzi1.webp';
+import sauna1 from '../../assets/foto/sauna1.webp';
+import sauna4 from '../../assets/foto/sauna4.webp';
+import sauna5 from '../../assets/foto/sauna5.webp';
+import lasbialasJacuzzi2 from '../../assets/foto/lasbialas-jacuzzi2.webp';
+import sauna7 from '../../assets/foto/sauna7.webp';
+import lasbialasJacuzzi3 from '../../assets/foto/lasbialas-jacuzzi3.webp';
+
+const lightboxImages = [
+  lasbialas1.src,
+  lasbialas2.src,
+  lasbialas3.src,
+  lasbialas4.src,
+  lasbialas5.src,
+  lasbialas6.src,
+  lasbialas7.src,
+  lasbialas8.src,
+  lasbialasJacuzzi1.src,
+  sauna1.src,
+  lasbialas1.src,
+  sauna4.src,
+  sauna5.src,
+  lasbialasJacuzzi2.src,
+  sauna7.src,
+  lasbialasJacuzzi3.src,
+];
 ---
 
 <div id="lightbox-overlay" class="lightbox-overlay">
@@ -113,3 +146,55 @@
     }
   }
 </style>
+
+<script is:inline define:vars={{ lightboxImages }}>
+  var images = lightboxImages;
+  var currentImageIndex = 0;
+
+  function openImage(index) {
+    currentImageIndex = index;
+    var overlay = document.getElementById('lightbox-overlay');
+    var overlayImage = document.getElementById('lightbox-image');
+    if (overlay && overlayImage) {
+      overlayImage.src = images[currentImageIndex];
+      overlay.classList.add('active');
+    }
+  }
+
+  function closeImage() {
+    var overlay = document.getElementById('lightbox-overlay');
+    if (overlay) {
+      overlay.classList.remove('active');
+    }
+  }
+
+  function prevImage() {
+    currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+    var overlayImage = document.getElementById('lightbox-image');
+    if (overlayImage) {
+      overlayImage.src = images[currentImageIndex];
+    }
+  }
+
+  function nextImage() {
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+    var overlayImage = document.getElementById('lightbox-image');
+    if (overlayImage) {
+      overlayImage.src = images[currentImageIndex];
+    }
+  }
+
+  document.addEventListener('keydown', function(e) {
+    var overlay = document.getElementById('lightbox-overlay');
+    if (overlay && overlay.classList.contains('active')) {
+      if (e.key === 'Escape') closeImage();
+      if (e.key === 'ArrowLeft') prevImage();
+      if (e.key === 'ArrowRight') nextImage();
+    }
+  });
+
+  window.openImage = openImage;
+  window.closeImage = closeImage;
+  window.prevImage = prevImage;
+  window.nextImage = nextImage;
+</script>

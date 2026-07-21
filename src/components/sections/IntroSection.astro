@@ -1,5 +1,6 @@
 ---
 import { Picture } from 'astro:assets';
+import backgroundImage800 from '../../assets/images/background-image-800.webp';
 
 interface Props {
   lang: 'pl' | 'en' | 'de';
@@ -40,7 +41,7 @@ const t = {
   <p class="text-base leading-[1.6]" set:html={t.p1}></p>
   <p class="text-base leading-[1.6]" set:html={t.p2}></p>
 
-  <Picture alt={t.title} src="/images/background-image-800.webp" width={800} height={208} loading="lazy" formats={['avif', 'webp']} sizes="(max-width: 768px) 96vw, 73vw" class="w-full h-auto mt-[50px]" />
+  <Picture alt={t.title} src={backgroundImage800} width={800} height={208} loading="lazy" formats={['avif', 'webp']} sizes="(max-width: 768px) 96vw, 73vw" class="w-full h-auto mt-[50px]" />
 
   {t.guideBtn && (
     <div class="flex justify-center mt-[30px]">

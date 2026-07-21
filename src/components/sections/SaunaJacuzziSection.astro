@@ -1,6 +1,8 @@
 ---
 import { useTranslations } from '../../i18n/utils';
 import { Picture } from 'astro:assets';
+import saunaDlaGosci from '../../assets/foto/sauna-dla-gosci.png';
+import jacuzzi from '../../assets/foto/jacuzzi.png';
 
 interface Props {
   lang: 'pl' | 'en' | 'de';
@@ -10,8 +12,8 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 
 const icons = {
-  sauna: '/foto/sauna-dla-gosci.png',
-  jacuzzi: '/foto/jacuzzi.png',
+  sauna: saunaDlaGosci,
+  jacuzzi: jacuzzi,
 };
 
 const guideHref = {

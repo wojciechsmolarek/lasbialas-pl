@@ -1,6 +1,7 @@
 ---
 import { faqData } from '../../data/faqData';
 import { reviews } from '../../data/reviewsData';
+import lasbialas8 from '../../assets/foto/lasbialas8.webp';
 
 interface Props {
   lang: 'pl' | 'en' | 'de';
@@ -57,7 +58,7 @@ const schema = {
       "@id": "https://lasbialas.pl#lodging",
       "name": schemaNames[lang],
       "url": "https://lasbialas.pl",
-      "image": "https://lasbialas.pl/foto/lasbialas8.webp",
+      "image": `https://lasbialas.pl${lasbialas8.src}`,
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Biała 32/32",

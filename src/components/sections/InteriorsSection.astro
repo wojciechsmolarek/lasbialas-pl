@@ -1,11 +1,24 @@
 ---
 import { Picture } from 'astro:assets';
+import w1 from '../../assets/foto/w1.webp';
+import w2 from '../../assets/foto/w2.webp';
+import w3 from '../../assets/foto/w3.webp';
+import w4 from '../../assets/foto/w4.webp';
+import w6 from '../../assets/foto/w6.webp';
+import w7 from '../../assets/foto/w7.webp';
+import w13 from '../../assets/foto/w13.webp';
+import w15 from '../../assets/foto/w15.webp';
+import w17 from '../../assets/foto/w17.webp';
+import w18 from '../../assets/foto/w18.webp';
+import lasbialasqrc from '../../assets/foto/lasbialasqrc.png';
 
 interface Props {
   lang: 'pl' | 'en' | 'de';
 }
 
 const { lang } = Astro.props;
+
+const imgMap: Record<string, any> = { w1, w2, w3, w4, w6, w7, w13, w15, w17, w18 };
 
 const t = {
   pl: {
@@ -16,10 +29,10 @@ const t = {
       intro: 'Domki posiadają po dwie sypialnie usytuowane po przeciwległych stronach. W każdej sypialni znajduje się:',
       items: ['wygodne, podwójne łóżko', 'materac 140x200x26 cm', 'bawełniana pościel', 'moskitiery w oknach', 'wentylator sufitowy z pilotem', 'rolety zewnętrzne oraz zasłony', 'smart TV z Netflix w jednej sypialni'],
       images: [
-        { src: '/foto/w1.webp', alt: 'Duża sypialnia z podwójnym łóżkiem', tip: 'Duża sypialnia z łóżkiem 140x200, wygodnym materacem i wentylatorem sufitowym.' },
-        { src: '/foto/w2.webp', alt: 'Mała sypialnia z podwójnym łóżkiem', tip: 'Mała sypialnia z łóżkiem 140x200 i Smart TV.' },
-        { src: '/foto/w6.webp', alt: 'Ogrzewanie w domku', tip: 'Niezależne termostaty sterujące ogrzewaniem w każdym pomieszczeniu.' },
-        { src: '/foto/w4.webp', alt: 'Mała sypialnia w domku', tip: 'Sypialnia z łóżkiem 140x200, Smart TV i wentylatorem sufitowym.' },
+        { src: w1, alt: 'Duża sypialnia z podwójnym łóżkiem', tip: 'Duża sypialnia z łóżkiem 140x200, wygodnym materacem i wentylatorem sufitowym.' },
+        { src: w2, alt: 'Mała sypialnia z podwójnym łóżkiem', tip: 'Mała sypialnia z łóżkiem 140x200 i Smart TV.' },
+        { src: w6, alt: 'Ogrzewanie w domku', tip: 'Niezależne termostaty sterujące ogrzewaniem w każdym pomieszczeniu.' },
+        { src: w4, alt: 'Mała sypialnia w domku', tip: 'Sypialnia z łóżkiem 140x200, Smart TV i wentylatorem sufitowym.' },
       ],
     },
     living: {
@@ -27,10 +40,10 @@ const t = {
       intro: 'W salonie z aneksem kuchennym znajduje się kącik wypoczynkowy, Smart TV z Netflix, biblioteczka i zestaw planszówek. <a href="{#guide}" target="_blank" class="text-brand-green underline">Aneks kuchenny</a> jest w pełni wyposażony i oferuje dużą lodówkę z zamrażalnikiem, zmywarkę, toster, ekspres do kawy, płytę indukcyjną oraz wszystko, co potrzebne do wygodnego przyrządzenia posiłków i biesiadowania:',
       items: ['komplet garnków i patelni', 'talerze i miseczki (po 6 szt.)', 'kubki, szklanki', 'kieliszki do wina, inne', 'sztućce i noże kuchenne', 'akcesoria kuchenne', 'akcesoria do grillowania', 'toster, czajnik, zaparzacz do herbaty', 'ekspres Nespresso DeLonghi', 'kapsułki do ekspresu (20 szt.)', 'herbata, cukier, sól, pieprz'],
       images: [
-        { src: '/foto/w13.webp', alt: 'Salon z aneksem kuchennym', tip: 'Przestronny salon z aneksem.' },
-        { src: '/foto/w7.webp', alt: 'Aneks kuchenny', tip: 'Aneks z lodówką, zmywarką i płytą indukcyjną.' },
-        { src: '/foto/w15.webp', alt: 'Kącik w salonie', tip: 'Biblioteczka i planszówki.' },
-        { src: '/foto/w3.webp', alt: 'Smart TV w salonie', tip: 'Smart TV z Netflix.' },
+        { src: w13, alt: 'Salon z aneksem kuchennym', tip: 'Przestronny salon z aneksem.' },
+        { src: w7, alt: 'Aneks kuchenny', tip: 'Aneks z lodówką, zmywarką i płytą indukcyjną.' },
+        { src: w15, alt: 'Kącik w salonie', tip: 'Biblioteczka i planszówki.' },
+        { src: w3, alt: 'Smart TV w salonie', tip: 'Smart TV z Netflix.' },
       ],
     },
     bathroom: {
@@ -38,8 +51,8 @@ const t = {
       intro: 'Nowoczesna łazienka z prysznicem walk-in i deszczownicą. Na wyposażeniu:',
       items: ['komplet ręczników', 'żel i szampon pod prysznic', 'mydło w płynie', 'środki czystości', 'papier toaletowy', 'suszarka do włosów', 'odkurzacz bezprzewodowy', 'suszarka na pranie', 'inne akcesoria'],
       images: [
-        { src: '/foto/w17.webp', alt: 'Łazienka z prysznicem', tip: 'Przestronna łazienka z prysznicem walk-in.' },
-        { src: '/foto/w18.webp', alt: 'Wyposażenie łazienki', tip: 'Ręczniki, środki higieniczne i akcesoria.' },
+        { src: w17, alt: 'Łazienka z prysznicem', tip: 'Przestronna łazienka z prysznicem walk-in.' },
+        { src: w18, alt: 'Wyposażenie łazienki', tip: 'Ręczniki, środki higieniczne i akcesoria.' },
       ],
     },
     parking: {
@@ -59,10 +72,10 @@ const t = {
       intro: 'The cottages feature two bedrooms located on opposite sides of the house. Bedroom amenities include:',
       items: ['comfortable double beds', 'mattresses 140x200x26 cm', 'cotton bedding', 'mosquito nets in windows', 'ceiling fan with remote control', 'external blinds and curtains', 'Smart TV with Netflix in one bedroom'],
       images: [
-        { src: '/foto/w1.webp', alt: 'Large bedroom with double bed', tip: 'Large bedroom with 140x200 bed, comfortable mattress and ceiling fan.' },
-        { src: '/foto/w2.webp', alt: 'Small bedroom with double bed', tip: 'Small bedroom with 140x200 bed and Smart TV.' },
-        { src: '/foto/w6.webp', alt: 'Heating in the cottage', tip: 'Independent thermostats controlling heating in each room.' },
-        { src: '/foto/w4.webp', alt: 'Small bedroom in the cottage', tip: 'Bedroom with 140x200 bed, Smart TV and ceiling fan.' },
+        { src: w1, alt: 'Large bedroom with double bed', tip: 'Large bedroom with 140x200 bed, comfortable mattress and ceiling fan.' },
+        { src: w2, alt: 'Small bedroom with double bed', tip: 'Small bedroom with 140x200 bed and Smart TV.' },
+        { src: w6, alt: 'Heating in the cottage', tip: 'Independent thermostats controlling heating in each room.' },
+        { src: w4, alt: 'Small bedroom in the cottage', tip: 'Bedroom with 140x200 bed, Smart TV and ceiling fan.' },
       ],
     },
     living: {
@@ -70,10 +83,10 @@ const t = {
       intro: 'The living room with kitchenette offers a cozy lounge area, Smart TV with Netflix, bookshelf, and board games. The <a href="{#guide}" target="_blank" class="text-brand-green underline">kitchenette</a> is fully equipped and includes a large fridge, dishwasher, toaster, coffee machine, and induction hob - everything you need for comfortable cooking and dining:',
       items: ['set of pots and pans', 'sets of plates (6 pcs) and bowls', 'mugs, glasses, wine glasses, and more', 'full set of cutlery and kitchen knives', 'kitchen and barbecue accessories', 'toaster, kettle, tea infuser', 'Nespresso DeLonghi coffee machine', '20 coffee capsules', 'tea, sugar, salt, pepper'],
       images: [
-        { src: '/foto/w13.webp', alt: 'Living room with kitchenette', tip: 'Spacious living room with kitchenette.' },
-        { src: '/foto/w7.webp', alt: 'Kitchenette', tip: 'Kitchenette with fridge, dishwasher and induction hob.' },
-        { src: '/foto/w15.webp', alt: 'Lounge corner in living room', tip: 'Bookshelf and board games.' },
-        { src: '/foto/w3.webp', alt: 'Smart TV in living room', tip: 'Smart TV with Netflix.' },
+        { src: w13, alt: 'Living room with kitchenette', tip: 'Spacious living room with kitchenette.' },
+        { src: w7, alt: 'Kitchenette', tip: 'Kitchenette with fridge, dishwasher and induction hob.' },
+        { src: w15, alt: 'Lounge corner in living room', tip: 'Bookshelf and board games.' },
+        { src: w3, alt: 'Smart TV in living room', tip: 'Smart TV with Netflix.' },
       ],
     },
     bathroom: {
@@ -81,8 +94,8 @@ const t = {
       intro: 'A modern bathroom with walk-in shower and rainfall showerhead. Amenities include:',
       items: ['set of towels', 'shower gel & shampoo', 'liquid soap', 'cleaning products', 'toilet paper', 'hair dryer', 'cordless vacuum cleaner', 'drying rack', 'other accessories'],
       images: [
-        { src: '/foto/w17.webp', alt: 'Bathroom with shower', tip: 'Spacious bathroom with walk-in shower.' },
-        { src: '/foto/w18.webp', alt: 'Bathroom amenities', tip: 'Towels, hygiene products and accessories.' },
+        { src: w17, alt: 'Bathroom with shower', tip: 'Spacious bathroom with walk-in shower.' },
+        { src: w18, alt: 'Bathroom amenities', tip: 'Towels, hygiene products and accessories.' },
       ],
     },
     parking: {
@@ -102,10 +115,10 @@ const t = {
       intro: 'Die Häuser verfügen über zwei Schlafzimmer, die sich an gegenüberliegenden Seiten des Hauses befinden. Schlafzimmer-Ausstattung:',
       items: ['bequeme Doppelbetten', 'Matratzen 140×200×26 cm', 'Baumwollbettwäsche', 'Insektenschutzgitter an den Fenstern', 'Deckenventilator mit Fernbedienung', 'Außenrollläden und Vorhänge', 'Smart TV (Netflix) im Schlafzimmer'],
       images: [
-        { src: '/foto/w1.webp', alt: 'Großes Schlafzimmer mit Doppelbett', tip: 'Großes Schlafzimmer mit Bett 140x200, bequemer Matratze und Deckenventilator.' },
-        { src: '/foto/w2.webp', alt: 'Kleines Schlafzimmer mit Doppelbett', tip: 'Kleines Schlafzimmer mit Bett 140x200 und Smart TV.' },
-        { src: '/foto/w6.webp', alt: 'Heizung im Haus', tip: 'Unabhängige Thermostate steuern die Heizung in jedem Raum.' },
-        { src: '/foto/w4.webp', alt: 'Kleines Schlafzimmer im Haus', tip: 'Schlafzimmer mit Bett 140x200, Smart TV und Deckenventilator.' },
+        { src: w1, alt: 'Großes Schlafzimmer mit Doppelbett', tip: 'Großes Schlafzimmer mit Bett 140x200, bequemer Matratze und Deckenventilator.' },
+        { src: w2, alt: 'Kleines Schlafzimmer mit Doppelbett', tip: 'Kleines Schlafzimmer mit Bett 140x200 und Smart TV.' },
+        { src: w6, alt: 'Heizung im Haus', tip: 'Unabhängige Thermostate steuern die Heizung in jedem Raum.' },
+        { src: w4, alt: 'Kleines Schlafzimmer im Haus', tip: 'Schlafzimmer mit Bett 140x200, Smart TV und Deckenventilator.' },
       ],
     },
     living: {
@@ -113,10 +126,10 @@ const t = {
       intro: 'Im Wohnzimmer mit Küchenzeile gibt es eine gemütliche Sitzecke, einen Smart TV mit Netflix, eine kleine Bibliothek und Brettspiele. Die <a href="{#guide}" target="_blank" class="text-brand-green underline">Küchenzeile</a> ist komplett ausgestattet und bietet einen großen Kühlschrank, eine Spülmaschine, Toaster, Kaffeemaschine sowie ein Induktionskochfeld - alles, was Sie zum bequemen Kochen und gemeinsamen Essen benötigen:',
       items: ['Topf- und Pfannenset', 'Sets mit Tellern (je 6 Stk.) und Schalen', 'Tassen, Gläser, Weingläser u.a.', 'Besteck- und Kochmesserset', 'Küchen- und Grillzubehör', 'Toaster, Wasserkocher, Teezubereiter', 'Nespresso DeLonghi Kaffeemaschine', 'Kaffeekapseln (20 Stk.)', 'Tee, Zucker, Salz, Pfeffer'],
       images: [
-        { src: '/foto/w13.webp', alt: 'Wohnzimmer mit Küchenzeile', tip: 'Geräumiges Wohnzimmer mit Küchenzeile.' },
-        { src: '/foto/w7.webp', alt: 'Küchenzeile', tip: 'Küchenzeile mit Kühlschrank, Spülmaschine und Induktionskochfeld.' },
-        { src: '/foto/w15.webp', alt: 'Sitzecke im Wohnzimmer', tip: 'Bibliothek und Brettspiele.' },
-        { src: '/foto/w3.webp', alt: 'Smart TV im Wohnzimmer', tip: 'Smart TV mit Netflix.' },
+        { src: w13, alt: 'Wohnzimmer mit Küchenzeile', tip: 'Geräumiges Wohnzimmer mit Küchenzeile.' },
+        { src: w7, alt: 'Küchenzeile', tip: 'Küchenzeile mit Kühlschrank, Spülmaschine und Induktionskochfeld.' },
+        { src: w15, alt: 'Sitzecke im Wohnzimmer', tip: 'Bibliothek und Brettspiele.' },
+        { src: w3, alt: 'Smart TV im Wohnzimmer', tip: 'Smart TV mit Netflix.' },
       ],
     },
     bathroom: {
@@ -124,8 +137,8 @@ const t = {
       intro: 'Modernes Bad mit Walk-in-Dusche & Regenduschkopf. Ausstattung:',
       items: ['Handtuchset', 'Duschgel und Shampoo', 'Flüssigseife', 'Reinigungsmittel', 'Toilettenpapier', 'Haartrockner', 'Akkustaubsauger', 'Wäscheständer', 'weiteres Zubehör'],
       images: [
-        { src: '/foto/w17.webp', alt: 'Badezimmer mit Dusche', tip: 'Geräumiges Badezimmer mit Walk-in-Dusche.' },
-        { src: '/foto/w18.webp', alt: 'Badezimmer-Ausstattung', tip: 'Handtücher, Hygieneprodukte und Zubehör.' },
+        { src: w17, alt: 'Badezimmer mit Dusche', tip: 'Geräumiges Badezimmer mit Walk-in-Dusche.' },
+        { src: w18, alt: 'Badezimmer-Ausstattung', tip: 'Handtücher, Hygieneprodukte und Zubehör.' },
       ],
     },
     parking: {
@@ -226,7 +239,7 @@ const tipClass = 'invisible opacity-0 w-[320px] bg-black/70 text-white text-cent
   <h3 class={h3Class}>{t.guide.title}</h3>
   <div class={sectionTextClass}>
     <a href={lang === 'de' ? 'https://lasbialas.pl/info/de/' : 'https://lasbialas.pl/info/'} target="_blank" rel="noopener noreferrer">
-      <Picture class="max-w-[20%] h-auto transition-transform hover:scale-[1.05] max-[768px]:max-w-[55%] inline-block" src="/foto/lasbialasqrc.png" alt={t.guide.qrAlt} width={150} height={150} formats={['avif', 'webp']} sizes="150px" />
+      <Picture class="max-w-[20%] h-auto transition-transform hover:scale-[1.05] max-[768px]:max-w-[55%] inline-block" src={lasbialasqrc} alt={t.guide.qrAlt} width={150} height={150} formats={['avif', 'webp']} sizes="150px" />
     </a>
   </div>
 </div>

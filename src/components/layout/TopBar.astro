@@ -1,6 +1,12 @@
 ---
 import { useTranslations } from '../../i18n/utils';
 import { Picture } from 'astro:assets';
+import lasbialasLogo from '../../assets/images/lasbialas.png';
+import telefonG from '../../assets/images/telefon-g.png';
+import whatsappGreen from '../../assets/images/whatsapp-green.png';
+import mailG from '../../assets/images/mail-g.png';
+import instagram from '../../assets/images/instagram.png';
+import cart from '../../assets/images/cart.png';
 
 interface Props {
   lang: 'pl' | 'en' | 'de';
@@ -17,7 +23,7 @@ const deUrl = '/de/';
 
 <div class="sticky top-0 z-[1000] w-full h-auto flex justify-between items-center gap-0 px-2.5 py-2.5 text-base text-brand-black bg-white/95 shadow-[0px_4px_8px_rgba(0,0,0,0.1)]">
   <a href={homeUrl}>
-    <Picture alt="Logo Las Biala's" src="/images/lasbialas.png" width={97} height={82} formats={['avif', 'webp']} class="h-auto max-h-[82px] w-auto max-w-[97px] ml-5 mr-4 object-contain" />
+    <Picture alt="Logo Las Biala's" src={lasbialasLogo} width={97} height={82} formats={['avif', 'webp']} class="h-auto max-h-[82px] w-auto max-w-[97px] ml-5 mr-4 object-contain" />
   </a>
 
   <div class="text-left flex-1 min-w-0">
@@ -32,7 +38,7 @@ const deUrl = '/de/';
       <a href="tel:+48789773285" class="flex items-center gap-1 lg:gap-2 text-brand-black no-underline hover:underline hover:text-brand-green transition-colors text-sm lg:text-base">
         <Picture
           alt="Telefon"
-          src="/images/telefon-g.png"
+          src={telefonG}
           width={24}
           height={24}
           formats={['avif', 'webp']}
@@ -43,7 +49,7 @@ const deUrl = '/de/';
       <a href="https://wa.me/48660194187" class="flex items-center gap-1 lg:gap-2 text-brand-black no-underline hover:underline hover:text-brand-green transition-colors text-sm lg:text-base">
         <Picture
           alt="WhatsApp"
-          src="/images/whatsapp-green.png"
+          src={whatsappGreen}
           width={24}
           height={24}
           formats={['avif', 'webp']}
@@ -54,7 +60,7 @@ const deUrl = '/de/';
       <a href="mailto:domki@lasbialas.pl" class="flex items-center gap-1 lg:gap-2 text-brand-black no-underline hover:underline hover:text-brand-green transition-colors text-sm lg:text-base hidden lg:flex">
         <Picture
           alt="Mail"
-          src="/images/mail-g.png"
+          src={mailG}
           width={24}
           height={24}
           formats={['avif', 'webp']}
@@ -70,7 +76,7 @@ const deUrl = '/de/';
       >
         <Picture
           alt="Instagram Las Biala's"
-          src="/images/instagram.png"
+          src={instagram}
           width={24}
           height={24}
           formats={['avif', 'webp']}
@@ -90,7 +96,7 @@ const deUrl = '/de/';
           class="inline-block p-2 rounded-full hover:bg-gray-100 transition-colors cursor-pointer border-0 bg-transparent"
           onclick="openReservation(); return false;"
         >
-          <Picture alt="Rezerwacja" src="/images/cart.png" width={32} height={32} formats={['avif', 'webp']} class="w-8 h-8" />
+          <Picture alt="Rezerwacja" src={cart} width={32} height={32} formats={['avif', 'webp']} class="w-8 h-8" />
         </button>
       </div>
     </div>
@@ -140,7 +146,7 @@ const deUrl = '/de/';
     <a href="tel:+48789773285" class="flex items-center gap-3 py-3 text-white no-underline hover:bg-white/15 rounded-lg transition-colors px-2">
       <Picture
         alt="Telefon"
-        src="/images/telefon-g.png"
+        src={telefonG}
         width={24}
         height={24}
         formats={['avif', 'webp']}
@@ -156,7 +162,7 @@ const deUrl = '/de/';
     <a href="https://wa.me/48660194187" class="flex items-center gap-3 py-3 text-white no-underline hover:bg-white/15 rounded-lg transition-colors px-2">
       <Picture
         alt="WhatsApp"
-        src="/images/whatsapp-green.png"
+        src={whatsappGreen}
         width={24}
         height={24}
         formats={['avif', 'webp']}
@@ -172,7 +178,7 @@ const deUrl = '/de/';
     <a href="mailto:domki@lasbialas.pl" class="flex items-center gap-3 py-3 text-white no-underline hover:bg-white/15 rounded-lg transition-colors px-2">
       <Picture
         alt="Mail"
-        src="/images/mail-g.png"
+        src={mailG}
         width={24}
         height={24}
         formats={['avif', 'webp']}
@@ -193,7 +199,7 @@ const deUrl = '/de/';
     >
       <Picture
         alt="Instagram Las Biala's"
-        src="/images/instagram.png"
+        src={instagram}
         width={24}
         height={24}
         formats={['avif', 'webp']}

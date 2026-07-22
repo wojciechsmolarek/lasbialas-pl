@@ -44,8 +44,8 @@ RewriteRule ^ %1 [R=301,L,NE]
 RewriteRule ^$ index.html [L]
 
 # Strony językowe /en/ i /de/
-RewriteRule ^en/$ en/index.html [L]
-RewriteRule ^de/$ de/index.html [L]
+RewriteRule ^en/$ en.html [L]
+RewriteRule ^de/$ de.html [L]
 
 # Clean URLs -> fizyczne pliki .html (również dla ścieżek zagnieżdżonych)
 RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}.html -f
@@ -59,12 +59,4 @@ RewriteRule ^en/local-directions\.html$ https://lasbialas.pl/info/en/#/before-ar
 RewriteRule ^de/anfahrt-vor-ort/?$ https://lasbialas.pl/info/de/#/vor-der-anreise/721 [R=301,L]
 RewriteRule ^de/anfahrt-vor-ort\.html$ https://lasbialas.pl/info/de/#/vor-der-anreise/721 [R=301,L]
 
-<If "%{REQUEST_URI} =~ m#^/de/#">
-  ErrorDocument 404 /de/404.html
-</If>
-<ElseIf "%{REQUEST_URI} =~ m#^/en/#">
-  ErrorDocument 404 /en/404.html
-</ElseIf>
-<Else>
-  ErrorDocument 404 /404.html
-</Else>
+ErrorDocument 404 /404.html

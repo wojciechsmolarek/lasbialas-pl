@@ -25,12 +25,12 @@ const categories = faqData[lang];
         <button
           class="faq-category-btn w-full flex items-center justify-between px-[20px] py-[14px] bg-[#f8f8f8] hover:bg-[#f0f0f0] transition-colors cursor-pointer border-0 text-left"
           onclick="faqToggleCategory(this)"
-          aria-expanded={ci === 0 ? 'true' : 'false'}
+          aria-expanded="false"
         >
           <span class="text-[1.1rem] font-semibold text-[#2c2c2c]">{cat.title}</span>
           <span class="faq-arrow text-[#2F6940] text-[1.2rem] transition-transform duration-300">▶</span>
         </button>
-        <div class={`faq-questions overflow-hidden transition-all duration-300 ${ci === 0 ? 'max-h-[2000px]' : 'max-h-0'}`}>
+        <div class="faq-questions overflow-hidden transition-all duration-300 max-h-0">
           {cat.questions.map((item: any, qi: number) => (
             <div class="faq-question-wrapper border-t border-[#eee]" data-question={`${ci}-${qi}`}>
               <button

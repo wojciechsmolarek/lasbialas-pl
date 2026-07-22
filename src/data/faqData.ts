@@ -1,4 +1,4 @@
-export interface FAQCategory {
+interface FAQCategory {
   title: string;
   questions: { q: string; a: string }[];
 }

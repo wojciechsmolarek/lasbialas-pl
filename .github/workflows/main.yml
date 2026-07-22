@@ -1,0 +1,53 @@
+name: Deploy Astro via NPM to Seohost
+
+on:
+  push:
+    branches: [ main ]
+  # Wyzwalacz nasłuchujący sygnału z WordPressa
+  repository_dispatch:
+    types: [wordpress_publish]
+
+# Zabezpieczenie przed jednoczesnym uruchomieniem dwóch deployów na raz
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: Build Astro
+        run: npm run build
+
+      # UWAGA: Katalogi /info/ oraz /blog/ na serwerze to instalacje WordPressa.
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.LAS_BIALAS_FTP_SERVER }}
+          username: ${{ secrets.LAS_BIALAS_USERNAME }}
+          password: ${{ secrets.LAS_BIALAS_PASSWORD }}
+          local-dir: ./dist/
+          server-dir: /public_html/
+          protocol: ftp
+          port: 21
+          timeout: 600000
+          dangerous-clean-slate: false
+          exclude: |
+            info/**
+            blog/**
+          log-level: verbose

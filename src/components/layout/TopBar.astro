@@ -21,9 +21,9 @@ const enUrl = '/en/';
 const deUrl = '/de/';
 ---
 
-<div class="sticky top-0 z-[1000] w-full h-auto flex justify-between items-center gap-0 px-2.5 py-2.5 text-base text-brand-black bg-white/95 shadow-[0px_4px_8px_rgba(0,0,0,0.1)]">
+<div class="sticky top-0 z-[1000] w-full h-auto flex justify-between items-center gap-0 px-2 py-1.5 sm:px-2.5 sm:py-2.5 text-base text-brand-black bg-white/95 shadow-[0px_4px_8px_rgba(0,0,0,0.1)] overflow-visible">
   <a href={homeUrl}>
-    <Picture alt="Logo Las Biala's" src={lasbialasLogo} width={97} height={82} formats={['avif', 'webp']} class="h-auto max-h-[82px] w-auto max-w-[97px] ml-5 mr-4 object-contain" />
+    <Picture alt="Logo Las Biala's" src={lasbialasLogo} width={97} height={82} formats={['avif', 'webp']} class="h-auto max-h-[52px] sm:max-h-[82px] w-auto max-w-[70px] sm:max-w-[97px] ml-2 sm:ml-5 mr-2 sm:mr-4 object-contain" />
   </a>
 
   <div class="text-left flex-1 min-w-0">
@@ -103,7 +103,7 @@ const deUrl = '/de/';
 
     <!-- Hamburger menu - CSS icon instead of image -->
     <button 
-      class="max-[1069px]:flex min-[1070px]:hidden cursor-pointer p-2 border-0 bg-transparent hover:bg-gray-100 rounded-md transition-colors"
+      class="max-[1069px]:flex min-[1070px]:hidden cursor-pointer p-1.5 sm:p-2 border-0 bg-transparent hover:bg-gray-100 rounded-md transition-colors"
       onclick="toggleMenu()"
       aria-label="Menu"
       data-hamburger

@@ -199,6 +199,56 @@ const hreflangs = [
       };
     </script>
 
+    <!-- Enforce full-width Bookero toggle on mobile after plugin closes -->
+    <script is:inline>
+      (function() {
+        function enforceMobileToggle() {
+          if (window.innerWidth > 960) return;
+          var toggle = document.querySelector('.bookero-sticky-plugin-toggle');
+          if (!toggle) return;
+          toggle.style.setProperty('width', '100vw', 'important');
+          toggle.style.setProperty('max-width', '100vw', 'important');
+          toggle.style.setProperty('height', '60px', 'important');
+          toggle.style.setProperty('left', '0', 'important');
+          toggle.style.setProperty('right', '0', 'important');
+          toggle.style.setProperty('bottom', '0', 'important');
+          toggle.style.setProperty('top', 'auto', 'important');
+          toggle.style.setProperty('margin', '0', 'important');
+          toggle.style.setProperty('border-radius', '0', 'important');
+          toggle.style.setProperty('transform', 'none', 'important');
+        }
+
+        function initObserver() {
+          var plugin = document.getElementById('bookero-plugin');
+          if (!plugin) {
+            setTimeout(initObserver, 500);
+            return;
+          }
+          var toggle = plugin.querySelector('.bookero-sticky-plugin-toggle');
+          if (!toggle) {
+            setTimeout(initObserver, 500);
+            return;
+          }
+          enforceMobileToggle();
+          var observer = new MutationObserver(function() {
+            enforceMobileToggle();
+          });
+          observer.observe(toggle, { attributes: true, attributeFilter: ['style', 'class'] });
+        }
+
+        document.addEventListener('bookero-plugin:loaded', function() {
+          setTimeout(initObserver, 300);
+        });
+        if (document.readyState !== 'loading') {
+          setTimeout(initObserver, 1000);
+        } else {
+          document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(initObserver, 1000);
+          });
+        }
+      })();
+    </script>
+
     <!-- Bookero Validation (Minimum 3 nights) -->
     <script is:inline>
       (function() {

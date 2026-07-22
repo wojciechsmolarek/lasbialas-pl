@@ -14,7 +14,7 @@
   body {
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
+    overflow-x: clip;
     background-color: #fff;
   }
 }
@@ -31,17 +31,23 @@ body #bookero-plugin[data-mode=sticky] .bookero-sticky-plugin-toggle {
 }
 
 @media (max-width: 960px) {
+  body #bookero-plugin .bookero-sticky-plugin-toggle,
   body #bookero-plugin[data-mode=sticky] .bookero-sticky-plugin-toggle {
     background: #2F6940 !important;
-    width: 100vw;
-    max-width: 100vw;
-    height: 60px;
-    box-sizing: border-box;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: 60px !important;
+    box-sizing: border-box !important;
     margin-bottom: 0 !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
     bottom: 0 !important;
     left: 0 !important;
     right: 0 !important;
+    top: auto !important;
     border-radius: 0 !important;
+    position: fixed !important;
+    transform: none !important;
   }
 }
 
@@ -236,12 +242,14 @@ body #bookero-plugin .bookero-plugin-form-heading {
 }
 
 .promo-h2 {
+  display: block;
   font-size: 24px;
   text-align: center;
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
   color: #131212;
   font-weight: 700;
+  text-transform: uppercase;
 }
 
 .promo-list {

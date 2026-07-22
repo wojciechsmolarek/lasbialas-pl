@@ -1,7 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(\"$LOCALAPPDATA/Programs/Devin/bin/devin-desktop\" --help)"
-    ]
-  }
-}

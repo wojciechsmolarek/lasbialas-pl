@@ -12,9 +12,10 @@ interface Props {
   lang?: 'pl' | 'en' | 'de';
   canonical?: string;
   ogImage?: string;
+  isHomePage?: boolean;
 }
 
-const { title, description, lang = 'pl', canonical, ogImage } = Astro.props;
+const { title, description, lang = 'pl', canonical, ogImage, isHomePage = false } = Astro.props;
 ---
 
 <BaseLayout
@@ -27,7 +28,7 @@ const { title, description, lang = 'pl', canonical, ogImage } = Astro.props;
   <slot name="head" slot="head" />
 
   <PromoBar lang={lang} />
-  <TopBar lang={lang} />
+  <TopBar lang={lang} isHomePage={isHomePage} />
 
   <main>
     <slot />

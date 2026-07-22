@@ -10,9 +10,10 @@ import cart from '../../assets/images/cart.png';
 
 interface Props {
   lang: 'pl' | 'en' | 'de';
+  isHomePage?: boolean;
 }
 
-const { lang } = Astro.props;
+const { lang, isHomePage = false } = Astro.props;
 const t = useTranslations(lang);
 
 const homeUrl = lang === 'pl' ? '/' : `/${lang}/`;
@@ -27,9 +28,9 @@ const deUrl = '/de/';
   </a>
 
   <div class="text-left flex-1 min-w-0">
-    <h1 class="font-semibold text-xs sm:text-sm md:text-base lg:text-lg truncate max-[1265px]:hidden">
-      {t('header.title.main')}
-    </h1>
+    {isHomePage
+      ? <h1 class="font-semibold text-xs sm:text-sm md:text-base lg:text-lg truncate max-[1265px]:hidden">{t('header.title.main')}</h1>
+      : <span class="font-semibold text-xs sm:text-sm md:text-base lg:text-lg truncate max-[1265px]:hidden">{t('header.title.main')}</span>}
     <span class="font-extralight text-[10px] sm:text-xs md:text-sm lg:text-base block truncate max-[1265px]:hidden">{t('header.subtitle')}</span>
   </div>
 

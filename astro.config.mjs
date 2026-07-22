@@ -9,7 +9,10 @@ export default defineConfig({
 
   build: {
     inlineStylesheets: 'always',
+    format: 'file',
   },
+
+  trailingSlash: 'never',
 
   i18n: {
     defaultLocale: 'pl',

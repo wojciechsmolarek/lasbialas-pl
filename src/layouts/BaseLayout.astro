@@ -24,6 +24,13 @@ const {
 
 const siteUrl = 'https://lasbialas.pl';
 
+// Clean pathname: strip .html extension (from build.format: 'file'), normalize /index.html to /
+const cleanPathname = Astro.url.pathname
+  .replace(/\/index\.html$/, '/')
+  .replace(/\.html$/, '');
+
+const canonicalUrl = canonical || `${siteUrl}${cleanPathname}`;
+
 // Generate hreflang links
 const hreflangs = [
   { lang: 'pl', url: lang === 'pl' ? siteUrl : `${siteUrl}/` },
@@ -40,14 +47,16 @@ const hreflangs = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
 
     <style is:inline>
-      @font-face{font-display:optional;font-family:Montserrat;font-style:normal;font-weight:200;src:url(/fonts/Montserrat-Light.woff2) format('woff2')}
-      @font-face{font-display:optional;font-family:Montserrat;font-style:normal;font-weight:400;src:url(/fonts/Montserrat-Regular.woff2) format('woff2')}
-      @font-face{font-display:optional;font-family:Montserrat;font-style:normal;font-weight:600;src:url(/fonts/Montserrat-SemiBold.woff2) format('woff2')}
+      @font-face{font-display:optional;font-family:Montserrat;font-style:normal;font-weight:200;src:url(/fonts/Montserrat-Light-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+      @font-face{font-display:optional;font-family:Montserrat;font-style:normal;font-weight:200;src:url(/fonts/Montserrat-Light-latin-ext.woff2) format('woff2');unicode-range:U+0100-024F,U+0259,U+1E00-1EFF}
+      @font-face{font-display:optional;font-family:Montserrat;font-style:normal;font-weight:400;src:url(/fonts/Montserrat-Regular-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+      @font-face{font-display:optional;font-family:Montserrat;font-style:normal;font-weight:400;src:url(/fonts/Montserrat-Regular-latin-ext.woff2) format('woff2');unicode-range:U+0100-024F,U+0259,U+1E00-1EFF}
+      @font-face{font-display:optional;font-family:Montserrat;font-style:normal;font-weight:600;src:url(/fonts/Montserrat-SemiBold-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+      @font-face{font-display:optional;font-family:Montserrat;font-style:normal;font-weight:600;src:url(/fonts/Montserrat-SemiBold-latin-ext.woff2) format('woff2');unicode-range:U+0100-024F,U+0259,U+1E00-1EFF}
     </style>
 
-    <!-- Preload critical fonts (needed for font-display: optional to load in time) -->
-    <link rel="preload" href="/fonts/Montserrat-Regular.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/fonts/Montserrat-Light.woff2" as="font" type="font/woff2" crossorigin />
+    <!-- Preload critical font (Light-Latin only, needed for font-display: optional) -->
+    <link rel="preload" href="/fonts/Montserrat-Light-latin.woff2" as="font" type="font/woff2" crossorigin />
 
     <!-- DNS prefetch for external domains (lazy-loaded, not critical) -->
     <link rel="dns-prefetch" href="https://cdn.bookero.pl" />
@@ -57,13 +66,13 @@ const hreflangs = [
     <SEO
       title={title}
       description={description}
-      canonical={canonical || `${siteUrl}${Astro.url.pathname}`}
+      canonical={canonicalUrl}
       openGraph={{
         basic: {
           title: title,
           type: 'website',
           image: `${siteUrl}${ogImage}`,
-          url: canonical || `${siteUrl}${Astro.url.pathname}`
+          url: canonicalUrl
         },
         image: {
           width: 1200,

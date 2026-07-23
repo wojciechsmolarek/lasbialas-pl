@@ -33,7 +33,7 @@ const t = {
 }[lang];
 ---
 
-<div class="grid grid-cols-4 gap-[7px] mt-2.5 mb-2.5 max-[1024px]:grid-cols-2">
+<div class="grid grid-cols-4 gap-[3px] mt-2.5 mb-2.5 max-[1024px]:grid-cols-2">
   {[8,9,10,11,12,13,14,15].map((i, idx) => (
     <div class="relative inline-block group">
       <Picture src={images[idx]} alt={t.alt[idx]} width={834} height={470} formats={['avif', 'webp']} sizes="(max-width: 1024px) 50vw, 25vw" loading="lazy" decoding="async" onclick={`openImage(${i})`} class="block w-full h-auto object-cover cursor-pointer transition-transform duration-200" />

@@ -10,7 +10,6 @@ import w13 from '../../assets/foto/w13.webp';
 import w15 from '../../assets/foto/w15.webp';
 import w17 from '../../assets/foto/w17.webp';
 import w18 from '../../assets/foto/w18.webp';
-import lasbialasqrc from '../../assets/foto/lasbialasqrc.png';
 
 interface Props {
   lang: 'pl' | 'en' | 'de';
@@ -61,7 +60,8 @@ const t = {
     },
     guide: {
       title: 'Przewodnik LAS BIALA\'S',
-      qrAlt: 'QR kod do przewodnika LAS BIALA\'S',
+      text: 'Więcej szczegółów dotyczących wyposażenia, udogodnień i pobytu na miejscu znajdziesz w naszym <a href="{#guide}" target="_blank" class="text-brand-green underline">przewodniku</a>.',
+      btn: 'Przewodnik',
     },
   },
   en: {
@@ -104,7 +104,8 @@ const t = {
     },
     guide: {
       title: 'Guidebook LAS BIALA\'S',
-      qrAlt: 'QR code to LAS BIALA\'S guidebook',
+      text: 'More details about the equipment, amenities, and your stay can be found in our <a href="{#guide}" target="_blank" class="text-brand-green underline">guide</a>.',
+      btn: 'Guestbook',
     },
   },
   de: {
@@ -147,7 +148,8 @@ const t = {
     },
     guide: {
       title: 'Gästeführer LAS BIALA\'S',
-      qrAlt: 'QR-Code zum LAS BIALA\'S Gästeführer',
+      text: 'Weitere Details zur Ausstattung, zu den Annehmlichkeiten und zum Aufenthalt findest du in unserem <a href="{#guide}" target="_blank" class="text-brand-green underline">Leitfaden</a>.',
+      btn: 'Reiseführer',
     },
   },
 }[lang];
@@ -156,6 +158,12 @@ const guideHref = {
   pl: 'https://lasbialas.pl/info/#/na-miejscu/505',
   en: 'https://lasbialas.pl/info/en/#/on-site/505',
   de: 'https://lasbialas.pl/info/de/#/vor-ort/505',
+}[lang];
+
+const mainGuideHref = {
+  pl: 'https://lasbialas.pl/info/',
+  en: 'https://lasbialas.pl/info/en/',
+  de: 'https://lasbialas.pl/info/de/',
 }[lang];
 
 const h3Class = 'text-[1.3rem] text-center mt-[40px] mb-[15px] font-semibold text-[#2c2c2c]';
@@ -235,11 +243,12 @@ const tipClass = 'invisible opacity-0 w-[320px] bg-black/70 text-white text-cent
     <p>{t.parking.text}</p>
   </div>
 
-  {/* Guide QR */}
+  {/* Guide */}
   <h3 class={h3Class}>{t.guide.title}</h3>
   <div class={sectionTextClass}>
-    <a href={lang === 'de' ? 'https://lasbialas.pl/info/de/' : 'https://lasbialas.pl/info/'} target="_blank" rel="noopener noreferrer">
-      <Picture class="max-w-[20%] h-auto transition-transform hover:scale-[1.05] max-[768px]:max-w-[55%] inline-block" src={lasbialasqrc} alt={t.guide.qrAlt} width={150} height={150} formats={['avif', 'webp']} sizes="150px" />
-    </a>
+    <p set:html={t.guide.text.replace('{#guide}', mainGuideHref)}></p>
+  </div>
+  <div class="flex justify-center mt-[30px]">
+    <a class="inline-flex justify-center items-center w-auto h-[46px] text-base font-normal text-white bg-[#E97E2D] border-none text-center no-underline normal-case cursor-pointer mb-[30px] mt-[10px] px-[15px] hover:bg-[#c4621a] transition-colors" href={mainGuideHref} target="_blank">{t.guide.btn}</a>
   </div>
 </div>

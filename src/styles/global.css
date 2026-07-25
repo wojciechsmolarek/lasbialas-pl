@@ -341,13 +341,15 @@ body #bookero-plugin .bookero-plugin-form-heading {
   color: #131212;
   transition: color 0.2s;
   line-height: 1;
+  display: inline-flex;
+  align-items: center;
   vertical-align: middle;
 }
-
 .copy-btn svg {
   display: block;
+  width: 1.4rem;
+  height: 1.4rem;
 }
-
 .copy-btn:hover {
   color: #2F6940;
 }

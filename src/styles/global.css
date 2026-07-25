@@ -64,8 +64,8 @@ body .bookero-plugin-form .field .multiselect__option--highlight {
 
 body .bookero-plugin-form .calendar-days-list-cell.is-valid {
   color: #2F6940 !important;
-  background: #f0f0f0 !important;
-  border-color: #f0f0f0 !important;
+  background: #e8e8e8 !important;
+  border-color: #e8e8e8 !important;
 }
 
 body .bookero-plugin-form .calendar-days-list-cell.is-selected,

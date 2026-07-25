@@ -26,13 +26,12 @@ const deUrl = '/de/';
   <a href={homeUrl}>
     <Picture alt="Logo Las Biala's" src={lasbialasLogo} width={97} height={82} formats={['avif', 'webp']} class="h-[52px] w-[62px] sm:h-[82px] sm:w-[97px] ml-2 sm:ml-5 mr-2 sm:mr-4 object-contain" />
   </a>
-<div class="text-left flex-1 min-w-0">
+<div class="text-left flex-1 min-w-0 flex flex-col justify-center ml-3 sm:ml-4">
     {isHomePage
-      ? <h1 class="font-semibold text-xs sm:text-sm md:text-base lg:text-lg truncate">{t('header.title.main')}</h1>
-      : <span class="font-semibold text-xs sm:text-sm md:text-base lg:text-lg truncate">{t('header.title.main')}</span>}
-    <span class="font-extralight text-[10px] sm:text-xs md:text-sm lg:text-base block truncate">{t('header.subtitle')}</span>
+      ? <h1 class="font-semibold text-base sm:text-lg md:text-base lg:text-lg truncate">{t('header.title.main')}</h1>
+      : <span class="font-semibold text-base sm:text-lg md:text-base lg:text-lg truncate">{t('header.title.main')}</span>}
+    <span class="font-extralight text-xs sm:text-sm md:text-sm lg:text-base block truncate">{t('header.subtitle')}</span>
   </div>
-
   <div>
     <div class="hidden flex-wrap items-center gap-2 lg:gap-3 xl:gap-4 min-[1070px]:flex">
       <a href="tel:+48789773285" class="flex items-center gap-1 lg:gap-2 text-brand-black no-underline hover:underline hover:text-brand-green transition-colors text-sm lg:text-base">

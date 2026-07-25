@@ -26,12 +26,11 @@ const deUrl = '/de/';
   <a href={homeUrl}>
     <Picture alt="Logo Las Biala's" src={lasbialasLogo} width={97} height={82} formats={['avif', 'webp']} class="h-[52px] w-[62px] sm:h-[82px] sm:w-[97px] ml-2 sm:ml-5 mr-2 sm:mr-4 object-contain" />
   </a>
-
-  <div class="text-left flex-1 min-w-0">
+<div class="text-left flex-1 min-w-0">
     {isHomePage
-      ? <h1 class="font-semibold text-xs sm:text-sm md:text-base lg:text-lg truncate max-[1265px]:hidden">{t('header.title.main')}</h1>
-      : <span class="font-semibold text-xs sm:text-sm md:text-base lg:text-lg truncate max-[1265px]:hidden">{t('header.title.main')}</span>}
-    <span class="font-extralight text-[10px] sm:text-xs md:text-sm lg:text-base block truncate max-[1265px]:hidden">{t('header.subtitle')}</span>
+      ? <h1 class="font-semibold text-xs sm:text-sm md:text-base lg:text-lg truncate">{t('header.title.main')}</h1>
+      : <span class="font-semibold text-xs sm:text-sm md:text-base lg:text-lg truncate">{t('header.title.main')}</span>}
+    <span class="font-extralight text-[10px] sm:text-xs md:text-sm lg:text-base block truncate">{t('header.subtitle')}</span>
   </div>
 
   <div>

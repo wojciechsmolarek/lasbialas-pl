@@ -249,7 +249,7 @@ body #bookero-plugin .bookero-plugin-form-heading {
   margin-bottom: 1.25rem;
   color: #131212;
   font-weight: 700;
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .promo-list {

@@ -100,9 +100,9 @@ const guideHref = {
 
 const colW = ['w-[40%] max-[768px]:w-[38%]', 'w-[30%] max-[768px]:w-[30%]', 'w-[30%] max-[768px]:w-[32%]'];
 
-const tableClass = 'w-full max-w-[900px] border-collapse text-base max-[768px]:text-[0.8rem] my-[30px] mx-auto bg-[#f4f4f4] border-2 border-white text-center table-fixed max-[768px]:table-auto';
-const thClass = 'bg-[#362e27] text-white font-semibold px-[6px] py-[4px] h-[40px] border-2 border-white align-middle max-[768px]:text-[0.7rem] max-[768px]:leading-[1.2] max-[768px]:break-words max-[768px]:whitespace-normal';
-const tdClass = 'h-[60px] p-[6px] border-2 border-white align-middle max-[768px]:text-[0.75rem] max-[768px]:h-[48px] max-[768px]:break-words';
+const tableClass = 'w-full max-w-[900px] border-collapse text-base max-[768px]:text-[1rem] my-[30px] mx-auto bg-[#f4f4f4] border-2 border-white text-center table-fixed max-[768px]:table-auto';
+const thClass = 'bg-[#362e27] text-white font-semibold px-[6px] py-[4px] h-[40px] border-2 border-white align-middle max-[768px]:text-[1rem] max-[768px]:leading-[1.2] max-[768px]:break-words max-[768px]:whitespace-normal';
+const tdClass = 'h-[60px] p-[6px] border-2 border-white align-middle max-[768px]:text-[1rem] max-[768px]:h-[48px] max-[768px]:break-words';
 ---
 
 <div class="max-w-[73%] border border-[#ccc] rounded-[5px] py-[10px] px-[80px] mx-auto mb-5 bg-white text-base text-center max-[768px]:max-w-[96vw] max-[768px]:p-5 max-[768px]:my-[1px] max-[768px]:mb-5 max-[768px]:text-[0.75rem]">
@@ -159,11 +159,11 @@ const tdClass = 'h-[60px] p-[6px] border-2 border-white align-middle max-[768px]
   </div>
 
   {/* Free items */}
-  <h3 class="text-[1.3rem] max-[768px]:text-[1.3rem] text-center mt-[40px] mb-[15px] font-semibold text-[#2c2c2c]">{t.freeTitle}</h3>
+  <h3 class="text-[1.3rem] max-[768px]:text-[1rem] text-center mt-[40px] mb-[15px] font-semibold text-[#2c2c2c]">{t.freeTitle}</h3>
   <div class="text-base leading-[1.6] text-brand-black">
     <ul class="flex flex-wrap justify-center gap-y-[6px] gap-x-[16px] my-2.5 p-0 list-none">
       {t.freeItems.map((item: string) => (
-        <li class="m-0 leading-[1.4] text-[1.3rem] flex items-center">
+        <li class="m-0 leading-[1.4] text-[1rem] flex items-center">
           <span class="inline-block w-[0.45rem] h-[0.45rem] bg-[#2F6940] mr-[.5em] shrink-0"></span>{item}
         </li>
       ))}

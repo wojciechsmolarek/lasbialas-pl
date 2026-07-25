@@ -80,7 +80,7 @@ const allReviews = JSON.stringify(reviews);
 
 <div class="max-w-[73%] border border-[#ccc] rounded-[5px] py-[10px] px-[80px] mx-auto mb-5 bg-white text-base text-center max-[768px]:max-w-[96vw] max-[768px]:p-5 max-[768px]:my-[1px] max-[768px]:mb-5 max-[768px]:text-[1rem]">
   <h2 class="text-[24px] text-center mt-5 mb-2 text-brand-black font-bold">{t.title}</h2>
-  <p class="text-[16px] text-[#666] mb-2">{t.subtitle}</p>
+  <p class="text-[1rem] text-[#666] mb-2">{t.subtitle}</p>
   <p class="text-[15px] text-brand-green font-semibold mb-5 inline-flex items-center gap-[8px]">
     <span class="text-[18px]">⭐⭐⭐⭐⭐</span>
     <span>{t.ratingSummary} {avgRating} {t.outOf} {totalReviews} {t.reviewsCount}</span>
@@ -97,7 +97,7 @@ const allReviews = JSON.stringify(reviews);
             {review.author.charAt(0).toUpperCase()}
           </div>
           <div class="flex flex-col min-w-0">
-            <span class="font-semibold text-[15px] text-brand-black truncate">{review.author}</span>
+            <span class="font-semibold text-[1rem] text-brand-black truncate">{review.author}</span>
             <span class="flex items-center gap-[4px] text-[13px] text-[#666]">
               {review.source && sourceIcon[review.source] && (
                 <img src={sourceIcon[review.source]} alt={review.source} width="14" height="14" class="inline-block" />
@@ -108,7 +108,7 @@ const allReviews = JSON.stringify(reviews);
         </div>
         <div class="mb-2 text-[16px] leading-none" set:html={renderStars(review.rating)}></div>
         {localizedContent(review) && (
-          <p class="text-[14px] leading-[1.6] text-[#444] whitespace-pre-line line-clamp-6 overflow-hidden">{localizedContent(review)}</p>
+          <p class="text-[1rem] leading-[1.6] text-[#444] whitespace-pre-line line-clamp-6 overflow-hidden">{localizedContent(review)}</p>
         )}
         {lang !== 'pl' && localizedContent(review) && (
           <p class="text-[12px] text-[#666] italic mt-2">{t.translatedFrom}</p>
@@ -178,7 +178,7 @@ const allReviews = JSON.stringify(reviews);
       }
 
       var localizedContent = lang === 'en' ? review.content_en : lang === 'de' ? review.content_de : review.content;
-      var contentHtml = localizedContent ? '<p class="text-[14px] leading-[1.6] text-[#444] whitespace-pre-line line-clamp-6 overflow-hidden">' + escapeHtml(localizedContent) + '</p>' : '';
+      var contentHtml = localizedContent ? '<p class="text-[1rem] leading-[1.6] text-[#444] whitespace-pre-line line-clamp-6 overflow-hidden">' + escapeHtml(localizedContent) + '</p>' : '';
       if (lang !== 'pl' && localizedContent) {
         contentHtml += '<p class="text-[12px] text-[#666] italic mt-2">' + escapeHtml(t.translatedFrom) + '</p>';
       }
@@ -187,7 +187,7 @@ const allReviews = JSON.stringify(reviews);
         '<div class="flex items-center gap-[12px] mb-3">' +
           avatarHtml +
           '<div class="flex flex-col min-w-0">' +
-            '<span class="font-semibold text-[15px] text-brand-black truncate">' + escapeHtml(review.author) + '</span>' +
+            '<span class="font-semibold text-[1rem] text-brand-black truncate">' + escapeHtml(review.author) + '</span>' +
             '<span class="flex items-center gap-[4px] text-[13px] text-[#666]">' + sourceIconHtml + escapeHtml(review.source) + '</span>' +
           '</div>' +
         '</div>' +

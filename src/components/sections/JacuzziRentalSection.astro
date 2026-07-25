@@ -24,8 +24,6 @@ const t = {
     note: [
       'Cena wynajmu obejmuje opłatę za przygotowanie (150 zł) oraz opłatę za korzystanie zależną od długości pobytu.',
     ],
-    petTitle: 'Zasady dotyczące zwierząt',
-    petText: 'Z uwagi na charakter obiektu oraz względy organizacyjne, <b>nie przyjmujemy pobytów ze zwierzętami.</b> Uprzejmie prosimy o uwzględnienie tej zasady przy planowaniu rezerwacji.',
   },
   en: {
     title: 'Jacuzzi rental',
@@ -45,12 +43,10 @@ const t = {
     note: [
       'The rental price includes a preparation fee (150 PLN) and a daily usage fee, calculated in the booking system depending on the length of stay.',
     ],
-    petTitle: 'Pet policy',
-    petText: 'Due to the character of the property and organizational reasons, stays with pets are not accepted. Please take this into account when booking.',
   },
   de: {
     title: 'Jacuzzi-Miete',
-    intro: 'Die Nutzung des Jacuzzis ist optional und umfasst uneingeschränkten Zugang zu Ihrem privaten Jacuzzi, den Sie jederzeit nutzen können. Das Jacuzzi befindet sich direkt neben dem Ferienhaus, umgeben von hohen Kiefern. Es verfügt über dauerhaft beheiztes Wasser (37–38 °C bzw. nach Wunsch), ein Luftmassage-System, LED-Beleuchtung sowie eine Pergola mit verstellbarem Dach und Vorhängen. Wir verwenden kein Chlor – das Wasser wird vor jedem Aufenthalt gewechselt und regelmäßig gewartet',
+    intro: 'Die Nutzung des Jacuzzis ist optional und umfasst uneingeschränkten Zugang zu Ihrem privaten Jacuzzi, den Sie jederzeit nutzen können. Das Jacuzzi befindet sich direkt neben dem Ferienhaus, umgeben von hohen Kiefern. Es verfügt über dauerhaft beheiztes Wasser (37–38 °C bzw. nach Wunsch), ein Luftmassage-System, LED-Beleuchtung sowie eine Pergola mit verstellbarem Dach und Vorhängen. Wir verwenden kein Chlor – das Wasser wird vor jedem Aufenthalt gewechselt und regelmäßig gewartet.',
     colsHeader: ['Aufenthaltsdauer', 'Jacuzzi-Preis pro Aufenthalt'],
     colsSub: ['1–2 Pers.', '3–4 Pers.'],
     rows: [
@@ -64,10 +60,8 @@ const t = {
       ['Jacuzzi-Vorbereitung pro Aufenthalt', '150 zł'],
     ],
     note: [
-      'Der Mietpreis beinhaltet die Vorbereitungsgebühr (150 PLN) sowie die tägliche Nutzungsgebühr und wird im Buchungssystem je nach Aufenthaltsdauer berechnet.'
+      'Der Mietpreis beinhaltet die Vorbereitungsgebühr (150 PLN) sowie die tägliche Nutzungsgebühr und wird im Buchungssystem je nach Aufenthaltsdauer berechnet.',
     ],
-    petTitle: 'Haustierregelung',
-    petText: 'Aufgrund der Beschaffenheit des Objekts und organisatorischer Gründe sind Aufenthalte mit Haustieren nicht gestattet. Bitte berücksichtigen Sie dies bei Ihrer Buchung.',
   },
 }[lang];
 ---
@@ -104,7 +98,7 @@ const t = {
     ))}
   </div>
 
- {/* Fees table */}
+  {/* Fees table */}
   <table class="w-full max-w-[900px] border-collapse text-base max-[768px]:text-[1rem] my-[30px] mx-auto bg-[#f4f4f4] border-2 border-white text-center table-fixed max-[768px]:table-auto">
     <colgroup>
       <col class="w-[55%]" />
@@ -125,7 +119,4 @@ const t = {
       ))}
     </tbody>
   </table>
-
-  <h2 class="text-[24px] max-[768px]:text-[1.2rem] mb-5 mt-5 text-brand-black font-bold" id="cennik-jacuzzi">{t.petTitle}</h2>
-  <p class="text-base max-[768px]:text-[1rem] leading-[1.6]" set:html={t.petText}></p>
 </div>

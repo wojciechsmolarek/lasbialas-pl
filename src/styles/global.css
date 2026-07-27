@@ -62,7 +62,6 @@ body #bookero-plugin .bookero-sticky-plugin-toggle:first-of-type {
 body #bookero-plugin .bookero-sticky-plugin-toggle:first-of-type:hover {
   background: #333 !important;
 }
-
 body .bookero-plugin-hideable-part .bookero-plugin-header {
   background: none !important;
   color: #2F6940 !important;

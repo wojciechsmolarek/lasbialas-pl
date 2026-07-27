@@ -25,7 +25,7 @@ body #bookero-plugin[data-mode=sticky] .bookero-sticky-plugin-toggle {
   width: 220px;
   height: 56px;
   opacity: 0.96;
-  right: 6px !important;
+  right: 3px !important;
   bottom: 3px !important;
   border-radius: 6px !important;
   font-family: 'Montserrat', sans-serif;

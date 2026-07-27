@@ -51,11 +51,11 @@ body #bookero-plugin[data-mode=sticky] .bookero-sticky-plugin-toggle {
     transform: none !important;
   }
 }
-/* Przycisk "Zamknij" w otwartym panelu — szary zamiast zielonego */
-body #bookero-plugin:not([data-mode=sticky]) .bookero-sticky-plugin-toggle {
+/* "Zamknij" (pierwszy toggle) — szary; "Rezerwacja" (ostatni) zostaje zielony */
+body #bookero-plugin > .bookero-sticky-plugin-toggle:not(:last-of-type) {
   background: #4a4a4a !important;
 }
-body #bookero-plugin:not([data-mode=sticky]) .bookero-sticky-plugin-toggle:hover {
+body #bookero-plugin > .bookero-sticky-plugin-toggle:not(:last-of-type):hover {
   background: #333 !important;
 }
 

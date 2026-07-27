@@ -12,7 +12,7 @@ export const siteConfig: SiteConfig = {
   "promoBar": {
     "enabled": true,
     "messages": {
-      "pl": `<span class="text-white" style="font-weight:600;">Rezerwacje na</span><span class="promo-label"> 2 doby</span><span class="text-white" style="font-weight:600;"> tylko telefonicznie</span>`,
+      "pl": `<span class="text-white" style="font-weight:600;">Rezerwacje na</span><span class="promo-label"> 2 doby</span><span class="text-white" style="font-weight:600;"> telefonicznie</span>`,
       "en": `<span class="promo-label">2-night stays</span><span class="text-white" style="font-weight:600;"> phone bookings only</span>`,
       "de": `<span class="promo-label">2-Nächte-Buchungen</span><span class="text-white" style="font-weight:600;"> nur telefonisch</span>`
     }

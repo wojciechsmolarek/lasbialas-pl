@@ -55,9 +55,9 @@ body #bookero-plugin[data-mode=sticky] .bookero-sticky-plugin-toggle {
 /* "Zamknij" — szary i węższy; "Rezerwacja" zostaje zielony */
 body #bookero-plugin[data-mode="sticky"] .bookero-sticky-plugin-content .bookero-sticky-plugin-toggle {
   background: #4a4a4a !important;
-  left: 4% !important;
-  right: 4% !important;
-  width: 92% !important;
+  left: 3.5% !important;
+  right: 3.5% !important;
+  width: 93% !important;
 }
 body #bookero-plugin[data-mode="sticky"] .bookero-sticky-plugin-content .bookero-sticky-plugin-toggle:hover {
   background: #333 !important;

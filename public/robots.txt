@@ -1,4 +1,28 @@
-User-agent: *
+# --- OpenAI ---
+User-agent: OAI-SearchBot
 Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: GPTBot
+Allow: /
+# --- Anthropic ---
+User-agent: Claude-SearchBot
+Allow: /
+User-agent: Claude-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+# --- Perplexity ---
+User-agent: PerplexityBot
+Allow: /
+# --- Google ---
+User-agent: Google-Extended
+Allow: /
+# --- Common Crawl ---
+User-agent: CCBot
+Allow: /
+# --- Bytespider ---
+User-agent: Bytespider
+Disallow: /
 
 Sitemap: https://lasbialas.pl/sitemap-index.xml

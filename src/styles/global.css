@@ -25,13 +25,12 @@ body #bookero-plugin[data-mode=sticky] .bookero-sticky-plugin-toggle {
   width: 220px;
   height: 56px;
   opacity: 0.96;
-  margin-bottom: 3px;
   right: 12px !important;
+  bottom: 3px !important;
   border-radius: 6px !important;
   font-family: 'Montserrat', sans-serif;
   font-size: large;
 }
-
 @media (max-width: 960px) {
   body #bookero-plugin .bookero-sticky-plugin-toggle,
   body #bookero-plugin[data-mode=sticky] .bookero-sticky-plugin-toggle {

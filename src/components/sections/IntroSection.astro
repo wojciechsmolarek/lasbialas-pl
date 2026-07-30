@@ -41,7 +41,29 @@ const t = {
   <p class="text-base leading-[1.6]" set:html={t.p1}></p>
   <p class="text-base leading-[1.6]" set:html={t.p2}></p>
 
-  <Picture alt={t.title} src={backgroundImage800} width={800} height={208} loading="lazy" formats={['avif', 'webp']} sizes="(max-width: 768px) 96vw, 73vw" class="w-full h-auto mt-[50px]" />
+ {/* Banner: Sauna i jacuzzi w środku lasu */}
+  <div class="relative w-full h-[300px] max-[768px]:h-[200px] mt-[50px] rounded-[6px] overflow-hidden">
+    <div class="absolute top-0 left-0 h-full w-[42%]">
+      <Picture src={lasbialasJacuzzi1} alt="Prywatne jacuzzi wśród sosen" width={900} height={600} formats={['avif', 'webp']} loading="lazy" decoding="async" class="w-full h-full object-cover" />
+    </div>
+    <div class="absolute top-0 left-[29%] h-full w-[42%]" style="-webkit-mask-image:linear-gradient(to right,transparent,#000 22%,#000 78%,transparent);mask-image:linear-gradient(to right,transparent,#000 22%,#000 78%,transparent)">
+      <Picture src={sauna1} alt="Sauna do dyspozycji Gości" width={900} height={600} formats={['avif', 'webp']} loading="lazy" decoding="async" class="w-full h-full object-cover" />
+    </div>
+    <div class="absolute top-0 right-0 h-full w-[42%]" style="-webkit-mask-image:linear-gradient(to right,transparent,#000 28%);mask-image:linear-gradient(to right,transparent,#000 28%)">
+      <Picture src={lasbialas1} alt="Domek w lesie" width={900} height={600} formats={['avif', 'webp']} loading="lazy" decoding="async" class="w-full h-full object-cover" />
+    </div>
+
+    <div class="absolute inset-0 bg-black/45"></div>
+
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+      <h3 class="text-white font-bold leading-[1.15] text-[2.4rem] max-[768px]:text-[1.4rem] drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)]">
+        {t.banner1}<br />{t.banner2}
+      </h3>
+      <p class="text-white/90 mt-4 max-[768px]:mt-2 text-[0.95rem] max-[768px]:text-[0.7rem] tracking-[0.2em] drop-shadow-[0_1px_4px_rgba(0,0,0,0.7)]">
+        {t.bannerSub}
+      </p>
+    </div>
+  </div>
 
 {t.guideBtn && (
     <div class="flex justify-center mt-[30px]">

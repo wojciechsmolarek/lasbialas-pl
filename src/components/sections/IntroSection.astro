@@ -1,6 +1,8 @@
 ---
 import { Picture } from 'astro:assets';
-import backgroundImage800 from '../../assets/images/background-image-800.webp';
+import lasbialasJacuzzi1 from '../../assets/foto/lasbialas-jacuzzi1.webp';
+import sauna1 from '../../assets/foto/sauna1.webp';
+import lasbialas1 from '../../assets/foto/lasbialas1.webp';
 
 interface Props {
   lang: 'pl' | 'en' | 'de';
@@ -13,6 +15,9 @@ const t = {
     title: 'Całoroczne domki na wynajem w Puszczy Noteckiej',
     p1: 'Zapraszamy do Las Biala\'s - kameralnego zakątka Białej, wsi położonej nad malowniczym jeziorem, w samym sercu Puszczy Noteckiej. Z dala od miejskiego zgiełku, na dużej leśnej działce znajdują się dwa całoroczne, komfortowe domki oraz przestrzeń stworzona z myślą o dorosłych gościach, ceniących ciszę, wygodę i bliskość natury.',
     p2: 'Zadbaliśmy również o to, by pobyt sprzyjał głębokiemu relaksowi. Goście mają do dyspozycji kameralną saunę, prywatne jacuzzi oraz inne udogodnienia, które pozwalają odnaleźć własny rytm i wypocząć w ulubiony sposób. Domki są w pełni ogrzewane, a temperaturę w każdym z pomieszczeń możesz regulować indywidualnie.',
+    banner1: 'Sauna i jacuzzi',
+    banner2: 'w środku lasu',
+    bannerSub: 'PRYWATNIE · KAMERALNIE · 18+',
     guideBtn: 'Przewodnik',
     adultTitle: 'Domki tylko dla dorosłych (18+)',
     adultText: 'Tworzymy miejsce, które sprzyja wyciszeniu, prywatności i swobodnemu odpoczynkowi. Dlatego nasza oferta skierowana jest do osób dorosłych szukających przestrzeni, miejsca, w którym można naprawdę odetchnąć, bez kompromisów, w harmonii z naturą i samym sobą. Formuła 18+ to świadomy wybór gwarantujący spokój, relaks i prawdziwą jakość wypoczynku. Jeśli szukasz ciszy, komfortu i autentycznego resetu - jesteś u siebie.',
@@ -21,6 +26,9 @@ const t = {
     title: 'Cottages for Rent in the Noteć Forest',
     p1: 'Welcome to Las Biala\'s - a cozy hideaway in the village of Biała, located by a picturesque lake in the very heart of the Noteć Forest. Far from the city noise, on a spacious forest property, you will find two year-round, comfortable cottages and a space created especially for adult guests who value peace, comfort, and closeness to nature.',
     p2: 'We\'ve also made sure your stay supports deep relaxation. Guests can enjoy an intimate sauna, a private jacuzzi, and other amenities designed to help you unwind in your own way.',
+    banner1: 'Sauna and jacuzzi',
+    banner2: 'in the heart of the forest',
+    bannerSub: 'PRIVATE · INTIMATE · 18+',
     guideBtn: '',
     adultTitle: 'Adults-Only Cabins (18+)',
     adultText: 'We have created a place that fosters tranquility, privacy, and carefree relaxation. That\'s why our offer is dedicated to adults - those looking for a space where you can truly breathe, without compromise, in harmony with nature and yourself. The 18+ formula is a conscious choice - guaranteeing peace, relaxation, and real quality rest. If you are searching for silence, comfort, and an authentic reset - this is your place.',
@@ -29,6 +37,9 @@ const t = {
     title: 'Ferienhäuser zur Miete in der Puszcza Notecka',
     p1: 'Willkommen bei Las Biala\'s - einem idyllischen Ort im Dorf Biała, direkt am malerischen See im Herzen der Puszcza Notecka. Abseits vom Trubel der Stadt befinden sich auf einem großen Waldgrundstück zwei ganzjährig nutzbare, komfortable Ferienhäuser sowie ein Bereich, der speziell für erwachsene Gäste geschaffen wurde, die Ruhe, Komfort und die Nähe zur Natur schätzen.',
     p2: 'Wir haben außerdem darauf geachtet, dass der Aufenthalt tiefste Entspannung ermöglicht. Den Gästen stehen eine gemütliche Sauna, ein privates Jacuzzi sowie weitere Annehmlichkeiten zur Verfügung, damit jeder seinen eigenen Rhythmus finden und auf seine Weise entspannen kann.',
+    banner1: 'Sauna und Jacuzzi',
+    banner2: 'mitten im Wald',
+    bannerSub: 'PRIVAT · INTIM · 18+',
     guideBtn: 'Reiseführer',
     adultTitle: 'Nur für Erwachsene (18+)',
     adultText: 'Wir schaffen einen Ort der Ruhe, Privatsphäre und Entspannung. Unser Angebot richtet sich daher ausschließlich an Erwachsene, die einen Platz suchen, um wirklich durchzuatmen - ohne Kompromisse, im Einklang mit der Natur und mit sich selbst. Das 18+ Konzept ist eine bewusste Entscheidung - es garantiert Stille, Entspannung und echte Qualität des Urlaubs. Wir glauben, dass Erwachsene ihren eigenen Ort verdienen: intim, bewusst und mit Intention gestaltet. Wenn Sie Ruhe, Komfort und authentische Erholung suchen - sind Sie hier genau richtig.',
@@ -41,7 +52,7 @@ const t = {
   <p class="text-base leading-[1.6]" set:html={t.p1}></p>
   <p class="text-base leading-[1.6]" set:html={t.p2}></p>
 
- {/* Banner: Sauna i jacuzzi w środku lasu */}
+  {/* Banner: Sauna i jacuzzi w środku lasu */}
   <div class="relative w-full h-[300px] max-[768px]:h-[200px] mt-[50px] rounded-[6px] overflow-hidden">
     <div class="absolute top-0 left-0 h-full w-[42%]">
       <Picture src={lasbialasJacuzzi1} alt="Prywatne jacuzzi wśród sosen" width={900} height={600} formats={['avif', 'webp']} loading="lazy" decoding="async" class="w-full h-full object-cover" />
@@ -65,7 +76,7 @@ const t = {
     </div>
   </div>
 
-{t.guideBtn && (
+  {t.guideBtn && (
     <div class="flex justify-center mt-[30px]">
       <a class="inline-flex justify-center items-center w-auto h-[46px] text-base font-normal text-white bg-[#B5550E] border-none text-center no-underline normal-case cursor-pointer mb-[30px] mt-[10px] px-[15px] rounded-[6px] hover:bg-[#c4621a] transition-colors" href={lang === 'de' ? 'https://lasbialas.pl/info/de/' : 'https://lasbialas.pl/info/'} target="_blank">{t.guideBtn}</a>
     </div>

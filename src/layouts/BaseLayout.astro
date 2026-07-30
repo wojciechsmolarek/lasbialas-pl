@@ -314,10 +314,11 @@ const hreflangs = [
   <body class="font-sans font-light">
     <div id="bookero"></div>
 
-    <!-- Sticky reservation button - visible until Bookero loads its own -->
-<button
+    <!-- Sticky reservation button - hidden until first scroll, then visible until Bookero loads its own -->
+    <button
       id="bookero-sticky-fallback"
       onclick="openReservation()"
+      style="display:none"
       class="fixed bottom-0 right-0 z-[99998] bg-[#2F6940] text-white border-0 cursor-pointer font-montserrat transition-colors hover:bg-[#40a95c]"
     >
       {lang === 'pl' ? 'Rezerwuj' : lang === 'en' ? 'Book Now' : 'Reservieren'}
@@ -345,6 +346,22 @@ const hreflangs = [
         }
       }
     </style>
+
+    <!-- Show sticky fallback only after first scroll / touch (desktop + mobile) -->
+    <script is:inline>
+      (function() {
+        function showFallback() {
+          var btn = document.getElementById('bookero-sticky-fallback');
+          // don't show if Bookero already rendered its own toggle
+          if (btn && !document.querySelector('.bookero-sticky-plugin-toggle')) {
+            btn.style.display = '';
+          }
+        }
+        window.addEventListener('scroll', showFallback, { once: true, passive: true });
+        window.addEventListener('touchmove', showFallback, { once: true, passive: true });
+      })();
+    </script>
+
     <slot />
   </body>
 </html>

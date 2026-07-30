@@ -314,12 +314,12 @@ const hreflangs = [
   <body class="font-sans font-light">
     <div id="bookero"></div>
 
-    <!-- Sticky reservation button - hidden until first scroll, then visible until Bookero loads its own -->
+<!-- Sticky reservation button - hidden until first scroll, then visible until Bookero loads its own -->
     <button
       id="bookero-sticky-fallback"
       onclick="openReservation()"
       style="display:none"
-      class="fixed bottom-0 right-0 z-[99998] bg-[#2F6940] text-white border-0 cursor-pointer font-montserrat transition-colors hover:bg-[#40a95c]"
+      class="fixed bottom-0 right-0 z-[99998] bg-[#2F6940] text-white font-bold border-0 cursor-pointer font-montserrat transition-colors hover:bg-[#40a95c]"
     >
       {lang === 'pl' ? 'Rezerwuj' : lang === 'en' ? 'Book Now' : 'Reservieren'}
     </button>

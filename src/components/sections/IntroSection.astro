@@ -47,12 +47,9 @@ const t = {
 }[lang];
 ---
 
-<div class="max-w-[73%] border border-[#ccc] rounded-[5px] py-[10px] px-[80px] mx-auto mb-5 bg-white text-base text-center max-[768px]:max-w-[96vw] max-[768px]:p-5 max-[768px]:my-[1px] max-[768px]:mb-5 max-[768px]:text-[0.6rem]">
-  <h2 class="text-[24px] text-center mt-5 mb-5 text-brand-black font-bold">{t.title}</h2>
-  <p class="text-base leading-[1.6]" set:html={t.p1}></p>
-  <p class="text-base leading-[1.6]" set:html={t.p2}></p>
-
-  <div class="absolute top-0 left-0 h-full w-[38%]">
+{/* Banner: Sauna i jacuzzi w środku lasu */}
+  <div class="relative w-full h-[300px] max-[768px]:h-[200px] mt-[50px] rounded-[6px] overflow-hidden">
+    <div class="absolute top-0 left-0 h-full w-[38%]">
       <Picture src={lasbialasJacuzzi1} alt="Prywatne jacuzzi wśród sosen" width={600} height={400} widths={[300, 450, 600]} sizes="(max-width: 768px) 40vw, 300px" formats={['avif', 'webp']} loading="lazy" decoding="async" class="w-full h-full object-cover" />
     </div>
     <div class="absolute top-0 left-[26%] h-full w-[52%]" style="-webkit-mask-image:linear-gradient(to right,transparent,#000 20%,#000 80%,transparent);mask-image:linear-gradient(to right,transparent,#000 20%,#000 80%,transparent)">
@@ -61,6 +58,18 @@ const t = {
     <div class="absolute top-0 right-0 h-full w-[34%]" style="-webkit-mask-image:linear-gradient(to right,transparent,#000 30%);mask-image:linear-gradient(to right,transparent,#000 30%)">
       <Picture src={lasbialasJacuzzi3} alt="Prywatne jacuzzi w ogrodzie" width={500} height={400} widths={[250, 375, 500]} sizes="(max-width: 768px) 36vw, 260px" formats={['avif', 'webp']} loading="lazy" decoding="async" class="w-full h-full object-cover" />
     </div>
+
+    <div class="absolute inset-0 bg-black/45"></div>
+
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+      <h3 class="text-white font-bold leading-[1.15] text-[2.4rem] max-[768px]:text-[1.4rem] drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)]">
+        {t.banner1}<br />{t.banner2}
+      </h3>
+      <p class="text-white/90 mt-4 max-[768px]:mt-2 text-[0.95rem] max-[768px]:text-[0.7rem] tracking-[0.2em] drop-shadow-[0_1px_4px_rgba(0,0,0,0.7)]">
+        {t.bannerSub}
+      </p>
+    </div>
+  </div>
 
   {t.guideBtn && (
     <div class="flex justify-center mt-[30px]">

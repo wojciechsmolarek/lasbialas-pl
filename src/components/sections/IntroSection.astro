@@ -2,7 +2,7 @@
 import { Picture } from 'astro:assets';
 import lasbialasJacuzzi1 from '../../assets/foto/lasbialas-jacuzzi1.webp';
 import sauna1 from '../../assets/foto/sauna1.webp';
-import lasbialas1 from '../../assets/foto/lasbialas1.webp';
+import lasbialasJacuzzi3 from '../../assets/foto/lasbialas-jacuzzi3.webp';
 
 interface Props {
   lang: 'pl' | 'en' | 'de';
@@ -61,7 +61,7 @@ const t = {
       <Picture src={sauna1} alt="Sauna do dyspozycji Gości" width={900} height={600} formats={['avif', 'webp']} loading="lazy" decoding="async" class="w-full h-full object-cover" />
     </div>
     <div class="absolute top-0 right-0 h-full w-[42%]" style="-webkit-mask-image:linear-gradient(to right,transparent,#000 28%);mask-image:linear-gradient(to right,transparent,#000 28%)">
-      <Picture src={lasbialas1} alt="Domek w lesie" width={900} height={600} formats={['avif', 'webp']} loading="lazy" decoding="async" class="w-full h-full object-cover" />
+      <Picture src={lasbialasJacuzzi3} alt="Prywatne jacuzzi w ogrodzie" width={600} height={400} widths={[300, 450, 600]} sizes="(max-width: 768px) 45vw, 320px" formats={['avif', 'webp']} loading="lazy" decoding="async" class="w-full h-full object-cover" />
     </div>
 
     <div class="absolute inset-0 bg-black/45"></div>

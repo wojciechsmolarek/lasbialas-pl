@@ -93,7 +93,7 @@ const deUrl = '/de/';
         <button
           aria-label={t('nav.reservation')}
           class="inline-block p-2 rounded-full hover:bg-gray-100 transition-colors cursor-pointer border-0 bg-transparent"
-          onclick="openReservation(); return false;"
+          onclick="openReservation();"
         >
           <Picture alt="Rezerwacja" src={cart} width={32} height={32} formats={['avif', 'webp']} class="w-8 h-8" />
         </button>
@@ -224,55 +224,59 @@ const deUrl = '/de/';
 </div>
 
 <script is:inline defer>
-  function toggleMenu() {
-    const menu = document.getElementById('mobileContactMenu');
-    const hamburger = document.querySelector('[data-hamburger]');
-    const hamburgerLines = hamburger?.querySelectorAll('.hamburger-line');
-    
-    if (menu && hamburgerLines) {
-      const isActive = menu.classList.toggle('active');
-      
-      // Animate hamburger lines — batch style writes in rAF to avoid forced reflow
-      requestAnimationFrame(function() {
-        if (isActive) {
-          hamburgerLines[0].style.transform = 'rotate(45deg) translateY(6px)';
-          hamburgerLines[1].style.opacity = '0';
-          hamburgerLines[2].style.transform = 'rotate(-45deg) translateY(-6px)';
-        } else {
+  (function () {
+    function toggleMenu() {
+      const menu = document.getElementById('mobileContactMenu');
+      const hamburger = document.querySelector('[data-hamburger]');
+      const hamburgerLines = hamburger?.querySelectorAll('.hamburger-line');
+
+      if (menu && hamburgerLines) {
+        const isActive = menu.classList.toggle('active');
+
+        // Animate hamburger lines — batch style writes in rAF to avoid forced reflow
+        requestAnimationFrame(function () {
+          if (isActive) {
+            hamburgerLines[0].style.transform = 'rotate(45deg) translateY(6px)';
+            hamburgerLines[1].style.opacity = '0';
+            hamburgerLines[2].style.transform = 'rotate(-45deg) translateY(-6px)';
+          } else {
+            hamburgerLines[0].style.transform = 'rotate(0deg) translateY(0)';
+            hamburgerLines[1].style.opacity = '1';
+            hamburgerLines[2].style.transform = 'rotate(0deg) translateY(0)';
+          }
+        });
+      }
+    }
+
+    window.toggleMenu = toggleMenu;
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function (event) {
+      const menu = document.getElementById('mobileContactMenu');
+      const hamburger = document.querySelector('[data-hamburger]');
+      const closeMenu = document.querySelector('.close-menu');
+
+      if (menu && hamburger && !menu.contains(event.target) && !hamburger.contains(event.target) && !closeMenu?.contains(event.target)) {
+        menu.classList.remove('active');
+
+        // Reset hamburger animation
+        const hamburgerLines = hamburger.querySelectorAll('.hamburger-line');
+        if (hamburgerLines) {
           hamburgerLines[0].style.transform = 'rotate(0deg) translateY(0)';
           hamburgerLines[1].style.opacity = '1';
           hamburgerLines[2].style.transform = 'rotate(0deg) translateY(0)';
         }
-      });
-    }
-  }
-
-  // Close mobile menu when clicking outside
-  document.addEventListener('click', function (event) {
-    const menu = document.getElementById('mobileContactMenu');
-    const hamburger = document.querySelector('[data-hamburger]');
-    const closeMenu = document.querySelector('.close-menu');
-    
-    if (menu && hamburger && !menu.contains(event.target) && !hamburger.contains(event.target) && !closeMenu?.contains(event.target)) {
-      menu.classList.remove('active');
-      
-      // Reset hamburger animation
-      const hamburgerLines = hamburger.querySelectorAll('.hamburger-line');
-      if (hamburgerLines) {
-        hamburgerLines[0].style.transform = 'rotate(0deg) translateY(0)';
-        hamburgerLines[1].style.opacity = '1';
-        hamburgerLines[2].style.transform = 'rotate(0deg) translateY(0)';
       }
-    }
-  });
+    });
 
-  // Close menu on escape key
-  document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape') {
-      const menu = document.getElementById('mobileContactMenu');
-      if (menu && menu.classList.contains('active')) {
-        toggleMenu();
+    // Close menu on escape key
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        const menu = document.getElementById('mobileContactMenu');
+        if (menu && menu.classList.contains('active')) {
+          toggleMenu();
+        }
       }
-    }
-  });
+    });
+  })();
 </script>

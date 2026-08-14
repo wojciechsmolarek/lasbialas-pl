@@ -21,9 +21,9 @@ export const siteConfig: SiteConfig = {
     "pl": {
       "availabilityBlock": `<h2 class="promo-h2">Wolne terminy</h2>
 
-       <h3 class="text-[1.2rem] text-center mt-[40px] mb-[15px] font-semibold text-[#2c2c2c]">Sierpień 2026</h3>
+       <h3 class="text-[1.2rem] text-center mt-[20px] mb-[5px] font-semibold text-[#2c2c2c]">Sierpień 2026</h3>
        <p class="text-base mt-2">25 - 28 sie (D1)</p><p>25 - 30 sie (D2)</p>
-       <h3 class="text-[1.2rem] text-center mt-[40px] mb-[15px] font-semibold text-[#2c2c2c]">Wrzesień 2026</h3>
+       <h3 class="text-[1.2rem] text-center mt-[10px] mb-[15px] font-semibold text-[#2c2c2c]">Wrzesień 2026</h3>
        <p class="text-base mt-2">8 - 25 wrz (D1)</p><p>14 - 25 wrz (D2)</p><p>28 wrz - 2 paź (D2)</p><p>28 wrz - 1 paź (D1)</p>
        
  

@@ -22,9 +22,9 @@ export const siteConfig: SiteConfig = {
       "availabilityBlock": `<h2 class="promo-h2">Wolne terminy</h2>
 
        <h3 class="text-[1.2rem] text-center mt-[20px] mb-[0px] font-semibold text-[#2c2c2c]">Sierpień 2026</h3>
-       <p class="text-base mt-2">25 - 28 sie (D1)</p><p>25 - 30 sie (D2)</p>
+       <p class="text-base mt-2">D1: 25 - 28 sie</p><p>D2: 25 - 30 sie</p>
        <h3 class="text-[1.2rem] text-center mt-[15px] mb-[0px] font-semibold text-[#2c2c2c]">Wrzesień 2026</h3>
-       <p class="text-base mt-2">8 - 25 wrz (D1)</p><p>14 - 25 wrz (D2)</p><p>28 wrz - 2 paź (D2)</p><p>28 wrz - 1 paź (D1)</p>
+       <p class="text-base mt-2">D1: 8 - 25 wrz; 28 wrz - 1 paź</p><p>D2: 14 - 25 wrz; 28 wrz - 2 paź</p>
        
  
        <p class="text-base mt-2">Rezerwacja online, telefonicznie lub WhatsApp.</p><div class="my-4 flex justify-center"><a aria-label="Otwórz panel rezerwacji" class="inline-flex justify-center items-center w-[140px] h-[46px] text-base font-normal text-white bg-[#2F6940] border-none text-center no-underline normal-case cursor-pointer font-montserrat rounded-[6px] hover:bg-[#40a95c] transition-colors" href="#" onclick="openReservation(); return false;">Rezerwuj</a></div><ul class="promo-contact-list"><li class="promo-contact-item"><img src="${phoneGreen.src}" width="${phoneGreen.width}" height="${phoneGreen.height}" alt="Telefon"><a href="tel:+48789773285" class="promo-link-bold">789 773 285</a></li><li class="promo-contact-item"><img src="${whatsappGreen.src}" width="${whatsappGreen.width}" height="${whatsappGreen.height}" alt="WhatsApp"><a href="https://wa.me/48660194187" class="promo-link-bold">660 194 187</a></li></ul>`,

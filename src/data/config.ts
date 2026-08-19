@@ -10,6 +10,7 @@ export interface SiteConfig {
 
 export const siteConfig: SiteConfig = {
   "promoBar": {
+    // Pasek wyłączony — ustaw na true, aby przywrócić
     "enabled": false,
     "messages": {
       "pl": `<span class="text-white" style="font-weight:600;">Rezerwacje na</span><span class="promo-label"> 2 doby</span><span class="text-white" style="font-weight:600;"> telefonicznie</span>`,

@@ -73,11 +73,11 @@ export const faqData: Record<string, FAQCategory[]> = {
       questions: [
         {
           q: 'Czy są jakieś dodatkowe opłaty?',
-          a: 'Nie. Korzystanie z większości udogodnień jest wliczone w cenę pobytu. Goście mogą bez dodatkowych opłat korzystać z sauny z balią do schładzania, rowerów, desek SUP, hamaków oraz grilla. Nie pobieramy również żadnych opłat za zużycie energii elektrycznej ani wody. Jedyną opcjonalną usługą dodatkowo płatną jest wynajem prywatnego jacuzzi.',
+          a: 'Nie. Korzystanie z większości udogodnień jest wliczone w cenę pobytu. Goście mogą bez dodatkowych opłat korzystać z sauny z balią do schładzania, rowerów, desek SUP, hamaków oraz grilla. Nie pobieramy żadnych opłat za zużycie energii elektrycznej ani wody. Jedyną opcjonalną usługą dodatkowo płatną jest wynajem prywatnego jacuzzi.',
         },
         {
           q: 'Jakie są godziny zameldowania i wymeldowania?',
-          a: 'Standardowa godzina zameldowania to od 16:00, natomiast wymeldowanie odbywa się do godziny 12:00. Dbamy o komfort naszych Gości, dlatego oferujemy wydłużony czas wymeldowania do południa. Poza sezonem istnieje również możliwość indywidualnego ustalenia innych, dogodnych godzin zameldowania i wymeldowania — w zależności od dostępności domku.',
+          a: 'Standardowa godzina zameldowania to od 16:00, natomiast wymeldowanie odbywa się do godziny 12:00. Poza sezonem istnieje również możliwość indywidualnego ustalenia innych, dogodnych godzin zameldowania i wymeldowania - w zależności od dostępności domku.',
         },
         {
           q: 'Czy można przyjechać z psem?',

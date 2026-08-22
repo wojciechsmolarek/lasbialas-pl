@@ -81,7 +81,7 @@ export const faqData: Record<string, FAQCategory[]> = {
         },
         {
           q: 'Czy można przyjechać z psem?',
-          a: 'Nie. W LAS BIALA\u2019S nie przyjmujemy zwierząt. Obiekt został stworzony z myślą o spokojnym wypoczynku i zapewnieniu wszystkim gościom komfortowych warunków pobytu.',
+          a: 'Nie. Nie oferujemy pobytów ze zwierzętami.',
         },
         {
           q: 'Dlaczego obiekt jest przeznaczony tylko dla osób dorosłych (18+)?',
@@ -96,7 +96,7 @@ export const faqData: Record<string, FAQCategory[]> = {
       questions: [
         {
           q: 'What is the bed layout in the cabin?',
-          a: 'The cabin sleeps 2–4 guests and has two separate bedrooms located on opposite sides of the cabin, offering extra comfort and privacy. Each bedroom has one double bed (140 × 200 cm).',
+          a: 'The cabin sleeps 2-4 guests and has two separate bedrooms located on opposite sides of the cabin, offering extra comfort and privacy. Each bedroom has one double bed (140 × 200 cm).',
         },
         {
           q: 'Are bed linen and towels provided?',

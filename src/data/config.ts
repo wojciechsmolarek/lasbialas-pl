@@ -23,7 +23,7 @@ export const siteConfig: SiteConfig = {
       "availabilityBlock": `<h2 class="promo-h2">Wolne terminy</h2>
 
        <h3 class="text-[1.2rem] text-center mt-[20px] mb-[0px] font-semibold text-[#2c2c2c]">Sierpień 2026</h3>
-       <p class="text-base mt-2">25 - 28 sie (D1)</p><p>25 - 30 sie (D2)</p>
+       <p class="text-base mt-2">25 - 28 sie (D1)</p><p>25 - 27 sie (D2)</p>
        <h3 class="text-[1.2rem] text-center mt-[15px] mb-[0px] font-semibold text-[#2c2c2c]">Wrzesień 2026</h3>
        <p class="text-base mt-2">11 - 13 wrz (D1)</p><p>21 - 25 wrz (D2)</p>
        
@@ -35,7 +35,7 @@ export const siteConfig: SiteConfig = {
        "availabilityBlock": `<h2 class="promo-h2">Available Dates</h2>
 
        <h3 class="text-[1.2rem] text-center mt-[20px] mb-[0px] font-semibold text-[#2c2c2c]">August 2026</h3>
-       <p class="text-base mt-2">25 - 28 Aug (D1)</p><p>25 - 30 Aug (D2)</p>
+       <p class="text-base mt-2">25 - 28 Aug (D1)</p><p>25 - 27 Aug (D2)</p>
        <h3 class="text-[1.2rem] text-center mt-[15px] mb-[0px] font-semibold text-[#2c2c2c]">September 2026</h3>
        <p class="text-base mt-2">11 - 13 Sep (D1)</p><p>21 - 25 Sep (D2)</p>
 
@@ -47,7 +47,7 @@ export const siteConfig: SiteConfig = {
       "availabilityBlock": `<h2 class="promo-h2">Freie Termine</h2>
       
        <h3 class="text-[1.2rem] text-center mt-[20px] mb-[0px] font-semibold text-[#2c2c2c]">August 2026</h3>
-       <p class="text-base mt-2">25. - 28. Aug (D1)</p><p>25. - 30. Aug (D2)</p>
+       <p class="text-base mt-2">25. - 28. Aug (D1)</p><p>25. - 27. Aug (D2)</p>
        <h3 class="text-[1.2rem] text-center mt-[15px] mb-[0px] font-semibold text-[#2c2c2c]">September 2026</h3>
        <p class="text-base mt-2">11 - 13 Sep (D1)</p><p>21. - 25. Sep (D2)</p>
       

@@ -23,19 +23,22 @@ export const siteConfig: SiteConfig = {
       "availabilityBlock": `<h2 class="promo-h2">Wolne terminy</h2>
 
        <h3 class="text-[1.2rem] text-center mt-[20px] mb-[0px] font-semibold text-[#2c2c2c]">Sierpień 2026</h3>
-       <p class="text-base mt-2">24 - 28 sie (D1)</p>
+       <p class="text-base mt-2">24 - 28 sie (D1)</p><p class="text-base mt-2">16-19 sie (D2)<br>-10% z kodem <span class="promo-code-wrap"><span class="promo-code" id="code1">LBD2SIE</span><button class="copy-btn" onclick="copyCode('code1', this)" title="Kopiuj"><svg width="26" height="26" viewBox="0 0 24 26" fill="none"><rect x="7" y="15" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"></rect><rect x="3" y="11" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"></rect></svg></button></span></p>
        <h3 class="text-[1.2rem] text-center mt-[15px] mb-[0px] font-semibold text-[#2c2c2c]">Wrzesień 2026</h3>
        <p class="text-base mt-2">11 - 15 wrz (D1)</p><p>21 - 25 wrz (D2)</p>
        
        <p class="text-base mt-2">Rezerwacja online, telefonicznie lub WhatsApp.</p><div class="my-4 flex justify-center"><a aria-label="Otwórz panel rezerwacji" class="inline-flex justify-center items-center w-[140px] h-[46px] text-base font-normal text-white bg-[#2F6940] border-none text-center no-underline normal-case cursor-pointer font-montserrat rounded-[6px] hover:bg-[#40a95c] transition-colors" href="#" onclick="openReservation(); return false;">Rezerwuj</a></div><ul class="promo-contact-list"><li class="promo-contact-item"><img src="${phoneGreen.src}" width="${phoneGreen.width}" height="${phoneGreen.height}" alt="Telefon"><a href="tel:+48789773285" class="promo-link-bold">789 773 285</a></li><li class="promo-contact-item"><img src="${whatsappGreen.src}" width="${whatsappGreen.width}" height="${whatsappGreen.height}" alt="WhatsApp"><a href="https://wa.me/48660194187" class="promo-link-bold">660 194 187</a></li></ul>`,
       "infoBlock": `<span class="promo-h2">Na miejscu</span><ul class="promo-list"><li class="promo-list-item"><span class="promo-bullet"></span>prywatne jacuzzi</li><li class="promo-list-item"><span class="promo-bullet"></span>sauna</li><li class="promo-list-item"><span class="promo-bullet"></span>balia do schładzania</li><li class="promo-list-item"><span class="promo-bullet"></span>grill + węgiel</li><li class="promo-list-item"><span class="promo-bullet"></span>hamaki</li><li class="promo-list-item"><span class="promo-bullet"></span>rowery</li><li class="promo-list-item"><span class="promo-bullet"></span>deski SUP</li><li class="promo-list-item"><span class="promo-bullet"></span>Wi-Fi</li><li class="promo-list-item"><span class="promo-bullet"></span>Netflix</li></ul><p class="text-base mt-2"><a href="https://lasbialas.pl/info/#/na-miejscu" target="_blank" class="promo-link">Zobacz wszystko</a></p><br><span class="promo-h2">Przed przyjazdem</span><p class="text-base mt-2"><a href="https://lasbialas.pl/info/#/przed-przyjazdem" target="_blank" class="promo-link">Sprawdź informacje</a> o dojeździe, zameldowaniu, wyposażeniu domków, zasadach pobytu - wszystko, co warto wiedzieć przed przyjazdem.</p>`
     },
+
+
+    
     "en": {
 
        "availabilityBlock": `<h2 class="promo-h2">Available Dates</h2>
 
        <h3 class="text-[1.2rem] text-center mt-[20px] mb-[0px] font-semibold text-[#2c2c2c]">August 2026</h3>
-       <p class="text-base mt-2">24 - 28 Aug (D1)</p>
+       <p class="text-base mt-2">24 - 28 Aug (D1)</p><p class="text-base mt-2">16-19 Aug (D2)<br>−10% with code <span class="promo-code-wrap"><span class="promo-code" id="code2">LBD2SIE</span><button class="copy-btn" onclick="copyCode('code2', this)" title="Copy"><svg width="26" height="26" viewBox="0 0 24 26" fill="none"><rect x="7" y="15" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"></rect><rect x="3" y="11" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"></rect></svg></button></span></p>
        <h3 class="text-[1.2rem] text-center mt-[15px] mb-[0px] font-semibold text-[#2c2c2c]">September 2026</h3>
        <p class="text-base mt-2">11 - 15 Sep (D1)</p><p>21 - 25 Sep (D2)</p>
 
@@ -47,7 +50,8 @@ export const siteConfig: SiteConfig = {
       "availabilityBlock": `<h2 class="promo-h2">Freie Termine</h2>
       
        <h3 class="text-[1.2rem] text-center mt-[20px] mb-[0px] font-semibold text-[#2c2c2c]">August 2026</h3>
-       <p class="text-base mt-2">24. - 28. Aug (D1)</p>
+       <p class="text-base mt-2">24. - 28. Aug (D1)</p><p class="text-base mt-2">16.-19. Aug (D2)<br>−10% mit Code <span class="promo-code-wrap"><span class="promo-code" id="code3">LBD2SIE</span><button class="copy-btn" onclick="copyCode('code3', this)" title="Kopieren"><svg width="26" height="26" viewBox="0 0 24 26" fill="none"><rect x="7" y="15" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"></rect><rect x="3" y="11" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"></rect></svg></button></span></p>
+
        <h3 class="text-[1.2rem] text-center mt-[15px] mb-[0px] font-semibold text-[#2c2c2c]">September 2026</h3>
        <p class="text-base mt-2">11 - 15 Sep (D1)</p><p>21. - 25. Sep (D2)</p>
       

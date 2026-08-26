@@ -22,9 +22,8 @@ export const siteConfig: SiteConfig = {
     "pl": {
       "availabilityBlock": `<h2 class="promo-h2">Wolne terminy</h2>
 
-       <h3 class="text-[1.2rem] text-center mt-[20px] mb-[0px] font-semibold text-[#2c2c2c]">Sierpień 2026</h3>
-       <p class="text-base mt-2">25 - 28 sie (D1)${/* <br>-15% z kodem <span class="promo-code-wrap"><span class="promo-code" id="code1">LBD1SIE</span><button class="copy-btn" onclick="copyCode('code1', this)" title="Kopiuj"><svg width="26" height="26" viewBox="0 0 24 26" fill="none"><rect x="7" y="15" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"></rect><rect x="3" y="11" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"></rect></svg></button></span> */ ''}</p>
-       <h3 class="text-[1.2rem] text-center mt-[15px] mb-[0px] font-semibold text-[#2c2c2c]">Wrzesień 2026</h3>
+       <h3 class="text-[1.2rem] text-center mt-[20px] mb-[0px] font-semibold text-[#2c2c2c]">Wrzesień 2026</h3>
+       ${/* <p class="text-base mt-2">25 - 28 sie (D1)<br>-15% z kodem <span class="promo-code-wrap"><span class="promo-code" id="code1">LBD1SIE</span><button class="copy-btn" onclick="copyCode('code1', this)" title="Kopiuj"><svg width="26" height="26" viewBox="0 0 24 26" fill="none"><rect x="7" y="15" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"></rect><rect x="3" y="11" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"></rect></svg></button></span></p> */ ''}
        <p class="text-base mt-2"><p>14 - 18 wrz (D1)</p><p>19 - 26 wrz (D2)</p><p>20 - 25 wrz (D2)</p>
        
        <p class="text-base mt-2">Rezerwacja online, telefonicznie lub WhatsApp.</p><div class="my-4 flex justify-center"><a aria-label="Otwórz panel rezerwacji" class="inline-flex justify-center items-center w-[140px] h-[46px] text-base font-normal text-white bg-[#2F6940] border-none text-center no-underline normal-case cursor-pointer font-montserrat rounded-[6px] hover:bg-[#40a95c] transition-colors" href="#" onclick="openReservation(); return false;">Rezerwuj</a></div><ul class="promo-contact-list"><li class="promo-contact-item"><img src="${phoneGreen.src}" width="${phoneGreen.width}" height="${phoneGreen.height}" alt="Telefon"><a href="tel:+48789773285" class="promo-link-bold">789 773 285</a></li><li class="promo-contact-item"><img src="${whatsappGreen.src}" width="${whatsappGreen.width}" height="${whatsappGreen.height}" alt="WhatsApp"><a href="https://wa.me/48660194187" class="promo-link-bold">660 194 187</a></li></ul>`,
@@ -35,9 +34,8 @@ export const siteConfig: SiteConfig = {
 
        "availabilityBlock": `<h2 class="promo-h2">Available Dates</h2>
 
-       <h3 class="text-[1.2rem] text-center mt-[20px] mb-[0px] font-semibold text-[#2c2c2c]">August 2026</h3>
-       <p class="text-base mt-2">25 - 28 Aug (D1)${/* <br>−15% with code <span class="promo-code-wrap"><span class="promo-code" id="code2">LBD1SIE</span><button class="copy-btn" onclick="copyCode('code2', this)" title="Copy"><svg width="26" height="26" viewBox="0 0 24 26" fill="none"><rect x="7" y="15" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"></rect><rect x="3" y="11" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"></rect></svg></button></span> */ ''}</p>
        <h3 class="text-[1.2rem] text-center mt-[15px] mb-[0px] font-semibold text-[#2c2c2c]">September 2026</h3>
+       ${/*<p class="text-base mt-2">25 - 28 Aug (D1)<br>−15% with code <span class="promo-code-wrap"><span class="promo-code" id="code2">LBD1SIE</span><button class="copy-btn" onclick="copyCode('code2', this)" title="Copy"><svg width="26" height="26" viewBox="0 0 24 26" fill="none"><rect x="7" y="15" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"></rect><rect x="3" y="11" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"></rect></svg></button></span></p> */ ''}
        <p class="text-base mt-2"><p>14 - 18 Sep (D1)</p><p>19 - 26 Sep (D1)</p><p>20 - 25 Sep (D2)</p>
 
 
@@ -47,10 +45,9 @@ export const siteConfig: SiteConfig = {
     "de": {
       "availabilityBlock": `<h2 class="promo-h2">Freie Termine</h2>
       
-       <h3 class="text-[1.2rem] text-center mt-[20px] mb-[0px] font-semibold text-[#2c2c2c]">August 2026</h3>
-       <p class="text-base mt-2">25. - 28. Aug (D1)${/* <br>−15% mit Code <span class="promo-code-wrap"><span class="promo-code" id="code3">LBD1SIE</span><button class="copy-btn" onclick="copyCode('code3', this)" title="Kopieren"><svg width="26" height="26" viewBox="0 0 24 26" fill="none"><rect x="7" y="15" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"></rect><rect x="3" y="11" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"></rect></svg></button></span> */ ''}</p>
-
+  
        <h3 class="text-[1.2rem] text-center mt-[15px] mb-[0px] font-semibold text-[#2c2c2c]">September 2026</h3>
+       ${/*<p class="text-base mt-2">25. - 28. Aug (D1)<br>−15% mit Code <span class="promo-code-wrap"><span class="promo-code" id="code3">LBD1SIE</span><button class="copy-btn" onclick="copyCode('code3', this)" title="Kopieren"><svg width="26" height="26" viewBox="0 0 24 26" fill="none"><rect x="7" y="15" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"></rect><rect x="3" y="11" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"></rect></svg></button></span></p> */ ''}
        <p class="text-base mt-2"><p>14. - 18. Sep (D2)</p></p><p>19. - 25. Sep (D1)</p><p>20. - 25. Sep (D2)</p>
       
       <p class="text-base mt-2">Buchung online, telefonisch oder per WhatsApp.</p><div class="my-4 flex justify-center"><a aria-label="Reservierungspanel öffnen" class="inline-flex justify-center items-center w-[140px] h-[46px] text-base font-normal text-white bg-[#2F6940] border-none text-center no-underline normal-case cursor-pointer font-montserrat rounded-[6px] hover:bg-[#40a95c] transition-colors" href="#" onclick="openReservation(); return false;">Reservieren</a></div><ul class="promo-contact-list"><li class="promo-contact-item"><img src="${phoneGreen.src}" width="${phoneGreen.width}" height="${phoneGreen.height}" alt="Telefon"><a href="tel:+48789773285" class="promo-link-bold">789 773 285</a></li><li class="promo-contact-item"><img src="${whatsappGreen.src}" width="${whatsappGreen.width}" height="${whatsappGreen.height}" alt="WhatsApp"><a href="https://wa.me/48660194187" class="promo-link-bold">660 194 187</a></li></ul>`,

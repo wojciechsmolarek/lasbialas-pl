@@ -12,9 +12,9 @@ export const siteConfig: SiteConfig = {
     // Pasek włączony — ustaw na false, aby wyłączyć
     "enabled": true,
     "messages": {
-    "pl": `<span class="text-white" style="font-weight:600;">Rezerwacje już</span><a href="/#cennik" class="promo-label" style="color:inherit;text-decoration:none;cursor:pointer;"> od 2 dób</a>`,
-    "en": `<span class="text-white" style="font-weight:600;">Bookings</span><a href="/en/#cennik" class="promo-label" style="color:inherit;text-decoration:none;cursor:pointer;"> from 2 nights</a>`,
-    "de": `<span class="text-white" style="font-weight:600;">Buchungen</span><a href="/de/#cennik" class="promo-label" style="color:inherit;text-decoration:none;cursor:pointer;"> ab 2 Nächten</a>`,
+    "pl": `<span class="text-white" style="font-weight:600;">Rezerwacje już</span><a href="/#cennik" class="promo-label" style="color:inherit;text-decoration:none;cursor:pointer;">od 2 dób</a>`,
+    "en": `<span class="text-white" style="font-weight:600;">Bookings</span><a href="/en/#cennik" class="promo-label" style="color:inherit;text-decoration:none;cursor:pointer;">from 2 nights</a>`,
+    "de": `<span class="text-white" style="font-weight:600;">Buchungen</span><a href="/de/#cennik" class="promo-label" style="color:inherit;text-decoration:none;cursor:pointer;">ab 2 Nächten</a>`,
     }
   }, 
   "topBoxes": {

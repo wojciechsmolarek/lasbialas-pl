@@ -18,7 +18,7 @@ const t = {
     banner1: 'Sauna i jacuzzi',
     banner2: 'w środku lasu',
     bannerSub: 'PRYWATNIE · KAMERALNIE · 18+',
-    guideBtn: 'Przewodnik',
+    guideBtn: 'Cennik',
     adultTitle: 'Domki tylko dla dorosłych (18+)',
     adultText: 'Tworzymy miejsce, które sprzyja wyciszeniu, prywatności i swobodnemu odpoczynkowi. Dlatego nasza oferta skierowana jest do osób dorosłych szukających przestrzeni, miejsca, w którym można naprawdę odetchnąć, bez kompromisów, w harmonii z naturą i samym sobą. Formuła 18+ to świadomy wybór gwarantujący spokój, relaks i prawdziwą jakość wypoczynku. Jeśli szukasz ciszy, komfortu i autentycznego resetu - jesteś u siebie.',
   },
@@ -29,7 +29,7 @@ const t = {
     banner1: 'Sauna and jacuzzi',
     banner2: 'in the heart of the forest',
     bannerSub: 'PRIVATE · INTIMATE · 18+',
-    guideBtn: '',
+    guideBtn: 'Pricing',
     adultTitle: 'Adults-Only Cabins (18+)',
     adultText: 'We have created a place that fosters tranquility, privacy, and carefree relaxation. That\'s why our offer is dedicated to adults - those looking for a space where you can truly breathe, without compromise, in harmony with nature and yourself. The 18+ formula is a conscious choice - guaranteeing peace, relaxation, and real quality rest. If you are searching for silence, comfort, and an authentic reset - this is your place.',
   },
@@ -40,7 +40,7 @@ const t = {
     banner1: 'Sauna und Jacuzzi',
     banner2: 'mitten im Wald',
     bannerSub: 'PRIVAT · INTIM · 18+',
-    guideBtn: 'Reiseführer',
+    guideBtn: 'Preise',
     adultTitle: 'Nur für Erwachsene (18+)',
     adultText: 'Wir schaffen einen Ort der Ruhe, Privatsphäre und Entspannung. Unser Angebot richtet sich daher ausschließlich an Erwachsene, die einen Platz suchen, um wirklich durchzuatmen - ohne Kompromisse, im Einklang mit der Natur und mit sich selbst. Das 18+ Konzept ist eine bewusste Entscheidung - es garantiert Stille, Entspannung und echte Qualität des Urlaubs. Wir glauben, dass Erwachsene ihren eigenen Ort verdienen: intim, bewusst und mit Intention gestaltet. Wenn Sie Ruhe, Komfort und authentische Erholung suchen - sind Sie hier genau richtig.',
   },
@@ -74,9 +74,9 @@ const t = {
     </div>
   </div>
 
-  {t.guideBtn && (
+    {t.guideBtn && (
     <div class="flex justify-center mt-[30px]">
-      <a class="inline-flex justify-center items-center w-auto h-[46px] text-base font-normal text-white bg-[#B5550E] border-none text-center no-underline normal-case cursor-pointer mb-[30px] mt-[10px] px-[15px] rounded-[6px] hover:bg-[#c4621a] transition-colors" href={lang === 'de' ? 'https://lasbialas.pl/info/de/' : 'https://lasbialas.pl/info/'} target="_blank">{t.guideBtn}</a>
+      <a class="inline-flex justify-center items-center w-auto h-[46px] text-base font-normal text-white bg-[#B5550E] border-none text-center no-underline normal-case cursor-pointer mb-[30px] mt-[10px] px-[15px] rounded-[6px] hover:bg-[#c4621a] transition-colors" href="#cennik">{t.guideBtn}</a>
     </div>
   )}
 

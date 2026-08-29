@@ -10,12 +10,12 @@ export interface SiteConfig {
 
 export const siteConfig: SiteConfig = {
   "promoBar": {
-    // Pasek wyłączony — ustaw na true, aby przywrócić
-    "enabled": false,
+    // Pasek włączony — ustaw na false, aby wyłączyć
+    "enabled": true,
     "messages": {
-      "pl": `<span class="text-white" style="font-weight:600;">Rezerwacje na</span><span class="promo-label"> 2 doby</span><span class="text-white" style="font-weight:600;"> telefonicznie</span>`,
-      "en": `<span class="promo-label">2-night stays</span><span class="text-white" style="font-weight:600;"> phone bookings only</span>`,
-      "de": `<span class="promo-label">2-Nächte-Buchungen</span><span class="text-white" style="font-weight:600;"> nur telefonisch</span>`
+    "pl": `<span class="text-white" style="font-weight:600;">Rezerwacje już</span><span class="promo-label"> od 2 dób</span>`,
+    "en": `<span class="text-white" style="font-weight:600;">Bookings</span><span class="promo-label"> from 2 nights</span>`,
+    "de": `<span class="text-white" style="font-weight:600;">Buchungen</span><span class="promo-label"> ab 2 Nächten</span>`,
     }
   },
   "topBoxes": {

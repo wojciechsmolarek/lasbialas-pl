@@ -23,7 +23,7 @@ export const siteConfig: SiteConfig = {
 
        <h3 class="text-[1.2rem] text-center mt-[20px] mb-[0px] font-semibold text-[#2c2c2c]">Listopad 2026</h3>
        <p>9 - 26 lis (D2)</p>
-       <p>12 - 26 lis (D1)</p>
+       <p>12 - 18 lis | 22 - 26 lis (D1)</p>
        ${/* <p class="text-base mt-2">25 - 28 sie (D1 )<br>-15% z kodem <span class="promo-code-wrap"><span class="promo-code" id="code1">LBD1SIE</span><button class="copy-btn" onclick="copyCode('code1', this)" title="Kopiuj"><svg width="26" height="26" viewBox="0 0 24 26" fill="none"><rect x="7" y="15" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"></rect><rect x="3" y="11" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"></rect></svg></button></span></p> */ ''}
        ${/* <p class="text-base mt-2">15 - 18 wrz (D1)<br>−10% z kodem <span class="promo-code-wrap"><span class="promo-code" id="code2">LBD1SIE</span><button class="copy-btn" onclick="copyCode('code2', this)" title="Kopiuj"><svg width="26" height="26" viewBox="0 0 24 26" fill="none"><rect x="7" y="15" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"></rect><rect x="3" y="11" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"></rect></svg></button></span></p>*/ ''}
        

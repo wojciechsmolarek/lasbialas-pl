@@ -37,7 +37,7 @@ export const siteConfig: SiteConfig = {
 
        <h3 class="text-[1.2rem] text-center mt-[15px] mb-[0px] font-semibold text-[#2c2c2c]">November 2026</h3>
        <p>9 - 26 Nov (D2)</p>
-       <p>12 - 26 Nov (D2)</p>
+       <p>12 - 18 Nov | 22 - 26 Nov (D1)</p>
        ${/* <p class="text-base mt-2"><p>25 - 28 Aug (D1)<br>−15% with code <span class="promo-code-wrap"><span class="promo-code" id="code2">LBD1SIE</span><button class="copy-btn" onclick="copyCode('code2', this)" title="Copy"><svg width="26" height="26" viewBox="0 0 24 26" fill="none"><rect x="7" y="15" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"></rect><rect x="3" y="11" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"></rect></svg></button></span></p> */ ''}
        ${/* <p class="text-base mt-2">15 - 18 Sep (D1)<br>−10% with code <span class="promo-code-wrap"><span class="promo-code" id="code2">LBD1SIE</span><button class="copy-btn" onclick="copyCode('code2', this)" title="Copy"><svg width="26" height="26" viewBox="0 0 24 26" fill="none"><rect x="7" y="15" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"></rect><rect x="3" y="11" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"></rect></svg></button></span></p>*/ ''}
 
@@ -51,7 +51,7 @@ export const siteConfig: SiteConfig = {
   
        <h3 class="text-[1.2rem] text-center mt-[15px] mb-[0px] font-semibold text-[#2c2c2c]">November 2026</h3>
        <p>9. - 26. Nov (D2)</p>
-       <p>12. - 26. Nov (D2)</p>
+       <p>12. 18. Nov | 22/ - 26. Nov (D2)</p>
        ${/* <p class="text-base mt-2">25. - 28. Aug (D1)<br>−15% mit Code <span class="promo-code-wrap"><span class="promo-code" id="code3">LBD1SIE</span><button class="copy-btn" onclick="copyCode('code3', this)" title="Kopieren"><svg width="26" height="26" viewBox="0 0 24 26" fill="none"><rect x="7" y="15" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"></rect><rect x="3" y="11" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"></rect></svg></button></span></p> */ ''}
        ${/* <p class="text-base mt-2">15. - 18. Sep (D1)<br>−10% mit Code <span class="promo-code-wrap"><span class="promo-code" id="code3">LBD1SIE</span><button class="copy-btn" onclick="copyCode('code3', this)" title="Kopieren"><svg width="26" height="26" viewBox="0 0 24 26" fill="none"><rect x="7" y="15" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"></rect><rect x="3" y="11" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"></rect></svg></button></span></p><p>21. - 26. Sep (D2)</p>*/ ''}
       

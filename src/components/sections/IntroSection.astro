@@ -18,17 +18,24 @@ const t = {
     banner1: 'Sauna i jacuzzi',
     banner2: 'w środku lasu',
     bannerSub: 'PRYWATNIE · KAMERALNIE · 18+',
+    altJacuzzi1: 'Prywatne jacuzzi przy domku, wśród sosen',
+    altSauna: 'Sauna fińska z balią w lesie',
+    altJacuzzi2: 'Prywatne jacuzzi na terenie domku',
 
     adultTitle: 'Domki tylko dla dorosłych (18+)',
     adultText: 'Las Biala\'s to miejsce do spokojnego odpoczynku we dwoje lub w małym gronie. Dlatego przyjmujemy wyłącznie osoby dorosłe, bez zwierząt. Na ogrodzonym terenie stoją tylko dwa domki, oddzielone drzewami, z wejściami oddalonymi od siebie o około 50 m. Formuła 18+ to świadomy wybór: cisza, prywatność i czas tylko dla siebie.',
   },
-    en: {
+  en: {
     title: 'Year-Round Cottages for Rent in the Noteć Forest',
     p1: 'Welcome to Las Biala\'s in Biała, a village on Lake Białe in the heart of the Noteć Forest. Away from the bustle of the city, on a fenced forest property about 400 m from the beach, stand two year-round cottages for adult guests.',
     p2: 'On site there is a Finnish sauna with a cold plunge tub, and a private jacuzzi next to the cottage is available for an extra fee. Bikes, SUP boards and a barbecue grill are free to use. The cottages are heated all year round, and each room has its own thermostat.',
     banner1: 'Sauna and jacuzzi',
     banner2: 'deep in the forest',
     bannerSub: 'PRIVATE · SECLUDED · 18+',
+    altJacuzzi1: 'Private jacuzzi by the cottage, among pine trees',
+    altSauna: 'Finnish sauna with a cold plunge tub in the forest',
+    altJacuzzi2: 'Private jacuzzi on the cottage grounds',
+
     adultTitle: 'Adults-Only Cottages (18+)',
     adultText: 'Las Biala\'s is a place for quiet time as a couple or in a small group. That is why we welcome adults only, with no pets. The fenced grounds hold just two cottages, separated by trees, with entrances about 50 m apart. The 18+ concept is a deliberate choice: silence, privacy and time just for yourselves.',
   },
@@ -39,9 +46,14 @@ const t = {
     banner1: 'Sauna und Whirlpool',
     banner2: 'mitten im Wald',
     bannerSub: 'PRIVAT · RUHIG · 18+',
+    altJacuzzi1: 'Privater Whirlpool am Ferienhaus, zwischen Kiefern',
+    altSauna: 'Finnische Sauna mit Kaltwasserbottich im Wald',
+    altJacuzzi2: 'Privater Whirlpool auf dem Grundstück',
+
     adultTitle: 'Nur für Erwachsene (18+)',
     adultText: 'Las Biala\'s ist ein Ort für erholsame Tage zu zweit oder in kleiner Runde. Deshalb begrüßen wir ausschließlich Erwachsene, ohne Haustiere. Auf dem eingezäunten Gelände stehen nur zwei Ferienhäuser, durch Bäume voneinander getrennt, mit Eingängen in etwa 50 m Abstand. Das 18+-Konzept ist eine bewusste Entscheidung: Stille, Privatsphäre und Zeit nur für sich.',
-  },}[lang];
+  },
+}[lang];
 ---
 
 <div class="max-w-[73%] border border-[#ccc] rounded-[5px] py-[10px] px-[80px] mx-auto mb-5 bg-white text-base text-center max-[768px]:max-w-[96vw] max-[768px]:p-5 max-[768px]:my-[1px] max-[768px]:mb-5 max-[768px]:text-[0.6rem]">
@@ -52,13 +64,13 @@ const t = {
   {/* Banner: Sauna i jacuzzi w środku lasu */}
   <div class="relative w-full h-[300px] max-[768px]:h-[200px] mt-[50px] mb-[50px] rounded-[6px] overflow-hidden">
     <div class="absolute top-0 left-0 h-full w-[38%]">
-      <Picture src={lasbialasJacuzzi1} alt={t.altJacuzzi1} width={600} height={400} widths={[300, 450, 600]} sizes="(max-width: 768px) 40vw, 300px" formats={['avif', 'webp']} loading="lazy" decoding="async" class="w-full h-full object-cover" />
+      <Picture src={lasbialasJacuzzi1} alt={t.altJacuzzi1 ?? ''} width={600} height={400} widths={[300, 450, 600]} sizes="(max-width: 768px) 40vw, 300px" formats={['avif', 'webp']} loading="lazy" decoding="async" class="w-full h-full object-cover" />
     </div>
     <div class="absolute top-0 left-[22%] h-full w-[56%]" style="-webkit-mask-image:linear-gradient(to right,transparent,#000 20%,#000 80%,transparent);mask-image:linear-gradient(to right,transparent,#000 20%,#000 80%,transparent)">
-      <Picture src={sauna1} alt={t.altSauna} width={700} height={400} widths={[350, 525, 700]} sizes="(max-width: 768px) 55vw, 380px" formats={['avif', 'webp']} loading="lazy" decoding="async" class="w-full h-full object-cover" />
+      <Picture src={sauna1} alt={t.altSauna ?? ''} width={700} height={400} widths={[350, 525, 700]} sizes="(max-width: 768px) 55vw, 380px" formats={['avif', 'webp']} loading="lazy" decoding="async" class="w-full h-full object-cover" />
     </div>
     <div class="absolute top-0 right-0 h-full w-[34%]" style="-webkit-mask-image:linear-gradient(to right,transparent,#000 30%);mask-image:linear-gradient(to right,transparent,#000 30%)">
-      <Picture src={lasbialasJacuzzi3} alt={t.altJacuzzi2} width={500} height={400} widths={[250, 375, 500]} sizes="(max-width: 768px) 36vw, 260px" formats={['avif', 'webp']} loading="lazy" decoding="async" class="w-full h-full object-cover" />
+      <Picture src={lasbialasJacuzzi3} alt={t.altJacuzzi2 ?? ''} width={500} height={400} widths={[250, 375, 500]} sizes="(max-width: 768px) 36vw, 260px" formats={['avif', 'webp']} loading="lazy" decoding="async" class="w-full h-full object-cover" />
     </div>
     <div class="absolute inset-0 bg-black/45"></div>
     <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">

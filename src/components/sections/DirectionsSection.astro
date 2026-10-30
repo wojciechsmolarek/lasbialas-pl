@@ -14,37 +14,37 @@ const t = {
   pl: {
     carTitle: 'Dojazd samochodem',
     carBtn: 'Wyznacz trasę',
-    carText: 'Wyznaczając trasę dojazdu przez powyższy link, nawigacja Google Maps doprowadzi Cię do miejsca oddalonego o około 200 metrów od domków. Następnie skorzystaj z mapki z drogą <a href="https://lasbialas.pl/info/#/przed-przyjazdem/38" class="text-brand-green underline">dojazdu na miejscu</a>.',
+    carText: 'Link powyżej prowadzi w Google Maps do miejsca oddalonego o około 300 m od domków. Ten ostatni odcinek to droga leśna, a dalszy dojazd pokazuje <a href="https://lasbialas.pl/info/#/przed-przyjazdem/38" class="text-brand-green underline">mapka dojazdu na miejscu</a>. Współrzędne GPS domków: 52.82654, 16.30411.',
     trainTitle: 'Dojazd pociągiem',
-    trainBtn: 'Do stacji kolejowej MIAŁY',
-    trainText: 'Gościom zapewniamy zarówno transfer ze stacji kolejowej Miały (10 km od Białej) do domków Las Biala\'s, jak i transfer powrotny w dniu wyjazdu. Jeśli planujesz przyjazd pociągiem, skontaktuj się z nami aby ustalić szczegóły.',
+    trainBtn: 'Stacja Miały na mapie',
+    trainText: 'Po wcześniejszym uzgodnieniu zapewniamy bezpłatny transfer ze stacji kolejowej Miały, oddalonej o około 10 km, do domków Las Biala\'s oraz bezpłatny transfer powrotny w dniu wyjazdu. Szczegóły ustalamy indywidualnie przed przyjazdem.',
     locationTitle: 'Lokalizacja domków',
-    locationText: '64-730 Biała, Puszcza Notecka, Wielkopolska',
+    locationText: '64-730 Biała, Puszcza Notecka, Wielkopolska · GPS: 52.82654, 16.30411',
     mapBtn: 'Mapka dojazdu na miejscu',
     mapHref: 'https://lasbialas.pl/info/#/przed-przyjazdem/38',
   },
   en: {
     carTitle: 'Arrival by car',
     carBtn: 'Plan route',
-    carText: 'When planning the route using the link above, Google Maps will guide you to a spot located about 200 meters from the cottages. Then follow the map with the <a href="https://lasbialas.pl/info/en/#/before-arrival/1038" class="text-brand-green underline">local access road</a>.',
+    carText: 'The link above takes you in Google Maps to a point about 300 metres from the cottages. This last stretch is a forest road, and the rest of the way is shown on the <a href="https://lasbialas.pl/info/en/#/before-arrival/1038" class="text-brand-green underline">local access map</a>. GPS coordinates of the cottages: 52.82654, 16.30411.',
     trainTitle: 'Arrival by train',
-    trainBtn: 'To MIAŁY station',
-    trainText: 'We provide guests with a transfer from the Miały railway station (10 km from Biała) to the Las Biala\'s cottages, as well as a return transfer on the departure day. If you plan to arrive by train, please contact us to arrange details.',
+    trainBtn: 'Miały station on the map',
+    trainText: 'By prior arrangement, we provide a free transfer from Miały railway station, about 10 km away, to the Las Biala\'s cottages, as well as a free return transfer on the day of departure. Details are agreed individually before arrival.',
     locationTitle: 'Location of Las Biala\'s cottages',
-    locationText: '64-730 Biała, Noteć Forest, Greater Poland',
+    locationText: '64-730 Biała, Noteć Forest, Greater Poland · GPS: 52.82654, 16.30411',
     mapBtn: 'Local access map',
     mapHref: 'https://lasbialas.pl/info/en/#/before-arrival/1038',
   },
   de: {
     carTitle: 'Anreise mit dem Auto',
     carBtn: 'Route planen',
-    carText: 'Wenn Sie die Route über den obigen Link planen, führt Sie Google Maps zu einem Punkt, der sich etwa 200 Meter von den Häusern entfernt befindet. Verwenden Sie anschließend die Karte mit der <a href="https://lasbialas.pl/info/de/#/vor-der-anreise/721" class="text-brand-green underline">Anfahrt vor Ort</a>.',
+    carText: 'Der Link oben führt in Google Maps zu einem Punkt etwa 300 Meter von den Ferienhäusern entfernt. Dieses letzte Stück ist ein Waldweg, den weiteren Weg zeigt die <a href="https://lasbialas.pl/info/de/#/vor-der-anreise/721" class="text-brand-green underline">Anfahrtskarte vor Ort</a>. GPS-Koordinaten der Ferienhäuser: 52.82654, 16.30411.',
     trainTitle: 'Anreise mit dem Zug',
-    trainBtn: 'Zum Bahnhof MIAŁY',
-    trainText: 'Wir bieten unseren Gästen einen Transfer vom Bahnhof MIAŁY (10 km von Biała entfernt) zu den Häusern Las Biala\'s sowie den Rücktransfer am Abreisetag an. Wenn Sie mit dem Zug anreisen, kontaktieren Sie uns bitte zur Absprache der Details.',
+    trainBtn: 'Bahnhof Miały auf der Karte',
+    trainText: 'Nach vorheriger Absprache bieten wir einen kostenlosen Transfer vom etwa 10 km entfernten Bahnhof Miały zu den Ferienhäusern Las Biala\'s sowie einen kostenlosen Rücktransfer am Abreisetag an. Die Einzelheiten werden vor der Anreise individuell vereinbart.',
     locationTitle: 'Standort Las Biala\'s',
-    locationText: '64-730 Biała, Puszcza Notecka, Großpolen',
-    mapBtn: 'Karte - Anfahrt vor Ort',
+    locationText: '64-730 Biała, Puszcza Notecka, Großpolen · GPS: 52.82654, 16.30411',
+    mapBtn: 'Anfahrtskarte vor Ort',
     mapHref: 'https://lasbialas.pl/info/de/#/vor-der-anreise/721',
   },
 }[lang];
@@ -58,7 +58,7 @@ const trainHref = 'https://www.google.pl/maps/place/Mia%C5%82y/@52.8296365,16.24
   <h2 class="text-[24px] max-[768px]:text-[1.2rem] mt-5 mb-5 text-brand-black font-bold">{t.carTitle}</h2>
   <div class="text-center mt-2.5 mb-5">
     <a href={carHref} rel="nofollow noopener noreferrer" class="inline-flex items-center text-[18px] text-brand-green no-underline" target="_blank">
-      <Picture alt="Car" height={45} width={45} src={car} formats={['avif', 'webp']} class="mr-[5px] align-middle" />
+      <Picture alt="" height={45} width={45} src={car} formats={['avif', 'webp']} class="mr-[5px] align-middle" />
       <span class="leading-none">{t.carBtn}</span>
     </a>
     <p class="text-base leading-[1.6]" set:html={t.carText}></p>
@@ -70,7 +70,7 @@ const trainHref = 'https://www.google.pl/maps/place/Mia%C5%82y/@52.8296365,16.24
   <h2 class="text-[24px] max-[768px]:text-[1.2rem] mt-5 mb-5 text-brand-black font-bold">{t.trainTitle}</h2>
   <div class="text-center mt-2.5 mb-5">
     <a href={trainHref} rel="nofollow noopener noreferrer" class="inline-flex items-center text-[18px] text-brand-green no-underline" target="_blank">
-      <Picture alt="Train" height={45} width={45} src={train} formats={['avif', 'webp']} class="mr-[5px] align-middle" />
+      <Picture alt="" height={45} width={45} src={train} formats={['avif', 'webp']} class="mr-[5px] align-middle" />
       <span class="leading-none">{t.trainBtn}</span>
     </a>
     <p class="text-base leading-[1.6]" set:html={t.trainText}></p>
@@ -83,7 +83,7 @@ const trainHref = 'https://www.google.pl/maps/place/Mia%C5%82y/@52.8296365,16.24
   <p class="text-base leading-[1.6]">{t.locationText}</p>
   <div class="text-center mt-2.5">
     <a href={t.mapHref} class="inline-flex items-center text-[18px] text-brand-green no-underline" target="_blank">
-      <Picture alt="Map" height={42} width={42} src={dojazdLokalny} formats={['avif', 'webp']} class="mr-[5px] align-middle" />
+      <Picture alt="" height={42} width={42} src={dojazdLokalny} formats={['avif', 'webp']} class="mr-[5px] align-middle" />
       <span class="leading-none">{t.mapBtn}</span>
     </a>
   </div>

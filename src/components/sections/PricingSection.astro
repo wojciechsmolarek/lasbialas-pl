@@ -16,7 +16,7 @@ const t = {
     ],
     stayHours: 'Doba pobytu trwa od 16:00 do 12:00 (poza sezonem letnim możliwość ustalenia innych godzin). Nie pobieramy opłat licznikowych ani opłat za sprzątanie. Wystawiamy faktury VAT.',
     notes: [
-      'MMinimalny pobyt to 2 doby, nie wynajmujemy na jedną noc.',
+      'Minimalny pobyt to <b>2 doby</b>, nie wynajmujemy na jedną noc.',
       '3. i 4. osoba: <b>+120 zł</b> za osobę za dobę.',
       '* rabat naliczany automatycznie w systemie rezerwacji.',
     ],
@@ -24,8 +24,6 @@ const t = {
     freeTitle: 'Bezpłatnie dla Gości',
     freeItems: ['sauna', 'balia z wodą do schładzania', 'szlafroki i ręczniki do sauny', '4 rowery trekkingowe', 'murowany grill', 'węgiel i podpałka do grilla', '4 deski SUP (od maja do października)'],
     jacuzziNote: 'Jacuzzi: za dopłatą, według <a href="#cennik-jacuzzi" class="text-brand-green underline">cennika jacuzzi</a>.',
-    petTitle: 'Zasady dotyczące zwierząt',
-    petText: 'Z uwagi na charakter obiektu oraz względy organizacyjne, <b>nie przyjmujemy pobytów ze zwierzętami.</b> Uprzejmie prosimy o uwzględnienie tej zasady przy planowaniu rezerwacji.',
   },
   en: {
     title: 'Pricing 2026',
@@ -45,8 +43,6 @@ const t = {
     freeTitle: 'Free for Guests',
     freeItems: ['sauna', 'cold water tub for cooling down', 'bathrobes and sauna towels', '4 trekking bikes', 'brick barbecue grill', 'charcoal and fire starters', '4 SUP boards (from May to October)'],
     jacuzziNote: 'Jacuzzi: extra fee, see the <a href="#cennik-jacuzzi" class="text-brand-green underline">jacuzzi price list</a>.',
-    petTitle: 'Pet policy',
-    petText: 'Due to the character of the property and organizational reasons, stays with pets are not accepted. Please take this into account when booking.',
   },
   de: {
     title: 'Preise 2026',
@@ -58,7 +54,7 @@ const t = {
     ],
     stayHours: 'Anreise ab 16:00 Uhr, Abreise bis 12:00 Uhr (außerhalb der Sommersaison sind andere Zeiten nach Absprache möglich). Es fallen keine Verbrauchs- oder Reinigungsgebühren an. Wir stellen Rechnungen mit MwSt. aus.',
     notes: [
-      'Der Mindestaufenthalt beträgt <b>2 Nächte</b>, Buchungen für nur eine Nacht sind nicht möglich',
+      'Der Mindestaufenthalt beträgt <b>2 Nächte</b>, Buchungen für nur eine Nacht sind nicht möglich.',
       '3. und 4. Person: <b>+120 PLN</b> pro Person und Nacht.',
       '* Der Rabatt wird automatisch im Buchungssystem angewendet.',
     ],
@@ -66,8 +62,6 @@ const t = {
     freeTitle: 'Kostenlos für Gäste',
     freeItems: ['Sauna', 'Kaltwasserbottich zum Abkühlen', 'Bademäntel und Saunatücher', '4 Trekkingräder', 'gemauerter Grill', 'Holzkohle und Grillanzünder', '4 SUP-Boards (von Mai bis Oktober)'],
     jacuzziNote: 'Whirlpool: gegen Aufpreis, siehe <a href="#cennik-jacuzzi" class="text-brand-green underline">Whirlpool-Preisliste</a>.',
-    petTitle: 'Haustierregelung',
-    petText: 'Aufgrund der Beschaffenheit des Objekts und organisatorischer Gründe sind Aufenthalte mit Haustieren nicht gestattet. Bitte berücksichtigen Sie dies bei Ihrer Buchung.',
   },
 }[lang];
 
@@ -128,9 +122,5 @@ const tdClass = 'h-[60px] p-[6px] border-2 border-white align-middle max-[768px]
   <div class="flex justify-center mt-[30px]">
     <a class="flex justify-center items-center w-[140px] h-[46px] text-base font-normal text-white bg-[#2F6940] border-none text-center no-underline normal-case cursor-pointer font-montserrat mb-[30px] rounded-[6px] hover:bg-[#40a95c] transition-colors" href="#" onclick="openReservation(); return false;">{t.reserve}</a>
   </div>
-
-  {/* Pet policy */}
-  <h2 class="text-[24px] max-[768px]:text-[1.2rem] mb-5 mt-10 text-brand-black font-bold">{t.petTitle}</h2>
-  <p class="text-base max-[768px]:text-[1rem] leading-[1.6]" set:html={t.petText}></p>
 
 </div>

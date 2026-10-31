@@ -126,15 +126,15 @@ export const ui = {
     en: 'Adults\nonly',
     de: 'Nur für\nErwachsene'
   },
-  'amenity.sauna': {
-    pl: 'Sauna\nw cenie',
-    en: 'Sauna\nincluded',
-    de: 'Sauna\ninklusive'
+   'amenity.sauna': {
+    pl: 'Sauna\nfińska',
+    en: 'Finnish\nsauna',
+    de: 'Finnische\nSauna'
   },
-  'amenity.jacuzzi': {
-    pl: 'Prywatne jacuzzi\n(za dopłatą)',
-    en: 'Private jacuzzi\n(extra fee)',
-    de: 'Privater Whirlpool\n(gegen Aufpreis)'
+ 'amenity.jacuzzi': {
+    pl: 'Prywatne\njacuzzi',
+    en: 'Private\njacuzzi',
+    de: 'Privater\nWhirlpool'
   },
   'amenity.bikes': {
     pl: 'Rowery\ni deski SUP',

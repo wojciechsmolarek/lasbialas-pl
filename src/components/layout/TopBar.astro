@@ -20,111 +20,157 @@ const homeUrl = lang === 'pl' ? '/' : `/${lang}/`;
 const plUrl = '/';
 const enUrl = '/en/';
 const deUrl = '/de/';
+
+// Teksty menu i panelu mobilnego
+const m = {
+  pl: {
+    navLabel: 'Na stronie',
+    menu: 'Menu',
+    close: 'Zamknij menu',
+    contact: 'Kontakt',
+    languages: 'Języki',
+    phone: 'Telefon',
+    reserveNow: 'Rezerwuj teraz',
+    items: [
+      { id: 'terminy', label: 'Wolne terminy' },
+      { id: 'domki', label: 'Domki' },
+      { id: 'sauna-jacuzzi', label: 'Sauna i jacuzzi' },
+      { id: 'cennik', label: 'Cennik' },
+      { id: 'dojazd', label: 'Dojazd' },
+      { id: 'faq', label: 'FAQ' },
+      { id: 'opinie', label: 'Opinie' },
+    ],
+  },
+  en: {
+    navLabel: 'On this page',
+    menu: 'Menu',
+    close: 'Close menu',
+    contact: 'Contact',
+    languages: 'Languages',
+    phone: 'Phone',
+    reserveNow: 'Book now',
+    items: [
+      { id: 'terminy', label: 'Availability' },
+      { id: 'domki', label: 'Cottages' },
+      { id: 'sauna-jacuzzi', label: 'Sauna & Jacuzzi' },
+      { id: 'cennik', label: 'Prices' },
+      { id: 'dojazd', label: 'Getting here' },
+      { id: 'faq', label: 'FAQ' },
+      { id: 'opinie', label: 'Reviews' },
+    ],
+  },
+  de: {
+    navLabel: 'Auf dieser Seite',
+    menu: 'Menü',
+    close: 'Menü schließen',
+    contact: 'Kontakt',
+    languages: 'Sprachen',
+    phone: 'Telefon',
+    reserveNow: 'Jetzt reservieren',
+    items: [
+      { id: 'terminy', label: 'Freie Termine' },
+      { id: 'domki', label: 'Ferienhäuser' },
+      { id: 'sauna-jacuzzi', label: 'Sauna & Whirlpool' },
+      { id: 'cennik', label: 'Preise' },
+      { id: 'dojazd', label: 'Anreise' },
+      { id: 'faq', label: 'FAQ' },
+      { id: 'opinie', label: 'Bewertungen' },
+    ],
+  },
+}[lang];
+
+// Na stronie głównej sam #kotwica, na podstronach adres strony głównej + #kotwica
+const anchorHref = (id: string) => (isHomePage ? `#${id}` : `${homeUrl}#${id}`);
 ---
 
-<div class="sticky top-0 z-[1000] w-full h-auto flex justify-between items-center gap-0 px-2 py-1.5 sm:px-2.5 sm:py-2.5 text-base text-brand-black bg-white/95 shadow-[0px_4px_8px_rgba(0,0,0,0.1)] overflow-visible">
-  <a href={homeUrl}>
-    <Picture alt="Logo Las Biala's" src={lasbialasLogo} width={97} height={82} formats={['avif', 'webp']} class="h-[52px] w-[62px] sm:h-[82px] sm:w-[97px] ml-2 sm:ml-5 mr-2 sm:mr-4 object-contain" />
-  </a>
-<div class="text-left flex-1 min-w-0 flex flex-col justify-center ml-3 sm:ml-4">
-    {isHomePage
-      ? <h1 class="font-semibold text-base sm:text-lg md:text-base lg:text-lg truncate">{t('header.title.main')}</h1>
-      : <span class="font-semibold text-base sm:text-lg md:text-base lg:text-lg truncate">{t('header.title.main')}</span>}
-    <span class="font-extralight text-xs sm:text-sm md:text-sm lg:text-base block truncate">{t('header.subtitle')}</span>
-  </div>
-  <div>
-    <div class="hidden flex-wrap items-center gap-2 lg:gap-3 xl:gap-4 min-[1070px]:flex">
-      <a href="tel:+48789773285" class="flex items-center gap-1 lg:gap-2 text-brand-black no-underline hover:underline hover:text-brand-green transition-colors text-sm lg:text-base">
-        <Picture
-          alt="Telefon"
-          src={telefonG}
-          width={24}
-          height={24}
-          formats={['avif', 'webp']}
-          class="w-5 h-5 lg:w-6 lg:h-6 align-middle"
-        />+48 789 773 285
-      </a>
+<style is:global>
+  /* Odstęp pod przyklejonym paskiem przy skokach do sekcji */
+  html { scroll-padding-top: 76px; }
+  @media (min-width: 640px) { html { scroll-padding-top: 112px; } }
+  @media (min-width: 1070px) { html { scroll-padding-top: 150px; } }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
 
-      <a href="https://wa.me/48660194187" class="flex items-center gap-1 lg:gap-2 text-brand-black no-underline hover:underline hover:text-brand-green transition-colors text-sm lg:text-base">
-        <Picture
-          alt="WhatsApp"
-          src={whatsappGreen}
-          width={24}
-          height={24}
-          formats={['avif', 'webp']}
-          class="w-5 h-5 lg:w-6 lg:h-6 align-middle"
-        />660 194 187
-      </a>
-
-      <a href="mailto:domki@lasbialas.pl" class="flex items-center gap-1 lg:gap-2 text-brand-black no-underline hover:underline hover:text-brand-green transition-colors text-sm lg:text-base hidden lg:flex">
-        <Picture
-          alt="Mail"
-          src={mailG}
-          width={24}
-          height={24}
-          formats={['avif', 'webp']}
-          class="w-5 h-5 lg:w-6 lg:h-6 align-middle"
-        />domki@lasbialas.pl
-      </a>
-
-      <a
-        href="https://www.instagram.com/lasbialas"
-        rel="nofollow noopener noreferrer"
-        target="_blank"
-        class="flex items-center gap-1 lg:gap-2 text-brand-black no-underline hover:underline hover:text-brand-green transition-colors text-sm lg:text-base hidden lg:flex"
-      >
-        <Picture
-          alt="Instagram Las Biala's"
-          src={instagram}
-          width={24}
-          height={24}
-          formats={['avif', 'webp']}
-          class="w-5 h-5 lg:w-6 lg:h-6 align-middle"
-        />/lasbialas
-      </a>
-
-      <div class="flex items-center gap-1 lg:gap-2">
-        {lang !== 'pl' && <a href={plUrl} class="px-2 py-1 lg:px-3 lg:py-2 text-xs lg:text-sm font-medium text-brand-black bg-white border border-gray-300 rounded hover:bg-gray-100 transition-all no-underline">PL</a>}
-        {lang !== 'en' && <a href={enUrl} class="px-2 py-1 lg:px-3 lg:py-2 text-xs lg:text-sm font-medium text-brand-black bg-white border border-gray-300 rounded hover:bg-gray-100 transition-all no-underline">EN</a>}
-        {lang !== 'de' && <a href={deUrl} class="px-2 py-1 lg:px-3 lg:py-2 text-xs lg:text-sm font-medium text-brand-black bg-white border border-gray-300 rounded hover:bg-gray-100 transition-all no-underline">DE</a>}
-      </div>
-
-      <div>
-        <button
-          aria-label={t('nav.reservation')}
-          class="inline-block p-2 rounded-full hover:bg-gray-100 transition-colors cursor-pointer border-0 bg-transparent"
-          onclick="openReservation();"
-        >
-          <Picture alt="Rezerwacja" src={cart} width={32} height={32} formats={['avif', 'webp']} class="w-8 h-8" />
-        </button>
-      </div>
+<div class="sticky top-0 z-[1000] w-full bg-white/95 shadow-[0px_4px_8px_rgba(0,0,0,0.1)] overflow-visible">
+  <div class="w-full h-auto flex justify-between items-center gap-0 px-2 py-1.5 sm:px-2.5 sm:py-2.5 text-base text-brand-black">
+    <a href={homeUrl}>
+      <Picture alt="Logo Las Biala's" src={lasbialasLogo} width={97} height={82} formats={['avif', 'webp']} class="h-[52px] w-[62px] sm:h-[82px] sm:w-[97px] ml-2 sm:ml-5 mr-2 sm:mr-4 object-contain" />
+    </a>
+    <div class="text-left flex-1 min-w-0 flex flex-col justify-center ml-3 sm:ml-4">
+      {isHomePage
+        ? <h1 class="font-semibold text-base sm:text-lg md:text-base lg:text-lg truncate">{t('header.title.main')}</h1>
+        : <span class="font-semibold text-base sm:text-lg md:text-base lg:text-lg truncate">{t('header.title.main')}</span>}
+      <span class="font-extralight text-xs sm:text-sm md:text-sm lg:text-base block truncate">{t('header.subtitle')}</span>
     </div>
+    <div>
+      <div class="hidden flex-wrap items-center gap-2 lg:gap-3 xl:gap-4 min-[1070px]:flex">
+        <a href="tel:+48789773285" class="flex items-center gap-1 lg:gap-2 text-brand-black no-underline hover:underline hover:text-brand-green transition-colors text-sm lg:text-base">
+          <Picture alt="" src={telefonG} width={24} height={24} formats={['avif', 'webp']} class="w-5 h-5 lg:w-6 lg:h-6 align-middle" />+48 789 773 285
+        </a>
 
-    <!-- Hamburger menu - CSS icon instead of image -->
-    <button 
-      class="max-[1069px]:flex min-[1070px]:hidden cursor-pointer p-1.5 sm:p-2 border-0 bg-transparent hover:bg-gray-100 rounded-md transition-colors"
-      onclick="toggleMenu()"
-      aria-label="Menu"
-      data-hamburger
-    >
-      <div class="w-6 h-5 relative flex flex-col justify-center">
-        <span class="hamburger-line block w-full h-0.5 bg-brand-black rounded-sm transition-all duration-300 transform origin-center"></span>
-        <span class="hamburger-line block w-full h-0.5 bg-brand-black rounded-sm transition-all duration-300 transform origin-center mt-1"></span>
-        <span class="hamburger-line block w-full h-0.5 bg-brand-black rounded-sm transition-all duration-300 transform origin-center mt-1"></span>
+        <a href="https://wa.me/48660194187" class="flex items-center gap-1 lg:gap-2 text-brand-black no-underline hover:underline hover:text-brand-green transition-colors text-sm lg:text-base">
+          <Picture alt="WhatsApp" src={whatsappGreen} width={24} height={24} formats={['avif', 'webp']} class="w-5 h-5 lg:w-6 lg:h-6 align-middle" />660 194 187
+        </a>
+
+        <a href="mailto:domki@lasbialas.pl" class="flex items-center gap-1 lg:gap-2 text-brand-black no-underline hover:underline hover:text-brand-green transition-colors text-sm lg:text-base hidden lg:flex">
+          <Picture alt="" src={mailG} width={24} height={24} formats={['avif', 'webp']} class="w-5 h-5 lg:w-6 lg:h-6 align-middle" />domki@lasbialas.pl
+        </a>
+
+        <a href="https://www.instagram.com/lasbialas" rel="nofollow noopener noreferrer" target="_blank" class="flex items-center gap-1 lg:gap-2 text-brand-black no-underline hover:underline hover:text-brand-green transition-colors text-sm lg:text-base hidden lg:flex">
+          <Picture alt="Instagram" src={instagram} width={24} height={24} formats={['avif', 'webp']} class="w-5 h-5 lg:w-6 lg:h-6 align-middle" />/lasbialas
+        </a>
+
+        <div class="flex items-center gap-1 lg:gap-2">
+          {lang !== 'pl' && <a href={plUrl} class="px-2 py-1 lg:px-3 lg:py-2 text-xs lg:text-sm font-medium text-brand-black bg-white border border-gray-300 rounded hover:bg-gray-100 transition-all no-underline">PL</a>}
+          {lang !== 'en' && <a href={enUrl} class="px-2 py-1 lg:px-3 lg:py-2 text-xs lg:text-sm font-medium text-brand-black bg-white border border-gray-300 rounded hover:bg-gray-100 transition-all no-underline">EN</a>}
+          {lang !== 'de' && <a href={deUrl} class="px-2 py-1 lg:px-3 lg:py-2 text-xs lg:text-sm font-medium text-brand-black bg-white border border-gray-300 rounded hover:bg-gray-100 transition-all no-underline">DE</a>}
+        </div>
+
+        <div>
+          <button
+            aria-label={t('nav.reservation')}
+            class="inline-block p-2 rounded-full hover:bg-gray-100 transition-colors cursor-pointer border-0 bg-transparent"
+            onclick="openReservation();"
+          >
+            <Picture alt="" src={cart} width={32} height={32} formats={['avif', 'webp']} class="w-8 h-8" />
+          </button>
+        </div>
       </div>
-    </button>
+
+      <!-- Hamburger menu - CSS icon instead of image -->
+      <button
+        class="max-[1069px]:flex min-[1070px]:hidden cursor-pointer p-1.5 sm:p-2 border-0 bg-transparent hover:bg-gray-100 rounded-md transition-colors"
+        onclick="toggleMenu()"
+        aria-label={m.menu}
+        aria-controls="mobileContactMenu"
+        data-hamburger
+      >
+        <div class="w-6 h-5 relative flex flex-col justify-center">
+          <span class="hamburger-line block w-full h-0.5 bg-brand-black rounded-sm transition-all duration-300 transform origin-center"></span>
+          <span class="hamburger-line block w-full h-0.5 bg-brand-black rounded-sm transition-all duration-300 transform origin-center mt-1"></span>
+          <span class="hamburger-line block w-full h-0.5 bg-brand-black rounded-sm transition-all duration-300 transform origin-center mt-1"></span>
+        </div>
+      </button>
+    </div>
   </div>
+
+  <!-- Menu skoków do sekcji (desktop) -->
+  <nav aria-label={m.navLabel} class="hidden min-[1070px]:flex justify-center flex-wrap gap-x-7 gap-y-1 px-4 py-2 border-t border-gray-200 text-[0.95rem]">
+    {m.items.map((item) => (
+      <a href={anchorHref(item.id)} data-nav-link={item.id} class="text-brand-black no-underline hover:text-brand-green transition-colors">{item.label}</a>
+    ))}
+  </nav>
 </div>
 
 <!-- Menu mobilne -->
-<div class="fixed top-0 right-0 h-[100vh] w-[320px] bg-[#2F6940] z-[100001] translate-x-full transition-transform duration-300 ease-in-out p-5 shadow-[-4px_0_12px_rgba(0,0,0,0.1)] [&.active]:translate-x-0" id="mobileContactMenu">
+<div class="fixed top-0 right-0 h-[100vh] w-[320px] max-w-[90vw] overflow-y-auto bg-[#2F6940] z-[100001] translate-x-full transition-transform duration-300 ease-in-out p-5 shadow-[-4px_0_12px_rgba(0,0,0,0.1)] [&.active]:translate-x-0" id="mobileContactMenu">
   <!-- Nagłówek menu -->
-  <div class="flex justify-between items-center mb-6 pb-4 border-b border-gray-200">
-    <div class="text-lg font-semibold text-white">Menu</div>
-    <button 
+  <div class="flex justify-between items-center mb-4 pb-4 border-b border-white/20">
+    <div class="text-lg font-semibold text-white">{m.menu}</div>
+    <button
       class="close-menu p-2 rounded-full hover:bg-white/20 transition-colors border-0 bg-transparent"
       onclick="toggleMenu()"
-      aria-label="Zamknij menu"
+      aria-label={m.close}
     >
       <div class="w-6 h-6 relative">
         <span class="absolute top-1/2 left-0 w-full h-0.5 bg-white rounded-sm transform -translate-y-1/2 rotate-45"></span>
@@ -133,150 +179,156 @@ const deUrl = '/de/';
     </button>
   </div>
 
-  <!-- Języki -->
-  <div class="flex items-center gap-2 mb-6">
-    {lang !== 'pl' && <a href={plUrl} class="px-3 py-2 text-sm font-medium text-[#2F6940] bg-white border border-white/30 rounded hover:bg-white/90 transition-all no-underline">PL</a>}
-    {lang !== 'en' && <a href={enUrl} class="px-3 py-2 text-sm font-medium text-[#2F6940] bg-white border border-white/30 rounded hover:bg-white/90 transition-all no-underline">EN</a>}
-    {lang !== 'de' && <a href={deUrl} class="px-3 py-2 text-sm font-medium text-[#2F6940] bg-white border border-white/30 rounded hover:bg-white/90 transition-all no-underline">DE</a>}
+  <!-- Skoki do sekcji -->
+  <nav aria-label={m.navLabel}>
+    <div class="text-xs uppercase tracking-wider text-white/60 mb-1 px-2">{m.navLabel}</div>
+    <ul class="list-none m-0 p-0">
+      {m.items.map((item) => (
+        <li>
+          <a href={anchorHref(item.id)} data-menu-link class="block py-2.5 px-2 text-white text-base font-medium no-underline hover:bg-white/15 rounded-lg transition-colors">{item.label}</a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+
+  <!-- Przycisk rezerwacji -->
+  <div class="mt-4 pt-4 border-t border-white/20">
+    <button
+      class="w-full py-3 px-4 bg-white text-[#2F6940] rounded-lg hover:bg-white/90 transition-colors font-semibold border-0 cursor-pointer"
+      onclick="openReservation(); closeMenu();"
+    >
+      {m.reserveNow}
+    </button>
   </div>
 
   <!-- Kontakt -->
-  <div class="space-y-1">
-    <a href="tel:+48789773285" class="flex items-center gap-3 py-3 text-white no-underline hover:bg-white/15 rounded-lg transition-colors px-2">
-      <Picture
-        alt="Telefon"
-        src={telefonG}
-        width={24}
-        height={24}
-        formats={['avif', 'webp']}
-        sizes="24px"
-        class="w-[24px] h-[24px] flex-shrink-0"
-      />
-      <div>
-        <div class="font-medium">+48 789 773 285</div>
-        <div class="text-xs text-white/70">Telefon</div>
-      </div>
-    </a>
+  <div class="mt-4 pt-4 border-t border-white/20">
+    <div class="text-xs uppercase tracking-wider text-white/60 mb-1 px-2">{m.contact}</div>
+    <div class="space-y-1">
+      <a href="tel:+48789773285" class="flex items-center gap-3 py-2.5 text-white no-underline hover:bg-white/15 rounded-lg transition-colors px-2">
+        <Picture alt="" src={telefonG} width={24} height={24} formats={['avif', 'webp']} sizes="24px" class="w-[24px] h-[24px] flex-shrink-0" />
+        <div>
+          <div class="font-medium">+48 789 773 285</div>
+          <div class="text-xs text-white/70">{m.phone}</div>
+        </div>
+      </a>
 
-    <a href="https://wa.me/48660194187" class="flex items-center gap-3 py-3 text-white no-underline hover:bg-white/15 rounded-lg transition-colors px-2">
-      <Picture
-        alt="WhatsApp"
-        src={whatsappGreen}
-        width={24}
-        height={24}
-        formats={['avif', 'webp']}
-        sizes="24px"
-        class="w-[24px] h-[24px] flex-shrink-0"
-      />
-      <div>
-        <div class="font-medium">660 194 187</div>
-        <div class="text-xs text-white/70">WhatsApp</div>
-      </div>
-    </a>
+      <a href="https://wa.me/48660194187" class="flex items-center gap-3 py-2.5 text-white no-underline hover:bg-white/15 rounded-lg transition-colors px-2">
+        <Picture alt="" src={whatsappGreen} width={24} height={24} formats={['avif', 'webp']} sizes="24px" class="w-[24px] h-[24px] flex-shrink-0" />
+        <div>
+          <div class="font-medium">660 194 187</div>
+          <div class="text-xs text-white/70">WhatsApp</div>
+        </div>
+      </a>
 
-    <a href="mailto:domki@lasbialas.pl" class="flex items-center gap-3 py-3 text-white no-underline hover:bg-white/15 rounded-lg transition-colors px-2">
-      <Picture
-        alt="Mail"
-        src={mailG}
-        width={24}
-        height={24}
-        formats={['avif', 'webp']}
-        sizes="24px"
-        class="w-[24px] h-[24px] flex-shrink-0"
-      />
-      <div>
-        <div class="font-medium">domki@lasbialas.pl</div>
-        <div class="text-xs text-white/70">Email</div>
-      </div>
-    </a>
+      <a href="mailto:domki@lasbialas.pl" class="flex items-center gap-3 py-2.5 text-white no-underline hover:bg-white/15 rounded-lg transition-colors px-2">
+        <Picture alt="" src={mailG} width={24} height={24} formats={['avif', 'webp']} sizes="24px" class="w-[24px] h-[24px] flex-shrink-0" />
+        <div>
+          <div class="font-medium">domki@lasbialas.pl</div>
+          <div class="text-xs text-white/70">Email</div>
+        </div>
+      </a>
 
-    <a
-      href="https://www.instagram.com/lasbialas"
-      rel="nofollow noopener noreferrer"
-      target="_blank"
-      class="flex items-center gap-3 py-3 text-white no-underline hover:bg-white/15 rounded-lg transition-colors px-2"
-    >
-      <Picture
-        alt="Instagram Las Biala's"
-        src={instagram}
-        width={24}
-        height={24}
-        formats={['avif', 'webp']}
-        sizes="24px"
-        class="w-[24px] h-[24px] flex-shrink-0"
-      />
-      <div>
-        <div class="font-medium">@lasbialas</div>
-        <div class="text-xs text-white/70">Instagram</div>
-      </div>
-    </a>
+      <a href="https://www.instagram.com/lasbialas" rel="nofollow noopener noreferrer" target="_blank" class="flex items-center gap-3 py-2.5 text-white no-underline hover:bg-white/15 rounded-lg transition-colors px-2">
+        <Picture alt="" src={instagram} width={24} height={24} formats={['avif', 'webp']} sizes="24px" class="w-[24px] h-[24px] flex-shrink-0" />
+        <div>
+          <div class="font-medium">@lasbialas</div>
+          <div class="text-xs text-white/70">Instagram</div>
+        </div>
+      </a>
+    </div>
   </div>
 
-  <!-- Przycisk rezerwacji -->
-  <div class="mt-6 pt-6 border-t border-white/20">
-    <button
-      class="w-full py-3 px-4 bg-white/15 text-white rounded-lg hover:bg-white/25 transition-colors font-medium border-0 cursor-pointer"
-      onclick="openReservation(); toggleMenu();"
-    >
-      Rezerwuj teraz
-    </button>
+  <!-- Języki -->
+  <div class="mt-4 pt-4 border-t border-white/20">
+    <div class="text-xs uppercase tracking-wider text-white/60 mb-2 px-2">{m.languages}</div>
+    <div class="flex items-center gap-2 px-2">
+      {lang !== 'pl' && <a href={plUrl} class="px-3 py-2 text-sm font-medium text-[#2F6940] bg-white border border-white/30 rounded hover:bg-white/90 transition-all no-underline">PL</a>}
+      {lang !== 'en' && <a href={enUrl} class="px-3 py-2 text-sm font-medium text-[#2F6940] bg-white border border-white/30 rounded hover:bg-white/90 transition-all no-underline">EN</a>}
+      {lang !== 'de' && <a href={deUrl} class="px-3 py-2 text-sm font-medium text-[#2F6940] bg-white border border-white/30 rounded hover:bg-white/90 transition-all no-underline">DE</a>}
+    </div>
   </div>
 </div>
 
 <script is:inline defer>
   (function () {
+    function setHamburger(isActive) {
+      const hamburger = document.querySelector('[data-hamburger]');
+      const lines = hamburger ? hamburger.querySelectorAll('.hamburger-line') : null;
+      if (!lines || lines.length < 3) return;
+      requestAnimationFrame(function () {
+        if (isActive) {
+          lines[0].style.transform = 'rotate(45deg) translateY(6px)';
+          lines[1].style.opacity = '0';
+          lines[2].style.transform = 'rotate(-45deg) translateY(-6px)';
+        } else {
+          lines[0].style.transform = 'rotate(0deg) translateY(0)';
+          lines[1].style.opacity = '1';
+          lines[2].style.transform = 'rotate(0deg) translateY(0)';
+        }
+      });
+      if (hamburger) hamburger.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+    }
+
     function toggleMenu() {
       const menu = document.getElementById('mobileContactMenu');
-      const hamburger = document.querySelector('[data-hamburger]');
-      const hamburgerLines = hamburger?.querySelectorAll('.hamburger-line');
+      if (!menu) return;
+      setHamburger(menu.classList.toggle('active'));
+    }
 
-      if (menu && hamburgerLines) {
-        const isActive = menu.classList.toggle('active');
-
-        // Animate hamburger lines — batch style writes in rAF to avoid forced reflow
-        requestAnimationFrame(function () {
-          if (isActive) {
-            hamburgerLines[0].style.transform = 'rotate(45deg) translateY(6px)';
-            hamburgerLines[1].style.opacity = '0';
-            hamburgerLines[2].style.transform = 'rotate(-45deg) translateY(-6px)';
-          } else {
-            hamburgerLines[0].style.transform = 'rotate(0deg) translateY(0)';
-            hamburgerLines[1].style.opacity = '1';
-            hamburgerLines[2].style.transform = 'rotate(0deg) translateY(0)';
-          }
-        });
+    function closeMenu() {
+      const menu = document.getElementById('mobileContactMenu');
+      if (menu && menu.classList.contains('active')) {
+        menu.classList.remove('active');
+        setHamburger(false);
       }
     }
 
     window.toggleMenu = toggleMenu;
+    window.closeMenu = closeMenu;
 
-    // Close mobile menu when clicking outside
+    // Zamknij panel po kliknięciu linku do sekcji
+    document.querySelectorAll('[data-menu-link]').forEach(function (link) {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Zamknij panel po kliknięciu poza nim
     document.addEventListener('click', function (event) {
       const menu = document.getElementById('mobileContactMenu');
       const hamburger = document.querySelector('[data-hamburger]');
-      const closeMenu = document.querySelector('.close-menu');
-
-      if (menu && hamburger && !menu.contains(event.target) && !hamburger.contains(event.target) && !closeMenu?.contains(event.target)) {
-        menu.classList.remove('active');
-
-        // Reset hamburger animation
-        const hamburgerLines = hamburger.querySelectorAll('.hamburger-line');
-        if (hamburgerLines) {
-          hamburgerLines[0].style.transform = 'rotate(0deg) translateY(0)';
-          hamburgerLines[1].style.opacity = '1';
-          hamburgerLines[2].style.transform = 'rotate(0deg) translateY(0)';
-        }
+      if (menu && hamburger && !menu.contains(event.target) && !hamburger.contains(event.target)) {
+        closeMenu();
       }
     });
 
-    // Close menu on escape key
+    // Zamknij panel klawiszem Escape
     document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape') {
-        const menu = document.getElementById('mobileContactMenu');
-        if (menu && menu.classList.contains('active')) {
-          toggleMenu();
-        }
-      }
+      if (event.key === 'Escape') closeMenu();
     });
+
+    // Podświetlenie aktywnej sekcji w menu (desktop)
+    const navLinks = document.querySelectorAll('[data-nav-link]');
+    if (navLinks.length && 'IntersectionObserver' in window) {
+      const byId = {};
+      navLinks.forEach(function (a) { byId[a.getAttribute('data-nav-link')] = a; });
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          navLinks.forEach(function (a) {
+            a.classList.remove('text-brand-green', 'font-semibold');
+            a.removeAttribute('aria-current');
+          });
+          const active = byId[entry.target.id];
+          if (active) {
+            active.classList.add('text-brand-green', 'font-semibold');
+            active.setAttribute('aria-current', 'true');
+          }
+        });
+      }, { rootMargin: '-45% 0px -50% 0px' });
+      Object.keys(byId).forEach(function (id) {
+        const section = document.getElementById(id);
+        if (section) observer.observe(section);
+      });
+    }
   })();
 </script>

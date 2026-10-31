@@ -8,7 +8,7 @@ const { lang } = Astro.props;
 const t = {
   pl: {
     title: 'Wynajem jacuzzi',
-    intro: 'Prywatne jacuzzi stoi na tarasie przy domku, pod pergolą z regulowanym zadaszeniem i zasłonami. Wynajem jest opcjonalny i obejmuje <b>nieograniczone korzystanie przez cały pobyt</b>. Woda jest podgrzewana przez całą dobę do 37–38 °C lub innej temperatury na życzenie. Przed każdym pobytem jacuzzi czyścimy i napełniamy świeżą wodą, a w trakcie pobytu regularnie je serwisujemy. Zamiast chloru stosujemy aktywny tlen, łagodniejszy dla skóry. Jacuzzi zamawia się, zaznaczając tę opcję w formularzu rezerwacji. W okresie dużych mrozów może być niedostępne.',
+    intro: 'Prywatne jacuzzi stoi na tarasie przy domku, pod pergolą z regulowanym zadaszeniem i zasłonami. Wynajem jest opcjonalny i obejmuje <b>nieograniczone korzystanie przez cały pobyt</b>. Woda jest podgrzewana przez całą dobę do 37–38 °C lub innej temperatury na życzenie. Przed każdym pobytem jacuzzi czyścimy i napełniamy świeżą wodą, a w trakcie pobytu regularnie je serwisujemy. Zamiast chloru stosujemy aktywny tlen, łagodniejszy dla skóry. Jacuzzi zamawia się, zaznaczając tę opcję w formularzu rezerwacji. W okresie dużych mrozów jacuzzi może być niedostępne, dlatego przy pobytach zimą jego dostępność potwierdzamy przed rezerwacją.',
     cols: ['Długość pobytu', 'Cena jacuzzi za pobyt (1–2 os.)'],
     rows: [
       ['2–3 doby', '480 zł'],
@@ -19,12 +19,12 @@ const t = {
     note: [
       'Ceny zawierają jednorazową opłatę <b>150 zł</b> za przygotowanie jacuzzi.',
       'Dla 3–4 osób: <b>+60 zł</b> przy pobycie 2–3 dób, <b>+20 zł</b> za każdą kolejną dobę.',
-      'Liczba osób oznacza wszystkich gości przebywających w domku.',
+      'Cena zależy od liczby osób objętych rezerwacją.',
     ],
   },
   en: {
     title: 'Jacuzzi rental',
-    intro: 'The private jacuzzi stands on the terrace next to the cottage, under a pergola with an adjustable roof and curtains. The rental is optional and includes <b>unlimited use throughout your stay</b>. The water is heated around the clock to 37–38 °C, or to another temperature on request. Before each stay we clean the jacuzzi and fill it with fresh water, and we service it regularly during your stay. Instead of chlorine we use active oxygen, which is gentler on the skin. The jacuzzi is ordered by selecting this option in the booking form. During severe frosts it may be unavailable.',
+    intro: 'The private jacuzzi stands on the terrace next to the cottage, under a pergola with an adjustable roof and curtains. The rental is optional and includes <b>unlimited use throughout your stay</b>. The water is heated around the clock to 37–38 °C, or to another temperature on request. Before each stay we clean the jacuzzi and fill it with fresh water, and we service it regularly during your stay. Instead of chlorine we use active oxygen, which is gentler on the skin. The jacuzzi is ordered by selecting this option in the booking form. During severe frosts it may be unavailable, so for winter stays we confirm availability before booking.',
     cols: ['Length of stay', 'Jacuzzi price per stay (1–2 guests)'],
     rows: [
       ['2–3 nights', '480 PLN'],
@@ -35,12 +35,12 @@ const t = {
     note: [
       'Prices include a one-time <b>150 PLN</b> jacuzzi preparation fee.',
       'For 3–4 guests: <b>+60 PLN</b> for a 2–3 night stay, <b>+20 PLN</b> for each additional night.',
-      'The number of guests means everyone staying in the cottage.',
+      'The price depends on the number of guests included in the booking.',
     ],
   },
   de: {
     title: 'Whirlpool-Miete',
-    intro: 'Der private Whirlpool steht auf der Terrasse direkt am Ferienhaus, unter einer Pergola mit verstellbarem Dach und Vorhängen. Die Miete ist optional und umfasst die <b>unbegrenzte Nutzung während des gesamten Aufenthalts</b>. Das Wasser wird rund um die Uhr auf 37–38 °C oder auf Wunsch auf eine andere Temperatur beheizt. Vor jedem Aufenthalt reinigen wir den Whirlpool und füllen ihn mit frischem Wasser, während des Aufenthalts wird er regelmäßig gewartet. Statt Chlor verwenden wir Aktivsauerstoff, der schonender für die Haut ist. Der Whirlpool wird bestellt, indem diese Option im Buchungsformular ausgewählt wird. Bei starkem Frost kann er nicht verfügbar sein.',
+    intro: 'Der private Whirlpool steht auf der Terrasse direkt am Ferienhaus, unter einer Pergola mit verstellbarem Dach und Vorhängen. Die Miete ist optional und umfasst die <b>unbegrenzte Nutzung während des gesamten Aufenthalts</b>. Das Wasser wird rund um die Uhr auf 37–38 °C oder auf Wunsch auf eine andere Temperatur beheizt. Vor jedem Aufenthalt reinigen wir den Whirlpool und füllen ihn mit frischem Wasser, während des Aufenthalts wird er regelmäßig gewartet. Statt Chlor verwenden wir Aktivsauerstoff, der schonender für die Haut ist. Der Whirlpool wird bestellt, indem diese Option im Buchungsformular ausgewählt wird. Bei starkem Frost kann er nicht verfügbar sein, daher bestätigen wir die Verfügbarkeit für Aufenthalte im Winter vor der Buchung.',
     cols: ['Aufenthaltsdauer', 'Whirlpool-Preis pro Aufenthalt (1–2 Pers.)'],
     rows: [
       ['2–3 Nächte', '480 PLN'],
@@ -51,7 +51,7 @@ const t = {
     note: [
       'Die Preise enthalten eine einmalige Gebühr von <b>150 PLN</b> für die Vorbereitung des Whirlpools.',
       'Für 3–4 Personen: <b>+60 PLN</b> bei 2–3 Nächten, <b>+20 PLN</b> für jede weitere Nacht.',
-      'Die Personenzahl umfasst alle Gäste, die im Ferienhaus übernachten.',
+      'Der Preis richtet sich nach der Anzahl der Personen in der Buchung.',
     ],
   },
 }[lang];

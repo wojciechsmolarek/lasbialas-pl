@@ -154,19 +154,19 @@ export const ui = {
 
   // ===== SECTIONS / SEKCJE =====
   'section.sauna_title': {
-    pl: 'Sauna',
-    en: 'Sauna',
-    de: 'Sauna'
+    pl: 'Sauna fińska dla gości',
+    en: 'Finnish sauna for guests',
+    de: 'Finnische Sauna für Gäste'
   },
   'section.sauna_desc': {
     pl: 'Sauna fińska działa przez cały rok i jest w cenie pobytu. Ma przebieralnię, głośnik Bluetooth i oświetlenie LED, a obok, na tarasie wśród sosen, strefę wypoczynku i balię z zimną wodą do schładzania lub morsowania, przygotowywaną na życzenie zgłoszone w formularzu rezerwacji. Sauna jest wspólna dla dwóch domków, ale podczas sesji korzystasz z niej na wyłączność, we własnym gronie. Przed każdą sesją saunę przygotowujemy i nagrzewamy na umówioną godzinę. Szlafroki i ręczniki do sauny czekają w domku.',
     en: 'The Finnish sauna is open all year round and included in the stay. It has a changing room, a Bluetooth speaker and LED lighting, and next to it, on a terrace among the pine trees, a seating area and a tub of cold water for cooling down or cold plunges, prepared on request via the booking form. The sauna is shared by the two cottages, but during each session you have it all to yourselves. Before every session we prepare and heat the sauna so it is ready at the agreed time. Bathrobes and sauna towels are provided in the cottage.',
     de: 'Die finnische Sauna ist das ganze Jahr über nutzbar und im Preis inbegriffen. Sie hat einen Umkleideraum, einen Bluetooth-Lautsprecher und LED-Beleuchtung, daneben auf einer Terrasse zwischen Kiefern einen Sitzbereich und einen Kaltwasserbottich zum Abkühlen oder Eisbaden, der auf Wunsch über das Buchungsformular vorbereitet wird. Die Sauna wird von beiden Ferienhäusern genutzt, jede Sitzung ist jedoch privat und nur für Sie. Vor jeder Sitzung bereiten wir die Sauna vor und heizen sie bis zur vereinbarten Uhrzeit auf. Bademäntel und Saunatücher liegen im Ferienhaus bereit.'
   },
-  'section.jacuzzi_title': {
-    pl: 'Jacuzzi',
-    en: 'Jacuzzi',
-    de: 'Whirlpool'
+   'section.jacuzzi_title': {
+    pl: 'Prywatne jacuzzi przy domku',
+    en: 'Private jacuzzi by the cottage',
+    de: 'Privater Whirlpool am Ferienhaus'
   },
   'section.jacuzzi_desc': {
     pl: 'Przy każdym domku jest prywatne jacuzzi, dostępne za dopłatą i bez ograniczeń czasowych przez cały pobyt. Ma aeromasaż, automatyczne podgrzewanie wody do 37–38°C i nastrojowe oświetlenie LED. Stoi pod pergolą z regulowanym zadaszeniem i zasłonami. Przed każdym pobytem jest czyszczone, a woda wymieniana na świeżą, bez chloru. Jacuzzi przygotowujemy na przyjazd po zaznaczeniu tej opcji w formularzu rezerwacji. W okresie dużych mrozów może być niedostępne.',

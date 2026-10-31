@@ -8,62 +8,57 @@ const { lang } = Astro.props;
 const t = {
   pl: {
     title: 'Wynajem jacuzzi',
-    intro: 'Wynajem jest opcjonalny i obejmuje <b>nieograniczony dostęp do prywatnego jacuzzi</b>, które znajduje się na tarasie obok domku, w otoczeniu wysokich drzew sosnowego lasu. Ma całodobowo podgrzewaną wodę (stałą temperaturę 37–38\u00a0°C lub inną na życzenie), funkcje aeromasażu, oświetlenie LED, pergolę z regulowanym zadaszeniem i zasłony. W jacuzzi nie stosujemy chloru, woda wymieniana przed każdym pobytem, a w jego trakcie wykonywane są regularne serwisy.',
-    colsHeader: ['Długość pobytu', 'Cena jacuzzi za pobyt'],
-    colsSub: ['1–2 os.', '3–4 os.'],
+    intro: 'Prywatne jacuzzi stoi na tarasie przy domku, pod pergolą z regulowanym zadaszeniem i zasłonami. Wynajem jest opcjonalny i obejmuje <b>nieograniczone korzystanie przez cały pobyt</b>. Woda jest podgrzewana przez całą dobę do 37–38 °C lub innej temperatury na życzenie. Przed każdym pobytem jacuzzi czyścimy i napełniamy świeżą wodą, a w trakcie pobytu regularnie je serwisujemy. Zamiast chloru stosujemy aktywny tlen, łagodniejszy dla skóry. Jacuzzi zamawia się, zaznaczając tę opcję w formularzu rezerwacji. W okresie dużych mrozów może być niedostępne.',
+    cols: ['Długość pobytu', 'Cena jacuzzi za pobyt (1–2 os.)'],
     rows: [
-      ['2-3 doby', '330 zł', '390 zł'],
-      ['4 doby', '430 zł', '510 zł'],
-      ['5 dób', '520 zł', '620 zł'],
-      ['kolejna doba', '+100 zł', '+120 zł'],
-    ],
-    feesHeader: ['Opłaty jednorazowe', 'Cena'],
-    feesRows: [
-      ['Przygotowanie jacuzzi na pobyt', '150 zł'],
+      ['2–3 doby', '480 zł'],
+      ['4 doby', '580 zł'],
+      ['5 dób', '670 zł'],
+      ['każda kolejna doba (od 6.)', '+100 zł'],
     ],
     note: [
-      'Cena wynajmu obejmuje opłatę za przygotowanie (150 zł) oraz opłatę za korzystanie zależną od długości pobytu.',
+      'Ceny zawierają jednorazową opłatę <b>150 zł</b> za przygotowanie jacuzzi.',
+      'Dla 3–4 osób: <b>+60 zł</b> przy pobycie 2–3 dób, <b>+20 zł</b> za każdą kolejną dobę.',
+      'Liczba osób oznacza wszystkich gości przebywających w domku.',
     ],
   },
   en: {
     title: 'Jacuzzi rental',
-    intro: 'The rental is optional and includes unlimited access to a private jacuzzi, which you can enjoy at any time. The jacuzzi is located right next to the cabin, surrounded by tall pine trees. It features 24-hour heated water (37-38°C or adjusted to your preference), air massage functions, LED lighting, a pergola with adjustable roof, and curtains. No chlorine is used - the water is replaced before each stay and maintained regularly during it.',
-    colsHeader: ['Length of stay', 'Jacuzzi price per stay'],
-    colsSub: ['1–2 guests', '3–4 guests'],
+    intro: 'The private jacuzzi stands on the terrace next to the cottage, under a pergola with an adjustable roof and curtains. The rental is optional and includes <b>unlimited use throughout your stay</b>. The water is heated around the clock to 37–38 °C, or to another temperature on request. Before each stay we clean the jacuzzi and fill it with fresh water, and we service it regularly during your stay. Instead of chlorine we use active oxygen, which is gentler on the skin. The jacuzzi is ordered by selecting this option in the booking form. During severe frosts it may be unavailable.',
+    cols: ['Length of stay', 'Jacuzzi price per stay (1–2 guests)'],
     rows: [
-      ['2-3 nights', '330 zł', '390 zł'],
-      ['4 nights', '430 zł', '510 zł'],
-      ['5 nights', '520 zł', '620 zł'],
-      ['additional night', '+100 zł', '+120 zł'],
-    ],
-    feesHeader: ['One-time fees', 'Price'],
-    feesRows: [
-      ['Jacuzzi preparation per stay', '150 zł'],
+      ['2–3 nights', '480 PLN'],
+      ['4 nights', '580 PLN'],
+      ['5 nights', '670 PLN'],
+      ['each additional night (from the 6th)', '+100 PLN'],
     ],
     note: [
-      'The rental price includes a preparation fee (150 PLN) and a daily usage fee, calculated in the booking system depending on the length of stay.',
+      'Prices include a one-time <b>150 PLN</b> jacuzzi preparation fee.',
+      'For 3–4 guests: <b>+60 PLN</b> for a 2–3 night stay, <b>+20 PLN</b> for each additional night.',
+      'The number of guests means everyone staying in the cottage.',
     ],
   },
   de: {
-    title: 'Jacuzzi-Miete',
-    intro: 'Die Nutzung des Jacuzzis ist optional und umfasst uneingeschränkten Zugang zu Ihrem privaten Jacuzzi, den Sie jederzeit nutzen können. Das Jacuzzi befindet sich direkt neben dem Ferienhaus, umgeben von hohen Kiefern. Es verfügt über dauerhaft beheiztes Wasser (37–38 °C bzw. nach Wunsch), ein Luftmassage-System, LED-Beleuchtung sowie eine Pergola mit verstellbarem Dach und Vorhängen. Wir verwenden kein Chlor – das Wasser wird vor jedem Aufenthalt gewechselt und regelmäßig gewartet.',
-    colsHeader: ['Aufenthaltsdauer', 'Jacuzzi-Preis pro Aufenthalt'],
-    colsSub: ['1–2 Pers.', '3–4 Pers.'],
+    title: 'Whirlpool-Miete',
+    intro: 'Der private Whirlpool steht auf der Terrasse direkt am Ferienhaus, unter einer Pergola mit verstellbarem Dach und Vorhängen. Die Miete ist optional und umfasst die <b>unbegrenzte Nutzung während des gesamten Aufenthalts</b>. Das Wasser wird rund um die Uhr auf 37–38 °C oder auf Wunsch auf eine andere Temperatur beheizt. Vor jedem Aufenthalt reinigen wir den Whirlpool und füllen ihn mit frischem Wasser, während des Aufenthalts wird er regelmäßig gewartet. Statt Chlor verwenden wir Aktivsauerstoff, der schonender für die Haut ist. Der Whirlpool wird bestellt, indem diese Option im Buchungsformular ausgewählt wird. Bei starkem Frost kann er nicht verfügbar sein.',
+    cols: ['Aufenthaltsdauer', 'Whirlpool-Preis pro Aufenthalt (1–2 Pers.)'],
     rows: [
-      ['2-3 Nächte', '330 zł', '390 zł'],
-      ['4 Nächte', '430 zł', '510 zł'],
-      ['5 Nächte', '520 zł', '620 zł'],
-      ['weitere Nacht', '+100 zł', '+120 zł'],
-    ],
-    feesHeader: ['Einmalige Gebühren', 'Preis'],
-    feesRows: [
-      ['Jacuzzi-Vorbereitung pro Aufenthalt', '150 zł'],
+      ['2–3 Nächte', '480 PLN'],
+      ['4 Nächte', '580 PLN'],
+      ['5 Nächte', '670 PLN'],
+      ['jede weitere Nacht (ab der 6.)', '+100 PLN'],
     ],
     note: [
-      'Der Mietpreis beinhaltet die Vorbereitungsgebühr (150 PLN) sowie die tägliche Nutzungsgebühr und wird im Buchungssystem je nach Aufenthaltsdauer berechnet.',
+      'Die Preise enthalten eine einmalige Gebühr von <b>150 PLN</b> für die Vorbereitung des Whirlpools.',
+      'Für 3–4 Personen: <b>+60 PLN</b> bei 2–3 Nächten, <b>+20 PLN</b> für jede weitere Nacht.',
+      'Die Personenzahl umfasst alle Gäste, die im Ferienhaus übernachten.',
     ],
   },
 }[lang];
+
+const tableClass = 'w-full max-w-[900px] border-collapse text-base max-[768px]:text-[1rem] my-[30px] mx-auto bg-[#f4f4f4] border-2 border-white text-center table-fixed';
+const thClass = 'bg-[#362e27] text-white font-semibold px-[6px] py-[4px] h-[40px] border-2 border-white align-middle w-[50%] max-[768px]:text-[1rem] max-[768px]:leading-[1.2] max-[768px]:break-words max-[768px]:whitespace-normal';
+const tdClass = 'h-[60px] p-[6px] border-2 border-white align-middle max-[768px]:text-[1rem] max-[768px]:h-[48px] max-[768px]:break-words';
 ---
 
 <div class="max-w-[73%] border border-[#ccc] rounded-[5px] py-[10px] px-[80px] mx-auto mb-5 bg-white text-base text-center max-[768px]:max-w-[96vw] max-[768px]:p-5 max-[768px]:my-[1px] max-[768px]:mb-5 max-[768px]:text-[1rem]">
@@ -71,42 +66,19 @@ const t = {
   <p class="text-base max-[768px]:text-[1rem] leading-[1.6]" set:html={t.intro}></p>
 
   {/* Pricing table */}
-  <table class="w-full max-w-[900px] border-collapse text-base max-[768px]:text-[1rem] my-[30px] mx-auto bg-[#f4f4f4] border-2 border-white text-center table-fixed max-[768px]:table-auto">
+  <table class={tableClass}>
     <thead>
       <tr>
-        <th rowspan="2" class="bg-[#362e27] text-white font-semibold px-[6px] py-[4px] h-[40px] border-2 border-white align-middle w-[40%] max-[768px]:w-auto max-[768px]:text-[1rem] max-[768px]:leading-[1.2] max-[768px]:break-words max-[768px]:whitespace-normal">{t.colsHeader[0]}</th>
-        <th colspan="2" class="bg-[#362e27] text-white font-semibold px-[6px] py-[4px] h-[40px] border-2 border-white align-middle max-[768px]:text-[1rem] max-[768px]:leading-[1.2] max-[768px]:break-words max-[768px]:whitespace-normal">{t.colsHeader[1]}</th>
-      </tr>
-      <tr>
-        <th class="bg-[#362e27] text-white font-semibold px-[6px] py-[4px] h-[40px] border-2 border-white align-middle w-[30%] max-[768px]:w-auto max-[768px]:text-[1rem] max-[768px]:leading-[1.2]">{t.colsSub[0]}</th>
-        <th class="bg-[#362e27] text-white font-semibold px-[6px] py-[4px] h-[40px] border-2 border-white align-middle w-[30%] max-[768px]:w-auto max-[768px]:text-[1rem] max-[768px]:leading-[1.2]">{t.colsSub[1]}</th>
+        {t.cols.map((col: string) => (
+          <th class={thClass} set:html={col}></th>
+        ))}
       </tr>
     </thead>
     <tbody>
       {t.rows.map((row: string[]) => (
         <tr>
-          {row.map((cell: string) => <td class="h-[60px] p-[6px] border-2 border-white align-middle max-[768px]:text-[1rem] max-[768px]:h-[48px] max-[768px]:break-words" set:html={cell}></td>)}
-        </tr>
-      ))}
-    </tbody>
-  </table>
-
-  {/* Fees table */}
-  <table class="w-full max-w-[900px] border-collapse text-base max-[768px]:text-[1rem] my-[30px] mx-auto bg-[#f4f4f4] border-2 border-white text-center table-fixed max-[768px]:table-auto">
-    <colgroup>
-      <col class="w-[55%]" />
-      <col class="w-[45%]" />
-    </colgroup>
-    <thead>
-      <tr>
-        {t.feesHeader.map((h: string) => <th class="bg-[#362e27] text-white font-semibold px-[6px] py-[4px] h-[40px] border-2 border-white align-middle max-[768px]:text-[1rem] max-[768px]:leading-[1.2] max-[768px]:break-words max-[768px]:whitespace-normal">{h}</th>)}
-      </tr>
-    </thead>
-    <tbody>
-      {t.feesRows.map((row: string[]) => (
-        <tr>
-          {row.map((cell: string, i: number) => (
-            <td class={`h-[60px] p-[6px] border-2 border-white align-middle max-[768px]:text-[1rem] max-[768px]:h-[48px] ${i === 1 ? 'whitespace-nowrap' : 'max-[768px]:break-words'}`}>{cell}</td>
+          {row.map((cell: string) => (
+            <td class={tdClass} set:html={cell}></td>
           ))}
         </tr>
       ))}
@@ -114,7 +86,7 @@ const t = {
   </table>
 
   {/* Notes */}
-  <div class="max-w-[82%] max-[768px]:max-w-[98vw] border border-brand-green rounded-[5px] p-[5px] my-[5px] mx-auto bg-white text-[1rem] max-[768px]:text-[1rem] text-brand-green text-center">
+  <div class="max-w-[82%] max-[768px]:max-w-[98vw] border border-brand-green rounded-[5px] p-[5px] my-[5px] mx-auto mb-[30px] bg-white text-[1rem] max-[768px]:text-[1rem] text-brand-green text-center">
     {t.note.map((note: string) => (
       <p class="my-[5px]" set:html={note}></p>
     ))}

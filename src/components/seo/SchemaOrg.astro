@@ -1,6 +1,5 @@
 ---
 import { faqData } from '../../data/faqData';
-import { reviews } from '../../data/reviewsData';
 import lasbialas8 from '../../assets/foto/lasbialas8.webp';
 
 interface Props {
@@ -9,140 +8,123 @@ interface Props {
 
 const { lang } = Astro.props;
 
-const schemaNames = {
-  pl: "Las Biala's - Domki z sauną i jacuzzi na wynajem w Puszczy Noteckiej",
-  en: "Las Biala's – Cottages with sauna and jacuzzi for rent in the Noteć Forest",
-  de: "Las Biala's – Ferienhäuser mit Sauna und Jacuzzi zur Miete im Noteć-Wald"
-};
+const pageUrl = {
+  pl: 'https://lasbialas.pl/',
+  en: 'https://lasbialas.pl/en/',
+  de: 'https://lasbialas.pl/de/',
+}[lang];
 
-const offerNames = {
+const texts = {
   pl: {
-    main: "Domki dla 2 osób – cena za dobę",
-    jacuzzi: "Opcja dodatkowa: Jacuzzi"
+    name: "Las Biala's – domki z sauną i jacuzzi w Puszczy Noteckiej",
+    description: 'Dwa całoroczne domki tylko dla dorosłych w Białej, w Puszczy Noteckiej, około 400 m od plaży nad Jeziorem Białym. Sauna fińska w cenie pobytu, prywatne jacuzzi za dopłatą, rowery, deski SUP i grill.',
+    mainOffer: 'Pobyt w domku dla 1–2 osób, cena za dobę',
+    mainOfferDesc: 'Cena za dobę przy pobycie od 4 dób. Obejmuje saunę, rowery, deski SUP i grill. Minimalny pobyt: 2 doby. 3. i 4. osoba: +120 zł za osobę za dobę.',
+    jacuzziOffer: 'Wynajem prywatnego jacuzzi',
+    jacuzziOfferDesc: 'Cena za pobyt 2–3 doby dla 1–2 osób, z opłatą za przygotowanie jacuzzi. Cena zależy od długości pobytu i liczby osób.',
+    amenities: ['Sauna fińska', 'Prywatne jacuzzi (za dopłatą)', 'Bezpłatne Wi-Fi', 'Bezpłatny parking', 'Grill', 'Rowery', 'Deski SUP', 'Smart TV z Netflixem', 'Zmywarka', 'Ogrzewanie z termostatem'],
   },
   en: {
-    main: "Cottages for 2 guests – price per night",
-    jacuzzi: "Optional extra: Jacuzzi"
+    name: "Las Biala's – cottages with sauna and jacuzzi in the Noteć Forest",
+    description: 'Two year-round, adults-only cottages in Biała, in the Noteć Forest, about 400 m from the beach on Lake Białe. Finnish sauna included in the stay, private jacuzzi for an extra fee, bikes, SUP boards and a barbecue grill.',
+    mainOffer: 'Cottage stay for 1–2 guests, price per night',
+    mainOfferDesc: 'Price per night for stays of 4+ nights. Includes the sauna, bikes, SUP boards and barbecue grill. Minimum stay: 2 nights. 3rd and 4th guest: +120 PLN per person per night.',
+    jacuzziOffer: 'Private jacuzzi rental',
+    jacuzziOfferDesc: 'Price for a 2–3 night stay for 1–2 guests, including the jacuzzi preparation fee. The price depends on the length of stay and the number of guests.',
+    amenities: ['Finnish sauna', 'Private jacuzzi (extra fee)', 'Free Wi-Fi', 'Free parking', 'Barbecue grill', 'Bikes', 'SUP boards', 'Smart TV with Netflix', 'Dishwasher', 'Heating with thermostat'],
   },
   de: {
-    main: "Ferienhäuser für 2 Personen – Preis pro Nacht",
-    jacuzzi: "Optionale Zusatzleistung: Jacuzzi"
-  }
-};
-
-const offerDescriptions = {
-  pl: {
-    main: "Cena obejmuje nocleg dla 2 osób, dostęp do sauny, rowerów, desek SUP i prywatnego Grilla. Minimalny pobyt: 2 doby.",
-    jacuzzi: "Prywatne jacuzzi dostępne przy domku. Cena zależna od długości pobytu."
+    name: "Las Biala's – Ferienhäuser mit Sauna und Whirlpool in der Puszcza Notecka",
+    description: 'Zwei ganzjährige Ferienhäuser nur für Erwachsene in Biała, in der Puszcza Notecka, etwa 400 m vom Strand am See Białe. Finnische Sauna im Preis inbegriffen, privater Whirlpool gegen Aufpreis, Fahrräder, SUP-Boards und Grill.',
+    mainOffer: 'Aufenthalt im Ferienhaus für 1–2 Personen, Preis pro Nacht',
+    mainOfferDesc: 'Preis pro Nacht bei Aufenthalten ab 4 Nächten. Inklusive Sauna, Fahrrädern, SUP-Boards und Grill. Mindestaufenthalt: 2 Nächte. 3. und 4. Person: +120 PLN pro Person und Nacht.',
+    jacuzziOffer: 'Miete des privaten Whirlpools',
+    jacuzziOfferDesc: 'Preis für einen Aufenthalt von 2–3 Nächten für 1–2 Personen, inklusive Vorbereitungsgebühr. Der Preis hängt von der Aufenthaltsdauer und der Personenzahl ab.',
+    amenities: ['Finnische Sauna', 'Privater Whirlpool (gegen Aufpreis)', 'Kostenloses WLAN', 'Kostenloser Parkplatz', 'Grill', 'Fahrräder', 'SUP-Boards', 'Smart TV mit Netflix', 'Spülmaschine', 'Heizung mit Thermostat'],
   },
-  en: {
-    main: "The price includes accommodation for 2 guests, access to the sauna, bicycles, SUP boards, and a private barbecue grill. Minimum stay: 2 nights.",
-    jacuzzi: "Private jacuzzi available at the cottage. Price depends on length of stay."
-  },
-  de: {
-    main: "Der Preis beinhaltet die Unterkunft für 2 Personen sowie den Zugang zur Sauna, Fahrrädern, SUP-Boards und einem privaten Grill. Mindestaufenthalt: 2 Nächte.",
-    jacuzzi: "Privates Jacuzzi am Ferienhaus verfügbar. Preis abhängig von der Aufenthaltsdauer."
-  }
-};
-
-const totalReviews = reviews.length;
-const avgRatingRaw = reviews.reduce((sum, r) => sum + r.rating, 0) / totalReviews;
-const avgRating = Number.isInteger(avgRatingRaw) ? String(avgRatingRaw) : avgRatingRaw.toFixed(1);
-const topReviews = reviews.slice(0, 10);
+}[lang];
 
 const schema = {
-  "@context": "https://schema.org",
-  "@graph": [
+  '@context': 'https://schema.org',
+  '@graph': [
     {
-      "@type": "LodgingBusiness",
-      "@id": "https://lasbialas.pl#lodging",
-      "name": schemaNames[lang],
-      "url": "https://lasbialas.pl",
-      "image": `https://lasbialas.pl${lasbialas8.src}`,
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Biała 32/32",
-        "addressLocality": "Powiat czarnkowsko-trzcianecki",
-        "addressRegion": "Wielkopolskie",
-        "postalCode": "64-730",
-        "addressCountry": "PL"
+      '@type': 'LodgingBusiness',
+      '@id': 'https://lasbialas.pl/#lodging',
+      name: texts.name,
+      description: texts.description,
+      url: pageUrl,
+      image: `https://lasbialas.pl${lasbialas8.src}`,
+      telephone: '+48789773285',
+      email: 'domki@lasbialas.pl',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Biała 32/32',
+        addressLocality: 'Biała',
+        addressRegion: 'Wielkopolskie',
+        postalCode: '64-730',
+        addressCountry: 'PL',
       },
-      "telephone": "+48789773285",
-      "priceRange": "475-550 PLN",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": avgRating,
-        "bestRating": "5",
-        "worstRating": "1",
-        "ratingCount": totalReviews
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: 52.82654,
+        longitude: 16.30411,
       },
-      "review": topReviews.map((r) => ({
-        "@type": "Review",
-        "author": {
-          "@type": "Person",
-          "name": r.author
-        },
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": r.rating,
-          "bestRating": "5",
-          "worstRating": "1"
-        },
-        "reviewBody": lang === 'en' ? r.content_en : lang === 'de' ? r.content_de : r.content,
-        "publisher": {
-          "@type": "Organization",
-          "name": r.source
-        }
+      hasMap: 'https://www.google.com/maps?q=52.82654,16.30411',
+      sameAs: ['https://www.instagram.com/lasbialas'],
+      priceRange: '475–525 PLN',
+      currenciesAccepted: 'PLN',
+      checkinTime: '16:00',
+      checkoutTime: '12:00',
+      petsAllowed: false,
+      numberOfRooms: 2,
+      amenityFeature: texts.amenities.map((name) => ({
+        '@type': 'LocationFeatureSpecification',
+        name,
+        value: true,
       })),
-      "makesOffer": [
+      makesOffer: [
         {
-          "@type": "Offer",
-          "name": offerNames[lang].main,
-          "description": offerDescriptions[lang].main,
-          "priceSpecification": {
-            "@type": "UnitPriceSpecification",
-            "price": "475",
-            "priceCurrency": "PLN",
-            "unitText": "PER_NIGHT"
+          '@type': 'Offer',
+          name: texts.mainOffer,
+          description: texts.mainOfferDesc,
+          priceSpecification: {
+            '@type': 'UnitPriceSpecification',
+            price: 475,
+            priceCurrency: 'PLN',
+            unitCode: 'DAY',
           },
-          "availability": "https://schema.org/InStock",
-          "eligibleQuantity": {
-            "@type": "QuantitativeValue",
-            "minValue": 2,
-            "unitCode": "DAY"
+          eligibleQuantity: {
+            '@type': 'QuantitativeValue',
+            minValue: 2,
+            unitCode: 'DAY',
           },
-          "url": "https://lasbialas.pl"
+          url: `${pageUrl}#cennik`,
         },
         {
-          "@type": "Offer",
-          "name": offerNames[lang].jacuzzi,
-          "description": offerDescriptions[lang].jacuzzi,
-          "priceSpecification": {
-            "@type": "UnitPriceSpecification",
-            "price": "350",
-            "priceCurrency": "PLN",
-            "unitText": "2 nights"
-          },
-          "availability": "https://schema.org/InStock",
-          "url": "https://lasbialas.pl#jacuzzi"
-        }
-      ]
+          '@type': 'Offer',
+          name: texts.jacuzziOffer,
+          description: texts.jacuzziOfferDesc,
+          price: 480,
+          priceCurrency: 'PLN',
+          url: `${pageUrl}#cennik-jacuzzi`,
+        },
+      ],
     },
     {
-      "@type": "FAQPage",
-      "@id": "https://lasbialas.pl#faq",
-      "mainEntity": faqData[lang].flatMap((cat) =>
-        cat.questions.map((item) => ({
-          "@type": "Question",
-          "name": item.q,
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": item.a
-          }
+      '@type': 'FAQPage',
+      '@id': `${pageUrl}#faq`,
+      mainEntity: faqData[lang].flatMap((cat: any) =>
+        cat.questions.map((item: any) => ({
+          '@type': 'Question',
+          name: item.q,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: item.a,
+          },
         }))
-      )
-    }
-  ]
+      ),
+    },
+  ],
 };
 ---
 

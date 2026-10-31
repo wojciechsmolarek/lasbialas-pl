@@ -8,90 +8,72 @@ const { lang } = Astro.props;
 const t = {
   pl: {
     title: 'Cennik 2026',
-    cols: ['Cena za dobę 1-2 os.', 'Długość pobytu', '3-4 os.'],
+    cols: ['Długość pobytu', 'Cena za dobę (1–2 os.)'],
     rows: [
-      ['<strong>475 zł *</strong>', 'od 4 dób', '+120 zł / os.'],
-      ['495 zł *', '3 doby', '+120 zł / os.'],
-      ['525 zł', '2 doby', '+120 zł / os.'],
+      ['od 4 dób', '<strong>475 zł *</strong>'],
+      ['3 doby', '495 zł *'],
+      ['2 doby', '525 zł'],
     ],
-    stayHours: 'Doba pobytu trwa od 16:00 do 12:00 (poza sezonem letnim możliwość ustalenia innych godzin). Nie pobieramy opłat licznikowych. Wystawiamy fakturę VAT.',
+    stayHours: 'Doba pobytu trwa od 16:00 do 12:00 (poza sezonem letnim możliwość ustalenia innych godzin). Nie pobieramy opłat licznikowych ani opłat za sprzątanie. Wystawiamy faktury VAT.',
     notes: [
-      'Minimalny okres pobytu: <b>2 doby</b>.',
+      'Minimalny okres pobytu: <b>2 doby</b>. Nie przyjmujemy rezerwacji na 1 dobę.',
+      '3. i 4. osoba: <b>+120 zł</b> za osobę za dobę.',
       '* rabat naliczany automatycznie w systemie rezerwacji.',
-    ],
-    amenitiesCols: ['Udogodnienia', 'Korzystanie'],
-    amenitiesRows: [
-      ['Sauna', 'bezpłatnie'],
-      ['Rowery', 'bezpłatnie'],
-      ['Deski SUP (V-X)', 'bezpłatnie'],
-      ['Grill, węgiel, podpałka', 'bezpłatnie'],
-      ['Jacuzzi (opcja)', 'wg <a href="#cennik-jacuzzi" class="text-brand-green underline">cennika</a>'],
     ],
     reserve: 'Rezerwuj',
     freeTitle: 'Bezpłatnie dla Gości',
-    freeItems: ['sauna', 'balia z wodą do schładzania', 'szlafroki i ręczniki do saunowania', '4 rowery trekkingowe', 'grill', 'węgiel, podpałka do grilla', '4 deski SUP (od V do X)'],
+    freeItems: ['sauna', 'balia z wodą do schładzania', 'szlafroki i ręczniki do sauny', '4 rowery trekkingowe', 'murowany grill', 'węgiel i podpałka do grilla', '4 deski SUP (od maja do października)'],
+    jacuzziNote: 'Jacuzzi: za dopłatą, według <a href="#cennik-jacuzzi" class="text-brand-green underline">cennika jacuzzi</a>.',
     petTitle: 'Zasady dotyczące zwierząt',
     petText: 'Z uwagi na charakter obiektu oraz względy organizacyjne, <b>nie przyjmujemy pobytów ze zwierzętami.</b> Uprzejmie prosimy o uwzględnienie tej zasady przy planowaniu rezerwacji.',
   },
   en: {
     title: 'Pricing 2026',
-    cols: ['Price per night 1-2 guests', 'Length of stay', '3-4 guests'],
+    cols: ['Length of stay', 'Price per night (1–2 guests)'],
     rows: [
-      ['<strong>475 zł *</strong>', '4+ nights', '+120 zł / guest'],
-      ['495 zł *', '3 nights', '+120 zł / guest'],
-      ['525 zł', '2 nights', '+120 zł / guest'],
+      ['4+ nights', '<strong>475 PLN *</strong>'],
+      ['3 nights', '495 PLN *'],
+      ['2 nights', '525 PLN'],
     ],
-    stayHours: 'The stay lasts from 4:00 PM to 12:00 PM (other times can be arranged). No utility fees. VAT invoice available.',
+    stayHours: 'Check-in from 4:00 PM, check-out by noon (outside the summer season, other times can be arranged). No utility or cleaning fees. VAT invoices available.',
     notes: [
-      'Minimum stay: <b>2 nights</b>.',
+      'Minimum stay: <b>2 nights</b>. We do not accept one-night bookings.',
+      '3rd and 4th guest: <b>+120 PLN</b> per person per night.',
       '* Discount is applied automatically in the booking system.',
-    ],
-    amenitiesCols: ['Amenities', 'Usage'],
-    amenitiesRows: [
-      ['Sauna', 'free'],
-      ['Bicycles', 'free'],
-      ['SUP boards (V-X)', 'free'],
-      ['Grill, charcoal, fire starter', 'free'],
-      ['Jacuzzi (optional)', 'per <a href="#cennik-jacuzzi" class="text-brand-green underline">price list</a>'],
     ],
     reserve: 'Book Now',
     freeTitle: 'Free for Guests',
-    freeItems: ['sauna', 'cooling water tub', 'bathrobes and sauna towels', '4 trekking bikes', 'portable grill', 'charcoal, fire starter, and grill accessories', '4 SUP boards (from May to October)'],
+    freeItems: ['sauna', 'cold water tub for cooling down', 'bathrobes and sauna towels', '4 trekking bikes', 'brick barbecue grill', 'charcoal and fire starters', '4 SUP boards (from May to October)'],
+    jacuzziNote: 'Jacuzzi: extra fee, see the <a href="#cennik-jacuzzi" class="text-brand-green underline">jacuzzi price list</a>.',
     petTitle: 'Pet policy',
     petText: 'Due to the character of the property and organizational reasons, stays with pets are not accepted. Please take this into account when booking.',
   },
   de: {
     title: 'Preise 2026',
-    cols: ['Preis pro Nacht 1-2 Pers.', 'Aufenthaltsdauer', '3-4 Pers.'],
+    cols: ['Aufenthaltsdauer', 'Preis pro Nacht (1–2 Pers.)'],
     rows: [
-      ['<strong>475 zł *</strong>', 'ab 4 Nächten', '+120 zł / Pers.'],
-      ['495 zł *', '3 Nächte', '+120 zł / Pers.'],
-      ['525 zł', '2 Nächte', '+120 zł / Pers.'],
+      ['ab 4 Nächten', '<strong>475 PLN *</strong>'],
+      ['3 Nächte', '495 PLN *'],
+      ['2 Nächte', '525 PLN'],
     ],
-    stayHours: 'Der Aufenthalt dauert von 16:00 bis 12:00 (andere Zeiten nach Absprache möglich). Es fallen keine Zählergebühren an. Wir stellen eine Rechnung mit MwSt. aus.',
+    stayHours: 'Anreise ab 16:00 Uhr, Abreise bis 12:00 Uhr (außerhalb der Sommersaison sind andere Zeiten nach Absprache möglich). Es fallen keine Verbrauchs- oder Reinigungsgebühren an. Wir stellen Rechnungen mit MwSt. aus.',
     notes: [
-      'Mindestaufenthalt: <b>2 Nächte</b>.',
+      'Mindestaufenthalt: <b>2 Nächte</b>. Buchungen für nur eine Nacht sind nicht möglich.',
+      '3. und 4. Person: <b>+120 PLN</b> pro Person und Nacht.',
       '* Der Rabatt wird automatisch im Buchungssystem angewendet.',
     ],
-    amenitiesCols: ['Annehmlichkeiten', 'Nutzung'],
-    amenitiesRows: [
-      ['Sauna', 'kostenlos'],
-      ['Fahrräder', 'kostenlos'],
-      ['SUP-Boards (V-X)', 'kostenlos'],
-      ['Grill, Holzkohle, Anzünder', 'kostenlos'],
-      ['Jacuzzi (optional)', 'gemäß <a href="#cennik-jacuzzi" class="text-brand-green underline">Preisliste</a>'],
-    ],
-    reserve: 'Reservierung',
+    reserve: 'Reservieren',
     freeTitle: 'Kostenlos für Gäste',
-    freeItems: ['Sauna', 'Abkühlbottich mit Wasser', 'Bademäntel und Saunatücher', '4 Trekking-Fahrräder', 'tragbarer Grill', 'Kohle, Anzünder und Grillzubehör', '4 SUP-Boards (von Mai bis Oktober)'],
+    freeItems: ['Sauna', 'Kaltwasserbottich zum Abkühlen', 'Bademäntel und Saunatücher', '4 Trekkingräder', 'gemauerter Grill', 'Holzkohle und Grillanzünder', '4 SUP-Boards (von Mai bis Oktober)'],
+    jacuzziNote: 'Whirlpool: gegen Aufpreis, siehe <a href="#cennik-jacuzzi" class="text-brand-green underline">Whirlpool-Preisliste</a>.',
     petTitle: 'Haustierregelung',
     petText: 'Aufgrund der Beschaffenheit des Objekts und organisatorischer Gründe sind Aufenthalte mit Haustieren nicht gestattet. Bitte berücksichtigen Sie dies bei Ihrer Buchung.',
   },
 }[lang];
 
-const colW = ['w-[40%] max-[768px]:w-[38%]', 'w-[30%] max-[768px]:w-[30%]', 'w-[30%] max-[768px]:w-[32%]'];
+const colW = ['w-[50%]', 'w-[50%]'];
 
-const tableClass = 'w-full max-w-[900px] border-collapse text-base max-[768px]:text-[1rem] my-[30px] mx-auto bg-[#f4f4f4] border-2 border-white text-center table-fixed max-[768px]:table-auto';
+const tableClass = 'w-full max-w-[900px] border-collapse text-base max-[768px]:text-[1rem] my-[30px] mx-auto bg-[#f4f4f4] border-2 border-white text-center table-fixed';
 const thClass = 'bg-[#362e27] text-white font-semibold px-[6px] py-[4px] h-[40px] border-2 border-white align-middle max-[768px]:text-[1rem] max-[768px]:leading-[1.2] max-[768px]:break-words max-[768px]:whitespace-normal';
 const tdClass = 'h-[60px] p-[6px] border-2 border-white align-middle max-[768px]:text-[1rem] max-[768px]:h-[48px] max-[768px]:break-words';
 ---
@@ -119,9 +101,6 @@ const tdClass = 'h-[60px] p-[6px] border-2 border-white align-middle max-[768px]
     </tbody>
   </table>
 
-  {/* Stay hours */}
-  <p class="text-base max-[768px]:text-[1rem] leading-[1.6] mb-6" set:html={t.stayHours}></p>
-
   {/* Notes */}
   <div class="max-w-[82%] max-[768px]:max-w-[98vw] border border-brand-green rounded-[5px] p-[5px] my-[5px] mx-auto bg-white text-[1rem] max-[768px]:text-[1rem] text-brand-green text-center">
     {t.notes.map((note: string) => (
@@ -129,31 +108,11 @@ const tdClass = 'h-[60px] p-[6px] border-2 border-white align-middle max-[768px]
     ))}
   </div>
 
-  {/* Amenities table */}
-  <table class={tableClass}>
-    <thead>
-      <tr>
-        <th class={`${thClass} w-[60%]`} set:html={t.amenitiesCols[0]}></th>
-        <th class={`${thClass} w-[40%]`} set:html={t.amenitiesCols[1]}></th>
-      </tr>
-    </thead>
-    <tbody>
-      {t.amenitiesRows.map((row: string[]) => (
-        <tr>
-          <td class={tdClass} set:html={row[0]}></td>
-          <td class={tdClass} set:html={row[1]}></td>
-        </tr>
-      ))}
-    </tbody>
-  </table>
-
-{/* Reserve button */}
-  <div class="flex justify-center mt-[30px]">
-    <a aria-label="Otwórz panel rezerwacji" class="flex justify-center items-center w-[140px] h-[46px] text-base font-normal text-white bg-[#2F6940] border-none text-center no-underline normal-case cursor-pointer font-montserrat mb-[30px] rounded-[6px] hover:bg-[#40a95c] transition-colors" href="#" onclick="openReservation(); return false;">{t.reserve}</a>
-  </div>
+  {/* Stay hours */}
+  <p class="text-base max-[768px]:text-[1rem] leading-[1.6] mt-6 mb-6" set:html={t.stayHours}></p>
 
   {/* Free items */}
-  <h2 class="text-[24px] max-[768px]:text-[1.2rem] mt-5 mb-5 text-brand-black font-bold">{t.freeTitle}</h2>
+  <h2 class="text-[24px] max-[768px]:text-[1.2rem] mt-10 mb-5 text-brand-black font-bold">{t.freeTitle}</h2>
   <div class="text-base leading-[1.6] text-brand-black">
     <ul class="flex flex-wrap justify-center gap-y-[6px] gap-x-[16px] my-2.5 p-0 list-none">
       {t.freeItems.map((item: string) => (
@@ -162,6 +121,12 @@ const tdClass = 'h-[60px] p-[6px] border-2 border-white align-middle max-[768px]
         </li>
       ))}
     </ul>
+    <p class="text-[1rem] mt-4" set:html={t.jacuzziNote}></p>
+  </div>
+
+  {/* Reserve button */}
+  <div class="flex justify-center mt-[30px]">
+    <a class="flex justify-center items-center w-[140px] h-[46px] text-base font-normal text-white bg-[#2F6940] border-none text-center no-underline normal-case cursor-pointer font-montserrat mb-[30px] rounded-[6px] hover:bg-[#40a95c] transition-colors" href="#" onclick="openReservation(); return false;">{t.reserve}</a>
   </div>
 
   {/* Pet policy */}

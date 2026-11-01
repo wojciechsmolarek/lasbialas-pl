@@ -1,12 +1,19 @@
 ---
 import { reviews } from '../../data/reviewsData';
 import PartnerLogos from './PartnerLogos.astro';
+import ReviewCard from './ReviewCard.astro';
 
 interface Props {
   lang: 'pl' | 'en' | 'de';
 }
 
 const { lang } = Astro.props;
+
+// Opinie pokazywane na stronie głównej (6 sztuk, 2 rzędy po 3).
+// Numery to pozycje opinii w pliku reviewsData, liczone od 0.
+// Zmień numery, aby wybrać inne opinie. Zmiana działa we wszystkich wersjach językowych.
+const featuredIndexes = [0, 1, 2, 3, 4, 5];
+const featured = featuredIndexes.map((i) => reviews[i]).filter(Boolean);
 
 const t = {
   pl: { title: 'Opinie naszych gości', allReviews: 'Zobacz wszystkie opinie', href: '/opinie/' },
@@ -18,9 +25,15 @@ const t = {
 <section id="opinie" class="max-w-[73%] border border-[#ccc] rounded-[5px] py-[10px] px-[80px] mx-auto mb-5 bg-white text-base text-center max-[768px]:max-w-[96vw] max-[768px]:p-5 max-[768px]:my-[1px] max-[768px]:mb-5 max-[768px]:text-[1rem]">
   <h2 class="text-[24px] text-center mt-5 mb-5 text-brand-black font-bold">{t.title}</h2>
 
-  <PartnerLogos lang={lang} />
+  {featured.length > 0 && (
+    <div class="grid grid-cols-3 gap-[20px] items-stretch max-[1100px]:grid-cols-2 max-[768px]:grid-cols-1">
+      {featured.map((review) => <ReviewCard review={review} lang={lang} clamp={true} />)}
+    </div>
+  )}
 
-  <div class="flex justify-center mt-[20px]">
-    <a href={t.href} class="inline-flex justify-center items-center h-[46px] px-[24px] text-base font-semibold text-white bg-brand-green no-underline rounded-[6px] hover:bg-brand-dark-green transition-colors mb-[30px]">{t.allReviews} ({reviews.length})</a>
+  <div class="flex justify-center mt-[30px] mb-[30px]">
+    <a href={t.href} class="inline-flex justify-center items-center h-[46px] px-[24px] text-base font-semibold text-white bg-brand-green no-underline rounded-[6px] hover:bg-brand-dark-green transition-colors">{t.allReviews}</a>
   </div>
+
+  <PartnerLogos lang={lang} />
 </section>

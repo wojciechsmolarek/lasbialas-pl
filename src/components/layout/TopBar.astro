@@ -16,10 +16,10 @@ interface Props {
 const { lang, isHomePage = false } = Astro.props;
 const t = useTranslations(lang);
 
-const homeUrl = lang === 'pl' ? '/' : `/${lang}/`;
+const homeUrl = lang === 'pl' ? '/' : `/${lang}`;
 const plUrl = '/';
-const enUrl = '/en/';
-const deUrl = '/de/';
+const enUrl = '/en';
+const deUrl = '/de';
 
 // Teksty menu i panelu mobilnego
 const m = {

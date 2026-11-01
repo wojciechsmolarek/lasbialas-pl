@@ -4,9 +4,10 @@ import type { Review } from '../../data/reviewsData';
 interface Props {
   review: Review;
   lang: 'pl' | 'en' | 'de';
+  clamp?: boolean;
 }
 
-const { review, lang } = Astro.props;
+const { review, lang, clamp = false } = Astro.props;
 
 const translatedFrom = {
   pl: '',
@@ -50,6 +51,6 @@ const sourceIcon: Record<string, string> = {
   <div class="mb-2 text-[16px] leading-none" role="img" aria-label={starsLabel}>
     {[0, 1, 2, 3, 4].map((i) => <span class={i < fullStars ? 'text-[#FFB300]' : 'text-[#ccc]'} aria-hidden="true">★</span>)}
   </div>
-  {content && <p class="text-[1rem] leading-[1.6] text-[#444] whitespace-pre-line">{content}</p>}
+  {content && <p class={`text-[1rem] leading-[1.6] text-[#444] whitespace-pre-line ${clamp ? 'line-clamp-6' : ''}`}>{content}</p>}
   {lang !== 'pl' && content && <p class="text-[12px] text-[#666] italic mt-2">{translatedFrom}</p>}
 </article>

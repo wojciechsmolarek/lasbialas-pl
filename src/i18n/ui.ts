@@ -94,10 +94,10 @@ export const ui = {
     en: 'Finnish sauna with a cold plunge tub.',
     de: 'Finnische Sauna mit Kaltwasserbottich zum Abkühlen und Eisbaden.'
   },
-  'gallery.living_room': {
-    pl: 'Salon ze Smart TV z Netflixem, biblioteczką i grami planszowymi.',
-    en: 'Living room with a Smart TV with Netflix, a bookshelf and board games.',
-    de: 'Wohnzimmer mit Smart TV mit Netflix, Bücherregal und Brettspielen.'
+  'gallery.living_room_amenities': {
+    pl: 'Rowery trekkingowe przez cały rok, deski SUP od maja do października, bez dodatkowych opłat.',
+    en: 'Trekking bikes all year round, SUP boards from May to October, at no extra cost.',
+    de: 'Trekkingräder ganzjährig, SUP-Boards von Mai bis Oktober, ohne Aufpreis.'
   },
   'gallery.guest_cottages': {
     pl: 'Domki z sauną i jacuzzi w Białej.',

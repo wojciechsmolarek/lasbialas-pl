@@ -1,0 +1,15 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import AllReviewsSection from '../../components/sections/AllReviewsSection.astro';
+
+const lang = 'en';
+---
+
+<PageLayout
+  title="Guest reviews – cottages with sauna and jacuzzi in the Noteć Forest | Las Biala's"
+  description="Guest reviews of the Las Biala's cottages in Biała, in the Noteć Forest. Reviews from Google, Booking.com, Airbnb and AlohaCamp."
+  lang={lang}
+  canonical="https://lasbialas.pl/en/reviews/"
+>
+  <AllReviewsSection lang={lang} />
+</PageLayout>

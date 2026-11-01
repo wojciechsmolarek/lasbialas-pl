@@ -11,6 +11,7 @@ interface Props {
   lang?: 'pl' | 'en' | 'de';
   canonical?: string;
   ogImage?: string;
+  isHomePage?: boolean;
 }
 
 const {
@@ -18,25 +19,42 @@ const {
   description,
   lang = 'pl',
   canonical,
-  ogImage = lasbialas8.src
+  ogImage = lasbialas8.src,
+  isHomePage = false
 } = Astro.props;
 
 const siteUrl = 'https://lasbialas.pl';
 
-// Clean pathname: strip .html extension (from build.format: 'file'), normalize /index.html to /
-const cleanPathname = Astro.url.pathname
+// Clean pathname: strip .html extension (from build.format: 'file'), normalize /index.html to /,
+// and drop the trailing slash (the server redirects /page/ to /page)
+const cleanPathname = (Astro.url.pathname
   .replace(/\/index\.html$/, '/')
-  .replace(/\.html$/, '');
+  .replace(/\.html$/, '')
+  .replace(/(.)\/$/, '$1')) || '/';
 
 const canonicalUrl = canonical || `${siteUrl}${cleanPathname}`;
 
-// Generate hreflang links
-const hreflangs = [
-  { lang: 'pl', url: lang === 'pl' ? siteUrl : `${siteUrl}/` },
-  { lang: 'en', url: `${siteUrl}/en/` },
-  { lang: 'de', url: `${siteUrl}/de/` },
-  { lang: 'x-default', url: siteUrl }
+// Hreflang: odpowiedniki tej samej strony w każdym języku.
+// Nową podstronę z wersjami językowymi dopisz tutaj jako kolejną grupę.
+const alternateGroups: Record<'pl' | 'en' | 'de', string>[] = [
+  { pl: '/', en: '/en', de: '/de' },
+  { pl: '/opinie', en: '/en/reviews', de: '/de/bewertungen' },
+  { pl: '/regulamin', en: '/en/terms-and-conditions', de: '/de/hausordnung' },
+  { pl: '/polityka-prywatnosci', en: '/en/privacy-policy', de: '/de/datenschutzerklarung' },
+  { pl: '/rodo', en: '/en/rodo', de: '/de/rodo' },
 ];
+const group = alternateGroups.find((g) => Object.values(g).includes(cleanPathname));
+const toUrl = (path: string) => (path === '/' ? `${siteUrl}/` : `${siteUrl}${path}`);
+const hreflangs = group
+  ? [
+      { lang: 'pl', url: toUrl(group.pl) },
+      { lang: 'en', url: toUrl(group.en) },
+      { lang: 'de', url: toUrl(group.de) },
+      { lang: 'x-default', url: toUrl(group.pl) },
+    ]
+  : [];
+
+const ogLocale = { pl: 'pl_PL', en: 'en_GB', de: 'de_DE' }[lang];
 ---
 
 <!DOCTYPE html>
@@ -73,6 +91,11 @@ const hreflangs = [
           image: `${siteUrl}${ogImage}`,
           url: canonicalUrl
         },
+        optional: {
+          description: description,
+          locale: ogLocale,
+          siteName: "Las Biala's"
+        },
         image: {
           width: 1200,
           height: 1200
@@ -92,11 +115,11 @@ const hreflangs = [
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
     <link rel="manifest" href="/favicon/site.webmanifest" />
 
-    <!-- Preload LCP image (gallery sauna) -->
-    <link rel="preload" as="image" href={lasbialas7.src} fetchpriority="high" />
+    <!-- Preload LCP image (gallery sauna) - only on the home page, where the gallery is shown -->
+    {isHomePage && <link rel="preload" as="image" href={lasbialas7.src} fetchpriority="high" />}
 
-    <!-- Schema.org Structured Data -->
-    <SchemaOrg lang={lang} />
+    <!-- Schema.org Structured Data - only on the home page (FAQ and offers are shown there) -->
+    {isHomePage && <SchemaOrg lang={lang} />}
 
     <!-- Yabrix Analytics (Lazy Load to avoid forced reflow) -->
     <script is:inline>
@@ -170,7 +193,7 @@ const hreflangs = [
                 var toggle = document.querySelector('.bookero-sticky-plugin-toggle');
                 if (toggle) toggle.click();
               }
-              // Enforce minimum 3 nights after plugin opens
+              // Enforce minimum 2 nights after plugin opens
               if (typeof window.enforceBookeroMinDays === 'function') {
                 window.enforceBookeroMinDays();
               }
@@ -310,7 +333,6 @@ const hreflangs = [
   <body class="font-sans font-light">
     <div id="bookero"></div>
 
-<!-- Sticky reservation button - hidden until first scroll, then visible until Bookero loads its own -->
     <!-- Sticky reservation button - hidden until first scroll, then visible until Bookero loads its own -->
     <button
       id="bookero-sticky-fallback"

@@ -10,28 +10,22 @@ interface Props {
 const { lang } = Astro.props;
 
 const homeUrl = lang === 'pl' ? '/' : `/${lang}/`;
-const count = reviews.length;
-const avg = count ? reviews.reduce((sum, r) => sum + r.rating, 0) / count : 0;
-const avgText = avg.toFixed(1).replace('.', lang === 'en' ? '.' : ',');
 
 const t = {
   pl: {
     title: 'Opinie naszych gości',
-    summary: `Średnia ocena ${avgText} z 5 · liczba opinii: ${count}`,
     intro: 'Poniżej zebraliśmy opinie gości z Google, Booking.com, Airbnb i AlohaCamp. Oryginały znajdziesz pod linkami do każdego serwisu.',
     back: '← Wróć na stronę główną',
     reserve: 'Rezerwuj',
   },
   en: {
     title: 'What our guests say',
-    summary: `Average rating ${avgText} out of 5 · ${count} reviews`,
     intro: 'Below are guest reviews from Google, Booking.com, Airbnb and AlohaCamp. You can read the originals via the links to each platform.',
     back: '← Back to the home page',
     reserve: 'Book Now',
   },
   de: {
     title: 'Bewertungen unserer Gäste',
-    summary: `Durchschnittliche Bewertung ${avgText} von 5 · ${count} Bewertungen`,
     intro: 'Hier finden Sie Bewertungen unserer Gäste von Google, Booking.com, Airbnb und AlohaCamp. Die Originale erreichen Sie über die Links zu den jeweiligen Plattformen.',
     back: '← Zurück zur Startseite',
     reserve: 'Reservieren',
@@ -40,8 +34,7 @@ const t = {
 ---
 
 <section class="max-w-[73%] border border-[#ccc] rounded-[5px] py-[10px] px-[80px] mx-auto my-5 bg-white text-base text-center max-[768px]:max-w-[96vw] max-[768px]:p-5 max-[768px]:my-[1px] max-[768px]:mb-5 max-[768px]:text-[1rem]">
-  <h1 class="text-[28px] max-[768px]:text-[1.4rem] text-center mt-5 mb-3 text-brand-black font-bold">{t.title}</h1>
-  <p class="text-[1rem] text-brand-green font-semibold mb-3"><span class="text-[#FFB300]">★</span> {t.summary}</p>
+  <h1 class="text-[28px] max-[768px]:text-[1.4rem] text-center mt-5 mb-4 text-brand-black font-bold">{t.title}</h1>
   <p class="text-base leading-[1.6] mb-5">{t.intro}</p>
 
   <PartnerLogos lang={lang} />

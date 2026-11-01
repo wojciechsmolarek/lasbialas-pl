@@ -43,7 +43,7 @@ export const faqData: Record<string, FAQCategory[]> = {
         },
         {
           q: 'Jakie udogodnienia są na miejscu?',
-          a: 'Na terenie obiektu dostępne są m.in. rowery trekkingowe, deski SUP, bezpłatny parking, Wi-Fi, Netflix, hamaki oraz sauna. Do dyspozycji Gości jest również prywatne jacuzzi przy domku (dostępne jako dodatkowo płatna opcja). Korzystanie ze wszystkich pozostałych udogodnień jest bezpłatne.',
+          a: 'Na terenie obiektu dostępne są m.in. rowery trekkingowe, deski SUP (od maja do października), bezpłatny parking, Wi-Fi, Netflix, hamaki (w sezonie) oraz sauna. Do dyspozycji Gości jest również prywatne jacuzzi przy domku (dostępne jako dodatkowo płatna opcja). Korzystanie ze wszystkich pozostałych udogodnień jest bezpłatne.',
         },
       ],
     },
@@ -52,7 +52,7 @@ export const faqData: Record<string, FAQCategory[]> = {
       questions: [
         {
           q: 'Czy jacuzzi jest dostępne przez cały rok?',
-          a: 'Tak. Jacuzzi jest dostępne przez cały rok, z wyjątkiem okresów bardzo silnych mrozów (około -15°C i niższych), które mogą uniemożliwić jego bezpieczne użytkowanie.',
+          a: 'Tak. Jacuzzi jest dostępne przez cały rok, z wyjątkiem okresów dużych mrozów, które mogą uniemożliwić jego bezpieczne użytkowanie. Przy pobytach zimą dostępność jacuzzi potwierdzamy przed rezerwacją.',
         },
         {
           q: 'Czy jacuzzi jest prywatne?',
@@ -64,7 +64,7 @@ export const faqData: Record<string, FAQCategory[]> = {
         },
         {
           q: 'Czy sauna jest na wyłączność?',
-          a: 'Tak. Sauna jest przygotowywana specjalnie na Twoją wizytę, a podczas korzystania jest dostępna wyłącznie dla Ciebie. Przed każdą sesją wykonywany jest serwis techniczny oraz dezynfekcja, aby zapewnić komfort i najwyższy poziom higieny.',
+          a: 'Tak, podczas sesji. Sauna jest wspólna dla dwóch domków, ale korzystasz z niej wyłącznie we własnym gronie, o umówionej godzinie. Przed każdą sesją sauna jest dla ciebie przygotowywana i nagrzewana.',
         },
       ],
     },
@@ -73,7 +73,7 @@ export const faqData: Record<string, FAQCategory[]> = {
       questions: [
         {
           q: 'Czy są jakieś dodatkowe opłaty?',
-          a: 'Nie. Korzystanie z większości udogodnień jest wliczone w cenę pobytu. Goście mogą bez dodatkowych opłat korzystać z sauny z balią do schładzania, rowerów, desek SUP, hamaków oraz grilla. Nie pobieramy żadnych opłat za zużycie energii elektrycznej ani wody. Jedyną opcjonalną usługą dodatkowo płatną jest wynajem prywatnego jacuzzi.',
+          a: 'Nie. Korzystanie z większości udogodnień jest wliczone w cenę pobytu. Goście mogą bez dodatkowych opłat korzystać z sauny z balią do schładzania, rowerów, desek SUP (od maja do października), hamaków (w sezonie) oraz grilla. Nie pobieramy żadnych opłat za zużycie energii elektrycznej ani wody. Jedyną opcjonalną usługą dodatkowo płatną jest wynajem prywatnego jacuzzi.',
         },
         {
           q: 'Jakie są godziny zameldowania i wymeldowania?',
@@ -129,7 +129,7 @@ export const faqData: Record<string, FAQCategory[]> = {
         },
         {
           q: 'What facilities are available on site?',
-          a: 'On-site facilities include trekking bikes, SUP boards, free parking, Wi-Fi, Netflix, hammocks and a sauna. Guests can also enjoy a private jacuzzi by the cabin (available for an extra charge). All other facilities are free of charge.',
+          a: 'On-site facilities include trekking bikes, SUP boards (from May to October), free parking, Wi-Fi, Netflix, hammocks (in season) and a sauna. Guests can also enjoy a private jacuzzi by the cabin (available for an extra charge). All other facilities are free of charge.',
         },
       ],
     },
@@ -138,7 +138,7 @@ export const faqData: Record<string, FAQCategory[]> = {
       questions: [
         {
           q: 'Is the jacuzzi available all year round?',
-          a: 'Yes. The jacuzzi is available all year round, except during periods of severe frost (around -15°C / 5°F and below), when it cannot be used safely.',
+          a: 'Yes. The jacuzzi is available all year round, except during periods of severe frost, when it cannot be used safely. For winter stays, we confirm jacuzzi availability before booking.',
         },
         {
           q: 'Is the jacuzzi private?',
@@ -150,7 +150,7 @@ export const faqData: Record<string, FAQCategory[]> = {
         },
         {
           q: 'Is the sauna for private use only?',
-          a: 'Yes. The sauna is prepared especially for your visit, and while you use it, it is reserved exclusively for you. Before each session, we carry out a technical check and full disinfection to ensure your comfort and the highest standard of hygiene.',
+          a: 'Yes, during your session. The sauna is shared by the two cabins, but each session is private, just for your group, at an agreed time. Before each session, the sauna is prepared and heated for you.',
         },
       ],
     },
@@ -159,7 +159,7 @@ export const faqData: Record<string, FAQCategory[]> = {
       questions: [
         {
           q: 'Are there any extra charges?',
-          a: 'No. Most facilities are included in the price of your stay. Guests can use the sauna with a cold plunge tub, bikes, SUP boards, hammocks and the barbecue at no extra cost. We also do not charge for electricity or water usage. The only optional paid extra is the private jacuzzi rental.',
+          a: 'No. Most facilities are included in the price of your stay. Guests can use the sauna with a cold plunge tub, bikes, SUP boards (from May to October), hammocks (in season) and the barbecue at no extra cost. We also do not charge for electricity or water usage. The only optional paid extra is the private jacuzzi rental.',
         },
         {
           q: 'What are the check-in and check-out times?',
@@ -215,7 +215,7 @@ export const faqData: Record<string, FAQCategory[]> = {
         },
         {
           q: 'Welche Ausstattung steht vor Ort zur Verfügung?',
-          a: 'Auf dem Gelände stehen Ihnen unter anderem Trekkingräder, SUP-Boards (Stand-up-Paddling), kostenlose Parkplätze, WLAN, Netflix, Hängematten und eine Sauna zur Verfügung. Zusätzlich gibt es einen privaten Whirlpool direkt am Ferienhaus (gegen Aufpreis buchbar). Die Nutzung aller übrigen Angebote ist kostenlos.',
+          a: 'Auf dem Gelände stehen Ihnen unter anderem Trekkingräder, SUP-Boards (Stand-up-Paddling, von Mai bis Oktober), kostenlose Parkplätze, WLAN, Netflix, Hängematten (in der Saison) und eine Sauna zur Verfügung. Zusätzlich gibt es einen privaten Whirlpool direkt am Ferienhaus (gegen Aufpreis buchbar). Die Nutzung aller übrigen Angebote ist kostenlos.',
         },
       ],
     },
@@ -224,7 +224,7 @@ export const faqData: Record<string, FAQCategory[]> = {
       questions: [
         {
           q: 'Ist der Whirlpool das ganze Jahr über nutzbar?',
-          a: 'Ja. Der Whirlpool steht ganzjährig zur Verfügung – ausgenommen sind Zeiten mit sehr starkem Frost (ab ca. −15 °C), in denen eine sichere Nutzung nicht möglich ist.',
+          a: 'Ja. Der Whirlpool steht ganzjährig zur Verfügung, ausgenommen sind Zeiten mit starkem Frost, in denen eine sichere Nutzung nicht möglich ist. Für Aufenthalte im Winter bestätigen wir die Verfügbarkeit des Whirlpools vor der Buchung.',
         },
         {
           q: 'Ist der Whirlpool privat?',
@@ -236,7 +236,7 @@ export const faqData: Record<string, FAQCategory[]> = {
         },
         {
           q: 'Steht die Sauna zur alleinigen Nutzung zur Verfügung?',
-          a: 'Ja. Die Sauna wird speziell für Ihren Besuch vorbereitet und steht während der Nutzung ausschließlich Ihnen zur Verfügung. Vor jeder Saunasession erfolgen eine technische Wartung und eine gründliche Desinfektion – für Ihren Komfort und höchste Hygienestandards.',
+          a: 'Ja, während Ihrer Sitzung. Die Sauna wird von beiden Ferienhäusern genutzt, steht Ihnen zur vereinbarten Uhrzeit aber ausschließlich zur Verfügung. Vor jeder Sitzung wird die Sauna für Sie vorbereitet und aufgeheizt.',
         },
       ],
     },
@@ -245,7 +245,7 @@ export const faqData: Record<string, FAQCategory[]> = {
       questions: [
         {
           q: 'Fallen zusätzliche Kosten an?',
-          a: 'Nein. Die Nutzung der meisten Angebote ist im Übernachtungspreis enthalten. Sauna mit Tauchbottich zum Abkühlen, Fahrräder, SUP-Boards, Hängematten und Grill stehen Ihnen ohne Aufpreis zur Verfügung. Auch für Strom- und Wasserverbrauch berechnen wir keine zusätzlichen Gebühren. Die einzige optionale Leistung gegen Aufpreis ist die Miete des privaten Whirlpools.',
+          a: 'Nein. Die Nutzung der meisten Angebote ist im Übernachtungspreis enthalten. Sauna mit Tauchbottich zum Abkühlen, Fahrräder, SUP-Boards (von Mai bis Oktober), Hängematten (in der Saison) und Grill stehen Ihnen ohne Aufpreis zur Verfügung. Auch für Strom- und Wasserverbrauch berechnen wir keine zusätzlichen Gebühren. Die einzige optionale Leistung gegen Aufpreis ist die Miete des privaten Whirlpools.',
         },
         {
           q: 'Wie sind die An- und Abreisezeiten (Check-in/Check-out)?',

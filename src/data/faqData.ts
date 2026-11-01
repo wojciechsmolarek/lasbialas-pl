@@ -64,7 +64,7 @@ export const faqData: Record<string, FAQCategory[]> = {
         },
         {
           q: 'Czy sauna jest na wyłączność?',
-          a: 'Tak, podczas sesji. Sauna jest wspólna dla dwóch domków, ale korzystasz z niej wyłącznie we własnym gronie, o umówionej godzinie. Przed każdą sesją sauna jest dla ciebie przygotowywana i nagrzewana.',
+          a: 'Tak, podczas sesji. Sauna jest wspólna dla dwóch domków, ale korzystasz z niej wyłącznie we własnym gronie, o umówionej godzinie, na którą sauna jest dla ciebie przygotowywana i nagrzewana.',
         },
       ],
     },
@@ -150,7 +150,7 @@ export const faqData: Record<string, FAQCategory[]> = {
         },
         {
           q: 'Is the sauna for private use only?',
-          a: 'Yes, during your session. The sauna is shared by the two cabins, but each session is private, just for your group, at an agreed time. Before each session, the sauna is prepared and heated for you.',
+          a: 'Yes, during your session. The sauna is shared by the two cabins, but you use it only with your own group, at an agreed time, for which it is prepared and heated for you.',
         },
       ],
     },
@@ -236,7 +236,7 @@ export const faqData: Record<string, FAQCategory[]> = {
         },
         {
           q: 'Steht die Sauna zur alleinigen Nutzung zur Verfügung?',
-          a: 'Ja, während Ihrer Sitzung. Die Sauna wird von beiden Ferienhäusern genutzt, steht Ihnen zur vereinbarten Uhrzeit aber ausschließlich zur Verfügung. Vor jeder Sitzung wird die Sauna für Sie vorbereitet und aufgeheizt.',
+          a: 'Ja, während Ihrer Sitzung. Die Sauna wird von beiden Ferienhäusern genutzt, steht Ihnen aber ausschließlich zu einer vereinbarten Uhrzeit zur Verfügung, zu der sie für Sie vorbereitet und aufgeheizt wird.',
         },
       ],
     },

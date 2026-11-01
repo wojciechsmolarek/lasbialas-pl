@@ -85,19 +85,19 @@ export const ui = {
     de: 'Zwei Schlafzimmer mit Doppelbetten 140 × 200 cm.'
   },
   'gallery.living_room_amenities': {
-    pl: 'Rowery, deski SUP i grill bez dodatkowych opłat.',
-    en: 'Bikes, SUP boards and a barbecue grill at no extra cost.',
-    de: 'Fahrräder, SUP-Boards und Grill ohne Aufpreis.'
+    pl: 'Rowery trekkingowe przez cały rok, deski SUP od maja do października, bez dodatkowych opłat.',
+    en: 'Trekking bikes all year round, SUP boards from May to October, at no extra cost.',
+    de: 'Trekkingräder ganzjährig, SUP-Boards von Mai bis Oktober, ohne Aufpreis.'
   },
   'gallery.sauna_cooling': {
     pl: 'Sauna fińska z balią do schładzania i morsowania.',
     en: 'Finnish sauna with a cold plunge tub.',
     de: 'Finnische Sauna mit Kaltwasserbottich zum Abkühlen und Eisbaden.'
   },
-  'gallery.living_room_amenities': {
-    pl: 'Rowery trekkingowe przez cały rok, deski SUP od maja do października, bez dodatkowych opłat.',
-    en: 'Trekking bikes all year round, SUP boards from May to October, at no extra cost.',
-    de: 'Trekkingräder ganzjährig, SUP-Boards von Mai bis Oktober, ohne Aufpreis.'
+  'gallery.living_room': {
+    pl: 'Salon ze Smart TV z Netflixem, biblioteczką i grami planszowymi.',
+    en: 'Living room with a Smart TV with Netflix, a bookshelf and board games.',
+    de: 'Wohnzimmer mit Smart TV mit Netflix, Bücherregal und Brettspielen.'
   },
   'gallery.guest_cottages': {
     pl: 'Domki z sauną i jacuzzi w Białej.',

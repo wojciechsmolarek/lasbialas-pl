@@ -5,7 +5,7 @@ import saunaDlaGosci from '../../assets/foto/sauna-dla-gosci.png';
 import jacuzzi from '../../assets/foto/jacuzzi.png';
 import pergolaJacuzzi from '../../assets/foto/pergola_jacuzzi-1.webp';
 import ImageHints from '../ui/ImageHints.astro';
-import { imageHint } from '../ui/imageHint';
+import { imageHint, insertHint } from '../ui/imageHint';
 
 interface Props {
   lang: 'pl' | 'en' | 'de';
@@ -37,16 +37,16 @@ const jacuzziHref = {
   de: 'https://lasbialas.pl/info/de/#/vor-ort/385',
 }[lang];
 
-// Słowo „pergolą” w opisie jacuzzi pokazuje zdjęcie pergoli po najechaniu lub dotknięciu.
+// Słowo „pergoli” w opisie jacuzzi pokazuje zdjęcie pergoli po najechaniu lub dotknięciu.
 // Tekst opisu jest w ui.ts. Jeśli zdanie z pergolą zostanie tam zmienione, opis wyświetli się normalnie, bez zdjęcia.
 const pergola = {
-  pl: { word: 'pergolą', alt: 'Jacuzzi pod pergolą z regulowanym zadaszeniem i zasłonami' },
+  pl: { word: 'pergoli', alt: 'Jacuzzi pod pergolą z regulowanym zadaszeniem i zasłonami' },
   en: { word: 'pergola', alt: 'Jacuzzi under a pergola with an adjustable roof and curtains' },
   de: { word: 'Pergola', alt: 'Whirlpool unter einer Pergola mit verstellbarem Dach und Vorhängen' },
 }[lang];
 const pergolaHint = await imageHint({ word: pergola.word, image: pergolaJacuzzi, alt: pergola.alt, onDark: true });
 const escapeHtml = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-const jacuzziDesc = escapeHtml(t('section.jacuzzi_desc')).replace(pergola.word, pergolaHint);
+const jacuzziDesc = insertHint(escapeHtml(t('section.jacuzzi_desc')), pergola.word, pergolaHint);
 
 // Wpis na blogu jest tylko po polsku, więc link pokazujemy wyłącznie w wersji PL.
 const saunaBlogLink = lang === 'pl'

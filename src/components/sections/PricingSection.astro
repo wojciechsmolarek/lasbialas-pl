@@ -1,6 +1,7 @@
 ---
 import type { ImageMetadata } from 'astro';
-import lasbialas6 from '../../assets/foto/lasbialas6.webp';
+import lasbialas7 from '../../assets/foto/lasbialas7.webp';
+import balia from '../../assets/foto/balia.jpg';
 import rowery from '../../assets/foto/rowery.webp';
 import grill from '../../assets/foto/grill.webp';
 import sup from '../../assets/foto/sup.webp';
@@ -33,7 +34,8 @@ const t = {
     freeItems: ['sauna', 'balia z wodą do schładzania', 'szlafroki i ręczniki do sauny', '4 rowery trekkingowe', 'murowany grill', 'węgiel i podpałka do grilla', '4 deski SUP (od maja do października)'],
     // Pozycje listy ze zdjęciem po najechaniu lub dotknięciu (numer pozycji na liście, licząc od 0).
     freeHints: {
-      0: { word: 'sauna', alt: 'Sauna fińska z tarasem i balią do schładzania' },
+      0: { word: 'sauna', alt: 'Sauna fińska dla gości' },
+      1: { word: 'balia', alt: 'Balia z zimną wodą do schładzania przy saunie' },
       3: { word: '4 rowery trekkingowe', alt: 'Rowery trekkingowe dla gości' },
       4: { word: 'murowany grill', alt: 'Murowany grill przy domku' },
       6: { word: '4 deski SUP', alt: 'Deski SUP dla gości' },
@@ -58,7 +60,8 @@ const t = {
     freeTitle: 'Free for Guests',
     freeItems: ['sauna', 'cold water tub for cooling down', 'bathrobes and sauna towels', '4 trekking bikes', 'brick barbecue grill', 'charcoal and fire starters', '4 SUP boards (from May to October)'],
     freeHints: {
-      0: { word: 'sauna', alt: 'Finnish sauna with a terrace and cold plunge tub' },
+      0: { word: 'sauna', alt: 'Finnish sauna for guests' },
+      1: { word: 'cold water tub', alt: 'Cold plunge tub next to the sauna' },
       3: { word: '4 trekking bikes', alt: 'Trekking bikes for guests' },
       4: { word: 'brick barbecue grill', alt: 'Brick barbecue grill by the cottage' },
       6: { word: '4 SUP boards', alt: 'SUP boards for guests' },
@@ -83,7 +86,8 @@ const t = {
     freeTitle: 'Kostenlos für Gäste',
     freeItems: ['Sauna', 'Kaltwasserbottich zum Abkühlen', 'Bademäntel und Saunatücher', '4 Trekkingräder', 'gemauerter Grill', 'Holzkohle und Grillanzünder', '4 SUP-Boards (von Mai bis Oktober)'],
     freeHints: {
-      0: { word: 'Sauna', alt: 'Finnische Sauna mit Terrasse und Kaltwasserbottich' },
+      0: { word: 'Sauna', alt: 'Finnische Sauna für Gäste' },
+      1: { word: 'Kaltwasserbottich', alt: 'Kaltwasserbottich neben der Sauna' },
       3: { word: '4 Trekkingräder', alt: 'Trekkingräder für Gäste' },
       4: { word: 'gemauerter Grill', alt: 'Gemauerter Grill am Ferienhaus' },
       6: { word: '4 SUP-Boards', alt: 'SUP-Boards für Gäste' },
@@ -95,7 +99,7 @@ const t = {
 const colW = ['w-[50%]', 'w-[50%]'];
 
 // Zdjęcia do pozycji listy „Bezpłatnie dla Gości” (te same numery pozycji co we freeHints).
-const freeHintImages: Record<number, ImageMetadata> = { 0: lasbialas6, 3: rowery, 4: grill, 6: sup };
+const freeHintImages: Record<number, ImageMetadata> = { 0: lasbialas7, 1: balia, 3: rowery, 4: grill, 6: sup };
 const freeHints: Record<number, { word: string; alt: string }> = t.freeHints;
 const escapeHtml = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const freeItemsHtml = await Promise.all(

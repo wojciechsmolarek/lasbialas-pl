@@ -4,6 +4,8 @@ import lasbialasJacuzzi1 from '../../assets/foto/lasbialas-jacuzzi1.webp';
 import sauna1 from '../../assets/foto/sauna1.webp';
 import lasbialasJacuzzi3 from '../../assets/foto/lasbialas-jacuzzi3.webp';
 import w6 from '../../assets/foto/w6.webp';
+import lasbialas4 from '../../assets/foto/lasbialas4.webp';
+import lasbialas6 from '../../assets/foto/lasbialas6.webp';
 import ImageHints from '../ui/ImageHints.astro';
 import { imageHint } from '../ui/imageHint';
 
@@ -17,9 +19,13 @@ const t = {
   pl: {
     title: 'Całoroczne domki na wynajem w Puszczy Noteckiej',
     p1: 'Zapraszamy do Las Biala\'s w Białej, wsi nad Jeziorem Białym, w sercu Puszczy Noteckiej. Z dala od miejskiego zgiełku, na ogrodzonym leśnym terenie, około 400 m od plaży, stoją dwa całoroczne domki przeznaczone dla dorosłych gości.',
-    p2: 'Na miejscu jest sauna fińska z balią, a za dopłatą również prywatne jacuzzi przy domku. Bez dodatkowych opłat dostępne są rowery, deski SUP i grill. Domki są ogrzewane przez cały rok, a temperaturę w każdym pomieszczeniu ustawia się osobnym {thermostat}.',
+    p2: 'Na miejscu jest sauna fińska z {tub}, a za dopłatą również prywatne jacuzzi przy domku. Bez dodatkowych opłat dostępne są {bikes} i grill. Domki są ogrzewane przez cały rok, a temperaturę w każdym pomieszczeniu ustawia się osobnym {thermostat}.',
     thermostatWord: 'termostatem',
     thermostatAlt: 'Termostat ogrzewania w domku',
+    tubWord: 'balią',
+    tubAlt: 'Sauna z tarasem, balią do schładzania i strefą wypoczynku',
+    bikesWord: 'rowery, deski SUP',
+    bikesAlt: 'Rowery trekkingowe i deski SUP dla gości',
     banner1: 'Sauna i jacuzzi',
     banner2: 'w środku lasu',
     bannerSub: 'PRYWATNIE · KAMERALNIE · 18+',
@@ -35,9 +41,13 @@ const t = {
   en: {
     title: 'Year-Round Cottages for Rent in the Noteć Forest',
     p1: 'Welcome to Las Biala\'s in Biała, a village on Lake Białe in the heart of the Noteć Forest. Away from the bustle of the city, on a fenced forest property about 400 m from the beach, stand two year-round cottages for adult guests.',
-    p2: 'On site there is a Finnish sauna with a cold plunge tub, and a private jacuzzi next to the cottage is available for an extra fee. Bikes, SUP boards and a barbecue grill are free to use. The cottages are heated all year round, and each room has its own {thermostat}.',
+    p2: 'On site there is a Finnish sauna with a {tub}, and a private jacuzzi next to the cottage is available for an extra fee. {bikes} and a barbecue grill are free to use. The cottages are heated all year round, and each room has its own {thermostat}.',
     thermostatWord: 'thermostat',
     thermostatAlt: 'Heating thermostat in the cottage',
+    tubWord: 'cold plunge tub',
+    tubAlt: 'Sauna with an outdoor terrace, cold plunge tub and seating area',
+    bikesWord: 'Bikes, SUP boards',
+    bikesAlt: 'Trekking bikes and SUP boards for guests',
     banner1: 'Sauna and jacuzzi',
     banner2: 'deep in the forest',
     bannerSub: 'PRIVATE · SECLUDED · 18+',
@@ -53,9 +63,13 @@ const t = {
   de: {
     title: 'Ganzjährige Ferienhäuser in der Puszcza Notecka',
     p1: 'Willkommen bei Las Biala\'s in Biała, einem Dorf am See Białe im Herzen der Puszcza Notecka. Abseits vom Trubel der Stadt stehen auf einem eingezäunten Waldgrundstück, etwa 400 m vom Strand entfernt, zwei ganzjährig nutzbare Ferienhäuser für erwachsene Gäste.',
-    p2: 'Vor Ort gibt es eine finnische Sauna mit Kaltwasserbottich sowie gegen Aufpreis einen privaten Whirlpool direkt am Haus. Fahrräder, SUP-Boards und ein Grill stehen kostenlos zur Verfügung. Die Häuser sind das ganze Jahr über beheizt, und die Temperatur lässt sich in jedem Raum über einen eigenen {thermostat} einstellen.',
+    p2: 'Vor Ort gibt es eine finnische Sauna mit {tub} sowie gegen Aufpreis einen privaten Whirlpool direkt am Haus. {bikes} und ein Grill stehen kostenlos zur Verfügung. Die Häuser sind das ganze Jahr über beheizt, und die Temperatur lässt sich in jedem Raum über einen eigenen {thermostat} einstellen.',
     thermostatWord: 'Thermostat',
     thermostatAlt: 'Heizungsthermostat im Ferienhaus',
+    tubWord: 'Kaltwasserbottich',
+    tubAlt: 'Sauna mit Außenterrasse, Kaltwasserbottich und Sitzbereich',
+    bikesWord: 'Fahrräder, SUP-Boards',
+    bikesAlt: 'Trekkingräder und SUP-Boards für Gäste',
     banner1: 'Sauna und Whirlpool',
     banner2: 'mitten im Wald',
     bannerSub: 'PRIVAT · RUHIG · 18+',
@@ -70,9 +84,14 @@ const t = {
   },
 }[lang];
 
-// Słowo „termostatem” z małym zdjęciem termostatu po najechaniu lub dotknięciu.
+// Słowa z małym zdjęciem po najechaniu lub dotknięciu.
 const thermostatHint = await imageHint({ word: t.thermostatWord, image: w6, alt: t.thermostatAlt });
-const p2 = t.p2.replace('{thermostat}', thermostatHint);
+const tubHint = await imageHint({ word: t.tubWord, image: lasbialas6, alt: t.tubAlt });
+const bikesHint = await imageHint({ word: t.bikesWord, image: lasbialas4, alt: t.bikesAlt });
+const p2 = t.p2
+  .replace('{thermostat}', thermostatHint)
+  .replace('{tub}', tubHint)
+  .replace('{bikes}', bikesHint);
 ---
 
 <div id="domki" class="max-w-[73%] border border-[#ccc] rounded-[5px] py-[10px] px-[80px] mx-auto mb-5 bg-white text-base text-center max-[768px]:max-w-[96vw] max-[768px]:p-5 max-[768px]:my-[1px] max-[768px]:mb-5 max-[768px]:text-[0.6rem]">

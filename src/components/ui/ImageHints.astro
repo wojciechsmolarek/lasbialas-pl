@@ -1,0 +1,191 @@
+---
+// Style i skrypt dla słów ze zdjęciem (imageHint.ts).
+// Wstawiany w każdej sekcji, która ich używa. Astro dołącza skrypt na stronie tylko raz.
+---
+
+<style is:global>
+  .img-hint {
+    position: relative;
+    display: inline;
+  }
+  .img-hint__trigger {
+    display: inline;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    color: inherit;
+    line-height: inherit;
+    cursor: pointer;
+    text-decoration: underline dotted;
+    text-decoration-color: #2f6940;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+  .img-hint__trigger:hover,
+  .img-hint__trigger[aria-expanded='true'] {
+    color: #2f6940;
+  }
+  .img-hint__trigger:focus-visible {
+    outline: 2px solid #2f6940;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  .img-hint__pop {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 12px);
+    z-index: 40;
+    display: block;
+    width: 280px;
+    max-width: calc(100vw - 32px);
+    padding: 6px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
+    transform: translateX(calc(-50% + var(--shift, 0px)));
+    text-align: center;
+    animation: img-hint-in 0.15s ease-out;
+  }
+  .img-hint__pop[hidden] {
+    display: none;
+  }
+  .img-hint__pop::after {
+    content: '';
+    position: absolute;
+    left: calc(50% - var(--shift, 0px));
+    top: 100%;
+    margin-left: -8px;
+    border: 8px solid transparent;
+    border-top-color: #fff;
+  }
+  .img-hint__pop--below {
+    bottom: auto;
+    top: calc(100% + 12px);
+  }
+  .img-hint__pop--below::after {
+    top: auto;
+    bottom: 100%;
+    border-top-color: transparent;
+    border-bottom-color: #fff;
+  }
+  .img-hint__pop img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 50vh;
+    object-fit: cover;
+    border-radius: 5px;
+    background: #f1f1f1;
+  }
+  @media (max-width: 768px) {
+    .img-hint__pop { width: 220px; }
+  }
+  .img-hint__cap {
+    display: block;
+    padding: 6px 4px 2px;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #2c2c2c;
+  }
+  @keyframes img-hint-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .img-hint__pop { animation: none; }
+  }
+</style>
+
+<script>
+  const hints = Array.from(document.querySelectorAll<HTMLElement>('.img-hint'));
+  const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const pinned = new Set<HTMLElement>();
+
+  const parts = (hint: HTMLElement) => ({
+    trigger: hint.querySelector<HTMLButtonElement>('.img-hint__trigger')!,
+    pop: hint.querySelector<HTMLElement>('.img-hint__pop')!,
+  });
+
+  function position(pop: HTMLElement) {
+    pop.classList.remove('img-hint__pop--below');
+    pop.style.setProperty('--shift', '0px');
+
+    // Gdy nad słowem jest za mało miejsca (np. pod przyklejonym nagłówkiem), dymek otwiera się pod słowem.
+    const header = document.querySelector('header');
+    const topLimit = (header ? header.getBoundingClientRect().bottom : 0) + 8;
+    if (pop.getBoundingClientRect().top < topLimit) {
+      pop.classList.add('img-hint__pop--below');
+    }
+
+    // Dymek nie wychodzi poza krawędzie ekranu.
+    const rect = pop.getBoundingClientRect();
+    const margin = 8;
+    let shift = 0;
+    if (rect.left < margin) shift = margin - rect.left;
+    else if (rect.right > window.innerWidth - margin) shift = window.innerWidth - margin - rect.right;
+    pop.style.setProperty('--shift', `${shift}px`);
+  }
+
+  function open(hint: HTMLElement) {
+    const { trigger, pop } = parts(hint);
+    if (!pop.hidden) return;
+    pop.hidden = false;
+    trigger.setAttribute('aria-expanded', 'true');
+    position(pop);
+  }
+
+  function close(hint: HTMLElement) {
+    const { trigger, pop } = parts(hint);
+    pinned.delete(hint);
+    pop.hidden = true;
+    trigger.setAttribute('aria-expanded', 'false');
+  }
+
+  function closeAll(except?: HTMLElement) {
+    hints.forEach((h) => { if (h !== except) close(h); });
+  }
+
+  hints.forEach((hint) => {
+    const { trigger } = parts(hint);
+
+    if (canHover) {
+      hint.addEventListener('mouseenter', () => { closeAll(hint); open(hint); });
+      hint.addEventListener('mouseleave', () => { if (!pinned.has(hint)) close(hint); });
+    }
+
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (pinned.has(hint)) {
+        close(hint);
+      } else {
+        closeAll(hint);
+        open(hint);
+        pinned.add(hint);
+      }
+    });
+
+    // Otwieranie klawiszem Tab (fokus z klawiatury).
+    trigger.addEventListener('focus', () => {
+      if (trigger.matches(':focus-visible')) { closeAll(hint); open(hint); }
+    });
+
+    trigger.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') { close(hint); trigger.focus(); }
+    });
+
+    trigger.addEventListener('blur', () => {
+      if (!canHover || !hint.matches(':hover')) close(hint);
+    });
+  });
+
+  // Kliknięcie lub dotknięcie poza słowem zamyka dymek.
+  document.addEventListener('click', (e) => {
+    hints.forEach((h) => { if (!h.contains(e.target as Node)) close(h); });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeAll();
+  });
+</script>

@@ -3,6 +3,9 @@ import { useTranslations } from '../../i18n/utils';
 import { Picture } from 'astro:assets';
 import saunaDlaGosci from '../../assets/foto/sauna-dla-gosci.png';
 import jacuzzi from '../../assets/foto/jacuzzi.png';
+import pergolaJacuzzi from '../../assets/foto/pergola_jacuzzi-1.webp';
+import ImageHints from '../ui/ImageHints.astro';
+import { imageHint } from '../ui/imageHint';
 
 interface Props {
   lang: 'pl' | 'en' | 'de';
@@ -33,6 +36,17 @@ const jacuzziHref = {
   en: 'https://lasbialas.pl/info/en/#/on-site/385',
   de: 'https://lasbialas.pl/info/de/#/vor-ort/385',
 }[lang];
+
+// Słowo „pergolą” w opisie jacuzzi pokazuje zdjęcie pergoli po najechaniu lub dotknięciu.
+// Tekst opisu jest w ui.ts. Jeśli zdanie z pergolą zostanie tam zmienione, opis wyświetli się normalnie, bez zdjęcia.
+const pergola = {
+  pl: { word: 'pergolą', alt: 'Jacuzzi pod pergolą z regulowanym zadaszeniem i zasłonami' },
+  en: { word: 'pergola', alt: 'Jacuzzi under a pergola with an adjustable roof and curtains' },
+  de: { word: 'Pergola', alt: 'Whirlpool unter einer Pergola mit verstellbarem Dach und Vorhängen' },
+}[lang];
+const pergolaHint = await imageHint({ word: pergola.word, image: pergolaJacuzzi, alt: pergola.alt, onDark: true });
+const escapeHtml = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+const jacuzziDesc = escapeHtml(t('section.jacuzzi_desc')).replace(pergola.word, pergolaHint);
 
 // Wpis na blogu jest tylko po polsku, więc link pokazujemy wyłącznie w wersji PL.
 const saunaBlogLink = lang === 'pl'
@@ -65,10 +79,12 @@ const saunaBlogLink = lang === 'pl'
         <Picture alt="" height={60} width={60} src={icons.jacuzzi} formats={['avif', 'webp']} class="inline-block" />
       </div>
       <h3 class="text-center mt-[5px] mb-5 text-white text-[24px] font-bold">{t('section.jacuzzi_title')}</h3>
-      <p class="text-base leading-[1.6]">{t('section.jacuzzi_desc')}</p>
+      <p class="text-base leading-[1.6]" set:html={jacuzziDesc}></p>
       <div class="flex justify-center mt-auto pt-[30px]">
         <a class="inline-flex justify-center items-center w-auto h-[46px] text-base font-normal text-white bg-[#B5550E] border-none text-center no-underline normal-case cursor-pointer mb-[30px] mt-[10px] px-[15px] rounded-[6px] hover:bg-[#c4621a] transition-colors" href={jacuzziHref} target="_blank" rel="noopener" aria-label={t('button.jacuzzi_rules')}>{t('button.rules')}</a>
       </div>
     </div>
   </div>
 </section>
+
+<ImageHints />

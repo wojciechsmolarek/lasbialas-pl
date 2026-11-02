@@ -4,6 +4,7 @@ import { Picture } from 'astro:assets';
 import saunaDlaGosci from '../../assets/foto/sauna-dla-gosci.png';
 import jacuzzi from '../../assets/foto/jacuzzi.png';
 import pergolaJacuzzi from '../../assets/foto/pergola_jacuzzi-1.webp';
+import lasbialas6 from '../../assets/foto/lasbialas6.webp';
 import ImageHints from '../ui/ImageHints.astro';
 import { imageHint, insertHint } from '../ui/imageHint';
 
@@ -48,6 +49,15 @@ const pergolaHint = await imageHint({ word: pergola.word, image: pergolaJacuzzi,
 const escapeHtml = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const jacuzziDesc = insertHint(escapeHtml(t('section.jacuzzi_desc')), pergola.word, pergolaHint);
 
+// Balia w opisie sauny pokazuje zdjęcie tarasu sauny z balią. Tekst opisu jest w ui.ts.
+const tub = {
+  pl: { word: 'balią do schładzania', alt: 'Taras sauny z balią do schładzania i strefą wypoczynku' },
+  en: { word: 'tub of cold water', alt: 'Sauna terrace with a cold plunge tub and seating area' },
+  de: { word: 'Kaltwasserbottich', alt: 'Saunaterrasse mit Kaltwasserbottich und Sitzbereich' },
+}[lang];
+const tubHint = await imageHint({ word: tub.word, image: lasbialas6, alt: tub.alt, onDark: true });
+const saunaDesc = insertHint(escapeHtml(t('section.sauna_desc')), tub.word, tubHint);
+
 // Wpis na blogu jest tylko po polsku, więc link pokazujemy wyłącznie w wersji PL.
 const saunaBlogLink = lang === 'pl'
   ? { href: '/blog/jak-bezpiecznie-schlodzic-sie-po-saunie-poradnik-krok-po-kroku/', label: 'Jak bezpiecznie schłodzić się po saunie? Poradnik na blogu' }
@@ -63,7 +73,7 @@ const saunaBlogLink = lang === 'pl'
         <Picture alt="" height={60} width={60} src={icons.sauna} formats={['avif', 'webp']} class="inline-block" />
       </div>
       <h3 class="text-center mt-[5px] mb-5 text-white text-[24px] font-bold">{t('section.sauna_title')}</h3>
-      <p class="text-base leading-[1.6]">{t('section.sauna_desc')}</p>
+      <p class="text-base leading-[1.6]" set:html={saunaDesc}></p>
       {saunaBlogLink && (
         <p class="text-base leading-[1.6] mt-4">
           <a href={saunaBlogLink.href} class="text-white underline hover:text-[#f3d9c4] transition-colors">{saunaBlogLink.label}</a>

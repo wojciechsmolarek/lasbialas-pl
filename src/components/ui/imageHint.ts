@@ -10,6 +10,7 @@ interface ImageHintOptions {
   image: ImageMetadata;  // import ze src/assets, np. w6
   alt: string;           // opis zdjęcia
   caption?: string;      // opcjonalny podpis pod zdjęciem
+  onDark?: boolean;      // true, gdy słowo stoi na ciemnym tle (białe podkreślenie)
 }
 
 const DISPLAY_WIDTH = 280;
@@ -18,14 +19,14 @@ let counter = 0;
 const esc = (s: string) =>
   s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
-export async function imageHint({ word, image, alt, caption }: ImageHintOptions): Promise<string> {
+export async function imageHint({ word, image, alt, caption, onDark = false }: ImageHintOptions): Promise<string> {
   const img = await getImage({ src: image, width: Math.min(DISPLAY_WIDTH * 2, image.width), format: 'webp' });
   const height = Math.round((DISPLAY_WIDTH * image.height) / image.width);
   const id = `img-hint-${++counter}`;
   const cap = caption ? `<span class="img-hint__cap">${esc(caption)}</span>` : '';
 
   return (
-    `<span class="img-hint">` +
+    `<span class="img-hint${onDark ? ' img-hint--on-dark' : ''}">` +
       `<button type="button" class="img-hint__trigger" aria-expanded="false" aria-controls="${id}">${esc(word)}</button>` +
       `<span class="img-hint__pop" id="${id}" hidden>` +
         `<img src="${img.src}" width="${DISPLAY_WIDTH}" height="${height}" alt="${esc(alt)}" loading="lazy" decoding="async">` +

@@ -27,6 +27,17 @@
   .img-hint__trigger[aria-expanded='true'] {
     color: #2f6940;
   }
+  .img-hint--on-dark .img-hint__trigger {
+    text-decoration-color: currentColor;
+  }
+  .img-hint--on-dark .img-hint__trigger:hover,
+  .img-hint--on-dark .img-hint__trigger[aria-expanded='true'] {
+    color: inherit;
+    text-decoration-style: solid;
+  }
+  .img-hint--on-dark .img-hint__trigger:focus-visible {
+    outline-color: currentColor;
+  }
   .img-hint__trigger:focus-visible {
     outline: 2px solid #2f6940;
     outline-offset: 2px;

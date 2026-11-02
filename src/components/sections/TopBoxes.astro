@@ -1,5 +1,14 @@
 ---
+import type { ImageMetadata } from 'astro';
 import { siteConfig } from '../../data/config';
+import jacuzziImg from '../../assets/foto/lasbialas-jacuzzi3.webp';
+import saunaImg from '../../assets/foto/lasbialas7.webp';
+import baliaImg from '../../assets/foto/balia.jpg';
+import grillImg from '../../assets/foto/grill.webp';
+import roweryImg from '../../assets/foto/rowery.webp';
+import supImg from '../../assets/foto/sup.webp';
+import ImageHints from '../ui/ImageHints.astro';
+import { imageHint, insertHint } from '../ui/imageHint';
 
 interface Props {
   lang: 'pl' | 'en' | 'de';
@@ -9,12 +18,54 @@ const { lang } = Astro.props;
 
 const topBoxes = siteConfig.topBoxes;
 const currentData = topBoxes[lang] ?? {};
+
+// Pozycje listy „Na miejscu” (z config.ts), które pokazują zdjęcie po najechaniu lub dotknięciu.
+// item: pełny tekst pozycji dokładnie tak jak w config.ts, word: podświetlane słowo.
+// Jeśli tekst pozycji w config.ts zostanie zmieniony, pozycja wyświetli się normalnie, bez zdjęcia.
+type Hint = { item: string; word: string; image: ImageMetadata; alt: string };
+const hints: Record<'pl' | 'en' | 'de', Hint[]> = {
+  pl: [
+    { item: 'prywatne jacuzzi', word: 'prywatne jacuzzi', image: jacuzziImg, alt: 'Prywatne jacuzzi na terenie domku' },
+    { item: 'sauna', word: 'sauna', image: saunaImg, alt: 'Sauna Las Biala\'s w lesie' },
+    { item: 'balia do schładzania', word: 'balia do schładzania', image: baliaImg, alt: 'Balia z zimną wodą do schładzania przy saunie' },
+    { item: 'grill + węgiel', word: 'grill', image: grillImg, alt: 'Murowany grill przy domku' },
+    { item: 'rowery', word: 'rowery', image: roweryImg, alt: 'Rowery trekkingowe dla gości' },
+    { item: 'deski SUP', word: 'deski SUP', image: supImg, alt: 'Deski SUP dla gości' },
+  ],
+  en: [
+    { item: 'Private jacuzzi', word: 'Private jacuzzi', image: jacuzziImg, alt: 'Private jacuzzi on the cottage grounds' },
+    { item: 'Finnish sauna', word: 'Finnish sauna', image: saunaImg, alt: 'Las Biala\'s sauna in the forest' },
+    { item: 'Cold plunge tub', word: 'Cold plunge tub', image: baliaImg, alt: 'Cold plunge tub next to the sauna' },
+    { item: 'BBQ grill + charcoal', word: 'BBQ grill', image: grillImg, alt: 'Brick barbecue grill by the cottage' },
+    { item: 'Bikes', word: 'Bikes', image: roweryImg, alt: 'Trekking bikes for guests' },
+    { item: 'SUP boards', word: 'SUP boards', image: supImg, alt: 'SUP boards for guests' },
+  ],
+  de: [
+    { item: 'privater Whirlpool', word: 'privater Whirlpool', image: jacuzziImg, alt: 'Privater Whirlpool auf dem Grundstück' },
+    { item: 'Finnische Sauna', word: 'Finnische Sauna', image: saunaImg, alt: 'Sauna von Las Biala\'s im Wald' },
+    { item: 'Kaltwasserbottich', word: 'Kaltwasserbottich', image: baliaImg, alt: 'Kaltwasserbottich neben der Sauna' },
+    { item: 'Grill + Holzkohle', word: 'Grill', image: grillImg, alt: 'Gemauerter Grill am Ferienhaus' },
+    { item: 'Fahrräder', word: 'Fahrräder', image: roweryImg, alt: 'Trekkingräder für Gäste' },
+    { item: 'SUP-Boards', word: 'SUP-Boards', image: supImg, alt: 'SUP-Boards für Gäste' },
+  ],
+};
+
+let infoBlock: string = (currentData as { infoBlock?: string }).infoBlock ?? '';
+for (const h of hints[lang]) {
+  const needle = `<span class="promo-bullet"></span>${h.item}</li>`;
+  if (!infoBlock.includes(needle)) continue;
+  const html = await imageHint({ word: h.word, image: h.image, alt: h.alt });
+  const withHint = `<span class="promo-bullet"></span>${insertHint(h.item, h.word, html)}</li>`;
+  infoBlock = infoBlock.replace(needle, () => withHint);
+}
 ---
 <div id="terminy" class="flex gap-[20px] items-stretch max-w-[73%] mx-auto flex-wrap max-[1367px]:flex-col max-[1367px]:max-w-full max-[1367px]:gap-[1px] max-[1367px]:px-4 max-[768px]:px-0">
 <div class="flex-[0_0_49%] max-[1367px]:flex-[0_0_100%] max-[1367px]:w-full border border-[#ccc] rounded-[5px] py-[10px] px-[40px] mb-5 bg-white text-base text-center max-[768px]:max-w-[96vw] max-[768px]:mx-auto max-[768px]:p-5 max-[768px]:mt-[1px] max-[768px]:mb-[20px] max-[768px]:text-[1rem]">
     <Fragment set:html={currentData.availabilityBlock} />
   </div>
   <div class="flex-[0_0_49%] max-[1367px]:flex-[0_0_100%] max-[1367px]:w-full border border-[#ccc] rounded-[5px] py-[10px] px-[40px] mb-5 bg-white text-base text-center max-[768px]:max-w-[96vw] max-[768px]:mx-auto max-[768px]:p-5 max-[768px]:mt-[1px] max-[768px]:mb-[20px] max-[768px]:text-[1rem]">
-    <Fragment set:html={currentData.infoBlock} />
+    <Fragment set:html={infoBlock} />
   </div>
 </div>
+
+<ImageHints />

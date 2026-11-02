@@ -35,3 +35,14 @@ export async function imageHint({ word, image, alt, caption, onDark = false }: I
     `</span>`
   );
 }
+
+// Wstawia słowo ze zdjęciem w tekst w miejsce `word` (pierwsze wystąpienie).
+// Spację tuż po słowie zamienia na twardą spację, bo minifikator HTML przy buildzie
+// usuwa zwykłą spację po elemencie i słowo skleja się z następnym („pergoląz”).
+export function insertHint(text: string, word: string, hintHtml: string): string {
+  const i = text.indexOf(word);
+  if (i === -1) return text;
+  let after = text.slice(i + word.length);
+  if (after.startsWith(' ')) after = '&nbsp;' + after.slice(1);
+  return text.slice(0, i) + hintHtml + after;
+}

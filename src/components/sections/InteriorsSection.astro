@@ -10,6 +10,11 @@ import w13 from '../../assets/foto/w13.webp';
 import w15 from '../../assets/foto/w15.webp';
 import w17 from '../../assets/foto/w17.webp';
 import w18 from '../../assets/foto/w18.webp';
+import wiatrak from '../../assets/foto/wiatrak.webp';
+import ekspres from '../../assets/foto/ekspres.webp';
+import type { ImageMetadata } from 'astro';
+import ImageHints from '../ui/ImageHints.astro';
+import { imageHint, insertHint } from '../ui/imageHint';
 
 interface Props {
   lang: 'pl' | 'en' | 'de';
@@ -164,6 +169,48 @@ const mainGuideHref = {
   de: 'https://lasbialas.pl/info/de/',
 }[lang];
 
+// Słowa ze zdjęciem po najechaniu lub dotknięciu (dymki).
+// Jeśli słowo zostanie zmienione w tekście powyżej, wyświetli się normalnie, bez zdjęcia.
+const hintWords = {
+  pl: {
+    fanIntro: 'wentylatory sufitowe',
+    fanItem: 'wentylator sufitowy',
+    fanAlt: 'Wentylator sufitowy w sypialni',
+    coffee: 'ekspres Nespresso De\'Longhi',
+    coffeeAlt: 'Ekspres do kawy Nespresso De\'Longhi w aneksie kuchennym',
+  },
+  en: {
+    fanIntro: 'ceiling fans',
+    fanItem: 'ceiling fan',
+    fanAlt: 'Ceiling fan in the bedroom',
+    coffee: 'Nespresso De\'Longhi coffee machine',
+    coffeeAlt: 'Nespresso De\'Longhi coffee machine in the kitchenette',
+  },
+  de: {
+    fanIntro: 'Deckenventilatoren',
+    fanItem: 'Deckenventilator',
+    fanAlt: 'Deckenventilator im Schlafzimmer',
+    coffee: 'Nespresso-Kaffeemaschine',
+    coffeeAlt: 'Nespresso-Kaffeemaschine von De\'Longhi in der Küchenzeile',
+  },
+}[lang];
+
+const escapeHtml = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+async function withHint(text: string, word: string, image: ImageMetadata, alt: string): Promise<string> {
+  const escaped = escapeHtml(text);
+  if (!escaped.includes(word)) return escaped;
+  const html = await imageHint({ word, image, alt });
+  return insertHint(escaped.replace(word, '{hint}'), '{hint}', html);
+}
+
+const introHtml = await withHint(t.intro, hintWords.fanIntro, wiatrak, hintWords.fanAlt);
+const bedroomItems = await Promise.all(
+  t.bedrooms.items.map((item: string) => withHint(item, hintWords.fanItem, wiatrak, hintWords.fanAlt))
+);
+const livingItems = await Promise.all(
+  t.living.items.map((item: string) => withHint(item, hintWords.coffee, ekspres, hintWords.coffeeAlt))
+);
+
 const h3Class = 'text-[1.2rem] text-center mt-[40px] mb-[15px] font-semibold text-[#2c2c2c]';
 const sectionTextClass = 'text-base leading-[1.6] text-brand-black';
 const bulletUl = 'flex flex-wrap justify-center gap-y-[6px] gap-x-[16px] my-2.5 p-0 list-none';
@@ -176,15 +223,15 @@ const tipClass = 'invisible opacity-0 w-[320px] bg-black/70 text-white text-cent
 
 <div class="max-w-[73%] border border-[#ccc] rounded-[5px] py-[10px] px-[80px] mx-auto mb-5 bg-white text-base text-center max-[768px]:max-w-[96vw] max-[768px]:p-5 max-[768px]:my-[1px] max-[768px]:mb-5 max-[768px]:text-[0.6rem]">
   <h2 class="text-[24px] text-center mt-5 mb-5 text-brand-black font-bold">{t.title}</h2>
-  <p class="text-base leading-[1.6]">{t.intro}</p>
+  <p class="text-base leading-[1.6]" set:html={introHtml}></p>
 
   {/* Bedrooms */}
   <h3 class={h3Class}>{t.bedrooms.title}</h3>
   <div class={sectionTextClass}>
     <p>{t.bedrooms.intro}</p>
     <ul class={bulletUl}>
-      {t.bedrooms.items.map((item: string) => (
-        <li class={bulletLi}><span class={bulletMarker}></span>{item}</li>
+      {bedroomItems.map((item: string) => (
+        <li class={bulletLi}><span class={bulletMarker}></span><span set:html={item}></span></li>
       ))}
     </ul>
   </div>
@@ -202,8 +249,8 @@ const tipClass = 'invisible opacity-0 w-[320px] bg-black/70 text-white text-cent
   <div class={sectionTextClass}>
     <p set:html={t.living.intro.replace('{#guide}', guideHref)}></p>
     <ul class={bulletUl}>
-      {t.living.items.map((item: string) => (
-        <li class={bulletLi}><span class={bulletMarker}></span>{item}</li>
+      {livingItems.map((item: string) => (
+        <li class={bulletLi}><span class={bulletMarker}></span><span set:html={item}></span></li>
       ))}
     </ul>
   </div>
@@ -250,3 +297,5 @@ const tipClass = 'invisible opacity-0 w-[320px] bg-black/70 text-white text-cent
     <a class="inline-flex justify-center items-center w-auto h-[46px] text-base font-normal text-white bg-[#B5550E] border-none text-center no-underline normal-case cursor-pointer mb-[30px] mt-[10px] px-[15px] rounded-[6px] hover:bg-[#c4621a] transition-colors" href={mainGuideHref} target="_blank" rel="noopener">{t.guide.btn}</a>
   </div>
 </div>
+
+<ImageHints />

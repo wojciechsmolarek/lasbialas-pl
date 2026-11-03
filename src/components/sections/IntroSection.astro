@@ -5,7 +5,9 @@ import sauna1 from '../../assets/foto/sauna1.webp';
 import lasbialasJacuzzi3 from '../../assets/foto/lasbialas-jacuzzi3.webp';
 import w6 from '../../assets/foto/w6.webp';
 import lasbialas4 from '../../assets/foto/lasbialas4.webp';
-import lasbialas6 from '../../assets/foto/lasbialas6.webp';
+import lasbialas7 from '../../assets/foto/lasbialas7.webp';
+import balia from '../../assets/foto/balia.jpg';
+import grill from '../../assets/foto/grill.webp';
 import ImageHints from '../ui/ImageHints.astro';
 import { imageHint, insertHint } from '../ui/imageHint';
 
@@ -19,11 +21,17 @@ const t = {
   pl: {
     title: 'Całoroczne domki na wynajem w Puszczy Noteckiej',
     p1: 'Zapraszamy do Las Biala\'s w Białej, wsi nad Jeziorem Białym, w sercu Puszczy Noteckiej. Z dala od miejskiego zgiełku, na ogrodzonym leśnym terenie, około 400 m od plaży, stoją dwa całoroczne domki przeznaczone dla dorosłych gości.',
-    p2: 'Na miejscu jest sauna fińska z {tub}, a za dopłatą również prywatne jacuzzi przy domku. Bez dodatkowych opłat dostępne są grill, {bikes}. Domki są ogrzewane przez cały rok, a temperaturę w każdym pomieszczeniu ustawia się osobnym {thermostat}.',
+    p2: 'Na miejscu jest {sauna} z {tub}, a za dopłatą również {jacuzzi} przy domku. Bez dodatkowych opłat dostępne są {grill}, {bikes}. Domki są ogrzewane przez cały rok, a temperaturę w każdym pomieszczeniu ustawia się osobnym {thermostat}.',
     thermostatWord: 'termostatem',
     thermostatAlt: 'Termostat ogrzewania w domku',
     tubWord: 'balią',
-    tubAlt: 'Sauna z tarasem, balią do schładzania i strefą wypoczynku',
+    tubAlt: 'Balia z zimną wodą do schładzania przy saunie',
+    saunaWord: 'sauna fińska',
+    saunaAlt: 'Wnętrze sauny fińskiej',
+    jacuzziWord: 'prywatne jacuzzi',
+    jacuzziAlt: 'Prywatne jacuzzi na terenie domku',
+    grillWord: 'grill',
+    grillAlt: 'Murowany grill przy domku',
     bikesWord: 'rowery i deski SUP',
     bikesAlt: 'Rowery trekkingowe i deski SUP dla gości',
     banner1: 'Sauna i jacuzzi',
@@ -41,11 +49,17 @@ const t = {
   en: {
     title: 'Year-Round Cottages for Rent in the Noteć Forest',
     p1: 'Welcome to Las Biala\'s in Biała, a village on Lake Białe in the heart of the Noteć Forest. Away from the bustle of the city, on a fenced forest property about 400 m from the beach, stand two year-round cottages for adult guests.',
-    p2: 'On site there is a Finnish sauna with a {tub}, and a private jacuzzi next to the cottage is available for an extra fee. The barbecue grill is free to use, as are the {bikes}. The cottages are heated all year round, and each room has its own {thermostat}.',
+    p2: 'On site there is a {sauna} with a {tub}, and a {jacuzzi} next to the cottage is available for an extra fee. The {grill} is free to use, as are the {bikes}. The cottages are heated all year round, and each room has its own {thermostat}.',
     thermostatWord: 'thermostat',
     thermostatAlt: 'Heating thermostat in the cottage',
     tubWord: 'cold plunge tub',
-    tubAlt: 'Sauna with an outdoor terrace, cold plunge tub and seating area',
+    tubAlt: 'Cold plunge tub next to the sauna',
+    saunaWord: 'Finnish sauna',
+    saunaAlt: 'Inside the Finnish sauna',
+    jacuzziWord: 'private jacuzzi',
+    jacuzziAlt: 'Private jacuzzi on the cottage grounds',
+    grillWord: 'barbecue grill',
+    grillAlt: 'Brick barbecue grill by the cottage',
     bikesWord: 'bikes and SUP boards',
     bikesAlt: 'Trekking bikes and SUP boards for guests',
     banner1: 'Sauna and jacuzzi',
@@ -63,11 +77,17 @@ const t = {
   de: {
     title: 'Ganzjährige Ferienhäuser in der Puszcza Notecka',
     p1: 'Willkommen bei Las Biala\'s in Biała, einem Dorf am See Białe im Herzen der Puszcza Notecka. Abseits vom Trubel der Stadt stehen auf einem eingezäunten Waldgrundstück, etwa 400 m vom Strand entfernt, zwei ganzjährig nutzbare Ferienhäuser für erwachsene Gäste.',
-    p2: 'Vor Ort gibt es eine finnische Sauna mit {tub}, außerdem gegen Aufpreis einen privaten Whirlpool direkt am Haus. Kostenlos zur Verfügung stehen ein Grill, {bikes}. Die Häuser sind das ganze Jahr über beheizt, und jeder Raum hat einen eigenen {thermostat}.',
+    p2: 'Vor Ort gibt es eine {sauna} mit {tub}, außerdem gegen Aufpreis einen {jacuzzi} direkt am Haus. Kostenlos zur Verfügung stehen ein {grill}, {bikes}. Die Häuser sind das ganze Jahr über beheizt, und jeder Raum hat einen eigenen {thermostat}.',
     thermostatWord: 'Thermostat',
     thermostatAlt: 'Heizungsthermostat im Ferienhaus',
     tubWord: 'Kaltwasserbottich',
-    tubAlt: 'Sauna mit Außenterrasse, Kaltwasserbottich und Sitzbereich',
+    tubAlt: 'Kaltwasserbottich neben der Sauna',
+    saunaWord: 'finnische Sauna',
+    saunaAlt: 'Innenraum der finnischen Sauna',
+    jacuzziWord: 'privaten Whirlpool',
+    jacuzziAlt: 'Privater Whirlpool auf dem Grundstück',
+    grillWord: 'Grill',
+    grillAlt: 'Gemauerter Grill am Ferienhaus',
     bikesWord: 'Fahrräder und SUP-Boards',
     bikesAlt: 'Trekkingräder und SUP-Boards für Gäste',
     banner1: 'Sauna und Whirlpool',
@@ -86,11 +106,17 @@ const t = {
 
 // Słowa z małym zdjęciem po najechaniu lub dotknięciu.
 const thermostatHint = await imageHint({ word: t.thermostatWord, image: w6, alt: t.thermostatAlt });
-const tubHint = await imageHint({ word: t.tubWord, image: lasbialas6, alt: t.tubAlt });
+const tubHint = await imageHint({ word: t.tubWord, image: balia, alt: t.tubAlt });
+const saunaHint = await imageHint({ word: t.saunaWord, image: lasbialas7, alt: t.saunaAlt });
+const jacuzziHint = await imageHint({ word: t.jacuzziWord, image: lasbialasJacuzzi3, alt: t.jacuzziAlt });
+const grillHint = await imageHint({ word: t.grillWord, image: grill, alt: t.grillAlt });
 const bikesHint = await imageHint({ word: t.bikesWord, image: lasbialas4, alt: t.bikesAlt });
 let p2 = insertHint(t.p2, '{thermostat}', thermostatHint);
 p2 = insertHint(p2, '{tub}', tubHint);
 p2 = insertHint(p2, '{bikes}', bikesHint);
+p2 = insertHint(p2, '{sauna}', saunaHint);
+p2 = insertHint(p2, '{jacuzzi}', jacuzziHint);
+p2 = insertHint(p2, '{grill}', grillHint);
 ---
 
 <div id="domki" class="max-w-[73%] border border-[#ccc] rounded-[5px] py-[10px] px-[80px] mx-auto mb-5 bg-white text-base text-center max-[768px]:max-w-[96vw] max-[768px]:p-5 max-[768px]:my-[1px] max-[768px]:mb-5 max-[768px]:text-[0.6rem]">

@@ -12,6 +12,7 @@ import w17 from '../../assets/foto/w17.webp';
 import w18 from '../../assets/foto/w18.webp';
 import wiatrak from '../../assets/foto/wiatrak.webp';
 import ekspres from '../../assets/foto/ekspres.webp';
+import lodowka from '../../assets/foto/lodowka.webp';
 import type { ImageMetadata } from 'astro';
 import ImageHints from '../ui/ImageHints.astro';
 import { imageHint, insertHint } from '../ui/imageHint';
@@ -178,6 +179,8 @@ const hintWords = {
     fanAlt: 'Wentylator sufitowy w sypialni',
     coffee: 'ekspres Nespresso De\'Longhi',
     coffeeAlt: 'Ekspres do kawy Nespresso De\'Longhi w aneksie kuchennym',
+    fridge: 'dużą lodówkę z zamrażalnikiem',
+    fridgeAlt: 'Duża lodówka z zamrażalnikiem w aneksie kuchennym',
   },
   en: {
     fanIntro: 'ceiling fans',
@@ -185,6 +188,8 @@ const hintWords = {
     fanAlt: 'Ceiling fan in the bedroom',
     coffee: 'Nespresso De\'Longhi coffee machine',
     coffeeAlt: 'Nespresso De\'Longhi coffee machine in the kitchenette',
+    fridge: 'large fridge-freezer',
+    fridgeAlt: 'Large fridge-freezer in the kitchenette',
   },
   de: {
     fanIntro: 'Deckenventilatoren',
@@ -192,6 +197,8 @@ const hintWords = {
     fanAlt: 'Deckenventilator im Schlafzimmer',
     coffee: 'Nespresso-Kaffeemaschine',
     coffeeAlt: 'Nespresso-Kaffeemaschine von De\'Longhi in der Küchenzeile',
+    fridge: 'großen Kühlschrank mit Gefrierfach',
+    fridgeAlt: 'Großer Kühlschrank mit Gefrierfach in der Küchenzeile',
   },
 }[lang];
 
@@ -207,6 +214,15 @@ const introHtml = await withHint(t.intro, hintWords.fanIntro, wiatrak, hintWords
 const bedroomItems = await Promise.all(
   t.bedrooms.items.map((item: string) => withHint(item, hintWords.fanItem, wiatrak, hintWords.fanAlt))
 );
+// Opis salonu może zawierać HTML (np. link do przewodnika), dlatego nie jest escapowany.
+const livingIntroRaw = t.living.intro.replace('{#guide}', guideHref);
+const livingIntroHtml = livingIntroRaw.includes(hintWords.fridge)
+  ? insertHint(
+      livingIntroRaw.replace(hintWords.fridge, '{hint}'),
+      '{hint}',
+      await imageHint({ word: hintWords.fridge, image: lodowka, alt: hintWords.fridgeAlt })
+    )
+  : livingIntroRaw;
 const livingItems = await Promise.all(
   t.living.items.map((item: string) => withHint(item, hintWords.coffee, ekspres, hintWords.coffeeAlt))
 );
@@ -247,7 +263,7 @@ const tipClass = 'invisible opacity-0 w-[320px] bg-black/70 text-white text-cent
   {/* Living Room */}
   <h3 class={h3Class}>{t.living.title}</h3>
   <div class={sectionTextClass}>
-    <p set:html={t.living.intro.replace('{#guide}', guideHref)}></p>
+    <p set:html={livingIntroHtml}></p>
     <ul class={bulletUl}>
       {livingItems.map((item: string) => (
         <li class={bulletLi}><span class={bulletMarker}></span><span set:html={item}></span></li>

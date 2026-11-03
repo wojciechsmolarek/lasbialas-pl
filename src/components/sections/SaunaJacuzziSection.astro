@@ -8,6 +8,7 @@ import pergolaJacuzzi from '../../assets/foto/pergola_jacuzzi-1.webp';
 import lasbialas6 from '../../assets/foto/lasbialas6.webp';
 import lasbialas7 from '../../assets/foto/lasbialas7.webp';
 import balia from '../../assets/foto/balia.jpg';
+import saunaLed from '../../assets/foto/saunaled.webp';
 import lasbialasJacuzzi3 from '../../assets/foto/lasbialas-jacuzzi3.webp';
 import ImageHints from '../ui/ImageHints.astro';
 import { imageHint, insertHint } from '../ui/imageHint';
@@ -62,16 +63,19 @@ async function applyHints(text: string, hints: Hint[], prefix: string): Promise<
 const saunaHints: Hint[] = {
   pl: [
     { word: 'Sauna fińska', image: lasbialas7, alt: 'Wnętrze sauny fińskiej' },
+    { word: 'oświetlenie LED', image: saunaLed, alt: 'Sauna z włączonym oświetleniem LED' },
     { word: 'strefę wypoczynku', image: lasbialas6, alt: 'Sauna z tarasem i strefą wypoczynku wśród sosen' },
     { word: 'balią', image: balia, alt: 'Drewniana balia z zimną wodą do schładzania' },
   ],
   en: [
     { word: 'Finnish sauna', image: lasbialas7, alt: 'Inside the Finnish sauna' },
+    { word: 'LED lighting', image: saunaLed, alt: 'Sauna with the LED lighting switched on' },
     { word: 'seating area', image: lasbialas6, alt: 'Sauna with a terrace among the pine trees' },
     { word: 'tub of cold water', image: balia, alt: 'Wooden cold plunge tub' },
   ],
   de: [
     { word: 'finnische Sauna', image: lasbialas7, alt: 'Innenraum der finnischen Sauna' },
+    { word: 'LED-Beleuchtung', image: saunaLed, alt: 'Sauna mit eingeschalteter LED-Beleuchtung' },
     { word: 'Sitzbereich', image: lasbialas6, alt: 'Sauna mit Terrasse zwischen Kiefern' },
     { word: 'Kaltwasserbottich', image: balia, alt: 'Hölzerner Kaltwasserbottich' },
   ],

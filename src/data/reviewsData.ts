@@ -10,6 +10,34 @@ export interface Review {
 
 export const reviews: Review[] = [
   {
+    "author": "Gracjan Walch",
+    "avatarUrl": "https://lh3.googleusercontent.com/a-/ALV-UjWaiES3c9zhXwDpgRNgfZuNondVanvLhoBcR0xOTmF91eEHRE-d=w144-h144-p-rp-mo-ba12-br100",
+    "rating": 5,
+    "content": "Domki wyposażone lepiej niż pięciogwiazdkowe hotele, byliśmy pod ogromnym wrażeniem. Dziękujemy Oli i Arkowi za fantastyczny pobyt. Polecamy miejsce całym serduszkiem :)",
+    "content_en": "The cottages are better equipped than five-star hotels, we were hugely impressed. Thank you, Ola and Arek, for a fantastic stay. We recommend this place with all our hearts :)",
+    "content_de": "Die Ferienhäuser sind besser ausgestattet als Fünf-Sterne-Hotels, wir waren total begeistert. Danke an Ola und Arek für einen fantastischen Aufenthalt. Wir empfehlen diesen Ort von ganzem Herzen :)",
+    "source": "Google"
+  },
+  {
+    "author": "Łukasz Kolasiak",
+    "avatarUrl": "https://lh3.googleusercontent.com/a-/ALV-UjWHzWfvetLNyEniwDSMFALj-u1lM07vOEp9oPOYJgfKOE9ldp8s=w144-h144-p-rp-mo-br100",
+    "rating": 5,
+    "content": "Genialne miejsce jeżeli chcesz odpocząć i w pełni się zrelaksować. Cisza, spokój i komfort! Dwa domki położone od siebie w takiej odległości, że nie zakłócają prywatności. Pełne wyposażenie! Nie musisz się o nic martwić. Na miejscu masz rowery, deski SUP, jacuzzi, saunę, grill z osprzętem, gry planszowe, książki, hamaki… mógłbym tak wymieniać i wymieniać. Naprawdę rzadko się zdarza by miejsce było tak przygotowane, czyste i przemyślane. Zdecydowanie polecam i na pewno tu wrócę!",
+    "content_en": "A brilliant place if you want to rest and fully relax. Silence, peace and comfort! The two cottages are far enough apart that your privacy is never disturbed. Fully equipped! You don't have to worry about a thing. On site you have bikes, SUP boards, a jacuzzi, a sauna, a barbecue with all the accessories, board games, books, hammocks… I could go on and on. It's really rare for a place to be this well prepared, clean and thought through. I highly recommend it and will definitely be back!",
+    "content_de": "Ein genialer Ort, wenn man sich erholen und richtig entspannen möchte. Stille, Ruhe und Komfort! Die beiden Ferienhäuser liegen so weit voneinander entfernt, dass die Privatsphäre nicht gestört wird. Komplett ausgestattet! Man muss sich um nichts kümmern. Vor Ort gibt es Fahrräder, SUP-Boards, einen Whirlpool, eine Sauna, einen Grill mit Zubehör, Brettspiele, Bücher, Hängematten… ich könnte endlos weiter aufzählen. Es ist wirklich selten, dass ein Ort so gut vorbereitet, sauber und durchdacht ist. Absolut empfehlenswert, ich komme ganz sicher wieder!",
+    "source": "Google"
+  },
+  {
+    "author": "Dariusz Koza",
+    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocLSWVs6dF6rI90VSuRpcHNhwUodnDvEMpsEPkP3PHtgN5LBuQ=w144-h144-p-rp-mo-ba12-br100",
+    "rating": 5,
+    "content": "Super miejsce na wyciszenie i odpoczynek kontakt z naturą. Wszystko co potrzebne jest dostępne. Poza tym czysto i schludnie. Możemy polecić z całego serca. Jeszcze tu wrócimy 😁",
+    "content_en": "A great place to unwind, rest and be close to nature. Everything you need is available. On top of that, it's clean and tidy. We can recommend it with all our hearts. We'll be back 😁",
+    "content_de": "Ein super Ort zum Abschalten, Erholen und für Naturverbundenheit. Alles, was man braucht, ist vorhanden. Außerdem sauber und ordentlich. Wir können ihn von ganzem Herzen empfehlen. Wir kommen wieder 😁",
+    "source": "Google"
+  },
+  
+  {
     "author": "Donata Malak",
     "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocK88Un1O27NXlPnOZMD3bZFPeiI4BqGWlUQ7BHPmAKLEPleMg=s64-c-rp-mo-br100",
     "rating": 5,

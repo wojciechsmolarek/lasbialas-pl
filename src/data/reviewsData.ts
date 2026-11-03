@@ -6,6 +6,8 @@ export interface Review {
   content_en: string;
   content_de: string;
   source: string;
+  // Język oryginału opinii. Brak pola = polski.
+  lang?: 'pl' | 'en' | 'de' | 'nl';
 }
 
 export const reviews: Review[] = [
@@ -22,190 +24,64 @@ export const reviews: Review[] = [
     "author": "Łukasz Kolasiak",
     "avatarUrl": "https://lh3.googleusercontent.com/a-/ALV-UjWHzWfvetLNyEniwDSMFALj-u1lM07vOEp9oPOYJgfKOE9ldp8s=w144-h144-p-rp-mo-br100",
     "rating": 5,
-    "content": "Genialne miejsce jeżeli chcesz odpocząć i w pełni się zrelaksować. Cisza, spokój i komfort! Dwa domki położone od siebie w takiej odległości, że nie zakłócają prywatności. Pełne wyposażenie! Nie musisz się o nic martwić. Na miejscu masz rowery, deski SUP, jacuzzi, saunę, grill z osprzętem, gry planszowe, książki, hamaki… mógłbym tak wymieniać i wymieniać. Naprawdę rzadko się zdarza by miejsce było tak przygotowane, czyste i przemyślane. Zdecydowanie polecam i na pewno tu wrócę!",
-    "content_en": "A brilliant place if you want to rest and fully relax. Silence, peace and comfort! The two cottages are far enough apart that your privacy is never disturbed. Fully equipped! You don't have to worry about a thing. On site you have bikes, SUP boards, a jacuzzi, a sauna, a barbecue with all the accessories, board games, books, hammocks… I could go on and on. It's really rare for a place to be this well prepared, clean and thought through. I highly recommend it and will definitely be back!",
-    "content_de": "Ein genialer Ort, wenn man sich erholen und richtig entspannen möchte. Stille, Ruhe und Komfort! Die beiden Ferienhäuser liegen so weit voneinander entfernt, dass die Privatsphäre nicht gestört wird. Komplett ausgestattet! Man muss sich um nichts kümmern. Vor Ort gibt es Fahrräder, SUP-Boards, einen Whirlpool, eine Sauna, einen Grill mit Zubehör, Brettspiele, Bücher, Hängematten… ich könnte endlos weiter aufzählen. Es ist wirklich selten, dass ein Ort so gut vorbereitet, sauber und durchdacht ist. Absolut empfehlenswert, ich komme ganz sicher wieder!",
+    "content": "Genialne miejsce jeżeli chcesz odpocząć i w pełni się zrelaksować. Cisza, spokój i komfort!\nDwa domki położone od siebie w takiej odległości, że nie zakłócają prywatności. Pełne wyposażenie! Nie musisz się o nic martwić. Na miejscu masz rowery, deski SUP, jacuzzi, saunę, grill z osprzętem, gry planszowe, książki, hamaki… mógłbym tak wymieniać i wymieniać. Naprawdę rzadko się zdarza by miejsce było tak przygotowane, czyste i przemyślane. Zdecydowanie polecam i na pewno tu wrócę!",
+    "content_en": "A brilliant place if you want to rest and fully relax. Silence, peace and comfort!\nThe two cottages are far enough apart that your privacy is never disturbed. Fully equipped! You don't have to worry about a thing. On site you have bikes, SUP boards, a jacuzzi, a sauna, a barbecue with all the accessories, board games, books, hammocks… I could go on and on. It's really rare for a place to be this well prepared, clean and thought through. I highly recommend it and will definitely be back!",
+    "content_de": "Ein genialer Ort, wenn man sich erholen und richtig entspannen möchte. Stille, Ruhe und Komfort!\nDie beiden Ferienhäuser liegen so weit voneinander entfernt, dass die Privatsphäre nicht gestört wird. Komplett ausgestattet! Man muss sich um nichts kümmern. Vor Ort gibt es Fahrräder, SUP-Boards, einen Whirlpool, eine Sauna, einen Grill mit Zubehör, Brettspiele, Bücher, Hängematten… ich könnte endlos weiter aufzählen. Es ist wirklich selten, dass ein Ort so gut vorbereitet, sauber und durchdacht ist. Absolut empfehlenswert, ich komme ganz sicher wieder!",
     "source": "Google"
   },
   {
     "author": "Dariusz Koza",
     "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocLSWVs6dF6rI90VSuRpcHNhwUodnDvEMpsEPkP3PHtgN5LBuQ=w144-h144-p-rp-mo-ba12-br100",
     "rating": 5,
-    "content": "Super miejsce na wyciszenie i odpoczynek kontakt z naturą. Wszystko co potrzebne jest dostępne. Poza tym czysto i schludnie. Możemy polecić z całego serca. Jeszcze tu wrócimy 😁",
-    "content_en": "A great place to unwind, rest and be close to nature. Everything you need is available. On top of that, it's clean and tidy. We can recommend it with all our hearts. We'll be back 😁",
-    "content_de": "Ein super Ort zum Abschalten, Erholen und für Naturverbundenheit. Alles, was man braucht, ist vorhanden. Außerdem sauber und ordentlich. Wir können ihn von ganzem Herzen empfehlen. Wir kommen wieder 😁",
-    "source": "Google"
-  },
-  
-  {
-    "author": "Donata Malak",
-    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocK88Un1O27NXlPnOZMD3bZFPeiI4BqGWlUQ7BHPmAKLEPleMg=s64-c-rp-mo-br100",
-    "rating": 5,
-    "content": "To miejsce to prawdziwa perełka!\nDomki położone w samym sercu lasu …",
-    "content_en": "This place is a real gem!\nThe cottages are located in the heart of the forest …",
-    "content_de": "Dieser Ort ist ein wahres Juwel!\nDie Ferienhäuser liegen mitten im Wald …",
+    "content": "Super miejsce na wyciszenie i odpoczynek kontakt z naturą. Wszystko co potrzebne jest dostępne. Poza tym czysto i schludnie.\nMożemy polecić z całego serca.\nJeszcze tu wrócimy 😁",
+    "content_en": "A great place to unwind, rest and be close to nature. Everything you need is available. On top of that, it's clean and tidy.\nWe can recommend it with all our hearts.\nWe'll be back 😁",
+    "content_de": "Ein super Ort zum Abschalten, Erholen und für Naturverbundenheit. Alles, was man braucht, ist vorhanden. Außerdem sauber und ordentlich.\nWir können ihn von ganzem Herzen empfehlen.\nWir kommen wieder 😁",
     "source": "Google"
   },
   {
-    "author": "Michał Dąbrowski",
-    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocInEjZAY22q3UzqvZKSZ-7oeFTWRur9bBDk9V231GvG9bX8qw=s64-c-rp-mo-br100",
+    "author": "Ron Tremor",
+    "avatarUrl": null,
     "rating": 5,
-    "content": "Wspaniale miejsce na weekendowy reset! Domek i otoczenie bardzo zadbane i czyste, dookoła las- raj dla grzybiarzy. Przede wszystkim- uczynny i przemiły …",
-    "content_en": "A wonderful place for a weekend reset! The cottage and surroundings are very well-kept and clean, surrounded by forest - a paradise for mushroom pickers. Above all - helpful and lovely …",
-    "content_de": "Ein wunderbarer Ort für einen Wochenend-Neustart! Das Haus und die Umgebung sind sehr gepflegt und sauber, umgeben von Wald - ein Paradies für Pilzsammler. Vor allem - hilfsbereit und nett …",
+    "content": "Mały kawałek raju… Bardzo spokojna okolica, a mimo to jest wszystko, czego potrzeba. Jeśli przy samodzielnym wyżywieniu pamięta się o zabraniu prowiantu (kawa, herbata, ręczniki papierowe, tabletki do zmywarki, żel pod prysznic, szampon, mydło, płyn do naczyń, ręczniki, ręczniki do sauny i szlafroki są już na miejscu), nie trzeba nawet opuszczać terenu obiektu, a i tak można przez cały urlop odpoczywać i być szczęśliwym. Jeśli czegoś się zapomni, tuż przed jeziorem jest mały sklep z różnymi drobiazgami. Sauna, jacuzzi, hamaki, leżaki… wszystko, żeby całkowicie się odprężyć. Przy dobrej pogodzie można wybrać się na rower albo na SUP (jedno i drugie zawsze bezpłatne i zadbane) wokół jeziora lub na jezioro. Gospodarze są bardzo mili, zawsze dostępni w razie próśb i życzeń i chętnie we wszystkim pomagają. Niczego nie brakowało i już cieszę się na kolejny urlop na miejscu 🙂",
+    "content_en": "A little slice of paradise… A very quiet location, yet there is everything you need. If you're self-catering and remember to bring your own food and drink (coffee, tea, paper towels, dishwasher tablets, shower gel, shampoo, soap, washing-up liquid, towels, sauna towels and bathrobes are all already provided), you wouldn't even need to leave the grounds and could still relax and be happy for the whole holiday. If you forget something, there's a small shop with all sorts of bits and pieces just before the lake. Sauna, jacuzzi, hammocks, sun loungers… everything you need to switch off completely. When the weather is good, you can take a bike or a SUP board (both always free of charge and well maintained) around or out on the lake. The hosts are very friendly, always reachable with any requests or wishes, and happy to accommodate everything. Nothing was missing and I'm already looking forward to my next holiday there 🙂",
+    "content_de": "Ein kleines Fleckchen Paradies… Sehr ruhig gelegen, dennoch gibt es alles was man braucht. Wenn man als Selbstversorger an alles denkt mitzubringen, was man an Verpflegung braucht (Kaffee, Tee, Küchenrolle, Spülertabs, Duschgel, Schampoo, Seife, Spüli, Handtücher, Saunatücher, Bademäntel schon alles vor Ort) müsste man nicht mal das Gelände der Unterkunft verlassen und kann dennoch den gesamten Urlaub entspannen und glücklich sein. Wenn man was vergessen haben sollte, gibt’s nen kleinen Laden mit jeglichem Schnickschnack kurz vorm See. Sauna, Whirlpool, Hängematten, Sonnenliegen … alles da, um komplett abspannen zu können. Doch bei gutem Wetter geht’s mit dem Rad oder SUP (Beides jederzeit kostenlos und immer gewartet nutzbar) um oder auf den See. Gastgeber sind sehr nett und bei Anliegen und Wünschen immer erreichbar und sind auch gewillt allem entgegen zu kommen. Es fehlte an nichts und ich freue mich schon auf den nächsten Urlaub vor Ort 🙂",
+    "source": "Google",
+    "lang": "de"
+  },
+  {
+    "author": "Angie yt",
+    "avatarUrl": "https://lh3.googleusercontent.com/a-/ALV-UjUZ3lIzU3ywvxHYlCUzh8EJHM-oA7BWKF5E9K25Nyqiqxsv4t4=s64-c-rp-mo-br100",
+    "rating": 5,
+    "content": "Miejsce fantastyczne zaledwie pare metrów do jeziorka. Cisza i spokój pośród leśnych drzew. Domek czyściutki i nowoczesny. Obsługa niesamowita i profesjonalna. Z całego serca polecam to miejsce. Z Pozdrowieniami dla Gospodarzy",
+    "content_en": "A fantastic place, just a few metres from the lake. Peace and quiet among the forest trees. The cottage is spotless and modern. Amazing, professional service. I recommend this place with all my heart. Best wishes to the hosts",
+    "content_de": "Ein fantastischer Ort, nur ein paar Meter vom See entfernt. Stille und Ruhe zwischen den Waldbäumen. Das Ferienhaus ist blitzsauber und modern. Unglaublicher und professioneller Service. Ich empfehle diesen Ort von ganzem Herzen. Liebe Grüße an die Gastgeber",
     "source": "Google"
   },
   {
     "author": "Rysia",
     "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocIKXXk6saXYBUoxVdl69CUIgiD8JRVScdR1yAtTLrg9CMn_8g=s64-c-rp-mo-br100",
     "rating": 5,
-    "content": "Przepiękna miejscówka, w pełni wyposażone domki, czyściutko, cicho i przyjemnie. Do tego bardzo sympatyczni właściciele. Pobyt u was to była sama przyjemność. Polecam!…",
-    "content_en": "Beautiful place, fully equipped cottages, very clean, quiet and pleasant. Plus, very nice owners. Staying with you was a pure pleasure. I recommend!…",
-    "content_de": "Wunderschöner Ort, voll ausgestattete Ferienhäuser, sehr sauber, ruhig und angenehm. Dazu sehr nette Besitzer. Der Aufenthalt bei Ihnen war ein reines Vergnügen. Ich empfehle!…",
+    "content": "Przepiękna miejscówka, w pełni wyposażone domki, czyściutko, cicho i przyjemnie. Do tego bardzo sympatyczni właściciele. Pobyt u was to była sama przyjemność. Polecam!",
+    "content_en": "A beautiful spot, fully equipped cottages, spotlessly clean, quiet and pleasant. On top of that, very friendly owners. Staying with you was a pure pleasure. Highly recommended!",
+    "content_de": "Ein wunderschönes Fleckchen, komplett ausgestattete Ferienhäuser, blitzsauber, ruhig und angenehm. Dazu sehr sympathische Eigentümer. Der Aufenthalt bei euch war ein reines Vergnügen. Sehr empfehlenswert!",
     "source": "Google"
   },
   {
-    "author": "Zielona Melodia",
-    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocJIr1aB-ArWMTJd_AWP9jiuLTnomII7ckQrYPakiE0C-hY3Tw=s64-c-rp-mo-ba12-br100",
+    "author": "Donata Malak",
+    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocK88Un1O27NXlPnOZMD3bZFPeiI4BqGWlUQ7BHPmAKLEPleMg=s64-c-rp-mo-br100",
     "rating": 5,
-    "content": "Przepiękne miejsce położone w sercu Puszczy Noteckiej. Cisza i spokój, idealnie do leniwego odpoczynku. Czyściutki domek, dobrze wyposażony w którym jest …",
-    "content_en": "A beautiful place located in the heart of the Notecka Forest. Peace and quiet, perfectly for lazy rest. A very clean cottage, well-equipped in which there is …",
-    "content_de": "Ein wunderschöner Ort im Herzen der Notecka-Heide. Ruhe und Frieden, perfekt zum faulenzen. Ein sehr sauberes Ferienhaus, gut ausgestattet, in dem es …",
-    "source": "Google"
-  },
-  {
-    "author": "Dagmara Cybulska",
-    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocJKXYI4_nDpPfX2fNMdB9g-czbKlSGqrIeCshEbqtS2rxtwqNM=s64-c-rp-mo-br100",
-    "rating": 5,
-    "content": "Super miejsce, godne polecenia. Domki wyposażone są we wszystkie niezbędne rzeczy, ale i takie ponadprogramowe umilacze czasu, które ratują w przypadku …",
-    "content_en": "Super place, worth recommending. The cottages are equipped with all necessary things, but also such extra time-pleasers that save the day in case of …",
-    "content_de": "Super Ort, sehr zu empfehlen. Die Ferienhäuser sind mit allen notwendigen Dingen ausgestattet, aber auch mit solchen zusätzlichen Zeitvertreiben, die den Tag retten, falls …",
-    "source": "Google"
-  },
-  {
-    "author": "Anastazja Szczerba",
-    "avatarUrl": "https://lh3.googleusercontent.com/a-/ALV-UjWlc38xk-KRji3xkEKEYQZ10OiLgP9WXfQuYRmpOtHGLfmAspc=s64-c-rp-mo-ba12-br100",
-    "rating": 5,
-    "content": "Spędziliśmy 3 noce w domkach, przyroda jest przepiękna, dużo zieleni, wiewiórek. Lokalizacja jest idealna dla miłośników chodzenia na ryby 🐟. Dziękujemy Pani gospodyni za wspaniały klimat i relaks w tak pięknym miejscu 🌸…",
-    "content_en": "We spent 3 nights in the cottages, nature is beautiful, lots of greenery, squirrels. The location is perfect for fishing lovers 🐟. We thank the hostess for the wonderful atmosphere and relaxation in such a beautiful place 🌸…",
-    "content_de": "Wir haben 3 Nächte in den Ferienhäusern verbracht, die Natur ist wunderschön, viel Grün, Eichhörnchen. Die Lage ist ideal für Angelliebhaber 🐟. Wir danken der Gastgeberin für die tolle Atmosphäre und Entspannung an einem so schönen Ort 🌸…",
-    "source": "Google"
-  },
-  {
-    "author": "Zofia Foltak",
-    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocJvkCqjbhejKM2NiVPuKNfD-TRqEHgRIVC_rZQbFhwWNCT6ZA=s64-c-rp-mo-br100",
-    "rating": 5,
-    "content": "Piękne miejsce na odpoczynek, cisza, spokój i przesympatyczni właściciele:) bogato wyposażona biblioteczka i zbiór gier, dzięki którym nie grozi nuda w …",
-    "content_en": "Beautiful place to relax, peace, quiet and very nice owners:) richly equipped bookcase and collection of games, thanks to which there is no risk of boredom in …",
-    "content_de": "Wunderschöner Ort zum Entspannen, Ruhe, Stille und sehr nette Besitzer:) reich ausgestattete Bibliothek und Spielesammlung, dank derer keine Langeweile in … droht.",
+    "content": "To miejsce to prawdziwa perełka!\nDomki położone w samym sercu lasu dają niesamowite poczucie prywatności i bliskości natury. Cisza, spokój i ten klimat... jak małe Bali w środku lasu.\nJacuzzi pod gołym niebem to absolutny hit - relaks na 100%. Do tego jeziorko tuż obok, śpiew ptaków i totalne odcięcie od codzienności.\nIdealne miejsce, żeby zwolnić, odetchnąć i naprawdę odpocząć.\nCudowny czas, do którego chce się wracać. Zdecydowanie polecam każdemu, kto marzy o chwili dla siebie w pięknych okolicznościach przyrody.",
+    "content_en": "This place is a real gem!\nThe cottages, set in the very heart of the forest, give an amazing sense of privacy and closeness to nature. Silence, peace and that atmosphere... like a little Bali in the middle of the forest.\nThe open-air jacuzzi is an absolute hit – 100% relaxation. Add the lake just nearby, birdsong and a complete break from everyday life.\nThe perfect place to slow down, breathe and truly rest.\nA wonderful time you'll want to come back to. I highly recommend it to anyone dreaming of some time for themselves in beautiful natural surroundings.",
+    "content_de": "Dieser Ort ist eine echte Perle!\nDie Ferienhäuser mitten im Wald vermitteln ein unglaubliches Gefühl von Privatsphäre und Nähe zur Natur. Stille, Ruhe und diese Atmosphäre... wie ein kleines Bali mitten im Wald.\nDer Whirlpool unter freiem Himmel ist ein absolutes Highlight – Entspannung zu 100 %. Dazu der See ganz in der Nähe, Vogelgesang und eine totale Auszeit vom Alltag.\nDer ideale Ort, um langsamer zu werden, durchzuatmen und sich wirklich zu erholen.\nEine wunderbare Zeit, zu der man gerne zurückkehrt. Absolut empfehlenswert für alle, die sich eine Auszeit in schöner Natur wünschen.",
     "source": "Google"
   },
   {
     "author": "Jessica",
     "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocK1oqBCBHyujPYabGCyTPr0T_SEF1kaJg8doJTr-JE0_Hz8IdBd=s64-c-rp-mo-ba12-br100",
     "rating": 5,
-    "content": "Piękne miejsce. Cisza i spokój,a w tle urokliwy domek z jacuzzi i sauna.\nDomek w pełni wyposażony. Jedyne czego mi brakowało,to piekarnika ale w zamian jest grill.\nBardzo polecam ♥️",
-    "content_en": "Beautiful place. Peace and quiet, and in the background a charming cottage with a jacuzzi and sauna.\nThe cottage is fully equipped. The only thing I was missing was an oven, but in return there is a grill.\nI highly recommend ♥️",
-    "content_de": "Wunderschöner Ort. Ruhe und Stille und im Hintergrund ein charmantes Ferienhaus mit Whirlpool und Sauna.\nDas Haus ist voll ausgestattet. Das einzige, was mir fehlte, war ein Ofen, aber dafür gibt es einen Grill.\nIch kann es wärmstens empfehlen ♥️",
-    "source": "Google"
-  },
-  {
-    "author": "Radek Waleczny",
-    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocLwVTkrPuRkC0FZznxbPYOMb2SiEoaTay8tOAWPz_NpMKhgxw=s64-c-rp-mo-ba12-br100",
-    "rating": 5,
-    "content": "Super miejsce przede wszystkim ciche i spokojne. Domki na bardzo wysokim standardzie. Dodatkowe atrakcje (sauna,bala,rowery gry planszowe oraz książki ) to …",
-    "content_en": "Super place above all quiet and peaceful. Cottages of a very high standard. Additional attractions (sauna, tub, bikes, board games and books) are …",
-    "content_de": "Super Ort vor allem ruhig und friedlich. Ferienhäuser auf einem sehr hohen Standard. Zusätzliche Attraktionen (Sauna, Badefass, Fahrräder, Brettspiele und Bücher) sind …",
-    "source": "Google"
-  },
-  {
-    "author": "Wojciech Kielpinski",
-    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocKa4extQZLhHBDY-bGLVVWfl0bA7UAND1XqdUV1NP2xAVrVeA=s64-c-rp-mo-br100",
-    "rating": 5,
-    "content": "Wspaniałe miejsce. Domki w lesie i to dosłownie! Rano podczas golenia oglądałem wiewiórki, śpiew ptaków, stukanie dzięcioła nieopodal. Idealne miejsce żeby …",
-    "content_en": "Wonderful place. Cottages in the forest, quite literally! In the morning while shaving I watched squirrels, birds singing, a woodpecker knocking nearby. Perfect place to …",
-    "content_de": "Wunderbarer Ort. Ferienhäuser im Wald und das buchstäblich! Morgens beim Rasieren beobachtete ich Eichhörnchen, Vogelgesang, das Klopfen eines Spechts in der Nähe. Perfekter Ort um …",
-    "source": "Google"
-  },
-  {
-    "author": "Linda Darroch",
-    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocKFuNgoCx7ML2oLfjYBlORa32GlDFCVC-AXNfXH9UmCPSvhLg=s64-c-rp-mo-br100",
-    "rating": 5,
-    "content": "Living a busy and hectic life, I found this one of the most beautiful, idyllic places to unwind. The walks through the forest provide peace and quiet. The small …",
-    "content_en": "Living a busy and hectic life, I found this one of the most beautiful, idyllic places to unwind. The walks through the forest provide peace and quiet. The small …",
-    "content_de": "Bei meinem geschäftigen und hektischen Leben empfand ich dies als einen der schönsten, idyllischsten Orte zum Entspannen. Die Spaziergänge durch den Wald bieten Ruhe und Frieden. Die kleinen …",
-    "source": "Google"
-  },
-  {
-    "author": "Sylwia Gwizdoń",
-    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocKugUqhrs4beSSBDLYt_N5_N9GFgdCebTdWSkOiLWnmKhce1g=s64-c-rp-mo-br100",
-    "rating": 5,
-    "content": "To mega miejsce pod każdym względem . Jest tu dosłownie wszystko - klimat cisza spokój , domki na najwyższym poziomie. Całość zadbana. Polecam serdecznie!",
-    "content_en": "This is a mega place in every way. There is literally everything here - atmosphere, silence, peace, cottages at the highest level. The whole thing is well-kept. I heartily recommend it!",
-    "content_de": "Das ist in jeder Hinsicht ein mega Ort. Hier gibt es buchstäblich alles - Atmosphäre, Stille, Ruhe, Ferienhäuser auf höchstem Niveau. Alles ist gepflegt. Ich kann es nur wärmstens empfehlen!",
-    "source": "Google"
-  },
-  {
-    "author": "AGNIESZKA GRAZDA",
-    "avatarUrl": "https://lh3.googleusercontent.com/a-/ALV-UjW3syC3A9uCok3xsexm7cNqrCQXAd1RxudXcYquTptjManfJPM=s64-c-rp-mo-br100",
-    "rating": 5,
-    "content": "Fajna miejscówka, aby odetchnąć od miasta. Wokół lasy, jeziorko niedaleko od domku. Sam domek jest świetnie wyposażony. Niczego nam nie brakowało. Gospodarze mili i pomocni:) sauna super+balia👌to naprawdę godne polecenia miejsce!",
-    "content_en": "Cool place to take a breather from the city. Surrounded by forests, a lake not far from the cottage. The cottage itself is brilliantly equipped. We lacked nothing. Hosts nice and helpful:) sauna super+tub👌it really is a recommendable place!",
-    "content_de": "Toller Ort, um sich von der Stadt zu erholen. Umgeben von Wäldern, ein See nicht weit vom Haus entfernt. Das Haus selbst ist hervorragend ausgestattet. Uns hat es an nichts gefehlt. Nette und hilfsbereite Gastgeber:) Sauna super+Fass👌es ist wirklich ein empfehlenswerter Ort!",
-    "source": "Google"
-  },
-  {
-    "author": "j",
-    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocKhH4nx8jxAV4pUA9QQfyFw1Q1OCHXkTlVNzkr9Ryg21OWPFw=s64-c-rp-mo-ba12-br100",
-    "rating": 5,
-    "content": "Spędziliśmy weekend w Las Biala’s i było wspaniale. Domki super wyposażone, właściwie niczego nie brakowało. Wielki plus za możliwość skorzystania z rowerów. Seanse w saunie odprężające. Świetne miejsce na odpoczynek po pracy i złapanie oddechu od miasta;)",
-    "content_en": "We spent a weekend at Las Biala's and it was wonderful. Cottages super equipped, actually nothing was missing. Big plus for the possibility of using bikes. Sauna sessions relaxing. Great place to rest after work and catch a breath from the city;)",
-    "content_de": "Wir haben ein Wochenende in Las Biala's verbracht und es war wunderbar. Die Häuser sind super ausgestattet, es fehlte eigentlich an nichts. Ein großes Plus für die Möglichkeit, Fahrräder zu benutzen. Saunagänge entspannend. Ein toller Ort, um sich nach der Arbeit auszuruhen und von der Stadt zu verschnaufen;)",
-    "source": "Google"
-  },
-  {
-    "author": "Magdalena Roweda",
-    "avatarUrl": "https://lh3.googleusercontent.com/a-/ALV-UjV5GJSD7pZu_6SBuNf1QJL1idBB8Gg9-oNm6sr-hg9VHRjD1ny-=s64-c-rp-mo-br100",
-    "rating": 5,
-    "content": "Polecam pobyt w domku Las Bialas. Urocze miejsce, czegoś takiego właśnie szukałam. Jest możliwość korzystania z sauny w cenie pobytu. Najbardziej urzekł mnie …",
-    "content_en": "I recommend a stay in the Las Bialas cottage. A charming place, just what I was looking for. It is possible to use the sauna included in the price of the stay. What captivated me most was …",
-    "content_de": "Ich empfehle einen Aufenthalt im Ferienhaus Las Bialas. Ein charmanter Ort, genau das, wonach ich gesucht habe. Es ist möglich, die Sauna im Preis des Aufenthalts inbegriffen zu nutzen. Am meisten fasziniert hat mich …",
-    "source": "Google"
-  },
-  {
-    "author": "Rosa Lia",
-    "avatarUrl": "https://lh3.googleusercontent.com/a-/ALV-UjVrzj2JcvATcQ-s92wL0X6t9nEtZM9g8U4oSkuGmViSkbk0nbE-XA=s64-c-rp-mo-ba12-br100",
-    "rating": 5,
-    "content": "Pobyt w Las Biala's był naprawdę fantastyczny. Właścicielka obiektu Ola to przesympatyczna osoba, która zadbała o każdy szczegół, abyśmy czuli się komfortowo. …",
-    "content_en": "The stay at Las Biala's was really fantastic. The owner of the facility Ola is a very nice person who took care of every detail so that we felt comfortable. …",
-    "content_de": "Der Aufenthalt in Las Biala's war wirklich fantastisch. Die Besitzerin der Anlage, Ola, ist eine sehr sympathische Person, die sich um jedes Detail gekümmert hat, damit wir uns wohlfühlen. …",
-    "source": "Google"
-  },
-  {
-    "author": "Daria Pawlak",
-    "avatarUrl": "https://lh3.googleusercontent.com/a-/ALV-UjWXXLMzAYBHv0F6b553ou-nxRijCIn2Q89v5ycSwu-RijE6h3-h=s64-c-rp-mo-br100",
-    "rating": 5,
-    "content": "Miejsce godne polecenia. Mili gospodarze. Domki w wysokim standardzie, sauna w cenie pobytu. Dodatkowo jest opcja rowerów a pogoda dopisała, żeby zwiedzić okolice. Z pewnością wrócę i każdemu niezdecydowanemu polecam 👍",
-    "content_en": "A place worth recommending. Nice hosts. Cottages of a high standard, sauna included in the price of the stay. In addition, there is a bike option and the weather was good enough to explore the area. I will certainly come back and recommend it to anyone undecided 👍",
-    "content_de": "Ein Ort, der eine Empfehlung wert ist. Nette Gastgeber. Ferienhäuser mit hohem Standard, Sauna im Preis inbegriffen. Zusätzlich gibt es eine Fahrradoption und das Wetter war gut genug, um die Gegend zu erkunden. Ich werde auf jeden Fall wiederkommen und jedem Unentschlossenen empfehlen 👍",
-    "source": "Google"
-  },
-  {
-    "author": "Nicholas Drycz",
-    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocIzAT51OgkkuSmFIS6y9MKSaX6C3yxWikNQP3tEP5q5gRMGHA=s64-c-rp-mo-br100",
-    "rating": 5,
-    "content": "A haven of tranquility and a place where you can unwind, relax and recharge. The overall climate and atmosphere of this hidden gem within the forest by a lake …",
-    "content_en": "A haven of tranquility and a place where you can unwind, relax and recharge. The overall climate and atmosphere of this hidden gem within the forest by a lake …",
-    "content_de": "Eine Oase der Ruhe und ein Ort, an dem Sie abschalten, entspannen und neue Energie tanken können. Das gesamte Klima und die Atmosphäre dieses verborgenen Juwels im Wald am See …",
-    "source": "Google"
-  },
-  {
-    "author": "Wiktoria Bloch",
-    "avatarUrl": "https://lh3.googleusercontent.com/a-/ALV-UjXEvHS97iq2-IBQeGUQN-yoMthnebfzPFbm0unHLcxHSy-PTa69=s64-c-rp-mo-br100",
-    "rating": 5,
-    "content": "Wspaniałe domki świetnie wyposażone bardzo wysoki standard, możliwość skorzystania z sauny oraz rowerów, okolo 5 min spacerem do jeziora, okolica otoczona wspaniałymi zielonymi terenami, właściciele bardzo milii oraz pomocni napewno wrócę ponownie",
-    "content_en": "Wonderful cottages perfectly equipped very high standard, possibility to use the sauna and bikes, about 5 min walk to the lake, the area surrounded by wonderful green areas, owners very nice and helpful I will definitely come back again",
-    "content_de": "Wunderschöne Ferienhäuser, perfekt ausgestattet, sehr hoher Standard, Möglichkeit, die Sauna und Fahrräder zu nutzen, ca. 5 Gehminuten zum See, die Umgebung ist von wunderschönen Grünflächen umgeben, die Besitzer sind sehr nett und hilfsbereit, ich werde auf jeden Fall wiederkommen",
+    "content": "Piękne miejsce. Cisza i spokój, a w tle urokliwy domek z jacuzzi i sauna.\nDomek w pełni wyposażony. Jedyne czego mi brakowało, to piekarnika ale w zamian jest grill.\nBardzo polecam ♥️",
+    "content_en": "A beautiful place. Peace and quiet, with a charming cottage with a jacuzzi and sauna in the background.\nThe cottage is fully equipped. The only thing I missed was an oven, but there's a barbecue instead.\nHighly recommended ♥️",
+    "content_de": "Ein wunderschöner Ort. Stille und Ruhe, und im Hintergrund ein charmantes Ferienhaus mit Whirlpool und Sauna.\nDas Ferienhaus ist komplett ausgestattet. Das Einzige, was mir gefehlt hat, war ein Backofen, dafür gibt es einen Grill.\nSehr empfehlenswert ♥️",
     "source": "Google"
   },
   {
@@ -213,53 +89,17 @@ export const reviews: Review[] = [
     "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocIG2AaOK0bB0n98DbwQDTKznXJhZSLMExdWbf5kohLOCuaBqg=s64-c-rp-mo-ba12-br100",
     "rating": 5,
     "content": "Miejsce super, cisza i spokój. W domku znajdziecie wszystko co potrzebne. Bardzo dobry kontakt z przemiłymi właścicielami. Serdecznie polecam!",
-    "content_en": "Super place, peace and quiet. In the cottage you will find everything you need. Very good contact with very nice owners. I heartily recommend!",
-    "content_de": "Super Ort, Ruhe und Stille. Im Haus finden Sie alles, was Sie brauchen. Sehr guter Kontakt zu den sehr netten Besitzern. Ich kann es nur wärmstens empfehlen!",
+    "content_en": "A great place, quiet and peaceful. You'll find everything you need in the cottage. Very good communication with the lovely owners. Warmly recommended!",
+    "content_de": "Ein super Ort, still und ruhig. Im Ferienhaus findet man alles, was man braucht. Sehr guter Kontakt zu den überaus netten Eigentümern. Herzlich empfohlen!",
     "source": "Google"
   },
   {
-    "author": "Justyna",
-    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocJhK14hmu4jsN315z4Olls_Rfc1-FMwldKszThxOgT4M9_jOw=s64-c-rp-mo-br100",
+    "author": "Michał Dąbrowski",
+    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocInEjZAY22q3UzqvZKSZ-7oeFTWRur9bBDk9V231GvG9bX8qw=s64-c-rp-mo-br100",
     "rating": 5,
-    "content": "Rewelacyjne miejsce🥰🥰 Byliśmy teraz na Święta Wielkanocne z rodziną  i nasza suczka Tosia 😊😊w zwiazku z czym cieszymy sie że jest możliwość zabrania ze soba …",
-    "content_en": "Sensational place🥰🥰 We were there now for Easter with the family and our female dog Tosia 😊😊so we are glad that it is possible to bring with you …",
-    "content_de": "Sensationeller Ort🥰🥰 Wir waren jetzt zu Ostern mit der Familie und unserer Hündin Tosia da 😊😊deshalb freuen wir uns, dass es möglich ist, sie mitzubringen …",
-    "source": "Google"
-  },
-  {
-    "author": "Dariusz Lisiecki",
-    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocLZztVUP2MFW_puPiYLj1IKwhc5lGVvTrV-EzVGzQ4eLi4b=s64-c-rp-mo-br100",
-    "rating": 5,
-    "content": "Super miejsce. Wszystko czego potrzeba do wypoczynku i relaksu. Polecam!!!",
-    "content_en": "Super place. Everything you need for rest and relaxation. I recommend!!!",
-    "content_de": "Super Ort. Alles was man für Ruhe und Entspannung braucht. Ich empfehle!!!",
-    "source": "Google"
-  },
-  {
-    "author": "HRH",
-    "avatarUrl": "https://lh3.googleusercontent.com/a-/ALV-UjV14NMjSn1QzY0L8ArPGjLV7hHoxou_kvgJ1YCmPT-H9K3B8d4=s64-c-rp-mo-ba12-br100",
-    "rating": 5,
-    "content": "The place is located in a beautiful forest and it’s a real escapism from the busy life. The cabin is clean and well equipped.",
-    "content_en": "The place is located in a beautiful forest and it’s a real escapism from the busy life. The cabin is clean and well equipped.",
-    "content_de": "Der Ort liegt in einem wunderschönen Wald und ist eine echte Flucht vor dem hektischen Leben. Die Hütte ist sauber und gut ausgestattet.",
-    "source": "Google"
-  },
-  {
-    "author": "Piotr Mazur",
-    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocLYPrlMz-lo1bGEe66NB9tNwGfM0QleNhnOvwTk8Asa9zRxOA=s64-c-rp-mo-br100",
-    "rating": 5,
-    "content": "Piękne i spokojne miejsce, idealne na wypoczynek. Do jeziora i sklepu trzeba dojść 300m, za to na miejscu cisza i spokój. Polecam chcącym dobrze odpocząć.",
-    "content_en": "Beautiful and peaceful place, ideal for relaxation. To the lake and shop you have to walk 300m, but on site peace and quiet. I recommend it to those wanting a good rest.",
-    "content_de": "Schöner und ruhiger Ort, ideal zum Entspannen. Zum See und zum Laden muss man 300 m laufen, dafür ist vor Ort Ruhe und Stille. Ich empfehle es denjenigen, die sich gut ausruhen wollen.",
-    "source": "Google"
-  },
-  {
-    "author": "Marzena Grynia",
-    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocL-cCtD9x_OR3Ly5MMPaeUpqiCLcwNdBab_SLmySWk252vBrA=s64-c-rp-mo-ba12-br100",
-    "rating": 5,
-    "content": "Cudowne, ciche miejsce. Brak jakichkolwiek atrakcji zeby kase tracic 😀",
-    "content_en": "Wonderful, quiet place. Lack of any attractions to waste money 😀",
-    "content_de": "Wunderschöner, ruhiger Ort. Keine Attraktionen, um Geld zu verschwenden 😀",
+    "content": "Wspaniale miejsce na weekendowy reset! Domek i otoczenie bardzo zadbane i czyste, dookoła las - raj dla grzybiarzy. Przede wszystkim - uczynny i przemiły gospodarz, który podwiózł nas z pociągu i na pociąg powrotny, a po drodze opowiedział sporo o okolicy. Dziękujemy i polecamy!",
+    "content_en": "A wonderful place for a weekend reset! The cottage and surroundings are very well kept and clean, with forest all around – a paradise for mushroom pickers. Above all, a helpful and very kind host who picked us up from the train and took us back for our return train, telling us a lot about the area along the way. Thank you, we highly recommend it!",
+    "content_de": "Ein wunderbarer Ort für einen Wochenend-Reset! Ferienhaus und Umgebung sehr gepflegt und sauber, ringsum Wald – ein Paradies für Pilzsammler. Vor allem ein hilfsbereiter und überaus netter Gastgeber, der uns vom Zug abgeholt und zum Rückzug gebracht hat und unterwegs viel über die Gegend erzählt hat. Vielen Dank, wir empfehlen es weiter!",
     "source": "Google"
   },
   {
@@ -267,44 +107,62 @@ export const reviews: Review[] = [
     "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocKV3h52_VQHzQI0pzkh_nUSgBc0lTd6Rhm6vmIacs1LxTFy_A=s64-c-rp-mo-br100",
     "rating": 5,
     "content": "Super miejsce, klimat i właściciele. Pozdrawiam",
-    "content_en": "Super place, atmosphere and owners. Greetings",
-    "content_de": "Super Ort, Atmosphäre und Besitzer. Viele Grüße",
+    "content_en": "Great place, atmosphere and owners. Best regards",
+    "content_de": "Super Ort, tolle Atmosphäre und Eigentümer. Viele Grüße",
     "source": "Google"
   },
   {
-    "author": "Aleksander Swietlik",
-    "avatarUrl": "https://lh3.googleusercontent.com/a-/ALV-UjUYFvFeybM0vvPCe9z22v_wWAVWln0KbwMJLB9aCjFj_8Z24GnVEA=s64-c-rp-mo-br100",
+    "author": "Gosia",
+    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocJIr1aB-ArWMTJd_AWP9jiuLTnomII7ckQrYPakiE0C-hY3Tw=s64-c-rp-mo-ba12-br100",
     "rating": 5,
-    "content": "Wspaniałe miejsce! Super właściciele ! Wypad ze znajomymi udany w 100%",
-    "content_en": "Wonderful place! Super owners ! Getaway with friends 100% successful",
-    "content_de": "Wunderbarer Ort! Super Besitzer ! Ausflug mit Freunden 100% erfolgreich",
+    "content": "Przepiękne miejsce położone w sercu Puszczy Noteckiej. Cisza i spokój, idealnie do leniwego odpoczynku. Czyściutki domek, dobrze wyposażony w którym jest wszystko, czego potrzebujesz. Na miejscu też do dyspozycji grill, rowery, deski SUP, leżaki, hamaki. Nic tylko wypoczywać. Mozesz też posiedzieć w gorącym jacuzzi pod gwiazdami a na koniec dnia, jeśli tylko masz ochotę, przemili gospodarze Ola i Arek, przygotują Ci to, co tygryski lubią najbardziej, czyli seans w pachnącej fińskiej saunie po której, od razu wskoczysz do bali lodowatej wody a następnie udasz się do wygodnego pokoiku na seans filmowy na Netflixie. Tak, LAS BIALA'S polecam z całego serca. Dziękujemy Olu i Arku, to był udany wypoczynek. Pozdrawiamy, Gosia i Arek",
+    "content_en": "A beautiful place in the heart of the Noteć Forest. Peace and quiet, perfect for a lazy break. A spotless, well-equipped cottage with everything you need. On site you also have a barbecue, bikes, SUP boards, sun loungers and hammocks. Nothing to do but relax. You can also sit in the hot jacuzzi under the stars, and at the end of the day, if you feel like it, the lovely hosts Ola and Arek will prepare what tiggers like best: a session in the fragrant Finnish sauna, after which you jump straight into a tub of ice-cold water and then head to your cosy room for a film night on Netflix. Yes, I recommend LAS BIALA'S with all my heart. Thank you, Ola and Arek, it was a wonderful break. Best wishes, Gosia and Arek",
+    "content_de": "Ein wunderschöner Ort im Herzen der Puszcza Notecka. Stille und Ruhe, ideal für eine entspannte Auszeit. Ein blitzsauberes, gut ausgestattetes Ferienhaus, in dem es alles gibt, was man braucht. Vor Ort stehen außerdem Grill, Fahrräder, SUP-Boards, Liegestühle und Hängematten zur Verfügung. Einfach nur erholen. Man kann auch im heißen Whirlpool unter den Sternen sitzen, und am Ende des Tages bereiten die überaus netten Gastgeber Ola und Arek auf Wunsch das vor, was Tigger am liebsten mag: einen Saunagang in der duftenden finnischen Sauna, nach dem man direkt in den Bottich mit eiskaltem Wasser springt und dann im gemütlichen Zimmer einen Filmabend mit Netflix genießt. Ja, LAS BIALA'S empfehle ich von ganzem Herzen. Danke, Ola und Arek, es war eine gelungene Erholung. Liebe Grüße, Gosia und Arek",
     "source": "Google"
   },
   {
-    "author": "Rafał Z",
-    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocIwkfRkdFMASTq_Lbp8xebcgwUq9HHI-sO0OjHRkTC426NjEA=s64-c-rp-mo-br100",
+    "author": "Sylwia Gwizdoń",
+    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocKugUqhrs4beSSBDLYt_N5_N9GFgdCebTdWSkOiLWnmKhce1g=s64-c-rp-mo-br100",
     "rating": 5,
-    "content": "Super . Polecam domki nowoczesne  wysoki standard.",
-    "content_en": "Super . I recommend modern cottages high standard.",
-    "content_de": "Super . Ich empfehle moderne Ferienhäuser mit hohem Standard.",
+    "content": "To mega miejsce pod każdym względem. Jest tu dosłownie wszystko - klimat cisza spokój, domki na najwyższym poziomie. Całość zadbana. Polecam serdecznie!",
+    "content_en": "A great place in every respect. It has literally everything – atmosphere, silence, peace, and top-notch cottages. Everything is well looked after. Warmly recommended!",
+    "content_de": "Ein großartiger Ort in jeder Hinsicht. Hier gibt es buchstäblich alles – Atmosphäre, Stille, Ruhe und Ferienhäuser auf höchstem Niveau. Alles sehr gepflegt. Herzlich empfohlen!",
+    "source": "Google"
+  },
+  {
+    "author": "Dariusz Lisiecki",
+    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocLZztVUP2MFW_puPiYLj1IKwhc5lGVvTrV-EzVGzQ4eLi4b=s64-c-rp-mo-br100",
+    "rating": 5,
+    "content": "Super miejsce. Wszystko czego potrzeba do wypoczynku i relaksu. Polecam!!!",
+    "content_en": "A great place. Everything you need to rest and relax. Highly recommended!!!",
+    "content_de": "Ein super Ort. Alles, was man zum Erholen und Entspannen braucht. Sehr empfehlenswert!!!",
+    "source": "Google"
+  },
+  {
+    "author": "Zofia Foltak",
+    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocJvkCqjbhejKM2NiVPuKNfD-TRqEHgRIVC_rZQbFhwWNCT6ZA=s64-c-rp-mo-br100",
+    "rating": 5,
+    "content": "Piękne miejsce na odpoczynek, cisza, spokój i przesympatyczni właściciele:) bogato wyposażona biblioteczka i zbiór gier, dzięki którym nie grozi nuda w najbardziej deszczowe dni:) domek posiada wiele udogodnień oraz duże wygodne łóżka:) polecam wszystkim szukającym relaksu na łonie natury:)",
+    "content_en": "A beautiful place to rest, silence, peace and lovely owners :) a well-stocked bookshelf and a collection of games mean there's no risk of boredom even on the rainiest days :) the cottage has many amenities and large, comfortable beds :) I recommend it to everyone looking to relax in the heart of nature :)",
+    "content_de": "Ein wunderschöner Ort zum Erholen, Stille, Ruhe und überaus sympathische Eigentümer :) ein gut bestücktes Bücherregal und eine Spielesammlung sorgen dafür, dass selbst an den regnerischsten Tagen keine Langeweile aufkommt :) das Ferienhaus bietet viele Annehmlichkeiten und große, bequeme Betten :) ich empfehle es allen, die Entspannung in der Natur suchen :)",
+    "source": "Google"
+  },
+  {
+    "author": "Dagmara Cybulska",
+    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocJKXYI4_nDpPfX2fNMdB9g-czbKlSGqrIeCshEbqtS2rxtwqNM=s64-c-rp-mo-br100",
+    "rating": 5,
+    "content": "Super miejsce, godne polecenia. Domki wyposażone są we wszystkie niezbędne rzeczy, ale i takie ponadprogramowe umilacze czasu, które ratują w przypadku deszczowej pogody. Jeśli zależy Wam na komforcie oraz spokoju to lepiej nie da się trafić. Nie dość, że miejsce jest cudowne to jeszcze właściciele okazali się równie cudowni - pomocni i sympatyczni. Oby więcej takich miejsc i ludzi :)",
+    "content_en": "A great place, well worth recommending. The cottages have all the essentials, plus extra little treats that save the day when it rains. If comfort and peace matter to you, you couldn't do better. Not only is the place wonderful, the owners turned out to be just as wonderful – helpful and friendly. We need more places and people like this :)",
+    "content_de": "Ein super Ort, sehr empfehlenswert. Die Ferienhäuser sind mit allem Notwendigen ausgestattet, aber auch mit kleinen Extras, die bei Regenwetter retten. Wenn euch Komfort und Ruhe wichtig sind, könnt ihr es nicht besser treffen. Nicht nur der Ort ist wunderbar, auch die Eigentümer sind genauso wunderbar – hilfsbereit und sympathisch. Mehr solche Orte und Menschen :)",
     "source": "Google"
   },
   {
     "author": "Robin",
     "avatarUrl": "https://lh3.googleusercontent.com/a-/ALV-UjWJWHJ78qgcoExNjN545YZ_oeqO1AULyLdgG6ucClyLnz_1bcSQ=s64-c-rp-mo-br100",
     "rating": 5,
-    "content": "POLECAM !!! Przepiękne miejsce  właściciele bardzo mili o pomocni ♡",
-    "content_en": "I RECOMMEND !!! Beautiful place owners very nice and helpful ♡",
-    "content_de": "ICH EMPFEHLE !!! Schöner Ort, Besitzer sehr nett und hilfsbereit ♡",
-    "source": "Google"
-  },
-  {
-    "author": "Adam Gołębiowski",
-    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocK97ds9waMKny09iLLWzLybEyjgrAkqMOq3nRgWz__ypbsc_Q=s64-c-rp-mo-ba12-br100",
-    "rating": 5,
-    "content": "Spokojnie i przyjemnie. Domki klasa 🤗",
-    "content_en": "Peaceful and pleasant. Classy cottages 🤗",
-    "content_de": "Ruhig und angenehm. Klasse Ferienhäuser 🤗",
+    "content": "POLECAM !!! Przepiękne miejsce właściciele bardzo mili o pomocni ♡",
+    "content_en": "HIGHLY RECOMMENDED!!! A beautiful place, very nice and helpful owners ♡",
+    "content_de": "SEHR EMPFEHLENSWERT!!! Ein wunderschöner Ort, sehr nette und hilfsbereite Eigentümer ♡",
     "source": "Google"
   },
   {
@@ -312,8 +170,157 @@ export const reviews: Review[] = [
     "avatarUrl": "https://lh3.googleusercontent.com/a-/ALV-UjV62W08ftsq7GMoIqOL4BoFiW8A_TW-Qc8XKnvQ1bPxJqOt9R6x=s64-c-rp-mo-ba12-br100",
     "rating": 5,
     "content": "Polecam cisza i rekax",
-    "content_en": "I recommend peace and relax",
-    "content_de": "Ich empfehle Ruhe und Entspannung",
+    "content_en": "Recommended, peace and relaxation",
+    "content_de": "Empfehlenswert, Ruhe und Entspannung",
+    "source": "Google"
+  },
+  {
+    "author": "Anastazja Szczerba",
+    "avatarUrl": "https://lh3.googleusercontent.com/a-/ALV-UjWlc38xk-KRji3xkEKEYQZ10OiLgP9WXfQuYRmpOtHGLfmAspc=s64-c-rp-mo-ba12-br100",
+    "rating": 5,
+    "content": "Spędziliśmy 3 noce w domkach, przyroda jest przepiękna, dużo zieleni, wiewiórek. Lokalizacja jest idealna dla miłośników chodzenia na ryby 🐟. Dziękujemy Pani gospodyni za wspaniały klimat i relaks w tak pięknym miejscu 🌸",
+    "content_en": "We spent 3 nights in the cottages, the nature is beautiful, lots of greenery and squirrels. The location is ideal for fishing lovers 🐟. Thank you to our hostess for the wonderful atmosphere and relaxation in such a beautiful place 🌸",
+    "content_de": "Wir haben 3 Nächte in den Ferienhäusern verbracht, die Natur ist wunderschön, viel Grün und Eichhörnchen. Die Lage ist ideal für Angelfreunde 🐟. Vielen Dank an die Gastgeberin für die wunderbare Atmosphäre und die Erholung an einem so schönen Ort 🌸",
+    "source": "Google"
+  },
+  {
+    "author": "AGNIESZKA GRAZDA",
+    "avatarUrl": "https://lh3.googleusercontent.com/a-/ALV-UjW3syC3A9uCok3xsexm7cNqrCQXAd1RxudXcYquTptjManfJPM=s64-c-rp-mo-br100",
+    "rating": 5,
+    "content": "Fajna miejscówka, aby odetchnąć od miasta. Wokół lasy, jeziorko niedaleko od domku. Sam domek jest świetnie wyposażony. Niczego nam nie brakowało. Gospodarze mili i pomocni:) sauna super+balia👌to naprawdę godne polecenia miejsce!",
+    "content_en": "A great spot to get away from the city. Forests all around, a lake not far from the cottage. The cottage itself is superbly equipped. We didn't lack anything. Kind and helpful hosts :) great sauna + cold plunge tub 👌 a place really worth recommending!",
+    "content_de": "Ein tolles Fleckchen, um der Stadt zu entfliehen. Ringsum Wälder, ein See nicht weit vom Ferienhaus. Das Ferienhaus selbst ist hervorragend ausgestattet. Uns hat nichts gefehlt. Nette und hilfsbereite Gastgeber :) super Sauna + Kaltwasserbottich 👌 ein wirklich empfehlenswerter Ort!",
+    "source": "Google"
+  },
+  {
+    "author": "Wiktoria Bloch",
+    "avatarUrl": "https://lh3.googleusercontent.com/a-/ALV-UjXEvHS97iq2-IBQeGUQN-yoMthnebfzPFbm0unHLcxHSy-PTa69=s64-c-rp-mo-br100",
+    "rating": 5,
+    "content": "Wspaniałe domki świetnie wyposażone bardzo wysoki standard, możliwość skorzystania z sauny oraz rowerów, okolo 5 min spacerem do jeziora, okolica otoczona wspaniałymi zielonymi terenami, właściciele bardzo milii oraz pomocni napewno wrócę ponownie",
+    "content_en": "Wonderful, superbly equipped cottages of a very high standard, with the sauna and bikes to use, about a 5-minute walk to the lake, surrounded by wonderful green areas, very nice and helpful owners, I'll definitely be back",
+    "content_de": "Wunderbare, hervorragend ausgestattete Ferienhäuser mit sehr hohem Standard, Sauna und Fahrräder zur Nutzung, etwa 5 Minuten zu Fuß zum See, umgeben von wunderschönen Grünflächen, sehr nette und hilfsbereite Eigentümer, ich komme ganz sicher wieder",
+    "source": "Google"
+  },
+  {
+    "author": "Daria Pawlak",
+    "avatarUrl": "https://lh3.googleusercontent.com/a-/ALV-UjWXXLMzAYBHv0F6b553ou-nxRijCIn2Q89v5ycSwu-RijE6h3-h=s64-c-rp-mo-br100",
+    "rating": 5,
+    "content": "Miejsce godne polecenia. Mili gospodarze. Domki w wysokim standardzie, sauna w cenie pobytu. Dodatkowo jest opcja rowerów a pogoda dopisała, żeby zwiedzić okolice. Z pewnością wrócę i każdemu niezdecydowanemu polecam 👍",
+    "content_en": "A place worth recommending. Friendly hosts. High-standard cottages, sauna included in the price. Bikes are available too, and the weather was perfect for exploring the area. I'll definitely be back and recommend it to anyone who's undecided 👍",
+    "content_de": "Ein empfehlenswerter Ort. Nette Gastgeber. Ferienhäuser mit hohem Standard, Sauna im Preis inbegriffen. Außerdem gibt es Fahrräder, und das Wetter war ideal, um die Umgebung zu erkunden. Ich komme sicher wieder und empfehle es allen Unentschlossenen 👍",
+    "source": "Google"
+  },
+  {
+    "author": "Magdalena Roweda",
+    "avatarUrl": "https://lh3.googleusercontent.com/a-/ALV-UjV5GJSD7pZu_6SBuNf1QJL1idBB8Gg9-oNm6sr-hg9VHRjD1ny-=s64-c-rp-mo-br100",
+    "rating": 5,
+    "content": "Polecam pobyt w domku Las Bialas. Urocze miejsce, czegoś takiego właśnie szukałam. Jest możliwość korzystania z sauny w cenie pobytu. Najbardziej urzekł mnie widok lasu i spokoj, czego bardzo potrzebowałam żeby naładować baterie na kolejny tydzień. W pobliżu domku znajduje się również piękne jeziorko i mały sklepik, bardzo dobrze zaopatrzony. Polecam z całego serca na pewno tutaj jeszcze wrócę. 😍😍😍😍",
+    "content_en": "I recommend a stay at Las Biala's. A charming place, exactly what I was looking for. The sauna is included in the price. What captivated me most was the forest view and the peace, which I really needed to recharge my batteries for the week ahead. Near the cottage there's also a beautiful lake and a small, very well-stocked shop. I recommend it with all my heart and will definitely be back. 😍😍😍😍",
+    "content_de": "Ich empfehle einen Aufenthalt bei Las Biala's. Ein bezaubernder Ort, genau so etwas habe ich gesucht. Die Sauna ist im Preis inbegriffen. Am meisten haben mich der Blick auf den Wald und die Ruhe begeistert, die ich dringend brauchte, um meine Akkus für die nächste Woche aufzuladen. In der Nähe des Ferienhauses gibt es auch einen schönen See und einen kleinen, sehr gut sortierten Laden. Ich empfehle es von ganzem Herzen und komme ganz sicher wieder. 😍😍😍😍",
+    "source": "Google"
+  },
+  {
+    "author": "Radek Waleczny",
+    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocLwVTkrPuRkC0FZznxbPYOMb2SiEoaTay8tOAWPz_NpMKhgxw=s64-c-rp-mo-ba12-br100",
+    "rating": 5,
+    "content": "Super miejsce przede wszystkim ciche i spokojne. Domki na bardzo wysokim standardzie. Dodatkowe atrakcje (sauna, bala, rowery, gry planszowe oraz książki) to poprostu coś pięknego. Super mili gospodarze którzy porozmawiają wszystko wytłumaczą i powiedzą gdzie i co można zobaczyć 😁",
+    "content_en": "A great place, above all quiet and peaceful. Cottages of a very high standard. The extras (sauna, cold plunge tub, bikes, board games and books) are simply wonderful. Super friendly hosts who will chat, explain everything and tell you where to go and what to see 😁",
+    "content_de": "Ein super Ort, vor allem still und ruhig. Ferienhäuser mit sehr hohem Standard. Die zusätzlichen Extras (Sauna, Kaltwasserbottich, Fahrräder, Brettspiele und Bücher) sind einfach wunderbar. Super nette Gastgeber, die sich Zeit für ein Gespräch nehmen, alles erklären und sagen, wo man was sehen kann 😁",
+    "source": "Google"
+  },
+  {
+    "author": "Wojciech Kielpinski",
+    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocKa4extQZLhHBDY-bGLVVWfl0bA7UAND1XqdUV1NP2xAVrVeA=s64-c-rp-mo-br100",
+    "rating": 5,
+    "content": "Wspaniałe miejsce. Domki w lesie i to dosłownie! Rano podczas golenia oglądałem wiewiórki, śpiew ptaków, stukanie dzięcioła nieopodal. Idealne miejsce żeby wypocząć od hałasu miasta. Wyposażenie w wysokim standardzie, nowocześnie i przytulnie zarazem. Widać pracę włożoną w każdy detal. Okolica malownicza; można się udać na spacery po lesie, blisko jezioro z plażą, rowerem można się wybrać na przejażdżkę i odkryć nowe miejsca, a i nawet wybrać sobie inną plażę wg. nastroju. Serdecznie polecamy, przesympatyczni właściciele. Proszę się nas spodziewać częściej! ;)",
+    "content_en": "A wonderful place. Cottages in the forest – literally! In the morning, while shaving, I watched squirrels, listened to birdsong and a woodpecker knocking nearby. The perfect place to rest from the noise of the city. High-standard furnishings, modern and cosy at the same time. You can see the work put into every detail. The surroundings are picturesque: you can go for walks in the forest, there's a lake with a beach nearby, you can take a bike ride and discover new places, and even pick a different beach to suit your mood. Warmly recommended, very friendly owners. Expect to see us more often! ;)",
+    "content_de": "Ein wunderbarer Ort. Ferienhäuser im Wald, und das wortwörtlich! Morgens beim Rasieren habe ich Eichhörnchen beobachtet, Vogelgesang und das Klopfen eines Spechts ganz in der Nähe gehört. Der ideale Ort, um sich vom Stadtlärm zu erholen. Ausstattung auf hohem Niveau, modern und gemütlich zugleich. Man sieht die Arbeit, die in jedes Detail gesteckt wurde. Malerische Umgebung: Man kann im Wald spazieren gehen, in der Nähe gibt es einen See mit Strand, mit dem Fahrrad kann man Ausflüge machen und neue Orte entdecken und sich sogar je nach Laune einen anderen Strand aussuchen. Herzlich empfohlen, überaus sympathische Eigentümer. Wir kommen bestimmt öfter! ;)",
+    "source": "Google"
+  },
+  {
+    "author": "j",
+    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocKhH4nx8jxAV4pUA9QQfyFw1Q1OCHXkTlVNzkr9Ryg21OWPFw=s64-c-rp-mo-ba12-br100",
+    "rating": 5,
+    "content": "Spędziliśmy weekend w Las Biala’s i było wspaniale. Domki super wyposażone, właściwie niczego nie brakowało. Wielki plus za możliwość skorzystania z rowerów. Seanse w saunie odprężające. Świetne miejsce na odpoczynek po pracy i złapanie oddechu od miasta;)",
+    "content_en": "We spent a weekend at Las Biala's and it was wonderful. Super well-equipped cottages, practically nothing was missing. A big plus for being able to use the bikes. Relaxing sauna sessions. A great place to rest after work and catch your breath away from the city ;)",
+    "content_de": "Wir haben ein Wochenende bei Las Biala's verbracht und es war wunderbar. Super ausgestattete Ferienhäuser, eigentlich hat nichts gefehlt. Ein großes Plus, dass man die Fahrräder nutzen kann. Entspannende Saunagänge. Ein toller Ort, um sich nach der Arbeit zu erholen und von der Stadt durchzuatmen ;)",
+    "source": "Google"
+  },
+  {
+    "author": "Rosa Lia",
+    "avatarUrl": "https://lh3.googleusercontent.com/a-/ALV-UjVrzj2JcvATcQ-s92wL0X6t9nEtZM9g8U4oSkuGmViSkbk0nbE-XA=s64-c-rp-mo-ba12-br100",
+    "rating": 5,
+    "content": "Pobyt w Las Biala's był naprawdę fantastyczny. Właścicielka obiektu Ola to przesympatyczna osoba, która zadbała o każdy szczegół, abyśmy czuli się komfortowo. Domek był wyposażony we wszystko co niezbędne. Zdecydowanie atutem była lokalizacja - w środku lasu. Na miejscu były dostępne rowery oraz grill.\nTo miejsce jest idealne na relaks i ucieczkę od codzienności. Zdecydowanie polecam każdemu, kto marzy o chwili spokoju i odpoczynku od miasta 🥰",
+    "content_en": "Our stay at Las Biala's was truly fantastic. The owner, Ola, is a lovely person who took care of every detail so that we felt comfortable. The cottage had everything we needed. The location – in the middle of the forest – was definitely a big plus. Bikes and a barbecue were available on site.\nThis place is perfect for relaxing and escaping everyday life. I highly recommend it to anyone dreaming of some peace and a break from the city 🥰",
+    "content_de": "Der Aufenthalt bei Las Biala's war wirklich fantastisch. Die Eigentümerin Ola ist ein überaus sympathischer Mensch, die sich um jedes Detail gekümmert hat, damit wir uns wohlfühlen. Das Ferienhaus war mit allem Notwendigen ausgestattet. Ein klarer Pluspunkt war die Lage – mitten im Wald. Vor Ort standen Fahrräder und ein Grill zur Verfügung.\nDieser Ort ist ideal zum Entspannen und um dem Alltag zu entfliehen. Absolut empfehlenswert für alle, die sich nach Ruhe und Erholung von der Stadt sehnen 🥰",
+    "source": "Google"
+  },
+  {
+    "author": "Jago Wo",
+    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocJ4w6s6cPiaV_pyULRf4xj7WMRPuLjIXBMuibrWgzCkxS-XqA=s64-c-rp-mo-br100",
+    "rating": 5,
+    "content": "Cudowne miejsce, żeby się wyłączyć. Można tylko polecić.",
+    "content_en": "A wonderful place to switch off. Can only recommend it.",
+    "content_de": "Ein wunderschönes Ort zum abschalten. Kann man nur empfehlen.",
+    "source": "Google",
+    "lang": "de"
+  },
+  {
+    "author": "HRH",
+    "avatarUrl": "https://lh3.googleusercontent.com/a-/ALV-UjV14NMjSn1QzY0L8ArPGjLV7hHoxou_kvgJ1YCmPT-H9K3B8d4=s64-c-rp-mo-ba12-br100",
+    "rating": 5,
+    "content": "Miejsce położone jest w pięknym lesie i to prawdziwa ucieczka od zabieganego życia. Domek jest czysty i dobrze wyposażony.",
+    "content_en": "The place is located in a beautiful forest and it’s a real escapism from the busy life. The cabin is clean and well equipped.",
+    "content_de": "Der Ort liegt in einem wunderschönen Wald und ist eine echte Flucht aus dem hektischen Alltag. Das Ferienhaus ist sauber und gut ausgestattet.",
+    "source": "Google",
+    "lang": "en"
+  },
+  {
+    "author": "Benedikt Schröbel",
+    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocL97lL_ZCD9TPZHuUdtI8f3Tlkgjq5pLm_Z14VEe4txWCHPJw=s64-c-rp-mo-br100",
+    "rating": 5,
+    "content": "Bardzo przyjaźni gospodarze, pomagają, w czym tylko mogą.\nObiekt jest bardzo czysty i położony w bardzo spokojnym miejscu.\nMożna tu wybrać się na piękne spacery po lesie. Plaża nad jeziorem jest około 3 minut od domku.\nJeśli nie znasz polskiego, to nie problem, gospodarze dobrze mówią po angielsku. Dołączają nawet instrukcje po niemiecku.",
+    "content_en": "Very friendly hosts who help wherever they can.\nThe accommodation is very clean and in a very quiet location.\nYou can go for lovely walks in the forest here. The beach on the lake is about 3 minutes from the house.\nIf you don't speak Polish, it doesn't matter, they speak good English. They even provide instructions in German.",
+    "content_de": "Sehr Freundliche Gastgeber, helfen dir wo sie können.\nUnterkunft ist sehr Sauber und sehr ruhig gelegen.\nSchöne Waldspaziergänge kann man hier gehen. Der Strand zum See liegt ca 3min von dem Haus entfernt.\nWenn man kein Polnisch kann ist es egal, die können gut Englisch. Legen sogar Deutsche Anleitungen bei",
+    "source": "Google",
+    "lang": "de"
+  },
+  {
+    "author": "Linda Darroch",
+    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocKFuNgoCx7ML2oLfjYBlORa32GlDFCVC-AXNfXH9UmCPSvhLg=s64-c-rp-mo-br100",
+    "rating": 5,
+    "content": "Żyjąc w biegu i w ciągłym pośpiechu, znalazłam tu jedno z najpiękniejszych, sielskich miejsc do odpoczynku. Spacery po lesie dają ciszę i spokój. Mała plaża nad jeziorem jest idealna na piknik z pięknym widokiem. Domki Las Biala's mają bardzo wysoki standard i zapewniły mi wszystko, czego potrzebowałam.",
+    "content_en": "Living a busy and hectic life, I found this one of the most beautiful, idyllic places to unwind. The walks through the forest provide peace and quiet. The small beach area by the lake is perfect for picnics where you can take in the beautiful scenery. Las Biala's accommodation is to a very high standard and catered to all my needs.",
+    "content_de": "Bei meinem hektischen und stressigen Alltag fand ich hier einen der schönsten, idyllischsten Orte zum Abschalten. Die Spaziergänge durch den Wald schenken Ruhe und Stille. Der kleine Strand am See ist perfekt für ein Picknick mit herrlicher Aussicht. Die Unterkunft von Las Biala's hat einen sehr hohen Standard und hat alle meine Bedürfnisse erfüllt.",
+    "source": "Google",
+    "lang": "en"
+  },
+  {
+    "author": "Nicholas Drycz",
+    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocIzAT51OgkkuSmFIS6y9MKSaX6C3yxWikNQP3tEP5q5gRMGHA=s64-c-rp-mo-br100",
+    "rating": 5,
+    "content": "Oaza spokoju i miejsce, w którym można się wyciszyć, zrelaksować i naładować baterie. Klimat i atmosfera tej ukrytej perełki w lesie nad jeziorem sprawią, że zrozumiesz, o co w życiu chodzi. Jeśli chcesz na chwilę uciec od wyścigu szczurów, z całego serca polecam Las Biala's. Domki są wykończone w wysokim standardzie, w zgodzie z charakterem otoczenia, a do jeziora i lokalnego sklepu spożywczego jest bardzo blisko. Gospodarze byli wspaniali, niezwykle pomocni i życzliwi. To świetne źródło wiedzy o okolicy. Na pewno wrócę. Dziękuję, Las Biala's.",
+    "content_en": "A haven of tranquility and a place where you can unwind, relax and recharge. The overall climate and atmosphere of this hidden gem within the forest by a lake will make you realise the meaning of life. If you want to escape the rat race for a break, I would recommend Las Biala's totally. The chalets are fitted out to a high standard within character of the surroundings and a very close walking distance to the lake and local grocery store and off licence. The hosts were brilliant, extremely helpful and accommodating. They are a great source of local knowledge. I will be going back. Thank you Las Biala's.",
+    "content_de": "Eine Oase der Ruhe und ein Ort, an dem man abschalten, entspannen und neue Energie tanken kann. Klima und Atmosphäre dieses versteckten Juwels im Wald an einem See lassen einen den Sinn des Lebens erkennen. Wer für eine Weile dem Hamsterrad entfliehen möchte, dem empfehle ich Las Biala's uneingeschränkt. Die Ferienhäuser sind auf hohem Niveau und passend zum Charakter der Umgebung eingerichtet, der See und der Dorfladen sind zu Fuß ganz in der Nähe. Die Gastgeber waren großartig, äußerst hilfsbereit und entgegenkommend. Sie kennen sich in der Gegend bestens aus. Ich komme wieder. Danke, Las Biala's.",
+    "source": "Google",
+    "lang": "en"
+  },
+  {
+    "author": "Marzena Grynia",
+    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocL-cCtD9x_OR3Ly5MMPaeUpqiCLcwNdBab_SLmySWk252vBrA=s64-c-rp-mo-ba12-br100",
+    "rating": 5,
+    "content": "Cudowne, ciche miejsce. Brak jakichkolwiek atrakcji zeby kase tracic 😀",
+    "content_en": "A wonderful, quiet place. No attractions whatsoever to waste your money on 😀",
+    "content_de": "Ein wunderbarer, ruhiger Ort. Keinerlei Attraktionen, für die man Geld ausgeben müsste 😀",
+    "source": "Google"
+  },
+  {
+    "author": "Aleksander Swietlik",
+    "avatarUrl": "https://lh3.googleusercontent.com/a-/ALV-UjUYFvFeybM0vvPCe9z22v_wWAVWln0KbwMJLB9aCjFj_8Z24GnVEA=s64-c-rp-mo-br100",
+    "rating": 5,
+    "content": "Wspaniałe miejsce! Super właściciele! Wypad ze znajomymi udany w 100%",
+    "content_en": "A wonderful place! Great owners! A 100% successful trip with friends",
+    "content_de": "Ein wunderbarer Ort! Super Eigentümer! Der Ausflug mit Freunden war zu 100 % gelungen",
     "source": "Google"
   },
   {
@@ -322,34 +329,34 @@ export const reviews: Review[] = [
     "rating": 5,
     "content": "Najlepiej!!!",
     "content_en": "The best!!!",
-    "content_de": "Am besten!!!",
+    "content_de": "Einfach top!!!",
     "source": "Google"
   },
   {
-    "author": "Angie yt",
-    "avatarUrl": "https://lh3.googleusercontent.com/a-/ALV-UjUZ3lIzU3ywvxHYlCUzh8EJHM-oA7BWKF5E9K25Nyqiqxsv4t4=s64-c-rp-mo-br100",
+    "author": "Adam Gołębiowski",
+    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocK97ds9waMKny09iLLWzLybEyjgrAkqMOq3nRgWz__ypbsc_Q=s64-c-rp-mo-ba12-br100",
     "rating": 5,
-    "content": "Miejsce fantastyczne zaledwie pare metrów do jeziorka . Cisza i spokój pośród leśnych drzew. Domek czyściutki i nowoczesny. Obsługa niesamowita i profesjonalna. Z całego serca polecam to miejsce. Z Pozdrowieniami dla Gospodarzy…",
-    "content_en": "Fantastic place just a few meters to the lake . Peace and quiet among the forest trees. Cottage extremely clean and modern. Incredible and professional service. I recommend this place with all my heart. Best regards to the Hosts…",
-    "content_de": "Fantastischer Ort nur wenige Meter vom See entfernt. Ruhe und Stille inmitten der Waldbäume. Haus extrem sauber und modern. Unglaublicher und professioneller Service. Ich empfehle diesen Ort von ganzem Herzen. Viele Grüße an die Gastgeber…",
+    "content": "Spokojnie i przyjemnie. Domki klasa 🤗",
+    "content_en": "Peaceful and pleasant. Top-class cottages 🤗",
+    "content_de": "Ruhig und angenehm. Klasse Ferienhäuser 🤗",
     "source": "Google"
   },
   {
-    "author": "Benedikt Schröbel",
-    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocL97lL_ZCD9TPZHuUdtI8f3Tlkgjq5pLm_Z14VEe4txWCHPJw=s64-c-rp-mo-br100",
+    "author": "Rafał Z",
+    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocIwkfRkdFMASTq_Lbp8xebcgwUq9HHI-sO0OjHRkTC426NjEA=s64-c-rp-mo-br100",
     "rating": 5,
-    "content": "Sehr Freundliche Gastgeber, helfen dir wo sie können. …",
-    "content_en": "Very friendly hosts, help you where they can. …",
-    "content_de": "Sehr Freundliche Gastgeber, helfen dir wo sie können. …",
+    "content": "Super. Polecam domki nowoczesne wysoki standard.",
+    "content_en": "Great. I recommend these modern, high-standard cottages.",
+    "content_de": "Super. Ich empfehle diese modernen Ferienhäuser mit hohem Standard.",
     "source": "Google"
   },
   {
-    "author": "Jago Wo",
-    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocJ4w6s6cPiaV_pyULRf4xj7WMRPuLjIXBMuibrWgzCkxS-XqA=s64-c-rp-mo-br100",
+    "author": "Piotr Mazur",
+    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocLYPrlMz-lo1bGEe66NB9tNwGfM0QleNhnOvwTk8Asa9zRxOA=s64-c-rp-mo-br100",
     "rating": 5,
-    "content": "Ein wunderschönes Ort zum abschalten. Kann man nur empfehlen.",
-    "content_en": "A beautiful place to switch off. Highly recommended.",
-    "content_de": "Ein wunderschönes Ort zum abschalten. Kann man nur empfehlen.",
+    "content": "Piękne i spokojne miejsce, idealne na wypoczynek. Do jeziora i sklepu trzeba dojść 300m, za to na miejscu cisza i spokój. Polecam chcącym dobrze odpocząć.",
+    "content_en": "A beautiful and peaceful place, ideal for a holiday. The lake and the shop are a 300 m walk away, but on site there's peace and quiet. Recommended for anyone who wants a proper rest.",
+    "content_de": "Ein schöner und ruhiger Ort, ideal zum Erholen. Zum See und zum Laden sind es 300 m zu Fuß, dafür herrscht vor Ort Stille und Ruhe. Empfehlenswert für alle, die sich richtig erholen möchten.",
     "source": "Google"
   },
   {
@@ -500,10 +507,11 @@ export const reviews: Review[] = [
     "author": "Corneliuscat",
     "avatarUrl": "https://graph.facebook.com/v2.9/1787571761266238/picture?type=square&height=64&width=64",
     "rating": 5,
-    "content": "We had an amazing stay at this beautiful holiday cottage! The location is quiet, peaceful, and feels very safe — making it perfect for relaxation and unwinding. The cottage is so close to the lake, just a short stroll away, which made our mornings and evenings truly magical.\nThe hosts were incredible — welcoming, thoughtful, and always happy to help. The facilities were top-notch with everything we needed and more — clean, comfortable, and well-equipped for a great stay.\nHighly recommend this place for anyone looking for a lovely getaway!",
+    "content": "Mieliśmy wspaniały pobyt w tym pięknym domku wakacyjnym! Okolica jest cicha, spokojna i bardzo bezpieczna, idealna do relaksu i wypoczynku. Domek stoi bardzo blisko jeziora, zaledwie krótki spacer od niego, dzięki czemu nasze poranki i wieczory były naprawdę magiczne.\nGospodarze byli niesamowici: gościnni, troskliwi i zawsze chętni do pomocy. Wyposażenie na najwyższym poziomie, wszystko, czego potrzebowaliśmy, a nawet więcej: czysto, wygodnie i bardzo dobrze przygotowane na udany pobyt.\nGorąco polecam to miejsce każdemu, kto szuka uroczego miejsca na wypoczynek!",
     "content_en": "We had an amazing stay at this beautiful holiday cottage! The location is quiet, peaceful, and feels very safe — making it perfect for relaxation and unwinding. The cottage is so close to the lake, just a short stroll away, which made our mornings and evenings truly magical.\nThe hosts were incredible — welcoming, thoughtful, and always happy to help. The facilities were top-notch with everything we needed and more — clean, comfortable, and well-equipped for a great stay.\nHighly recommend this place for anyone looking for a lovely getaway!",
     "content_de": "Wir hatten einen fantastischen Aufenthalt in diesem schönen Ferienhaus! Die Lage ist ruhig, friedlich und fühlt sich sehr sicher an - ideal zum Entspannen und Erholen. Das Ferienhaus liegt so nah am See, nur einen kurzen Spaziergang entfernt, was unsere Morgen und Abende wirklich magisch machte.\nDie Gastgeber waren unglaublich - einladend, aufmerksam und immer hilfsbereit. Die Einrichtungen waren erstklassig mit allem, was wir brauchten und mehr - sauber, komfortabel und gut ausgestattet für einen tollen Aufenthalt.\nIch kann diesen Ort jedem wärmstens empfehlen, der auf der Suche nach einem schönen Kurzurlaub ist!",
-    "source": "Booking.com"
+    "source": "Booking.com",
+    "lang": "en"
   },
   {
     "author": "Andrii",
@@ -518,10 +526,11 @@ export const reviews: Review[] = [
     "author": "Silke",
     "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocLXQONmAeiNzf9QRlft8Fv_t0V3AHFocohPi6WebdMASUPC=s96-c",
     "rating": 5,
-    "content": "Such a lovely quiet spot in the forest to completely relax and unwind! Superfriendly hosts and always ready to help. Sauna and jacuzzi were next level and ensured ultimate relaxation. Would highly recommend and hope to be back someday!",
+    "content": "Cudowne, ciche miejsce w lesie, żeby całkowicie się zrelaksować i odpocząć! Przemili gospodarze, zawsze gotowi pomóc. Sauna i jacuzzi to zupełnie inny poziom i zapewniły pełny relaks. Gorąco polecam i mam nadzieję kiedyś tu wrócić!",
     "content_en": "Such a lovely quiet spot in the forest to completely relax and unwind! Superfriendly hosts and always ready to help. Sauna and jacuzzi were next level and ensured ultimate relaxation. Would highly recommend and hope to be back someday!",
     "content_de": "Was für ein schöner ruhiger Ort im Wald, um sich vollkommen zu entspannen und abzuschalten! Superfreundliche Gastgeber und immer bereit zu helfen. Sauna und Whirlpool waren auf dem nächsten Level und sorgten für ultimative Entspannung. Kann es wärmstens empfehlen und hoffe, eines Tages wiederzukommen!",
-    "source": "Booking.com"
+    "source": "Booking.com",
+    "lang": "en"
   },
   {
     "author": "Kaszczyszyn",
@@ -563,10 +572,11 @@ export const reviews: Review[] = [
     "author": "Marinus",
     "avatarUrl": "https://xx.bstatic.com/static/img/review/avatars/ava-m.png",
     "rating": 5,
-    "content": "De stilte.",
+    "content": "Cisza.",
     "content_en": "The silence.",
     "content_de": "Die Stille.",
-    "source": "Booking.com"
+    "source": "Booking.com",
+    "lang": "nl"
   },
   {
     "author": "Magdalena",

@@ -9,11 +9,14 @@ interface Props {
 
 const { review, lang, clamp = false } = Astro.props;
 
-const translatedFrom = {
-  pl: '',
-  en: 'Translated from Polish',
-  de: 'Aus dem Polnischen übersetzt',
-}[lang];
+// Dopisek „przetłumaczono z…” pokazujemy tylko wtedy, gdy język strony różni się od języka oryginału opinii.
+const originalLang = review.lang ?? 'pl';
+const translatedFromLabels: Record<'pl' | 'en' | 'de', Record<string, string>> = {
+  pl: { en: 'Przetłumaczono z angielskiego', de: 'Przetłumaczono z niemieckiego', nl: 'Przetłumaczono z niderlandzkiego' },
+  en: { pl: 'Translated from Polish', de: 'Translated from German', nl: 'Translated from Dutch' },
+  de: { pl: 'Aus dem Polnischen übersetzt', en: 'Aus dem Englischen übersetzt', nl: 'Aus dem Niederländischen übersetzt' },
+};
+const translatedFrom = originalLang === lang ? '' : (translatedFromLabels[lang][originalLang] ?? '');
 
 const content = lang === 'en' ? review.content_en : lang === 'de' ? review.content_de : review.content;
 
@@ -51,6 +54,3 @@ const sourceIcon: Record<string, string> = {
   <div class="mb-2 text-[16px] leading-none" role="img" aria-label={starsLabel}>
     {[0, 1, 2, 3, 4].map((i) => <span class={i < fullStars ? 'text-[#FFB300]' : 'text-[#ccc]'} aria-hidden="true">★</span>)}
   </div>
-  {content && <p class={`text-[1rem] leading-[1.6] text-[#444] whitespace-pre-line ${clamp ? 'line-clamp-6' : ''}`}>{content}</p>}
-  {lang !== 'pl' && content && <p class="text-[12px] text-[#666] italic mt-2">{translatedFrom}</p>}
-</article>

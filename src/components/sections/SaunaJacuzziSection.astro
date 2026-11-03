@@ -1,4 +1,5 @@
 ---
+import type { ImageMetadata } from 'astro';
 import { useTranslations } from '../../i18n/utils';
 import { Picture } from 'astro:assets';
 import saunaDlaGosci from '../../assets/foto/sauna-dla-gosci.png';
@@ -7,6 +8,7 @@ import pergolaJacuzzi from '../../assets/foto/pergola_jacuzzi-1.webp';
 import lasbialas6 from '../../assets/foto/lasbialas6.webp';
 import lasbialas7 from '../../assets/foto/lasbialas7.webp';
 import balia from '../../assets/foto/balia.jpg';
+import lasbialasJacuzzi3 from '../../assets/foto/lasbialas-jacuzzi3.webp';
 import ImageHints from '../ui/ImageHints.astro';
 import { imageHint, insertHint } from '../ui/imageHint';
 
@@ -40,20 +42,24 @@ const jacuzziHref = {
   de: 'https://lasbialas.pl/info/de/#/vor-ort/385',
 }[lang];
 
-// Słowo „pergolą” w opisie jacuzzi pokazuje zdjęcie pergoli po najechaniu lub dotknięciu.
-// Tekst opisu jest w ui.ts. Jeśli zdanie z pergolą zostanie tam zmienione, opis wyświetli się normalnie, bez zdjęcia.
-const pergola = {
-  pl: { word: 'pergolą', alt: 'Jacuzzi pod pergolą z regulowanym zadaszeniem i zasłonami' },
-  en: { word: 'pergola', alt: 'Jacuzzi under a pergola with an adjustable roof and curtains' },
-  de: { word: 'Pergola', alt: 'Whirlpool unter einer Pergola mit verstellbarem Dach und Vorhängen' },
-}[lang];
-const pergolaHint = await imageHint({ word: pergola.word, image: pergolaJacuzzi, alt: pergola.alt, onDark: true });
 const escapeHtml = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-const jacuzziDesc = insertHint(escapeHtml(t('section.jacuzzi_desc')), pergola.word, pergolaHint);
 
-// Słowa w opisie sauny ze zdjęciami. Tekst opisu jest w ui.ts.
-// Jeśli któreś słowo zostanie tam zmienione, wyświetli się normalnie, bez zdjęcia.
-const saunaHints = {
+// Wstawia w tekst słowa ze zdjęciami (dymki). Najpierw słowa zamieniamy na znaczniki,
+// potem znaczniki na dymki, żeby opis zdjęcia (alt) jednego dymku nie był brany za słowo kolejnego.
+// Jeśli któreś słowo zostanie zmienione w ui.ts, wyświetli się normalnie, bez zdjęcia.
+type Hint = { word: string; image: ImageMetadata; alt: string };
+async function applyHints(text: string, hints: Hint[], prefix: string): Promise<string> {
+  let out = escapeHtml(text);
+  hints.forEach((h, i) => { out = out.replace(h.word, `{${prefix}${i}}`); });
+  for (const [i, h] of hints.entries()) {
+    const html = await imageHint({ word: h.word, image: h.image, alt: h.alt, onDark: true });
+    out = insertHint(out, `{${prefix}${i}}`, html);
+  }
+  return out;
+}
+
+// Opis sauny (tekst w ui.ts: section.sauna_desc).
+const saunaHints: Hint[] = {
   pl: [
     { word: 'Sauna fińska', image: lasbialas7, alt: 'Wnętrze sauny fińskiej' },
     { word: 'strefę wypoczynku', image: lasbialas6, alt: 'Sauna z tarasem i strefą wypoczynku wśród sosen' },
@@ -70,14 +76,24 @@ const saunaHints = {
     { word: 'Kaltwasserbottich', image: balia, alt: 'Hölzerner Kaltwasserbottich' },
   ],
 }[lang];
-// Najpierw słowa zamieniamy na znaczniki, potem znaczniki na dymki,
-// żeby opisy zdjęć (alt) jednego dymku nie były brane za słowo kolejnego.
-let saunaDesc = escapeHtml(t('section.sauna_desc'));
-saunaHints.forEach((h, i) => { saunaDesc = saunaDesc.replace(h.word, `{saunaHint${i}}`); });
-for (const [i, h] of saunaHints.entries()) {
-  const html = await imageHint({ word: h.word, image: h.image, alt: h.alt, onDark: true });
-  saunaDesc = insertHint(saunaDesc, `{saunaHint${i}}`, html);
-}
+const saunaDesc = await applyHints(t('section.sauna_desc'), saunaHints, 'saunaHint');
+
+// Opis jacuzzi (tekst w ui.ts: section.jacuzzi_desc).
+const jacuzziHints: Hint[] = {
+  pl: [
+    { word: 'prywatne jacuzzi', image: lasbialasJacuzzi3, alt: 'Prywatne jacuzzi na terenie domku' },
+    { word: 'pergolą', image: pergolaJacuzzi, alt: 'Jacuzzi pod pergolą z regulowanym zadaszeniem i zasłonami' },
+  ],
+  en: [
+    { word: 'private jacuzzi', image: lasbialasJacuzzi3, alt: 'Private jacuzzi on the cottage grounds' },
+    { word: 'pergola', image: pergolaJacuzzi, alt: 'Jacuzzi under a pergola with an adjustable roof and curtains' },
+  ],
+  de: [
+    { word: 'privater Whirlpool', image: lasbialasJacuzzi3, alt: 'Privater Whirlpool auf dem Grundstück' },
+    { word: 'Pergola', image: pergolaJacuzzi, alt: 'Whirlpool unter einer Pergola mit verstellbarem Dach und Vorhängen' },
+  ],
+}[lang];
+const jacuzziDesc = await applyHints(t('section.jacuzzi_desc'), jacuzziHints, 'jacuzziHint');
 
 // Wpis na blogu jest tylko po polsku, więc link pokazujemy wyłącznie w wersji PL.
 const saunaBlogLink = lang === 'pl'

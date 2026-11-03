@@ -1,6 +1,7 @@
 ---
 import { Picture } from 'astro:assets';
 import car from '../../assets/images/car.png';
+import train from '../../assets/images/train.png';
 import dojazdLokalny from '../../assets/foto/dojazd-lokalny.png';
 
 interface Props {
@@ -15,6 +16,7 @@ const t = {
     carBtn: 'Wyznacz trasę',
     carText: 'Link powyżej prowadzi w Google Maps do miejsca oddalonego o około 300 m od domków. Ten ostatni odcinek to droga leśna, a dalszy dojazd pokazuje <a href="https://lasbialas.pl/info/#/przed-przyjazdem/38" class="text-brand-green underline">mapka dojazdu na miejscu</a>. Współrzędne GPS domków: 52.82654, 16.30411.',
     trainTitle: 'Dojazd pociągiem',
+    trainBtn: 'Stacja Miały na mapie',
     trainText: 'Po wcześniejszym uzgodnieniu zapewniamy bezpłatny transfer ze stacji kolejowej Miały, oddalonej o około 10 km, do domków Las Biala\'s oraz bezpłatny transfer powrotny w dniu wyjazdu. Szczegóły ustalamy indywidualnie przed przyjazdem.',
     locationTitle: 'Lokalizacja domków',
     locationText: '64-730 Biała, Puszcza Notecka, Wielkopolska · GPS: 52.82654, 16.30411',
@@ -26,6 +28,7 @@ const t = {
     carBtn: 'Plan route',
     carText: 'The link above takes you in Google Maps to a point about 300 metres from the cottages. This last stretch is a forest road, and the rest of the way is shown on the <a href="https://lasbialas.pl/info/en/#/before-arrival/1038" class="text-brand-green underline">local access map</a>. GPS coordinates of the cottages: 52.82654, 16.30411.',
     trainTitle: 'Arrival by train',
+    trainBtn: 'Miały station on the map',
     trainText: 'By prior arrangement, we provide a free transfer from Miały railway station, about 10 km away, to the Las Biala\'s cottages, as well as a free return transfer on the day of departure. Details are agreed individually before arrival.',
     locationTitle: 'Location of Las Biala\'s cottages',
     locationText: '64-730 Biała, Noteć Forest, Greater Poland · GPS: 52.82654, 16.30411',
@@ -37,6 +40,7 @@ const t = {
     carBtn: 'Route planen',
     carText: 'Der Link oben führt in Google Maps zu einem Punkt etwa 300 Meter von den Ferienhäusern entfernt. Dieses letzte Stück ist ein Waldweg, den weiteren Weg zeigt die <a href="https://lasbialas.pl/info/de/#/vor-der-anreise/721" class="text-brand-green underline">Anfahrtskarte vor Ort</a>. GPS-Koordinaten der Ferienhäuser: 52.82654, 16.30411.',
     trainTitle: 'Anreise mit dem Zug',
+    trainBtn: 'Bahnhof Miały auf der Karte',
     trainText: 'Nach vorheriger Absprache bieten wir einen kostenlosen Transfer vom etwa 10 km entfernten Bahnhof Miały zu den Ferienhäusern Las Biala\'s sowie einen kostenlosen Rücktransfer am Abreisetag an. Die Einzelheiten werden vor der Anreise individuell vereinbart.',
     locationTitle: 'Standort Las Biala\'s',
     locationText: '64-730 Biała, Puszcza Notecka, Großpolen · GPS: 52.82654, 16.30411',
@@ -46,6 +50,8 @@ const t = {
 }[lang];
 
 const carHref = 'https://www.google.com/maps/dir/Rosko/52.8269813,16.3038372/@52.8272337,16.3047738';
+// Pinezka dokładnie na budynku stacji kolejowej Miały (52.80928, 16.17567).
+const trainHref = 'https://www.google.com/maps/search/?api=1&query=52.80928%2C16.17567';
 ---
 
 <div id="dojazd" class="max-w-[73%] border border-[#ccc] rounded-[5px] py-[10px] px-[80px] mx-auto mb-5 bg-white text-base text-center max-[768px]:max-w-[96vw] max-[768px]:p-5 max-[768px]:my-[1px] max-[768px]:mb-5 max-[768px]:text-[0.6rem]">
@@ -64,6 +70,10 @@ const carHref = 'https://www.google.com/maps/dir/Rosko/52.8269813,16.3038372/@52
   {/* Train */}
   <h2 class="text-[24px] max-[768px]:text-[1.2rem] mt-5 mb-5 text-brand-black font-bold">{t.trainTitle}</h2>
   <div class="text-center mt-2.5 mb-5">
+    <a href={trainHref} rel="nofollow noopener noreferrer" class="inline-flex items-center text-[18px] text-brand-green no-underline" target="_blank">
+      <Picture alt="" height={45} width={45} src={train} formats={['avif', 'webp']} class="mr-[5px] align-middle" />
+      <span class="leading-none">{t.trainBtn}</span>
+    </a>
     <p class="text-base leading-[1.6]" set:html={t.trainText}></p>
   </div>
 

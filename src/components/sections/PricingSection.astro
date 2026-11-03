@@ -1,12 +1,7 @@
 ---
-import type { ImageMetadata } from 'astro';
-import lasbialas7 from '../../assets/foto/lasbialas7.webp';
-import balia from '../../assets/foto/balia.jpg';
-import rowery from '../../assets/foto/rowery.webp';
-import grill from '../../assets/foto/grill.webp';
-import sup from '../../assets/foto/sup.webp';
-import ImageHints from '../ui/ImageHints.astro';
-import { imageHint, insertHint } from '../ui/imageHint';
+import { reviews } from '../../data/reviewsData';
+import PartnerLogos from './PartnerLogos.astro';
+import ReviewCard from './ReviewCard.astro';
 
 interface Props {
   lang: 'pl' | 'en' | 'de';
@@ -14,160 +9,31 @@ interface Props {
 
 const { lang } = Astro.props;
 
+// Opinie pokazywane na stronie głównej (6 sztuk, 2 rzędy po 3).
+// Numery to pozycje opinii w pliku reviewsData, liczone od 0.
+// Zmień numery, aby wybrać inne opinie. Zmiana działa we wszystkich wersjach językowych.
+const featuredIndexes = [0, 1, 2, 3, 4, 5];
+const featured = featuredIndexes.map((i) => reviews[i]).filter(Boolean);
+
 const t = {
-  pl: {
-    title: 'Cennik 2026',
-    cols: ['Długość pobytu', 'Cena za dobę (1–2 os.)'],
-    rows: [
-      ['od 4 dób', '<strong>475 zł *</strong>'],
-      ['3 doby', '495 zł *'],
-      ['2 doby', '525 zł'],
-    ],
-    stayHours: 'Doba pobytu trwa od 16:00 do 12:00 (poza sezonem letnim możliwość ustalenia innych godzin). Nie pobieramy opłat licznikowych ani opłat za sprzątanie. Wystawiamy faktury VAT.',
-    notes: [
-      'Minimalny pobyt to <b>2 doby</b>, nie wynajmujemy na jedną noc.',
-      '3. i 4. osoba: <b>+120 zł</b> za osobę za dobę.',
-      '* rabat naliczany automatycznie w systemie rezerwacji.',
-    ],
-    reserve: 'Rezerwuj',
-    freeTitle: 'Bezpłatnie dla Gości',
-    freeItems: ['sauna', 'balia z wodą do schładzania', 'szlafroki i ręczniki do sauny', '4 rowery trekkingowe', 'murowany grill', 'węgiel i podpałka do grilla', '4 deski SUP (od maja do października)'],
-    // Pozycje listy ze zdjęciem po najechaniu lub dotknięciu (numer pozycji na liście, licząc od 0).
-    freeHints: {
-      0: { word: 'sauna', alt: 'Sauna fińska dla gości' },
-      1: { word: 'balia', alt: 'Balia z zimną wodą do schładzania przy saunie' },
-      3: { word: '4 rowery trekkingowe', alt: 'Rowery trekkingowe dla gości' },
-      4: { word: 'murowany grill', alt: 'Murowany grill przy domku' },
-      6: { word: '4 deski SUP', alt: 'Deski SUP dla gości' },
-    },
-    jacuzziNote: 'Jacuzzi: za dopłatą, według <a href="#cennik-jacuzzi" class="text-brand-green underline">cennika jacuzzi</a>.',
-  },
-  en: {
-    title: 'Pricing 2026',
-    cols: ['Length of stay', 'Price per night (1–2 guests)'],
-    rows: [
-      ['4+ nights', '<strong>475 PLN *</strong>'],
-      ['3 nights', '495 PLN *'],
-      ['2 nights', '525 PLN'],
-    ],
-    stayHours: 'Check-in from 4:00 PM, check-out by noon (outside the summer season, other times can be arranged). No utility or cleaning fees. VAT invoices available.',
-    notes: [
-      'Minimum stay is <b>2 nights</b>, one-night stays are not available.',
-      '3rd and 4th guest: <b>+120 PLN</b> per person per night.',
-      '* Discount is applied automatically in the booking system.',
-    ],
-    reserve: 'Book Now',
-    freeTitle: 'Free for Guests',
-    freeItems: ['sauna', 'cold water tub for cooling down', 'bathrobes and sauna towels', '4 trekking bikes', 'brick barbecue grill', 'charcoal and fire starters', '4 SUP boards (from May to October)'],
-    freeHints: {
-      0: { word: 'sauna', alt: 'Finnish sauna for guests' },
-      1: { word: 'cold water tub', alt: 'Cold plunge tub next to the sauna' },
-      3: { word: '4 trekking bikes', alt: 'Trekking bikes for guests' },
-      4: { word: 'brick barbecue grill', alt: 'Brick barbecue grill by the cottage' },
-      6: { word: '4 SUP boards', alt: 'SUP boards for guests' },
-    },
-    jacuzziNote: 'Jacuzzi: extra fee, see the <a href="#cennik-jacuzzi" class="text-brand-green underline">jacuzzi price list</a>.',
-  },
-  de: {
-    title: 'Preise 2026',
-    cols: ['Aufenthaltsdauer', 'Preis pro Nacht (1–2 Pers.)'],
-    rows: [
-      ['ab 4 Nächten', '<strong>475 PLN *</strong>'],
-      ['3 Nächte', '495 PLN *'],
-      ['2 Nächte', '525 PLN'],
-    ],
-    stayHours: 'Anreise ab 16:00 Uhr, Abreise bis 12:00 Uhr (außerhalb der Sommersaison sind andere Zeiten nach Absprache möglich). Es fallen keine Verbrauchs- oder Reinigungsgebühren an. Wir stellen Rechnungen mit MwSt. aus.',
-    notes: [
-      'Der Mindestaufenthalt beträgt <b>2 Nächte</b>, Buchungen für nur eine Nacht sind nicht möglich.',
-      '3. und 4. Person: <b>+120 PLN</b> pro Person und Nacht.',
-      '* Der Rabatt wird automatisch im Buchungssystem angewendet.',
-    ],
-    reserve: 'Reservieren',
-    freeTitle: 'Kostenlos für Gäste',
-    freeItems: ['Sauna', 'Kaltwasserbottich zum Abkühlen', 'Bademäntel und Saunatücher', '4 Trekkingräder', 'gemauerter Grill', 'Holzkohle und Grillanzünder', '4 SUP-Boards (von Mai bis Oktober)'],
-    freeHints: {
-      0: { word: 'Sauna', alt: 'Finnische Sauna für Gäste' },
-      1: { word: 'Kaltwasserbottich', alt: 'Kaltwasserbottich neben der Sauna' },
-      3: { word: '4 Trekkingräder', alt: 'Trekkingräder für Gäste' },
-      4: { word: 'gemauerter Grill', alt: 'Gemauerter Grill am Ferienhaus' },
-      6: { word: '4 SUP-Boards', alt: 'SUP-Boards für Gäste' },
-    },
-    jacuzziNote: 'Whirlpool: gegen Aufpreis, siehe <a href="#cennik-jacuzzi" class="text-brand-green underline">Whirlpool-Preisliste</a>.',
-  },
+  pl: { title: 'Opinie naszych gości', allReviews: 'Zobacz wszystkie opinie', href: '/opinie/' },
+  en: { title: 'What our guests say', allReviews: 'See all reviews', href: '/en/reviews/' },
+  de: { title: 'Bewertungen unserer Gäste', allReviews: 'Alle Bewertungen ansehen', href: '/de/bewertungen/' },
 }[lang];
-
-const colW = ['w-[50%]', 'w-[50%]'];
-
-// Zdjęcia do pozycji listy „Bezpłatnie dla Gości” (te same numery pozycji co we freeHints).
-const freeHintImages: Record<number, ImageMetadata> = { 0: lasbialas7, 1: balia, 3: rowery, 4: grill, 6: sup };
-const freeHints: Record<number, { word: string; alt: string }> = t.freeHints;
-const escapeHtml = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-const freeItemsHtml = await Promise.all(
-  t.freeItems.map(async (item: string, i: number) => {
-    const text = escapeHtml(item);
-    const hint = freeHints[i];
-    if (!hint || !freeHintImages[i]) return text;
-    const html = await imageHint({ word: hint.word, image: freeHintImages[i], alt: hint.alt });
-    return insertHint(text, hint.word, html);
-  })
-);
-
-const tableClass = 'w-full max-w-[900px] border-collapse text-base max-[768px]:text-[1rem] my-[30px] mx-auto bg-[#f4f4f4] border-2 border-white text-center table-fixed';
-const thClass = 'bg-[#362e27] text-white font-semibold px-[6px] py-[4px] h-[40px] border-2 border-white align-middle max-[768px]:text-[1rem] max-[768px]:leading-[1.2] max-[768px]:break-words max-[768px]:whitespace-normal';
-const tdClass = 'h-[60px] p-[6px] border-2 border-white align-middle max-[768px]:text-[1rem] max-[768px]:h-[48px] max-[768px]:break-words';
 ---
 
-<div id="cennik" class="scroll-mt-24 max-[768px]:scroll-mt-20 max-w-[73%] border border-[#ccc] rounded-[5px] py-[10px] px-[80px] mx-auto mb-5 bg-white text-base text-center max-[768px]:max-w-[96vw] max-[768px]:p-5 max-[768px]:my-[1px] max-[768px]:mb-5 max-[768px]:text-[0.75rem]">
-  <h2 class="text-[24px] max-[768px]:text-[1.2rem] mt-5 mb-5 text-brand-black font-bold">{t.title}</h2>
+<section id="opinie" class="max-w-[73%] border border-[#ccc] rounded-[5px] py-[10px] px-[80px] mx-auto mb-5 bg-white text-base text-center max-[768px]:max-w-[96vw] max-[768px]:p-5 max-[768px]:my-[1px] max-[768px]:mb-5 max-[768px]:text-[1rem]">
+  <h2 class="text-[24px] text-center mt-5 mb-5 text-brand-black font-bold">{t.title}</h2>
 
-  {/* Main pricing table */}
-  <table class={tableClass}>
-    <thead>
-      <tr>
-        {t.cols.map((col: string, i: number) => (
-          <th class={`${thClass} ${colW[i] || ''}`} set:html={col}></th>
-        ))}
-      </tr>
-    </thead>
-    <tbody>
-      {t.rows.map((row: string[]) => (
-        <tr>
-          {row.map((cell: string) => (
-            <td class={tdClass} set:html={cell}></td>
-          ))}
-        </tr>
-      ))}
-    </tbody>
-  </table>
+  {featured.length > 0 && (
+    <div class="grid grid-cols-3 gap-[20px] items-stretch max-[1100px]:grid-cols-2 max-[768px]:grid-cols-1">
+      {featured.map((review) => <ReviewCard review={review} lang={lang} clamp={true} />)}
+    </div>
+  )}
 
-  {/* Notes */}
-  <div class="max-w-[82%] max-[768px]:max-w-[98vw] border border-brand-green rounded-[5px] p-[5px] my-[5px] mx-auto bg-white text-[1rem] max-[768px]:text-[1rem] text-brand-green text-center">
-    {t.notes.map((note: string) => (
-      <p class="my-[5px]" set:html={note}></p>
-    ))}
+  <div class="flex justify-center mt-[30px] mb-[30px]">
+    <a href={t.href} class="inline-flex justify-center items-center h-[46px] px-[24px] text-base font-semibold text-white bg-brand-green no-underline rounded-[6px] hover:bg-brand-dark-green transition-colors">{t.allReviews}</a>
   </div>
 
-  {/* Stay hours */}
-  <p class="text-base max-[768px]:text-[1rem] leading-[1.6] mt-6 mb-6" set:html={t.stayHours}></p>
-
-  {/* Free items */}
-  <h2 class="text-[24px] max-[768px]:text-[1.2rem] mt-10 mb-5 text-brand-black font-bold">{t.freeTitle}</h2>
-  <div class="text-base leading-[1.6] text-brand-black">
-    <ul class="flex flex-wrap justify-center gap-y-[6px] gap-x-[16px] my-2.5 p-0 list-none">
-      {freeItemsHtml.map((item: string) => (
-        <li class="m-0 leading-[1.4] text-[1rem]">
-          <span class="inline-block w-[0.45rem] h-[0.45rem] bg-[#2F6940] mr-[.5em] align-middle"></span><span set:html={item}></span>
-        </li>
-      ))}
-    </ul>
-    <p class="text-[1rem] mt-4" set:html={t.jacuzziNote}></p>
-  </div>
-
-  {/* Reserve button */}
-  <div class="flex justify-center mt-[30px]">
-    <a class="flex justify-center items-center w-[140px] h-[46px] text-base font-normal text-white bg-[#2F6940] border-none text-center no-underline normal-case cursor-pointer font-montserrat mb-[30px] rounded-[6px] hover:bg-[#40a95c] transition-colors" href="#" onclick="openReservation(); return false;">{t.reserve}</a>
-  </div>
-
-</div>
-
-<ImageHints />
+  <PartnerLogos lang={lang} />
+</section>

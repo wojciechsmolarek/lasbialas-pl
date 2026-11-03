@@ -9,7 +9,7 @@ export interface SiteConfig {
 }
 export const siteConfig: SiteConfig = {
   "promoBar": {
-    // Pasek włączony — ustaw na false, aby wyłączyć
+    // Pasek włączony — ustaw na true a false, aby wyłączyć
     "enabled": false,
     "messages": {
     "pl": `<span class="text-white" style="font-weight:600;">Rezerwacje już</span> <a href="/#cennik" class="promo-label" style="color:inherit;text-decoration:none;cursor:pointer;">od 2 dób</a>`,

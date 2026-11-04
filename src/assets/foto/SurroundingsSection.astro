@@ -1,0 +1,87 @@
+---
+import { useTranslations } from '../../i18n/utils';
+import jezioroBiale from '../../assets/foto/jezioro-biale.webp';
+import plaza from '../../assets/foto/plaza.webp';
+import ImageHints from '../ui/ImageHints.astro';
+import { imageHint, insertHint } from '../ui/imageHint';
+
+interface Props {
+  lang: 'pl' | 'en' | 'de';
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+// Wpisy z bloga (blog jest tylko po polsku, więc linki pokazujemy wyłącznie w wersji PL).
+// Adresy z ukośnikiem na końcu, tak jak w WordPressie, żeby uniknąć przekierowań.
+const blogPosts = [
+  {
+    title: 'Spływ rzeką Drawą',
+    desc: 'Szlak kajakowy Drawy, dopływu Noteci, o długości około 170 km.',
+    href: '/blog/splyw-rzeka-drawa/',
+  },
+  {
+    title: 'Najciekawsze zabytki w Puszczy Noteckiej',
+    desc: 'Przegląd zabytków w Puszczy Noteckiej i jej okolicy.',
+    href: '/blog/najciekawsze-zabytki-w-puszczy-noteckiej/',
+  },
+  {
+    title: 'Dąb Józef w Puszczy Noteckiej',
+    desc: 'Pomnikowy dąb szypułkowy koło Marianowa, liczący około 240 lat.',
+    href: '/blog/dab-jozef-w-puszczy-noteckiej/',
+  },
+];
+
+const showBlog = lang === 'pl';
+
+// Słowa w tekście o okolicy (tekst w ui.ts), które pokazują zdjęcie po najechaniu lub dotknięciu.
+// Jeśli któreś słowo zostanie zmienione w ui.ts, wyświetli się normalnie, bez zdjęcia.
+const hints = {
+  pl: [
+    { word: 'Jeziorem Białym', image: jezioroBiale, alt: 'Jezioro Białe w Puszczy Noteckiej' },
+    { word: 'Plaża', image: plaza, alt: 'Plaża nad Jeziorem Białym' },
+  ],
+  en: [
+    { word: 'Lake Białe', image: jezioroBiale, alt: 'Lake Białe in the Noteć Forest' },
+    { word: 'beach', image: plaza, alt: 'Beach on Lake Białe' },
+  ],
+  de: [
+    { word: 'See Białe', image: jezioroBiale, alt: 'See Białe in der Puszcza Notecka' },
+    { word: 'Strand', image: plaza, alt: 'Strand am See Białe' },
+  ],
+}[lang];
+// Najpierw słowa zamieniamy na znaczniki, potem znaczniki na dymki,
+// żeby opis zdjęcia (alt) jednego dymku nie był brany za słowo kolejnego.
+let surroundingsHtml = t('surroundings.text');
+hints.forEach((h, i) => { surroundingsHtml = surroundingsHtml.replace(h.word, '{hint' + i + '}'); });
+for (const [i, h] of hints.entries()) {
+  const html = await imageHint({ word: h.word, image: h.image, alt: h.alt });
+  surroundingsHtml = insertHint(surroundingsHtml, '{hint' + i + '}', html);
+}
+---
+
+<div id="okolica" class="max-w-[73%] border border-[#ccc] rounded-[5px] py-[10px] px-[80px] mx-auto mb-5 bg-white text-base text-center max-[768px]:max-w-[96vw] max-[768px]:p-5 max-[768px]:my-[1px] max-[768px]:mb-5 max-[768px]:text-[0.6rem]">
+  <h2 class="text-[24px] max-[768px]:text-[1.2rem] text-center mt-5 mb-5 text-brand-black font-bold">{t('surroundings.title')}</h2>
+  <p class="text-base leading-[1.6]" set:html={surroundingsHtml}></p>
+
+  {showBlog && (
+    <div class="mt-[30px] mb-5">
+      <h3 class="text-[1.2rem] text-center mb-[15px] font-semibold text-[#2c2c2c]">Więcej o okolicy na naszym blogu</h3>
+      <ul class="grid grid-cols-3 gap-4 text-left max-[1024px]:grid-cols-1">
+        {blogPosts.map((post) => (
+          <li class="border border-[#ddd] rounded-[5px] hover:border-brand-green transition-colors">
+            <a href={post.href} class="block h-full p-4 no-underline">
+              <span class="block text-base font-semibold text-brand-green leading-[1.4] mb-1">{post.title}</span>
+              <span class="block text-[0.9rem] text-brand-black leading-[1.5]">{post.desc}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="text-base leading-[1.6] mt-4">
+        <a href="/blog/" class="text-brand-green underline">Wszystkie wpisy na blogu Las Biala's</a>
+      </p>
+    </div>
+  )}
+</div>
+
+<ImageHints />

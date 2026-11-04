@@ -95,28 +95,28 @@ export const faqData: Record<string, FAQCategory[]> = {
       title: 'Your Stay',
       questions: [
         {
-          q: 'What is the bed layout in the cabin?',
-          a: 'The cabin sleeps 2-4 guests and has two separate bedrooms located on opposite sides of the cabin, offering extra comfort and privacy. Each bedroom has one double bed (140 × 200 cm).',
+          q: 'What is the bed layout in the cottage?',
+          a: 'The cottage sleeps 2-4 guests and has two separate bedrooms located on opposite sides of the cottage, offering extra comfort and privacy. Each bedroom has one double bed (140 × 200 cm).',
         },
         {
           q: 'Are bed linen and towels provided?',
           a: 'Yes. We provide bed linen, a set of small and large towels for each guest, as well as sauna towels and cosy bathrobes for use in the sauna and jacuzzi.',
         },
         {
-          q: 'Are the cabins heated?',
+          q: 'Are the cottages heated?',
           a: 'Yes. Both bedrooms, the bathroom and the living room have efficient electric heating (heating panels) with a thermostat, so you can set a comfortable temperature in each room.',
         },
         {
           q: 'Is there air conditioning?',
-          a: 'No. The cabins are fitted with external blinds, mosquito nets and ceiling fans in the bedrooms, which keep you comfortable even in summer.',
+          a: 'No. The cottages are fitted with external blinds, mosquito nets and ceiling fans in the bedrooms, which keep you comfortable even in summer.',
         },
         {
-          q: 'Is there an oven in the cabin?',
+          q: 'Is there an oven in the cottage?',
           a: 'No.',
         },
         {
-          q: 'Is there a coffee machine in the cabin?',
-          a: 'Yes. The cabin has a Nespresso De\u2019Longhi coffee machine with a set of 20 coffee capsules.',
+          q: 'Is there a coffee machine in the cottage?',
+          a: 'Yes. The cottage has a Nespresso De\u2019Longhi coffee machine with a set of 20 coffee capsules.',
         },
       ],
     },
@@ -125,11 +125,11 @@ export const faqData: Record<string, FAQCategory[]> = {
       questions: [
         {
           q: 'Is there a barbecue on site?',
-          a: 'Yes. Each cabin has its own private barbecue area with a large brick barbecue, a full set of accessories, plus charcoal/briquettes and firelighters.',
+          a: 'Yes. Each cottage has its own private barbecue area with a large brick barbecue, a full set of accessories, plus charcoal/briquettes and firelighters.',
         },
         {
           q: 'What facilities are available on site?',
-          a: 'On-site facilities include trekking bikes, SUP boards (from May to October), free parking, Wi-Fi, Netflix, hammocks (in season) and a sauna. Guests can also enjoy a private jacuzzi by the cabin (available for an extra charge). All other facilities are free of charge.',
+          a: 'On-site facilities include trekking bikes, SUP boards (from May to October), free parking, Wi-Fi, Netflix, hammocks (in season) and a sauna. Guests can also enjoy a private jacuzzi by the cottage (available for an extra charge). All other facilities are free of charge.',
         },
       ],
     },
@@ -142,7 +142,7 @@ export const faqData: Record<string, FAQCategory[]> = {
         },
         {
           q: 'Is the jacuzzi private?',
-          a: 'Yes. Each cabin has a private jacuzzi on the terrace, with a pergola, curtains and a closing roof that protect you from wind and rain and give you extra privacy while you relax.',
+          a: 'Yes. Each cottage has a private jacuzzi on the terrace, with a pergola, curtains and a closing roof that protect you from wind and rain and give you extra privacy while you relax.',
         },
         {
           q: 'Is the sauna included in the price?',
@@ -150,7 +150,7 @@ export const faqData: Record<string, FAQCategory[]> = {
         },
         {
           q: 'Is the sauna for private use only?',
-          a: 'Yes, during your session. The sauna is shared by the two cabins, but you use it only with your own group, at an agreed time, for which it is prepared and heated for you.',
+          a: 'Yes, during your session. The sauna is shared by the two cottages, but you use it only with your own group, at an agreed time, for which it is prepared and heated for you.',
         },
       ],
     },
@@ -163,7 +163,7 @@ export const faqData: Record<string, FAQCategory[]> = {
         },
         {
           q: 'What are the check-in and check-out times?',
-          a: 'Standard check-in is from 4:00 PM, and check-out is by 12:00 noon. We care about our guests\u2019 comfort, which is why we offer a late check-out until noon. Outside the high season, we can also arrange different check-in and check-out times individually — subject to cabin availability.',
+          a: 'Standard check-in is from 4:00 PM, and check-out is by 12:00 noon. We care about our guests\u2019 comfort, which is why we offer a late check-out until noon. Outside the high season, we can also arrange different check-in and check-out times individually — subject to cottage availability.',
         },
         {
           q: 'Can I bring my dog?',
@@ -171,7 +171,7 @@ export const faqData: Record<string, FAQCategory[]> = {
         },
         {
           q: 'Why is the property adults-only (18+)?',
-          a: 'We created this place for peaceful rest, relaxation and quality time for two. The intimate character of the property allows our guests to fully unwind in silence, close to nature.',
+          a: 'We created this place for peaceful rest, relaxation and quality time for two. The quiet, secluded character of the property allows our guests to fully unwind in silence, close to nature.',
         },
       ],
     },
@@ -257,7 +257,7 @@ export const faqData: Record<string, FAQCategory[]> = {
         },
         {
           q: 'Warum ist die Anlage nur für Erwachsene (ab 18 Jahren)?',
-          a: 'Wir haben diesen Ort für ruhige Erholung, Entspannung und Zeit zu zweit geschaffen. Der intime Charakter der Anlage ermöglicht es unseren Gästen, in Stille und naturnaher Umgebung vollkommen abzuschalten.',
+          a: 'Wir haben diesen Ort für ruhige Erholung, Entspannung und Zeit zu zweit geschaffen. Der abgeschiedene Charakter der Anlage ermöglicht es unseren Gästen, in Stille und naturnaher Umgebung vollkommen abzuschalten.',
         },
       ],
     },

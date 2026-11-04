@@ -1,6 +1,7 @@
 ---
 import { useTranslations } from '../../i18n/utils';
 import jezioroBiale from '../../assets/foto/jezioro-biale.webp';
+import plaza from '../../assets/foto/plaza.webp';
 import ImageHints from '../ui/ImageHints.astro';
 import { imageHint, insertHint } from '../ui/imageHint';
 
@@ -33,15 +34,30 @@ const blogPosts = [
 
 const showBlog = lang === 'pl';
 
-// Nazwa jeziora w tekście o okolicy (tekst w ui.ts) pokazuje zdjęcie jeziora po najechaniu lub dotknięciu.
-const lake = {
-  pl: { word: 'Jeziorem Białym', alt: 'Jezioro Białe w Puszczy Noteckiej' },
-  en: { word: 'Lake Białe', alt: 'Lake Białe in the Noteć Forest' },
-  de: { word: 'See Białe', alt: 'See Białe in der Puszcza Notecka' },
+// Słowa w tekście o okolicy (tekst w ui.ts), które pokazują zdjęcie po najechaniu lub dotknięciu.
+// Jeśli któreś słowo zostanie zmienione w ui.ts, wyświetli się normalnie, bez zdjęcia.
+const hints = {
+  pl: [
+    { word: 'Jeziorem Białym', image: jezioroBiale, alt: 'Jezioro Białe w Puszczy Noteckiej' },
+    { word: 'Plaża', image: plaza, alt: 'Plaża nad Jeziorem Białym' },
+  ],
+  en: [
+    { word: 'Lake Białe', image: jezioroBiale, alt: 'Lake Białe in the Noteć Forest' },
+    { word: 'beach', image: plaza, alt: 'Beach on Lake Białe' },
+  ],
+  de: [
+    { word: 'See Białe', image: jezioroBiale, alt: 'See Białe in der Puszcza Notecka' },
+    { word: 'Strand', image: plaza, alt: 'Strand am See Białe' },
+  ],
 }[lang];
-const surroundingsRaw = t('surroundings.text');
-const lakeHint = await imageHint({ word: lake.word, image: jezioroBiale, alt: lake.alt });
-const surroundingsHtml = insertHint(surroundingsRaw.replace(lake.word, '{lake}'), '{lake}', lakeHint);
+// Najpierw słowa zamieniamy na znaczniki, potem znaczniki na dymki,
+// żeby opis zdjęcia (alt) jednego dymku nie był brany za słowo kolejnego.
+let surroundingsHtml = t('surroundings.text');
+hints.forEach((h, i) => { surroundingsHtml = surroundingsHtml.replace(h.word, '{hint' + i + '}'); });
+for (const [i, h] of hints.entries()) {
+  const html = await imageHint({ word: h.word, image: h.image, alt: h.alt });
+  surroundingsHtml = insertHint(surroundingsHtml, '{hint' + i + '}', html);
+}
 ---
 
 <div id="okolica" class="max-w-[73%] border border-[#ccc] rounded-[5px] py-[10px] px-[80px] mx-auto mb-5 bg-white text-base text-center max-[768px]:max-w-[96vw] max-[768px]:p-5 max-[768px]:my-[1px] max-[768px]:mb-5 max-[768px]:text-[0.6rem]">

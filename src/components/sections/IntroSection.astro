@@ -9,6 +9,7 @@ import lasbialas7 from '../../assets/foto/lasbialas7.webp';
 import balia from '../../assets/foto/balia.jpg';
 import grill from '../../assets/foto/grill.webp';
 import jezioroBiale from '../../assets/foto/jezioro-biale.webp';
+import plaza from '../../assets/foto/plaza.webp';
 import ImageHints from '../ui/ImageHints.astro';
 import { imageHint, insertHint } from '../ui/imageHint';
 
@@ -21,10 +22,12 @@ const { lang } = Astro.props;
 const t = {
   pl: {
     title: 'Całoroczne domki na wynajem w Puszczy Noteckiej',
-    p1: 'Zapraszamy do Las Biala\'s w Białej, wsi nad {lake}, w sercu Puszczy Noteckiej. Z dala od miejskiego zgiełku, na ogrodzonym leśnym terenie, około 400 m od plaży, stoją dwa całoroczne domki przeznaczone dla dorosłych gości.',
+    p1: 'Zapraszamy do Las Biala\'s w Białej, wsi nad {lake}, w sercu Puszczy Noteckiej. Z dala od miejskiego zgiełku, na ogrodzonym leśnym terenie, około 400 m od {beach}, stoją dwa całoroczne domki przeznaczone dla dorosłych gości.',
     p2: 'Na miejscu jest {sauna} z {tub}, a za dopłatą również {jacuzzi} przy domku. Bez dodatkowych opłat dostępne są {grill}, {bikes}. Domki są ogrzewane przez cały rok, a temperaturę w każdym pomieszczeniu ustawia się osobnym {thermostat}.',
     lakeWord: 'Jeziorem Białym',
     lakeAlt: 'Jezioro Białe w Puszczy Noteckiej',
+    beachWord: 'plaży',
+    beachAlt: 'Plaża nad Jeziorem Białym',
     thermostatWord: 'termostatem',
     thermostatAlt: 'Termostat ogrzewania w domku',
     tubWord: 'balią',
@@ -51,10 +54,12 @@ const t = {
   },
   en: {
     title: 'Year-Round Cottages for Rent in the Noteć Forest',
-    p1: 'Welcome to Las Biala\'s in Biała, a village on {lake} in the heart of the Noteć Forest. Away from the bustle of the city, on a fenced forest property about 400 m from the beach, stand two year-round cottages for adult guests.',
+    p1: 'Welcome to Las Biala\'s in Biała, a village on {lake} in the heart of the Noteć Forest. Away from the bustle of the city, on a fenced forest property about 400 m from the {beach}, stand two year-round cottages for adult guests.',
     p2: 'On site there is a {sauna} with a {tub}, and a {jacuzzi} next to the cottage is available for an extra fee. The {grill} is free to use, as are the {bikes}. The cottages are heated all year round, and each room has its own {thermostat}.',
     lakeWord: 'Lake Białe',
     lakeAlt: 'Lake Białe in the Noteć Forest',
+    beachWord: 'beach',
+    beachAlt: 'Beach on Lake Białe',
     thermostatWord: 'thermostat',
     thermostatAlt: 'Heating thermostat in the cottage',
     tubWord: 'cold plunge tub',
@@ -81,10 +86,12 @@ const t = {
   },
   de: {
     title: 'Ganzjährige Ferienhäuser in der Puszcza Notecka',
-    p1: 'Willkommen bei Las Biala\'s in Biała, einem Dorf am {lake} im Herzen der Puszcza Notecka. Abseits vom Trubel der Stadt stehen auf einem eingezäunten Waldgrundstück, etwa 400 m vom Strand entfernt, zwei ganzjährig nutzbare Ferienhäuser für erwachsene Gäste.',
+    p1: 'Willkommen bei Las Biala\'s in Biała, einem Dorf am {lake} im Herzen der Puszcza Notecka. Abseits vom Trubel der Stadt stehen auf einem eingezäunten Waldgrundstück, etwa 400 m vom {beach} entfernt, zwei ganzjährig nutzbare Ferienhäuser für erwachsene Gäste.',
     p2: 'Vor Ort gibt es eine {sauna} mit {tub}, außerdem gegen Aufpreis einen {jacuzzi} direkt am Haus. Kostenlos zur Verfügung stehen ein {grill}, {bikes}. Die Häuser sind das ganze Jahr über beheizt, und jeder Raum hat einen eigenen {thermostat}.',
     lakeWord: 'See Białe',
     lakeAlt: 'See Białe in der Puszcza Notecka',
+    beachWord: 'Strand',
+    beachAlt: 'Strand am See Białe',
     thermostatWord: 'Thermostat',
     thermostatAlt: 'Heizungsthermostat im Ferienhaus',
     tubWord: 'Kaltwasserbottich',
@@ -125,7 +132,9 @@ p2 = insertHint(p2, '{sauna}', saunaHint);
 p2 = insertHint(p2, '{jacuzzi}', jacuzziHint);
 p2 = insertHint(p2, '{grill}', grillHint);
 const lakeHint = await imageHint({ word: t.lakeWord, image: jezioroBiale, alt: t.lakeAlt });
-const p1 = insertHint(t.p1, '{lake}', lakeHint);
+const beachHint = await imageHint({ word: t.beachWord, image: plaza, alt: t.beachAlt });
+let p1 = insertHint(t.p1, '{lake}', lakeHint);
+p1 = insertHint(p1, '{beach}', beachHint);
 ---
 
 <div id="domki" class="max-w-[73%] border border-[#ccc] rounded-[5px] py-[10px] px-[80px] mx-auto mb-5 bg-white text-base text-center max-[768px]:max-w-[96vw] max-[768px]:p-5 max-[768px]:my-[1px] max-[768px]:mb-5 max-[768px]:text-[0.6rem]">

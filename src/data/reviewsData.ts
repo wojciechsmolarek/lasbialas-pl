@@ -705,24 +705,6 @@ export const reviews: Review[] = [
     "source": "Booking.com"
   },
   {
-    "author": "Dagmara",
-    "avatarUrl": "https://xx.bstatic.com/static/img/review/avatars/ava-d.png",
-    "rating": 5,
-    "content": "Super miejsce, godne polecenia. Domki wyposażone są we wszystkie niezbędne rzeczy, ale i takie ponadprogramowe umilacze czasu, które ratują w przypadku deszczowej pogody. Jeśli zależy Wam na komforcie oraz spokoju to lepiej nie da się trafić. Nie dość, że miejsce jest cudowne to jeszcze właściciele okazali się równie cudowni - pomocni i sympatyczni. Oby więcej takich miejsc i ludzi :)",
-    "content_en": "Super place, worth recommending. Cottages are equipped with all necessary things, but also extra time-pleasers that save you in case of rainy weather. If you care about comfort and peace, you can't hit better. Not only is the place wonderful, but the owners turned out to be equally wonderful - helpful and friendly. Hopefully more such places and people :)",
-    "content_de": "Ein toller Ort, der zu empfehlen ist. Die Ferienhäuser sind mit allen notwendigen Dingen ausgestattet, aber auch mit zusätzlichen Annehmlichkeiten, die bei regnerischem Wetter helfen. Wenn Sie Wert auf Komfort und Ruhe legen, können Sie es nicht besser treffen. Nicht nur, dass der Ort wunderschön ist, auch die Besitzer erwiesen sich als ebenso wunderbar - hilfsbereit und freundlich. Hoffentlich mehr solche Orte und Menschen :)",
-    "source": "Booking.com"
-  },
-  {
-    "author": "Rozaliia",
-    "avatarUrl": "https://img.alohacamp.com/rtxduhOwp-BCF2igjHcHvOggpIXOnIyEvnb_h5j-Njs/resize:fill:200:200/enlarge:1/czM6Ly9hbG9oYS5pbWFnZXMvdXNlcnMvYThmMGE0NjQ0MDYxMTdjMzUyZDU2YjNkZDZlNWFlZDMzMDQ3YTdiMS5qcGc",
-    "rating": 5,
-    "content": "Pobyt w Las Biala's był naprawdę fantastyczny. Właścicielka obiektu Ola to przesympatyczna osoba, która zadbała o każdy szczegół, abyśmy czuli się komfortowo. Domek był wyposażony we wszystko co niezbędne. Zdecydowanie atutem była lokalizacja- w środku lasu. Na miejscu były dostępne rowery oraz grill. To miejsce jest idealne na relaks i ucieczkę od codzienności. Zdecydowanie polecam każdemu, kto marzy o chwili spokoju i odpoczynku od miasta 🥰",
-    "content_en": "The stay at Las Biala's was really fantastic. The owner of the facility, Ola, is a lovely person who took care of every detail to make us feel comfortable. The cottage was equipped with everything necessary. The location was a definite advantage - in the middle of the forest. Bikes and a grill were available on site. This place is ideal for relaxing and escaping from everyday life. I definitely recommend it to anyone who dreams of a moment of peace and rest from the city 🥰",
-    "content_de": "Der Aufenthalt in Las Biala's war wirklich fantastisch. Die Besitzerin der Anlage, Ola, ist eine wunderbare Person, die sich um jedes Detail kümmerte, damit wir uns wohlfühlten. Das Ferienhaus war mit allem Nötigen ausgestattet. Die Lage war ein definitiver Vorteil - mitten im Wald. Fahrräder und ein Grill standen vor Ort zur Verfügung. Dieser Ort ist ideal zum Entspannen und Entfliehen aus dem Alltag. Ich kann es jedem nur empfehlen, der von einem Moment der Ruhe und Erholung von der Stadt träumt 🥰",
-    "source": "AlohaCamp"
-  },
-  {
     "author": "Mirek Mazurczak",
     "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocIqXoLlLEtGCxdt2f2P5UMm2LsVnxdkuxnaNF3ToQ_NXvKQoQ=s64-c-rp-mo-ba12-br100",
     "rating": 5,

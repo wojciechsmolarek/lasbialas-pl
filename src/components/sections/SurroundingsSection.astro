@@ -67,12 +67,13 @@ for (const [i, h] of hints.entries()) {
   {showBlog && (
     <div class="mt-[30px] mb-5">
       <h3 class="text-[1.2rem] text-center mb-[15px] font-semibold text-[#2c2c2c]">Więcej o okolicy na naszym blogu</h3>
-      <ul class="grid grid-cols-3 gap-4 text-left max-[1024px]:grid-cols-1">
+      {/* Kafelki dzielą wiersze siatki (subgrid): tytuły w jednym wierszu, opisy w drugim, więc opisy zaczynają się na tej samej wysokości. */}
+      <ul class="grid grid-cols-3 gap-x-4 gap-y-0 text-left max-[1024px]:grid-cols-1">
         {blogPosts.map((post) => (
-          <li class="border border-[#ddd] rounded-[5px] hover:border-brand-green transition-colors">
-            <a href={post.href} class="block h-full p-4 no-underline">
-              <span class="block text-base font-semibold text-brand-green leading-[1.4] mb-1">{post.title}</span>
-              <span class="block text-[0.9rem] text-brand-black leading-[1.5]">{post.desc}</span>
+          <li class="row-span-2 grid [grid-template-rows:subgrid] border border-[#ddd] rounded-[5px] hover:border-brand-green transition-colors max-[1024px]:mb-4">
+            <a href={post.href} class="row-span-2 grid [grid-template-rows:subgrid] gap-y-1 h-full p-4 no-underline">
+              <span class="block self-start text-base font-semibold text-brand-green leading-[1.4]">{post.title}</span>
+              <span class="block self-start text-[0.9rem] text-brand-black leading-[1.5]">{post.desc}</span>
             </a>
           </li>
         ))}

@@ -786,3 +786,277 @@ export const reviews: Review[] = [
     "source": "AlohaCamp"
   },
   {
+    "author": "Jago Wo",
+    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocJ4w6s6cPiaV_pyULRf4xj7WMRPuLjIXBMuibrWgzCkxS-XqA=s64-c-rp-mo-br100",
+    "rating": 5,
+    "content": "Cudowne miejsce, żeby się wyłączyć. Można tylko polecić.",
+    "content_en": "A wonderful place to switch off. Can only recommend it.",
+    "content_de": "Ein wunderschönes Ort zum abschalten. Kann man nur empfehlen.",
+    "source": "Google",
+    "lang": "de"
+  },
+  {
+    "author": "Sandra",
+    "avatarUrl": null,
+    "rating": 5,
+    "content": "Polecam z całego serca ❤️\nMiejsce warte odwiedzenia 😌",
+    "content_en": "Wholeheartedly recommended ❤️\nA place worth visiting 😌",
+    "content_de": "Von ganzem Herzen empfehlenswert ❤️\nEin Ort, der einen Besuch wert ist 😌",
+    "source": "Airbnb"
+  },
+  {
+    "author": "Wiktoria Bloch",
+    "avatarUrl": "https://lh3.googleusercontent.com/a-/ALV-UjXEvHS97iq2-IBQeGUQN-yoMthnebfzPFbm0unHLcxHSy-PTa69=s64-c-rp-mo-br100",
+    "rating": 5,
+    "content": "Wspaniałe domki świetnie wyposażone bardzo wysoki standard, możliwość skorzystania z sauny oraz rowerów, okolo 5 min spacerem do jeziora, okolica otoczona wspaniałymi zielonymi terenami, właściciele bardzo milii oraz pomocni napewno wrócę ponownie",
+    "content_en": "Wonderful, superbly equipped cottages of a very high standard, with the sauna and bikes to use, about a 5-minute walk to the lake, surrounded by wonderful green areas, very nice and helpful owners, I'll definitely be back",
+    "content_de": "Wunderbare, hervorragend ausgestattete Ferienhäuser mit sehr hohem Standard, Sauna und Fahrräder zur Nutzung, etwa 5 Minuten zu Fuß zum See, umgeben von wunderschönen Grünflächen, sehr nette und hilfsbereite Eigentümer, ich komme ganz sicher wieder",
+    "source": "Google"
+  },
+  {
+    "author": "Miłosz",
+    "avatarUrl": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg?sz=50",
+    "rating": 5,
+    "content": "Wszystko nam się podobało, domek zawierał wszystkie udogodnienia. Sauna i rowery w cenie domków to duży plus. Całość dopełnili bardzo porządni i grzeczni gospodarze :) Nawet starzy polacy mogą mieć problem, żeby się do czegoś doczepić :D polecamy!",
+    "content_en": "We liked everything, the cottage contained all the amenities. Sauna and bikes included in the price of the cottages is a big plus. The whole was completed by very decent and polite hosts :) Even old Poles might have a problem clinging to something :D we recommend!",
+    "content_de": "Uns hat alles gefallen, das Ferienhaus enthielt alle Annehmlichkeiten. Sauna und Fahrräder im Preis inbegriffen ist ein großes Plus. Das Ganze wurde durch sehr anständige und höfliche Gastgeber abgerundet :) Sogar alte Polen könnten Probleme haben, etwas zu meckern zu finden :D wir empfehlen!",
+    "source": "Booking.com"
+  },
+  {
+    "author": "Szymon",
+    "avatarUrl": null,
+    "rating": 5,
+    "content": "Bardzo przyjemne miejsce na relaks i odpoczynek.",
+    "content_en": "A very pleasant place for relaxation and rest.",
+    "content_de": "Ein sehr angenehmer Ort zur Entspannung und Erholung.",
+    "source": "AlohaCamp"
+  },
+  {
+    "author": "Rafał Z",
+    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocIwkfRkdFMASTq_Lbp8xebcgwUq9HHI-sO0OjHRkTC426NjEA=s64-c-rp-mo-br100",
+    "rating": 5,
+    "content": "Super. Polecam domki nowoczesne wysoki standard.",
+    "content_en": "Great. I recommend these modern, high-standard cottages.",
+    "content_de": "Super. Ich empfehle diese modernen Ferienhäuser mit hohem Standard.",
+    "source": "Google"
+  },
+  {
+    "author": "Szymon",
+    "avatarUrl": null,
+    "rating": 5,
+    "content": "Jesteśmy bardzo zadowoleni z wizyty w Las Biala's. Udało nam się skorzystać z wszystkich dostępnych atrakcji i bardzo je polecany, szczególnie Jacuzzi.\nSama okolica bardzo ładna i spokojna, w sam raz na mały odpoczynek od życia w mieście.",
+    "content_en": "We are very happy with our visit to Las Biala's. We managed to use all the available attractions and highly recommend them, especially the jacuzzi.\nThe area itself is very pretty and peaceful, just right for a short break from city life.",
+    "content_de": "Wir sind sehr zufrieden mit unserem Besuch in Las Biala's. Wir konnten alle verfügbaren Angebote nutzen und können sie sehr empfehlen, vor allem den Whirlpool.\nDie Umgebung selbst ist sehr schön und ruhig, genau richtig für eine kleine Auszeit vom Stadtleben.",
+    "source": "Airbnb"
+  },
+  {
+    "author": "Natalia",
+    "avatarUrl": null,
+    "rating": 5,
+    "content": "Piękne urokliwe miejsce.Cisza spokój.Domek ślicznie urządzony.Mielismy to szczęście że spędziliśmy tam Święta Bożego Narodzenia.Właściciele mili uprzejmi.Naprawde zachęcam do pobytu nawet w okresie zimowym...jeżeli ktoś poszukuje ciszy .",
+    "content_en": "Beautiful charming place. Peace and quiet. The cottage is beautifully decorated. We were lucky enough to spend Christmas there. Nice, courteous owners. I really encourage you to stay even in the winter... if someone is looking for silence.",
+    "content_de": "Schöner, bezaubernder Ort. Ruhe und Stille. Das Haus ist wunderschön dekoriert. Wir hatten das Glück, dort Weihnachten zu verbringen. Nette und zuvorkommende Besitzer. Ich kann einen Aufenthalt auch in der Winterzeit nur empfehlen ... wenn jemand Stille sucht.",
+    "source": "AlohaCamp"
+  },
+  {
+    "author": "Ryszard Łyskawa",
+    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocKV3h52_VQHzQI0pzkh_nUSgBc0lTd6Rhm6vmIacs1LxTFy_A=s64-c-rp-mo-br100",
+    "rating": 5,
+    "content": "Super miejsce, klimat i właściciele. Pozdrawiam",
+    "content_en": "Great place, atmosphere and owners. Best regards",
+    "content_de": "Super Ort, tolle Atmosphäre und Eigentümer. Viele Grüße",
+    "source": "Google"
+  },
+  {
+    "author": "Adam Gołębiowski",
+    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocK97ds9waMKny09iLLWzLybEyjgrAkqMOq3nRgWz__ypbsc_Q=s64-c-rp-mo-ba12-br100",
+    "rating": 5,
+    "content": "Spokojnie i przyjemnie. Domki klasa 🤗",
+    "content_en": "Peaceful and pleasant. Top-class cottages 🤗",
+    "content_de": "Ruhig und angenehm. Klasse Ferienhäuser 🤗",
+    "source": "Google"
+  },
+  {
+    "author": "Dagmara",
+    "avatarUrl": "https://xx.bstatic.com/static/img/review/avatars/ava-d.png",
+    "rating": 5,
+    "content": "Kolejna udana wizyta, nic się nie zmieniło od ostatniego pobytu. Wszystko, jak najbardziej na plus. Fajne miejsce, pełen komfort i udogodnienia, a właściciele na maksa pomocni i kochani. Oby więcej takich miejsc. Polecajka na maksa 🙂❤️",
+    "content_en": "Another successful visit, nothing has changed since the last stay. Everything is a plus. Cool place, full comfort and amenities, and the owners are extremely helpful and lovely. Let there be more such places. Maximum recommendation 🙂❤️",
+    "content_de": "Ein weiterer erfolgreicher Besuch, seit dem letzten Aufenthalt hat sich nichts geändert. Alles ein Pluspunkt. Toller Ort, voller Komfort und Annehmlichkeiten, und die Besitzer sind extrem hilfsbereit und reizend. Möge es mehr solcher Orte geben. Maximale Empfehlung 🙂❤️",
+    "source": "Booking.com"
+  },
+  {
+    "author": "Silke",
+    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocLXQONmAeiNzf9QRlft8Fv_t0V3AHFocohPi6WebdMASUPC=s96-c",
+    "rating": 5,
+    "content": "Cudowne, ciche miejsce w lesie, żeby całkowicie się zrelaksować i odpocząć! Przemili gospodarze, zawsze gotowi pomóc. Sauna i jacuzzi to zupełnie inny poziom i zapewniły pełny relaks. Gorąco polecam i mam nadzieję kiedyś tu wrócić!",
+    "content_en": "Such a lovely quiet spot in the forest to completely relax and unwind! Superfriendly hosts and always ready to help. Sauna and jacuzzi were next level and ensured ultimate relaxation. Would highly recommend and hope to be back someday!",
+    "content_de": "Was für ein schöner ruhiger Ort im Wald, um sich vollkommen zu entspannen und abzuschalten! Superfreundliche Gastgeber und immer bereit zu helfen. Sauna und Whirlpool waren auf dem nächsten Level und sorgten für ultimative Entspannung. Kann es wärmstens empfehlen und hoffe, eines Tages wiederzukommen!",
+    "source": "Booking.com",
+    "lang": "en"
+  },
+  {
+    "author": "Wojciech",
+    "avatarUrl": null,
+    "rating": 5,
+    "content": "super miejsce na relaks wśród drzew",
+    "content_en": "a great place to relax among the trees",
+    "content_de": "ein toller Ort zum Entspannen zwischen den Bäumen",
+    "source": "Airbnb"
+  },
+  {
+    "author": "Kinga Kubiatowicz",
+    "avatarUrl": "https://lh3.googleusercontent.com/a-/ALV-UjV62W08ftsq7GMoIqOL4BoFiW8A_TW-Qc8XKnvQ1bPxJqOt9R6x=s64-c-rp-mo-ba12-br100",
+    "rating": 5,
+    "content": "Polecam cisza i rekax",
+    "content_en": "Recommended, peace and relaxation",
+    "content_de": "Empfehlenswert, Ruhe und Entspannung",
+    "source": "Google"
+  },
+  {
+    "author": "Natalie Katharina",
+    "avatarUrl": null,
+    "rating": 5,
+    "content": "Bardzo nam się podobało!\nWszystko było idealne i spędziliśmy tu wspaniały czas :).\nGospodarze są również bardzo sympatyczni i uprzejmi.\n\nMogę tylko polecić pobyt, jeśli ktoś ma ochotę się wyciszyć i odpocząć od codziennego zgiełku.",
+    "content_en": "We really liked it here!\nEverything was just perfect and we had a wonderful time :).\nThe hosts are also really friendly and accommodating.\n\nI can only recommend a stay if you want to unwind and get away from the hustle and bustle of everyday life.",
+    "content_de": "Uns hat es wirklich sehr gut gefallen!\nEs war rundum perfekt und wir hatten eine ganz tolle Zeit :).\nDie Gastgeber sind ebenfalls total sympathisch und zuvorkommend.\n\nIch kann einen Aufenthalt nur empfehlen, wenn man Lust hat zur Ruhe zu kommen und Abstand vom Alltagstrubel zu bekommen.",
+    "source": "Airbnb",
+    "lang": "de"
+  },
+  {
+    "author": "AGNIESZKA GRAZDA",
+    "avatarUrl": "https://lh3.googleusercontent.com/a-/ALV-UjW3syC3A9uCok3xsexm7cNqrCQXAd1RxudXcYquTptjManfJPM=s64-c-rp-mo-br100",
+    "rating": 5,
+    "content": "Fajna miejscówka, aby odetchnąć od miasta. Wokół lasy, jeziorko niedaleko od domku. Sam domek jest świetnie wyposażony. Niczego nam nie brakowało. Gospodarze mili i pomocni:) sauna super+balia👌to naprawdę godne polecenia miejsce!",
+    "content_en": "A great spot to get away from the city. Forests all around, a lake not far from the cottage. The cottage itself is superbly equipped. We didn't lack anything. Kind and helpful hosts :) great sauna + cold plunge tub 👌 a place really worth recommending!",
+    "content_de": "Ein tolles Fleckchen, um der Stadt zu entfliehen. Ringsum Wälder, ein See nicht weit vom Ferienhaus. Das Ferienhaus selbst ist hervorragend ausgestattet. Uns hat nichts gefehlt. Nette und hilfsbereite Gastgeber :) super Sauna + Kaltwasserbottich 👌 ein wirklich empfehlenswerter Ort!",
+    "source": "Google"
+  },
+  {
+    "author": "Andrii",
+    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocLkUgvV9pr02G91PuuwbuPAYZgb8K8MIWIJIO1UVDsdeujJyA=s96-c",
+    "rating": 5,
+    "content": "Wszystko jest super",
+    "content_en": "Everything is great",
+    "content_de": "Alles ist super",
+    "source": "Booking.com"
+  },
+  {
+    "author": "Szymon",
+    "avatarUrl": null,
+    "rating": 5,
+    "content": "Gorąco polecam :)",
+    "content_en": "Highly recommended :)",
+    "content_de": "Sehr empfehlenswert :)",
+    "source": "Airbnb"
+  },
+  {
+    "author": "Krzysztof",
+    "avatarUrl": "https://img.alohacamp.com/sBVCEmekpmh6B2QVzVyUW8vDzdpXxxHDRn9GfwVQ8uw/resize:fill:200:200/enlarge:1/czM6Ly9hbG9oYS5pbWFnZXMvdXNlcnMvYTRkNTdmMzM3NzM1MWM5M2FkZTI3MDlhNzYwNDFmNmRkNjNlYmE4OS5wbmc",
+    "rating": 5,
+    "content": "Polecam! Świetnie miejsce gdzie naprawdę można odpocząć. Domek wyposażony we wszystko co potrzeba. Bezproblemowy kontakt z gospodarzami, którzy są naprawdę mili oraz pomocni i czuć, że chcą abyś czuł się dobrze podczas pobytu :)",
+    "content_en": "I recommend! Great place where you can really relax. Cottage equipped with everything you need. Hassle-free contact with the hosts, who are really nice and helpful, and you can feel that they want you to feel good during your stay :)",
+    "content_de": "Ich empfehle es! Toller Ort, an dem man sich wirklich entspannen kann. Das Ferienhaus ist mit allem ausgestattet, was man braucht. Problemloser Kontakt mit den Gastgebern, die wirklich nett und hilfsbereit sind, und man spürt, dass sie möchten, dass man sich während des Aufenthalts wohlfühlt :)",
+    "source": "AlohaCamp"
+  },
+  {
+    "author": "Angie yt",
+    "avatarUrl": "https://lh3.googleusercontent.com/a-/ALV-UjUZ3lIzU3ywvxHYlCUzh8EJHM-oA7BWKF5E9K25Nyqiqxsv4t4=s64-c-rp-mo-br100",
+    "rating": 5,
+    "content": "Miejsce fantastyczne zaledwie pare metrów do jeziorka. Cisza i spokój pośród leśnych drzew. Domek czyściutki i nowoczesny. Obsługa niesamowita i profesjonalna. Z całego serca polecam to miejsce. Z Pozdrowieniami dla Gospodarzy",
+    "content_en": "A fantastic place, just a few metres from the lake. Peace and quiet among the forest trees. The cottage is spotless and modern. Amazing, professional service. I recommend this place with all my heart. Best wishes to the hosts",
+    "content_de": "Ein fantastischer Ort, nur ein paar Meter vom See entfernt. Stille und Ruhe zwischen den Waldbäumen. Das Ferienhaus ist blitzsauber und modern. Unglaublicher und professioneller Service. Ich empfehle diesen Ort von ganzem Herzen. Liebe Grüße an die Gastgeber",
+    "source": "Google"
+  },
+  {
+    "author": "Rafał Szymański",
+    "avatarUrl": "https://lh3.googleusercontent.com/a-/ALV-UjU-ZPKI_Sb0Z2xD7n5gUsRNjPqFl4ZIfo7SeY_XXYgg_wO4iCs=s64-c-rp-mo-br100",
+    "rating": 5,
+    "content": "Najlepiej!!!",
+    "content_en": "The best!!!",
+    "content_de": "Einfach top!!!",
+    "source": "Google"
+  },
+  {
+    "author": "Marinus",
+    "avatarUrl": "https://xx.bstatic.com/static/img/review/avatars/ava-m.png",
+    "rating": 5,
+    "content": "Cisza.",
+    "content_en": "The silence.",
+    "content_de": "Die Stille.",
+    "source": "Booking.com",
+    "lang": "nl"
+  },
+  {
+    "author": "Liudmyla",
+    "avatarUrl": "https://xx.bstatic.com/static/img/review/avatars/ava-l.png",
+    "rating": 5,
+    "content": "👍👍👍👍👍",
+    "content_en": "👍👍👍👍👍",
+    "content_de": "👍👍👍👍👍",
+    "source": "Booking.com"
+  },
+  {
+    "author": "Mirek Mazurczak",
+    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocIqXoLlLEtGCxdt2f2P5UMm2LsVnxdkuxnaNF3ToQ_NXvKQoQ=s64-c-rp-mo-ba12-br100",
+    "rating": 5,
+    "content": "",
+    "content_en": "",
+    "content_de": "",
+    "source": "Google"
+  },
+  {
+    "author": "Mediux Technologie",
+    "avatarUrl": "https://lh3.googleusercontent.com/a-/ALV-UjW_J8T7E7O7bhRK2T-WxP8fI3fRNFM8DJvS41tsd1ABGlRtBQtp=s64-c-rp-mo-br100",
+    "rating": 5,
+    "content": "",
+    "content_en": "",
+    "content_de": "",
+    "source": "Google"
+  },
+  {
+    "author": "Daniel Jedyk",
+    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocLoVBO0bWzlte1sSGPV_RcbDkx4KlbgbKcpIX1dYZc9tVCSHA=s64-c-rp-mo-br100",
+    "rating": 5,
+    "content": "",
+    "content_en": "",
+    "content_de": "",
+    "source": "Google"
+  },
+  {
+    "author": "Danuta Witkowska",
+    "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocLkZUFes_fGpruSUyAtIuuFl-_XyF4caZ_FK6SDfQgVL1GVlA=s64-c-rp-mo-br100",
+    "rating": 5,
+    "content": "",
+    "content_en": "",
+    "content_de": "",
+    "source": "Google"
+  },
+  {
+    "author": "Kaszczyszyn",
+    "avatarUrl": "https://lh3.googleusercontent.com/a/AATXAJz2Zx2u8evl-a41av1w8qY_EYTtmPYyClA9r6Yc=s96-c",
+    "rating": 5,
+    "content": "",
+    "content_en": "",
+    "content_de": "",
+    "source": "Booking.com"
+  },
+  {
+    "author": "Magdalena",
+    "avatarUrl": "https://graph.facebook.com/v2.9/2331694170199203/picture?type=square&height=64&width=64",
+    "rating": 5,
+    "content": "",
+    "content_en": "",
+    "content_de": "",
+    "source": "Booking.com"
+  },
+  {
+    "author": "Filip",
+    "avatarUrl": "https://lh3.googleusercontent.com/a/AATXAJw7HdxDOhSTadrkOkNOOLr_FYX8b5fR-kcsGDBI=s96-c",
+    "rating": 5,
+    "content": "",
+    "content_en": "",
+    "content_de": "",
+    "source": "Booking.com"
+  }
+];

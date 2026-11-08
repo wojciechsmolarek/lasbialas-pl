@@ -15,18 +15,21 @@ const t = {
   pl: {
     title: 'Opinie naszych gości',
     intro: 'Poniżej zebraliśmy opinie gości z Google, Booking.com, Airbnb i AlohaCamp. Oryginały znajdziesz pod linkami do każdego serwisu.',
+    verify: 'Jak weryfikujemy opinie: na Booking.com, Airbnb i AlohaCamp opinię może wystawić wyłącznie gość, który zrealizował pobyt zarezerwowany przez dany serwis. Opinie z Google może dodać każdy użytkownik konta Google, bez potwierdzenia pobytu, i tych opinii nie weryfikujemy. Wszystkie opinie publikujemy w oryginalnym brzmieniu, a teksty w innych językach tłumaczymy i oznaczamy język oryginału.',
     back: '← Wróć na stronę główną',
     reserve: 'Rezerwuj',
   },
   en: {
     title: 'What our guests say',
     intro: 'Below are guest reviews from Google, Booking.com, Airbnb and AlohaCamp. You can read the originals via the links to each platform.',
+    verify: 'How we verify reviews: on Booking.com, Airbnb and AlohaCamp, only guests who have completed a stay booked through that platform can leave a review. Google reviews can be added by any Google account user without confirming a stay, and we do not verify them. All reviews are published as originally written; reviews in other languages are translated, with the original language indicated.',
     back: '← Back to the home page',
     reserve: 'Book Now',
   },
   de: {
     title: 'Bewertungen unserer Gäste',
     intro: 'Hier finden Sie Bewertungen unserer Gäste von Google, Booking.com, Airbnb und AlohaCamp. Die Originale erreichen Sie über die Links zu den jeweiligen Plattformen.',
+    verify: 'Wie wir Bewertungen prüfen: Auf Booking.com, Airbnb und AlohaCamp können nur Gäste eine Bewertung abgeben, die einen über die jeweilige Plattform gebuchten Aufenthalt abgeschlossen haben. Google-Bewertungen kann jeder Nutzer eines Google-Kontos ohne Nachweis eines Aufenthalts abgeben; diese Bewertungen prüfen wir nicht. Alle Bewertungen veröffentlichen wir im Originalwortlaut, Texte in anderen Sprachen übersetzen wir und geben die Originalsprache an.',
     back: '← Zurück zur Startseite',
     reserve: 'Reservieren',
   },
@@ -35,7 +38,8 @@ const t = {
 
 <section class="max-w-[73%] border border-[#ccc] rounded-[5px] py-[10px] px-[80px] mx-auto my-5 bg-white text-base text-center max-[768px]:max-w-[96vw] max-[768px]:p-5 max-[768px]:my-[1px] max-[768px]:mb-5 max-[768px]:text-[1rem]">
   <h1 class="text-[28px] max-[768px]:text-[1.4rem] text-center mt-5 mb-4 text-brand-black font-bold">{t.title}</h1>
-  <p class="text-base leading-[1.6] mb-5">{t.intro}</p>
+  <p class="text-base leading-[1.6] mb-3">{t.intro}</p>
+  <p class="text-[14px] leading-[1.5] text-[#666] mb-5">{t.verify}</p>
 
   <PartnerLogos lang={lang} />
 

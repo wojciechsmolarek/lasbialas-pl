@@ -9,16 +9,17 @@ interface Props {
 
 const { review, lang, clamp = false } = Astro.props;
 
-// Dopisek „przetłumaczono z…” pokazujemy tylko wtedy, gdy język strony różni się od języka oryginału opinii.
-const originalLang = review.lang ?? 'pl';
-const translatedFromLabels: Record<'pl' | 'en' | 'de', Record<string, string>> = {
-  pl: { en: 'Przetłumaczono z angielskiego', de: 'Przetłumaczono z niemieckiego', nl: 'Przetłumaczono z niderlandzkiego' },
-  en: { pl: 'Translated from Polish', de: 'Translated from German', nl: 'Translated from Dutch' },
-  de: { pl: 'Aus dem Polnischen übersetzt', en: 'Aus dem Englischen übersetzt', nl: 'Aus dem Niederländischen übersetzt' },
+// Dopisek o tlumaczeniu pokazujemy tylko wtedy, gdy jezyk strony rozni sie od jezyka oryginalu opinii.
+const translatedFromLabels = {
+  pl: { en: 'Przetłumaczono z angielskiego', de: 'Przetłumaczono z niemieckiego', nl: 'Przetłumaczono z niderlandzkiego', ru: 'Przetłumaczono z rosyjskiego' },
+  en: { pl: 'Translated from Polish', de: 'Translated from German', nl: 'Translated from Dutch', ru: 'Translated from Russian' },
+  de: { pl: 'Aus dem Polnischen übersetzt', en: 'Aus dem Englischen übersetzt', nl: 'Aus dem Niederländischen übersetzt', ru: 'Aus dem Russischen übersetzt' },
 };
-const translatedFrom = originalLang === lang ? '' : (translatedFromLabels[lang][originalLang] ?? '');
+const originalLang = review.lang || 'pl';
+const pageLabels: any = translatedFromLabels[lang];
+const translatedFrom = originalLang === lang ? '' : (pageLabels[originalLang] || '');
 
-// Klasa akapitu liczona tutaj, a nie w szablonie (prostszy zapis, bez szablonu tekstowego w znaczniku).
+// Klasa akapitu (z przycieciem tekstu na stronie glownej).
 const contentClass = 'text-[1rem] leading-[1.6] text-[#444] whitespace-pre-line' + (clamp ? ' line-clamp-6' : '');
 
 const content = lang === 'en' ? review.content_en : lang === 'de' ? review.content_de : review.content;
@@ -53,10 +54,3 @@ const sourceIcon: Record<string, string> = {
         </span>
       )}
     </div>
-  </div>
-  <div class="mb-2 text-[16px] leading-none" role="img" aria-label={starsLabel}>
-    {[0, 1, 2, 3, 4].map((i) => <span class={i < fullStars ? 'text-[#FFB300]' : 'text-[#ccc]'} aria-hidden="true">★</span>)}
-  </div>
-  {content && <p class={contentClass}>{content}</p>}
-  {translatedFrom && content && <p class="text-[12px] text-[#666] italic mt-2">{translatedFrom}</p>}
-</article>

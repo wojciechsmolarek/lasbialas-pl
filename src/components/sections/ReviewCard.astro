@@ -54,3 +54,10 @@ const sourceIcon: Record<string, string> = {
         </span>
       )}
     </div>
+  </div>
+  <div class="mb-2 text-[16px] leading-none" role="img" aria-label={starsLabel}>
+    {[0, 1, 2, 3, 4].map((i) => <span class={i < fullStars ? 'text-[#FFB300]' : 'text-[#ccc]'} aria-hidden="true">★</span>)}
+  </div>
+  {content && <p class={contentClass}>{content}</p>}
+  {translatedFrom && content && <p class="text-[12px] text-[#666] italic mt-2">{translatedFrom}</p>}
+</article>

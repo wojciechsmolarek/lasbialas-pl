@@ -39,10 +39,8 @@ const sourceIcon: Record<string, string> = {
 
 <article class="border border-[#e0e0e0] rounded-[5px] p-5 bg-[#fafafa] flex flex-col text-left h-full">
   <div class="flex items-center gap-[12px] mb-3">
-    {review.avatarUrl ? (
-      <img src={review.avatarUrl} alt="" width="48" height="48" class="rounded-full w-12 h-12 object-cover shrink-0" loading="lazy" onerror="this.onerror=null;this.style.display='none';this.nextElementSibling.style.display='flex';" />
-    ) : null}
-    <div class={`w-12 h-12 rounded-full bg-brand-green text-white items-center justify-center text-[18px] font-bold shrink-0 ${review.avatarUrl ? 'hidden' : 'flex'}`} aria-hidden="true">
+    {/* Zamiast zdjęcia autora: kółko z pierwszą literą imienia (bez ładowania obrazków z zewnątrz). */}
+    <div class="w-12 h-12 rounded-full bg-brand-green text-white flex items-center justify-center text-[18px] font-bold shrink-0" aria-hidden="true">
       {review.author.charAt(0).toUpperCase()}
     </div>
     <div class="flex flex-col min-w-0">

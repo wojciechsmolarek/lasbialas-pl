@@ -91,9 +91,11 @@ const t = translations[lang];
 <!-- Modal preferences are injected via JS only when user clicks "Manage preferences" -->
 
 <script is:inline defer define:vars={{ t, lang }}>
-  // Cookie Consent Functionality - styl talem.eu
+  // Cookie Consent + Google Analytics (Consent Mode v2).
+  // GA ładuje się WYŁĄCZNIE po zgodzie na pliki analityczne (cc_cookies = analytics lub all).
   (function() {
     const cookieName = 'cc_cookies';
+    const GA_ID = 'G-R3P2XT4WY8';
     const banner = document.getElementById('cookie-banner');
     const acceptAllBtn = document.getElementById('cookie-accept-all');
     const necessaryOnlyBtn = document.getElementById('cookie-necessary-only');
@@ -102,9 +104,78 @@ const t = translations[lang];
     let modal = null;
     let modalInjected = false;
 
-    // Check if consent already given
-    if (document.cookie.includes(cookieName + '=')) {
+    // --- Google Analytics: domyślnie wszystko zablokowane ---
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function() { window.dataLayer.push(arguments); };
+    window.gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
+    });
+
+    let gaLoaded = false;
+    function loadGA() {
+      if (gaLoaded) return;
+      gaLoaded = true;
+      var s = document.createElement('script');
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+      s.async = true;
+      document.head.appendChild(s);
+      window.gtag('js', new Date());
+      window.gtag('config', GA_ID, { anonymize_ip: true });
+    }
+
+    // Ustawia zgody w Consent Mode i ładuje GA, jeśli jest zgoda na analityczne.
+    function applyConsent(value) {
+      var analytics = value === 'analytics' || value === 'all';
+      var marketing = value === 'all';
+      window.gtag('consent', 'update', {
+        analytics_storage: analytics ? 'granted' : 'denied',
+        ad_storage: marketing ? 'granted' : 'denied',
+        ad_user_data: marketing ? 'granted' : 'denied',
+        ad_personalization: marketing ? 'granted' : 'denied'
+      });
+      if (analytics) {
+        loadGA();
+      } else {
+        removeGACookies();
+      }
+    }
+
+    // Usuwa ciasteczka GA/Ads, jeśli gość wycofał lub nie dał zgody.
+    function removeGACookies() {
+      var host = location.hostname.replace(/^www\./, '');
+      document.cookie.split(';').forEach(function(c) {
+        var name = c.split('=')[0].trim();
+        if (name === '_ga' || name.indexOf('_ga_') === 0 || name === '_gid' || name === '_gcl_au') {
+          var past = '=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/';
+          document.cookie = name + past;
+          document.cookie = name + past + ';domain=.' + host;
+          document.cookie = name + past + ';domain=' + host;
+        }
+      });
+    }
+
+    function readConsent() {
+      var m = document.cookie.match(new RegExp('(?:^|; )' + cookieName + '=([^;]*)'));
+      return m ? m[1] : '';
+    }
+
+    // Powracający gość: zgoda już zapisana.
+    var saved = readConsent();
+    if (saved) {
       if (banner) banner.style.display = 'none';
+      if (saved === 'analytics' || saved === 'all') {
+        // GA dopiero przy pierwszej interakcji, żeby nie spowalniać ładowania strony.
+        var start = function() { applyConsent(saved); };
+        window.addEventListener('scroll', start, { once: true, passive: true });
+        window.addEventListener('mousemove', start, { once: true });
+        window.addEventListener('touchstart', start, { once: true, passive: true });
+        window.addEventListener('keydown', start, { once: true });
+      } else {
+        removeGACookies();
+      }
       return;
     }
 
@@ -231,16 +302,7 @@ const t = translations[lang];
           setCookie(consentValue);
           hideBanner();
           hideModal();
-          updateAnalyticsConsent(analyticsEnabled);
-        });
-      }
-    }
-
-    // Update Google Analytics consent
-    function updateAnalyticsConsent(allowed) {
-      if (typeof gtag !== 'undefined') {
-        gtag('consent', 'update', {
-          'analytics_storage': allowed ? 'granted' : 'denied'
+          applyConsent(consentValue);
         });
       }
     }
@@ -250,7 +312,7 @@ const t = translations[lang];
       acceptAllBtn.addEventListener('click', function() {
         setCookie('all');
         hideBanner();
-        updateAnalyticsConsent(true);
+        applyConsent('all');
       });
     }
 
@@ -259,7 +321,7 @@ const t = translations[lang];
       necessaryOnlyBtn.addEventListener('click', function() {
         setCookie('necessary');
         hideBanner();
-        updateAnalyticsConsent(false);
+        applyConsent('necessary');
       });
     }
 

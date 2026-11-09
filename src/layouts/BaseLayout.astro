@@ -134,27 +134,7 @@ const ogLocale = { pl: 'pl_PL', en: 'en_GB', de: 'de_DE' }[lang];
       })();
     </script>
 
-    <!-- Google Analytics (Lazy Load) -->
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-
-      function loadAnalytics() {
-        var script = document.createElement('script');
-        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-R3P2XT4WY8';
-        script.defer = true;
-        document.head.appendChild(script);
-
-        gtag('js', new Date());
-        gtag('config', 'G-R3P2XT4WY8', { anonymize_ip: true });
-      }
-
-      window.addEventListener('scroll', loadAnalytics, { once: true });
-      window.addEventListener('mousemove', loadAnalytics, { once: true });
-      window.addEventListener('touchstart', loadAnalytics, { once: true });
-    </script>
+    <!-- Google Analytics: ładowany wyłącznie po zgodzie na cookies, w CookieConsent.astro -->
 
     <!-- Bookero Reservation System -->
     <script is:inline define:vars={{ lang }}>

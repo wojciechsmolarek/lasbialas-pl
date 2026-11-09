@@ -31,6 +31,8 @@ const m = {
     languages: 'Języki',
     phone: 'Telefon',
     reserveNow: 'Rezerwuj teraz',
+    guide: 'Przewodnik',
+    guideHref: '/info/',
     items: [
       { id: 'terminy', label: 'Wolne terminy' },
       { id: 'domki', label: 'Domki' },
@@ -49,6 +51,8 @@ const m = {
     languages: 'Languages',
     phone: 'Phone',
     reserveNow: 'Book now',
+    guide: 'Guest guide',
+    guideHref: '/info/en/',
     items: [
       { id: 'terminy', label: 'Availability' },
       { id: 'domki', label: 'Cottages' },
@@ -67,6 +71,8 @@ const m = {
     languages: 'Sprachen',
     phone: 'Telefon',
     reserveNow: 'Jetzt reservieren',
+    guide: 'Gästeinfo',
+    guideHref: '/info/de/',
     items: [
       { id: 'terminy', label: 'Freie Termine' },
       { id: 'domki', label: 'Ferienhäuser' },
@@ -159,6 +165,11 @@ const anchorHref = (id: string) => (isHomePage ? `#${id}` : `${homeUrl}#${id}`);
     {m.items.map((item) => (
       <a href={anchorHref(item.id)} data-nav-link={item.id} class="text-brand-black no-underline hover:text-brand-green transition-colors">{item.label}</a>
     ))}
+    <!-- Przewodnik dla gości (osobna część serwisu: /info/) -->
+    <a href={m.guideHref} class="inline-flex items-center gap-1 text-brand-black no-underline hover:text-brand-green transition-colors">
+      {m.guide}
+      <svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+    </a>
   </nav>
 </div>
 
@@ -188,6 +199,12 @@ const anchorHref = (id: string) => (isHomePage ? `#${id}` : `${homeUrl}#${id}`);
           <a href={anchorHref(item.id)} data-menu-link class="block py-2.5 px-2 text-white text-base font-medium no-underline hover:bg-white/15 rounded-lg transition-colors">{item.label}</a>
         </li>
       ))}
+      <li>
+        <a href={m.guideHref} data-menu-link class="flex items-center gap-1.5 py-2.5 px-2 text-white text-base font-medium no-underline hover:bg-white/15 rounded-lg transition-colors">
+          {m.guide}
+          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+        </a>
+      </li>
     </ul>
   </nav>
 

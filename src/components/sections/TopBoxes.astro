@@ -1,12 +1,14 @@
 ---
 import type { ImageMetadata } from 'astro';
-import { siteConfig } from '../../data/config';
+import { updated, minNights, d1, d2 } from '../../data/availability';
 import jacuzziImg from '../../assets/foto/lasbialas-jacuzzi3.webp';
 import saunaImg from '../../assets/foto/lasbialas7.webp';
 import baliaImg from '../../assets/foto/balia.jpg';
 import grillImg from '../../assets/foto/grill.webp';
 import roweryImg from '../../assets/foto/rowery.webp';
 import supImg from '../../assets/foto/sup.webp';
+import phoneGreen from '../../assets/images/phone-green.webp';
+import whatsappGreen from '../../assets/images/whatsapp-green.webp';
 import ImageHints from '../ui/ImageHints.astro';
 import { imageHint, insertHint } from '../ui/imageHint';
 
@@ -16,55 +18,233 @@ interface Props {
 
 const { lang } = Astro.props;
 
-const topBoxes = siteConfig.topBoxes;
-const currentData = topBoxes[lang] ?? {};
+// Teksty boksów. Wolne terminy edytuje się w src/data/availability.ts.
+const t = {
+  pl: {
+    title: 'Wolne terminy',
+    updated: 'Aktualizacja',
+    twins: 'domki są identyczne',
+    d1: 'Domek D1',
+    d2: 'Domek D2',
+    none: 'brak wolnych terminów',
+    minStay: 'Minimalny pobyt: ' + minNights + ' doby.',
+    how: 'Rezerwacja online, telefonicznie lub przez WhatsApp.',
+    reserve: 'Rezerwuj',
+    prices: 'Cennik',
+    call: 'Zadzwoń',
+    onSite: 'Na miejscu',
+    before: 'Przed przyjazdem',
+    beforeText: 'Dojazd, zameldowanie, wyposażenie domków i zasady pobytu w jednym miejscu.',
+    guide: 'Przewodnik dla gości',
+    guideHref: '/info/',
+  },
+  en: {
+    title: 'Available dates',
+    updated: 'Updated',
+    twins: 'the cottages are identical',
+    d1: 'Cottage D1',
+    d2: 'Cottage D2',
+    none: 'fully booked',
+    minStay: 'Minimum stay: ' + minNights + ' nights.',
+    how: 'Book online, by phone or via WhatsApp.',
+    reserve: 'Book Now',
+    prices: 'Prices',
+    call: 'Call',
+    onSite: 'On site',
+    before: 'Before arrival',
+    beforeText: 'Directions, check-in, cottage equipment and house rules in one place.',
+    guide: 'Guest guide',
+    guideHref: '/info/en/',
+  },
+  de: {
+    title: 'Freie Termine',
+    updated: 'Aktualisiert',
+    twins: 'die Ferienhäuser sind identisch',
+    d1: 'Ferienhaus D1',
+    d2: 'Ferienhaus D2',
+    none: 'ausgebucht',
+    minStay: 'Mindestaufenthalt: ' + minNights + ' Nächte.',
+    how: 'Buchung online, telefonisch oder per WhatsApp.',
+    reserve: 'Reservieren',
+    prices: 'Preise',
+    call: 'Anrufen',
+    onSite: 'Vor Ort',
+    before: 'Vor der Anreise',
+    beforeText: 'Anreise, Check-in, Ausstattung und Hausregeln an einem Ort.',
+    guide: 'Gästeinfo',
+    guideHref: '/info/de/',
+  },
+}[lang];
 
-// Pozycje listy „Na miejscu” (z config.ts), które pokazują zdjęcie po najechaniu lub dotknięciu.
-// item: pełny tekst pozycji dokładnie tak jak w config.ts, word: podświetlane słowo.
-// Jeśli tekst pozycji w config.ts zostanie zmieniony, pozycja wyświetli się normalnie, bez zdjęcia.
-type Hint = { item: string; word: string; image: ImageMetadata; alt: string };
-const hints: Record<'pl' | 'en' | 'de', Hint[]> = {
+// --- Daty ---
+const monthNames = {
+  pl: ['sty', 'lut', 'mar', 'kwi', 'maj', 'cze', 'lip', 'sie', 'wrz', 'paź', 'lis', 'gru'],
+  en: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  de: ['Jan.', 'Feb.', 'März', 'Apr.', 'Mai', 'Juni', 'Juli', 'Aug.', 'Sept.', 'Okt.', 'Nov.', 'Dez.'],
+}[lang];
+
+function parseDate(s: string) {
+  const p = s.split('-');
+  return new Date(Date.UTC(Number(p[0]), Number(p[1]) - 1, Number(p[2])));
+}
+
+function dayMonth(d: Date) {
+  const day = d.getUTCDate();
+  const mon = monthNames[d.getUTCMonth()];
+  return lang === 'de' ? day + '. ' + mon : day + ' ' + mon;
+}
+
+function formatRange(a: Date, b: Date) {
+  if (a.getUTCMonth() === b.getUTCMonth() && a.getUTCFullYear() === b.getUTCFullYear()) {
+    const mon = monthNames[a.getUTCMonth()];
+    if (lang === 'de') return a.getUTCDate() + '.–' + b.getUTCDate() + '. ' + mon;
+    return a.getUTCDate() + '–' + b.getUTCDate() + ' ' + mon;
+  }
+  return dayMonth(a) + ' – ' + dayMonth(b);
+}
+
+function nightsLabel(n: number) {
+  if (lang === 'en') return n === 1 ? '1 night' : n + ' nights';
+  if (lang === 'de') return n === 1 ? '1 Nacht' : n + ' Nächte';
+  const last = n % 10;
+  const lastTwo = n % 100;
+  if (n === 1) return '1 noc';
+  if (last >= 2 && last <= 4 && (lastTwo < 12 || lastTwo > 14)) return n + ' noce';
+  return n + ' nocy';
+}
+
+// Terminy, które się skończyły, pomijamy. Jeśli przyjazd już minął, liczymy od dziś.
+const now = new Date();
+const today = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
+
+function buildRanges(list: string[][]) {
+  const out: { label: string; nights: string }[] = [];
+  for (const pair of list) {
+    let from = parseDate(pair[0]);
+    const to = parseDate(pair[1]);
+    if (from < today) from = today;
+    const nights = Math.round((to.getTime() - from.getTime()) / 86400000);
+    if (nights < 1) continue;
+    out.push({ label: formatRange(from, to), nights: nightsLabel(nights) });
+  }
+  return out;
+}
+
+const cottages = [
+  { name: t.d1, ranges: buildRanges(d1) },
+  { name: t.d2, ranges: buildRanges(d2) },
+];
+const updatedLabel = dayMonth(parseDate(updated));
+
+// --- Udogodnienia (dymki ze zdjęciami jak dotąd) ---
+type Amenity = { label: string; tag?: string; word?: string; image?: ImageMetadata; alt?: string };
+const amenities: Amenity[] = {
   pl: [
-    { item: 'prywatne jacuzzi', word: 'prywatne jacuzzi', image: jacuzziImg, alt: 'Prywatne jacuzzi na terenie domku' },
-    { item: 'sauna', word: 'sauna', image: saunaImg, alt: 'Sauna Las Biala\'s w lesie' },
-    { item: 'balia do schładzania', word: 'balia do schładzania', image: baliaImg, alt: 'Balia z zimną wodą do schładzania przy saunie' },
-    { item: 'grill + węgiel', word: 'grill', image: grillImg, alt: 'Murowany grill przy domku' },
-    { item: 'rowery', word: 'rowery', image: roweryImg, alt: 'Rowery trekkingowe dla gości' },
-    { item: 'deski SUP', word: 'deski SUP', image: supImg, alt: 'Deski SUP dla gości' },
+    { label: 'sauna fińska', word: 'sauna fińska', image: saunaImg, alt: 'Sauna Las Biala\'s w lesie' },
+    { label: 'balia do schładzania', word: 'balia do schładzania', image: baliaImg, alt: 'Balia z zimną wodą do schładzania przy saunie' },
+    { label: 'prywatne jacuzzi', tag: 'za dopłatą', word: 'prywatne jacuzzi', image: jacuzziImg, alt: 'Prywatne jacuzzi na terenie domku' },
+    { label: 'grill + węgiel', word: 'grill', image: grillImg, alt: 'Murowany grill przy domku' },
+    { label: 'rowery', word: 'rowery', image: roweryImg, alt: 'Rowery trekkingowe dla gości' },
+    { label: 'deski SUP', tag: 'maj–paź', word: 'deski SUP', image: supImg, alt: 'Deski SUP dla gości' },
+    { label: 'hamaki', tag: 'w sezonie' },
+    { label: 'Wi-Fi i Netflix' },
   ],
   en: [
-    { item: 'Private jacuzzi', word: 'Private jacuzzi', image: jacuzziImg, alt: 'Private jacuzzi on the cottage grounds' },
-    { item: 'Finnish sauna', word: 'Finnish sauna', image: saunaImg, alt: 'Las Biala\'s sauna in the forest' },
-    { item: 'Cold plunge tub', word: 'Cold plunge tub', image: baliaImg, alt: 'Cold plunge tub next to the sauna' },
-    { item: 'BBQ grill + charcoal', word: 'BBQ grill', image: grillImg, alt: 'Brick barbecue grill by the cottage' },
-    { item: 'Bikes', word: 'Bikes', image: roweryImg, alt: 'Trekking bikes for guests' },
-    { item: 'SUP boards', word: 'SUP boards', image: supImg, alt: 'SUP boards for guests' },
+    { label: 'Finnish sauna', word: 'Finnish sauna', image: saunaImg, alt: 'Las Biala\'s sauna in the forest' },
+    { label: 'Cold plunge tub', word: 'Cold plunge tub', image: baliaImg, alt: 'Cold plunge tub next to the sauna' },
+    { label: 'Private jacuzzi', tag: 'extra charge', word: 'Private jacuzzi', image: jacuzziImg, alt: 'Private jacuzzi on the cottage grounds' },
+    { label: 'BBQ grill + charcoal', word: 'BBQ grill', image: grillImg, alt: 'Brick barbecue grill by the cottage' },
+    { label: 'Bikes', word: 'Bikes', image: roweryImg, alt: 'Trekking bikes for guests' },
+    { label: 'SUP boards', tag: 'May–Oct', word: 'SUP boards', image: supImg, alt: 'SUP boards for guests' },
+    { label: 'Hammocks', tag: 'in season' },
+    { label: 'Wi-Fi and Netflix' },
   ],
   de: [
-    { item: 'privater Whirlpool', word: 'privater Whirlpool', image: jacuzziImg, alt: 'Privater Whirlpool auf dem Grundstück' },
-    { item: 'Finnische Sauna', word: 'Finnische Sauna', image: saunaImg, alt: 'Sauna von Las Biala\'s im Wald' },
-    { item: 'Kaltwasserbottich', word: 'Kaltwasserbottich', image: baliaImg, alt: 'Kaltwasserbottich neben der Sauna' },
-    { item: 'Grill + Holzkohle', word: 'Grill', image: grillImg, alt: 'Gemauerter Grill am Ferienhaus' },
-    { item: 'Fahrräder', word: 'Fahrräder', image: roweryImg, alt: 'Trekkingräder für Gäste' },
-    { item: 'SUP-Boards', word: 'SUP-Boards', image: supImg, alt: 'SUP-Boards für Gäste' },
+    { label: 'Finnische Sauna', word: 'Finnische Sauna', image: saunaImg, alt: 'Sauna von Las Biala\'s im Wald' },
+    { label: 'Kaltwasserbottich', word: 'Kaltwasserbottich', image: baliaImg, alt: 'Kaltwasserbottich neben der Sauna' },
+    { label: 'Privater Whirlpool', tag: 'gegen Aufpreis', word: 'Privater Whirlpool', image: jacuzziImg, alt: 'Privater Whirlpool auf dem Grundstück' },
+    { label: 'Grill + Holzkohle', word: 'Grill', image: grillImg, alt: 'Gemauerter Grill am Ferienhaus' },
+    { label: 'Fahrräder', word: 'Fahrräder', image: roweryImg, alt: 'Trekkingräder für Gäste' },
+    { label: 'SUP-Boards', tag: 'Mai–Okt.', word: 'SUP-Boards', image: supImg, alt: 'SUP-Boards für Gäste' },
+    { label: 'Hängematten', tag: 'in der Saison' },
+    { label: 'WLAN und Netflix' },
   ],
-};
+}[lang];
 
-let infoBlock: string = (currentData as { infoBlock?: string }).infoBlock ?? '';
-for (const h of hints[lang]) {
-  const needle = `<span class="promo-bullet"></span>${h.item}</li>`;
-  if (!infoBlock.includes(needle)) continue;
-  const html = await imageHint({ word: h.word, image: h.image, alt: h.alt });
-  const withHint = `<span class="promo-bullet"></span>${insertHint(h.item, h.word, html)}</li>`;
-  infoBlock = infoBlock.replace(needle, () => withHint);
+const amenityHtml: string[] = [];
+for (const a of amenities) {
+  let html = a.label;
+  if (a.word && a.image && a.alt) {
+    const hint = await imageHint({ word: a.word, image: a.image, alt: a.alt });
+    html = insertHint(a.label, a.word, hint);
+  }
+  amenityHtml.push(html);
 }
+
+const boxClass = 'flex-[0_0_49%] max-[1367px]:flex-[0_0_100%] max-[1367px]:w-full border border-[#ccc] rounded-[5px] py-[20px] px-[40px] mb-5 bg-white text-base text-left max-[768px]:max-w-[96vw] max-[768px]:mx-auto max-[768px]:p-5 max-[768px]:mt-[1px] max-[768px]:mb-[20px] max-[768px]:text-[1rem]';
 ---
 <div id="terminy" class="flex gap-[20px] items-stretch max-w-[73%] mx-auto flex-wrap max-[1367px]:flex-col max-[1367px]:max-w-full max-[1367px]:gap-[1px] max-[1367px]:px-4 max-[768px]:px-0">
-<div class="flex-[0_0_49%] max-[1367px]:flex-[0_0_100%] max-[1367px]:w-full border border-[#ccc] rounded-[5px] py-[10px] px-[40px] mb-5 bg-white text-base text-center max-[768px]:max-w-[96vw] max-[768px]:mx-auto max-[768px]:p-5 max-[768px]:mt-[1px] max-[768px]:mb-[20px] max-[768px]:text-[1rem]">
-    <Fragment set:html={currentData.availabilityBlock} />
+
+  <!-- Wolne terminy -->
+  <div class={boxClass}>
+    <h2 class="text-[1.4rem] font-semibold text-brand-black mb-1">{t.title}</h2>
+    <p class="text-[0.85rem] text-[#777] mb-3">{t.updated}: {updatedLabel} · {t.twins}</p>
+
+    <div class="border-t border-[#e5e5e5]">
+      {cottages.map((c) => (
+        <div class="flex items-center justify-between gap-3 py-2.5 border-b border-[#e5e5e5] flex-wrap">
+          <span class="font-medium text-brand-black">{c.name}</span>
+          <span class="flex flex-wrap justify-end gap-1.5">
+            {c.ranges.length > 0
+              ? c.ranges.map((r) => (
+                  <span class="inline-block rounded-full bg-[#E8F2EA] text-[#2F6940] text-[0.85rem] px-3 py-1 whitespace-nowrap">{r.label} · {r.nights}</span>
+                ))
+              : <span class="text-[0.9rem] text-[#777]">{t.none}</span>}
+          </span>
+        </div>
+      ))}
+    </div>
+
+    <p class="text-[0.9rem] text-[#555] mt-3">{t.minStay} {t.how}</p>
+
+    <div class="flex flex-col gap-2 mt-4">
+      <a href="#" onclick="openReservation(); return false;" class="flex justify-center items-center h-[46px] w-full text-base font-medium text-white bg-[#2F6940] no-underline rounded-[6px] hover:bg-[#40a95c] transition-colors">{t.reserve}</a>
+      <a href="#cennik" class="flex justify-center items-center h-[46px] w-full text-base font-medium text-[#B5550E] bg-white border border-[#B5550E] no-underline rounded-[6px] hover:bg-[#B5550E] hover:text-white transition-colors">{t.prices}</a>
+    </div>
+
+    <div class="flex justify-center gap-6 mt-4 text-[0.95rem]">
+      <a href="tel:+48789773285" class="flex items-center gap-1.5 text-[#2F6940] font-semibold no-underline hover:underline">
+        <img src={phoneGreen.src} width="20" height="20" alt="" />
+        <span class="hidden sm:inline">789 773 285</span><span class="sm:hidden">{t.call}</span>
+      </a>
+      <a href="https://wa.me/48660194187" class="flex items-center gap-1.5 text-[#2F6940] font-semibold no-underline hover:underline">
+        <img src={whatsappGreen.src} width="20" height="20" alt="" />
+        <span class="hidden sm:inline">660 194 187</span><span class="sm:hidden">WhatsApp</span>
+      </a>
+    </div>
   </div>
-  <div class="flex-[0_0_49%] max-[1367px]:flex-[0_0_100%] max-[1367px]:w-full border border-[#ccc] rounded-[5px] py-[10px] px-[40px] mb-5 bg-white text-base text-center max-[768px]:max-w-[96vw] max-[768px]:mx-auto max-[768px]:p-5 max-[768px]:mt-[1px] max-[768px]:mb-[20px] max-[768px]:text-[1rem]">
-    <Fragment set:html={infoBlock} />
+
+  <!-- Na miejscu + przed przyjazdem -->
+  <div class={boxClass}>
+    <h2 class="text-[1.4rem] font-semibold text-brand-black mb-3">{t.onSite}</h2>
+    <ul class="grid grid-cols-2 min-[1600px]:grid-cols-3 gap-x-4 gap-y-2 list-none m-0 p-0">
+      {amenityHtml.map((html, i) => (
+        <li class="flex items-baseline gap-2">
+          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2F6940" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 translate-y-[2px]"><path d="M5 12l5 5L20 7"/></svg>
+          <span>
+            <span set:html={html} />
+            {amenities[i].tag && <span class="text-[0.8rem] text-[#777]"> · {amenities[i].tag}</span>}
+          </span>
+        </li>
+      ))}
+    </ul>
+
+    <h3 class="text-[1.1rem] font-semibold text-brand-black mt-6 mb-1">{t.before}</h3>
+    <p class="text-[0.9rem] text-[#555] mb-3">{t.beforeText}</p>
+    <a href={t.guideHref} class="inline-flex justify-center items-center gap-1.5 h-[46px] w-full text-base font-medium text-brand-black bg-white border border-[#bbb] no-underline rounded-[6px] hover:border-[#2F6940] hover:text-[#2F6940] transition-colors">
+      {t.guide}
+      <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+    </a>
   </div>
 </div>
 

@@ -310,7 +310,10 @@ const tipClass = 'invisible opacity-0 w-[320px] bg-black/70 text-white text-cent
     <p set:html={t.guide.text.replace('{#guide}', mainGuideHref)}></p>
   </div>
   <div class="flex justify-center mt-[30px]">
-    <a class="inline-flex justify-center items-center w-auto h-[46px] text-base font-normal text-white bg-[#B5550E] border-none text-center no-underline normal-case cursor-pointer mb-[30px] mt-[10px] px-[15px] rounded-[6px] hover:bg-[#c4621a] transition-colors" href={mainGuideHref} target="_blank" rel="noopener">{t.guide.btn}</a>
+    <a class="inline-flex justify-center items-center gap-1.5 h-[46px] w-full max-w-[320px] text-base font-medium text-brand-black bg-white border border-[#bbb] text-center no-underline normal-case cursor-pointer mb-[30px] mt-[10px] px-[15px] rounded-[6px] hover:border-[#2F6940] hover:text-[#2F6940] transition-colors" href={mainGuideHref} target="_blank" rel="noopener">
+      {t.guide.btn}
+      <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+    </a>
   </div>
 </div>
 

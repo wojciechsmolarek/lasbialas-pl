@@ -14,6 +14,7 @@ import DirectionsSection from '../../components/sections/DirectionsSection.astro
 import SurroundingsSection from '../../components/sections/SurroundingsSection.astro';
 import FAQSection from '../../components/sections/FAQSection.astro';
 import ReviewsSection from '../../components/sections/ReviewsSection.astro';
+import RatingsBar from '../../components/sections/RatingsBar.astro';
 
 const lang = 'de';
 ---
@@ -25,6 +26,7 @@ const lang = 'de';
   canonical="https://lasbialas.pl/de"
   isHomePage={true}
 >
+  <RatingsBar lang={lang} />
   <Gallery lang={lang} />
   <AmenitiesSection lang={lang} />
   <TopBoxes lang={lang} />
@@ -32,13 +34,13 @@ const lang = 'de';
   <InteriorsSection lang={lang} />
   <SaunaJacuzziSection lang={lang} />
   <SaunaGallery lang={lang} />
+  <ReviewsSection lang={lang} />
   <PricingSection lang={lang} />
-  <JacuzziRentalSection lang={lang} />
   <BenefitsSection lang={lang} />
+  <JacuzziRentalSection lang={lang} />
   <DirectionsSection lang={lang} />
   <SurroundingsSection lang={lang} />
   <FAQSection lang={lang} />
-  <ReviewsSection lang={lang} />
 
   <script is:inline>
     window.copyCode = function (id, btn) {

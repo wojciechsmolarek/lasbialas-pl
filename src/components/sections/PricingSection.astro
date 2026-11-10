@@ -7,6 +7,7 @@ import grill from '../../assets/foto/grill.webp';
 import sup from '../../assets/foto/sup.webp';
 import ImageHints from '../ui/ImageHints.astro';
 import { imageHint, insertHint } from '../ui/imageHint';
+import { priceYear, priceFrom4Nights, price3Nights, price2Nights, extraPersonPrice } from '../../data/pricing';
 
 interface Props {
   lang: 'pl' | 'en' | 'de';
@@ -16,17 +17,17 @@ const { lang } = Astro.props;
 
 const t = {
   pl: {
-    title: 'Cennik 2026',
+    title: 'Cennik ' + priceYear,
     cols: ['Długość pobytu', 'Cena za dobę (1–2 os.)'],
     rows: [
-      ['od 4 dób', '<strong>475 zł *</strong>'],
-      ['3 doby', '495 zł *'],
-      ['2 doby', '525 zł'],
+      ['od 4 dób', '<strong>' + priceFrom4Nights + ' zł *</strong>'],
+      ['3 doby', price3Nights + ' zł *'],
+      ['2 doby', price2Nights + ' zł'],
     ],
     stayHours: 'Doba pobytu trwa od 16:00 do 12:00 (poza sezonem letnim możliwość ustalenia innych godzin). Nie pobieramy opłat licznikowych ani opłat za sprzątanie. Wystawiamy faktury VAT.',
     notes: [
       'Minimalny pobyt to <b>2 doby</b>, nie wynajmujemy na jedną noc.',
-      '3. i 4. osoba: <b>+120 zł</b> za osobę za dobę.',
+      '3. i 4. osoba: <b>+' + extraPersonPrice + ' zł</b> za osobę za dobę.',
       '* rabat naliczany automatycznie w systemie rezerwacji.',
     ],
     reserve: 'Rezerwuj',
@@ -43,17 +44,17 @@ const t = {
     jacuzziNote: 'Jacuzzi: za dopłatą, według <a href="#cennik-jacuzzi" class="text-brand-green underline">cennika jacuzzi</a>.',
   },
   en: {
-    title: 'Pricing 2026',
+    title: 'Pricing ' + priceYear,
     cols: ['Length of stay', 'Price per night (1–2 guests)'],
     rows: [
-      ['4+ nights', '<strong>475 PLN *</strong>'],
-      ['3 nights', '495 PLN *'],
-      ['2 nights', '525 PLN'],
+      ['4+ nights', '<strong>' + priceFrom4Nights + ' PLN *</strong>'],
+      ['3 nights', price3Nights + ' PLN *'],
+      ['2 nights', price2Nights + ' PLN'],
     ],
     stayHours: 'Check-in from 4:00 PM, check-out by noon (outside the summer season, other times can be arranged). No utility or cleaning fees. VAT invoices available.',
     notes: [
       'Minimum stay is <b>2 nights</b>, one-night stays are not available.',
-      '3rd and 4th guest: <b>+120 PLN</b> per person per night.',
+      '3rd and 4th guest: <b>+' + extraPersonPrice + ' PLN</b> per person per night.',
       '* Discount is applied automatically in the booking system.',
     ],
     reserve: 'Book Now',
@@ -69,17 +70,17 @@ const t = {
     jacuzziNote: 'Jacuzzi: extra fee, see the <a href="#cennik-jacuzzi" class="text-brand-green underline">jacuzzi price list</a>.',
   },
   de: {
-    title: 'Preise 2026',
+    title: 'Preise ' + priceYear,
     cols: ['Aufenthaltsdauer', 'Preis pro Nacht (1–2 Pers.)'],
     rows: [
-      ['ab 4 Nächten', '<strong>475 PLN *</strong>'],
-      ['3 Nächte', '495 PLN *'],
-      ['2 Nächte', '525 PLN'],
+      ['ab 4 Nächten', '<strong>' + priceFrom4Nights + ' PLN *</strong>'],
+      ['3 Nächte', price3Nights + ' PLN *'],
+      ['2 Nächte', price2Nights + ' PLN'],
     ],
     stayHours: 'Anreise ab 16:00 Uhr, Abreise bis 12:00 Uhr (außerhalb der Sommersaison sind andere Zeiten nach Absprache möglich). Es fallen keine Verbrauchs- oder Reinigungsgebühren an. Wir stellen Rechnungen mit MwSt. aus.',
     notes: [
       'Der Mindestaufenthalt beträgt <b>2 Nächte</b>, Buchungen für nur eine Nacht sind nicht möglich.',
-      '3. und 4. Person: <b>+120 PLN</b> pro Person und Nacht.',
+      '3. und 4. Person: <b>+' + extraPersonPrice + ' PLN</b> pro Person und Nacht.',
       '* Der Rabatt wird automatisch im Buchungssystem angewendet.',
     ],
     reserve: 'Reservieren',

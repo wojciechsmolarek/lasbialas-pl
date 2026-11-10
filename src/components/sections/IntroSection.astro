@@ -40,9 +40,9 @@ const t = {
     grillAlt: 'Murowany grill przy domku',
     bikesWord: 'rowery i deski SUP',
     bikesAlt: 'Rowery trekkingowe i deski SUP dla gości',
-    banner1: 'Sauna i jacuzzi',
+    banner1: 'Prywatnie i kameralnie',
     banner2: 'w środku lasu',
-    bannerSub: 'PRYWATNIE · KAMERALNIE · 18+',
+    bannerSub: 'SAUNA · JACUZZI · TYLKO 18+',
     altJacuzzi1: 'Prywatne jacuzzi przy domku, wśród sosen',
     altSauna: 'Sauna fińska z balią w lesie',
     altJacuzzi2: 'Prywatne jacuzzi na terenie domku',
@@ -72,9 +72,9 @@ const t = {
     grillAlt: 'Brick barbecue grill by the cottage',
     bikesWord: 'bikes and SUP boards',
     bikesAlt: 'Trekking bikes and SUP boards for guests',
-    banner1: 'Sauna and jacuzzi',
+    banner1: 'Private and secluded',
     banner2: 'deep in the forest',
-    bannerSub: 'PRIVATE · SECLUDED · 18+',
+    bannerSub: 'SAUNA · JACUZZI · ADULTS ONLY',
     altJacuzzi1: 'Private jacuzzi by the cottage, among pine trees',
     altSauna: 'Finnish sauna with a cold plunge tub in the forest',
     altJacuzzi2: 'Private jacuzzi on the cottage grounds',
@@ -104,9 +104,9 @@ const t = {
     grillAlt: 'Gemauerter Grill am Ferienhaus',
     bikesWord: 'Fahrräder und SUP-Boards',
     bikesAlt: 'Trekkingräder und SUP-Boards für Gäste',
-    banner1: 'Sauna und Whirlpool',
+    banner1: 'Privat und ruhig',
     banner2: 'mitten im Wald',
-    bannerSub: 'PRIVAT · RUHIG · 18+',
+    bannerSub: 'SAUNA · WHIRLPOOL · NUR 18+',
     altJacuzzi1: 'Privater Whirlpool am Ferienhaus, zwischen Kiefern',
     altSauna: 'Finnische Sauna mit Kaltwasserbottich im Wald',
     altJacuzzi2: 'Privater Whirlpool auf dem Grundstück',
@@ -141,7 +141,7 @@ const introP1 = insertHint(insertHint(t.p1, '{lake}', lakeHint), '{beach}', beac
   <p class="text-base leading-[1.6]" set:html={introP1}></p>
   <p class="text-base leading-[1.6]" set:html={p2}></p>
 
-  {/* Banner: Sauna i jacuzzi w środku lasu */}
+  {/* Banner: hasło klimatu (nie nagłówek, żeby nie dublować sekcji „Sauna i jacuzzi”) */}
   <div class="relative w-full h-[300px] max-[768px]:h-[200px] mt-[50px] mb-[50px] rounded-[6px] overflow-hidden">
     <div class="absolute top-0 left-0 h-full w-[38%]">
       <Picture src={lasbialasJacuzzi1} alt={t.altJacuzzi1 ?? ''} width={600} height={400} widths={[300, 450, 600]} sizes="(max-width: 768px) 40vw, 300px" formats={['avif', 'webp']} loading="lazy" decoding="async" class="w-full h-full object-cover" />
@@ -154,9 +154,9 @@ const introP1 = insertHint(insertHint(t.p1, '{lake}', lakeHint), '{beach}', beac
     </div>
     <div class="absolute inset-0 bg-black/45"></div>
     <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-      <h3 class="text-white font-bold leading-[1.15] text-[2.4rem] max-[768px]:text-[1.4rem] drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)]">
+      <p class="text-white font-bold leading-[1.15] text-[2.4rem] max-[768px]:text-[1.4rem] drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)]">
         {t.banner1}<br />{t.banner2}
-      </h3>
+      </p>
       <p class="text-white/90 mt-4 max-[768px]:mt-2 text-[0.95rem] max-[768px]:text-[0.7rem] tracking-[0.2em] drop-shadow-[0_1px_4px_rgba(0,0,0,0.7)]">
         {t.bannerSub}
       </p>

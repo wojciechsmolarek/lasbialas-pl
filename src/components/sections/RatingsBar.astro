@@ -1,0 +1,40 @@
+---
+import { ratings } from '../../data/ratings';
+
+interface Props {
+  lang: 'pl' | 'en' | 'de';
+}
+
+const { lang } = Astro.props;
+
+// Pasek ocen pod nagłówkiem strony. Oceny edytuje się w src/data/ratings.ts.
+const t = {
+  pl: { label: 'Oceny gości', reviews: 'opinii', title: 'Zobacz opinie gości' },
+  en: { label: 'Guest ratings', reviews: 'reviews', title: 'See guest reviews' },
+  de: { label: 'Gästebewertungen', reviews: 'Bewertungen', title: 'Gästebewertungen ansehen' },
+}[lang];
+
+const fmt = (n: number) => (lang === 'en' ? n.toFixed(1) : n.toFixed(1).replace('.', ','));
+
+// Odmiana „opinia” dla czytników ekranu (PL: 2–4 opinie, 5+ opinii).
+function reviewsWord(n: number) {
+  if (lang !== 'pl') return t.reviews;
+  if (n === 1) return 'opinia';
+  const last = n % 10;
+  const lastTwo = n % 100;
+  return last >= 2 && last <= 4 && (lastTwo < 12 || lastTwo > 14) ? 'opinie' : 'opinii';
+}
+---
+
+<a href="#opinie" title={t.title} class="group flex flex-wrap justify-center items-center gap-x-5 gap-y-1 mt-2.5 mb-2.5 px-4 py-2 text-[0.95rem] max-[768px]:text-[0.85rem] max-[768px]:gap-x-3 text-brand-black no-underline">
+  <span class="flex items-center gap-1.5">
+    <span class="text-[#FFB300] tracking-wider" aria-hidden="true">★★★★★</span>
+    <span class="font-medium max-[768px]:sr-only">{t.label}:</span>
+  </span>
+  {ratings.map((r) => (
+    <span class="whitespace-nowrap group-hover:underline">
+      <b>{fmt(r.score)}</b>{r.max === 10 && <span class="text-[#777] text-[0.8em]">/10</span>} {r.name}
+      <span class="text-[#777] text-[0.85em]">({r.count}<span class="sr-only"> {reviewsWord(r.count)}</span>)</span>
+    </span>
+  ))}
+</a>

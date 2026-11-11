@@ -1,6 +1,8 @@
 ---
 import { faqData } from '../../data/faqData';
 import lasbialas8 from '../../assets/foto/lasbialas8.webp';
+import { priceFrom, priceTo, priceFrom4Nights, extraPersonPrice, jacuzzi2to3Nights } from '../../data/pricing';
+import { minNights } from '../../data/availability';
 
 interface Props {
   lang: 'pl' | 'en' | 'de';
@@ -19,7 +21,7 @@ const texts = {
     name: "Las Biala's – domki z sauną i jacuzzi w Puszczy Noteckiej",
     description: 'Dwa całoroczne domki tylko dla dorosłych w Białej, w Puszczy Noteckiej, około 400 m od plaży nad Jeziorem Białym. Sauna fińska w cenie pobytu, prywatne jacuzzi za dopłatą, rowery, deski SUP i grill.',
     mainOffer: 'Pobyt w domku dla 1–2 osób, cena za dobę',
-    mainOfferDesc: 'Cena za dobę przy pobycie od 4 dób. Obejmuje saunę, rowery, deski SUP i grill. Minimalny pobyt: 2 doby. 3. i 4. osoba: +120 zł za osobę za dobę.',
+    mainOfferDesc: 'Cena za dobę przy pobycie od 4 dób. Obejmuje saunę, rowery, deski SUP i grill. Minimalny pobyt: ' + minNights + ' doby. 3. i 4. osoba: +' + extraPersonPrice + ' zł za osobę za dobę.',
     jacuzziOffer: 'Wynajem prywatnego jacuzzi',
     jacuzziOfferDesc: 'Cena za pobyt 2–3 doby dla 1–2 osób, z opłatą za przygotowanie jacuzzi. Cena zależy od długości pobytu i liczby osób.',
     amenities: ['Sauna fińska', 'Prywatne jacuzzi (za dopłatą)', 'Bezpłatne Wi-Fi', 'Bezpłatny parking', 'Grill', 'Rowery', 'Deski SUP', 'Smart TV z Netflixem', 'Zmywarka', 'Ogrzewanie z termostatem'],
@@ -28,7 +30,7 @@ const texts = {
     name: "Las Biala's – cottages with sauna and jacuzzi in the Noteć Forest",
     description: 'Two year-round, adults-only cottages in Biała, in the Noteć Forest, about 400 m from the beach on Lake Białe. Finnish sauna included in the stay, private jacuzzi for an extra fee, bikes, SUP boards and a barbecue grill.',
     mainOffer: 'Cottage stay for 1–2 guests, price per night',
-    mainOfferDesc: 'Price per night for stays of 4+ nights. Includes the sauna, bikes, SUP boards and barbecue grill. Minimum stay: 2 nights. 3rd and 4th guest: +120 PLN per person per night.',
+    mainOfferDesc: 'Price per night for stays of 4+ nights. Includes the sauna, bikes, SUP boards and barbecue grill. Minimum stay: ' + minNights + ' nights. 3rd and 4th guest: +' + extraPersonPrice + ' PLN per person per night.',
     jacuzziOffer: 'Private jacuzzi rental',
     jacuzziOfferDesc: 'Price for a 2–3 night stay for 1–2 guests, including the jacuzzi preparation fee. The price depends on the length of stay and the number of guests.',
     amenities: ['Finnish sauna', 'Private jacuzzi (extra fee)', 'Free Wi-Fi', 'Free parking', 'Barbecue grill', 'Bikes', 'SUP boards', 'Smart TV with Netflix', 'Dishwasher', 'Heating with thermostat'],
@@ -37,7 +39,7 @@ const texts = {
     name: "Las Biala's – Ferienhäuser mit Sauna und Whirlpool in der Puszcza Notecka",
     description: 'Zwei ganzjährige Ferienhäuser nur für Erwachsene in Biała, in der Puszcza Notecka, etwa 400 m vom Strand am See Białe. Finnische Sauna im Preis inbegriffen, privater Whirlpool gegen Aufpreis, Fahrräder, SUP-Boards und Grill.',
     mainOffer: 'Aufenthalt im Ferienhaus für 1–2 Personen, Preis pro Nacht',
-    mainOfferDesc: 'Preis pro Nacht bei Aufenthalten ab 4 Nächten. Inklusive Sauna, Fahrrädern, SUP-Boards und Grill. Mindestaufenthalt: 2 Nächte. 3. und 4. Person: +120 PLN pro Person und Nacht.',
+    mainOfferDesc: 'Preis pro Nacht bei Aufenthalten ab 4 Nächten. Inklusive Sauna, Fahrrädern, SUP-Boards und Grill. Mindestaufenthalt: ' + minNights + ' Nächte. 3. und 4. Person: +' + extraPersonPrice + ' PLN pro Person und Nacht.',
     jacuzziOffer: 'Miete des privaten Whirlpools',
     jacuzziOfferDesc: 'Preis für einen Aufenthalt von 2–3 Nächten für 1–2 Personen, inklusive Vorbereitungsgebühr. Der Preis hängt von der Aufenthaltsdauer und der Personenzahl ab.',
     amenities: ['Finnische Sauna', 'Privater Whirlpool (gegen Aufpreis)', 'Kostenloses WLAN', 'Kostenloser Parkplatz', 'Grill', 'Fahrräder', 'SUP-Boards', 'Smart TV mit Netflix', 'Spülmaschine', 'Heizung mit Thermostat'],
@@ -78,7 +80,7 @@ const schema = {
         'https://alohacamp.com/pl/property/las-biala-3828',
         'https://www.google.com/maps?cid=2914860482544137358',
       ],
-      priceRange: '475–525 PLN',
+      priceRange: `${priceFrom}–${priceTo} PLN`,
       currenciesAccepted: 'PLN',
       checkinTime: '16:00',
       checkoutTime: '12:00',
@@ -96,13 +98,13 @@ const schema = {
           description: texts.mainOfferDesc,
           priceSpecification: {
             '@type': 'UnitPriceSpecification',
-            price: 475,
+            price: priceFrom4Nights,
             priceCurrency: 'PLN',
             unitCode: 'DAY',
           },
           eligibleQuantity: {
             '@type': 'QuantitativeValue',
-            minValue: 2,
+            minValue: minNights,
             unitCode: 'DAY',
           },
           url: `${pageUrl}#cennik`,
@@ -111,7 +113,7 @@ const schema = {
           '@type': 'Offer',
           name: texts.jacuzziOffer,
           description: texts.jacuzziOfferDesc,
-          price: 480,
+          price: jacuzzi2to3Nights,
           priceCurrency: 'PLN',
           url: `${pageUrl}#cennik-jacuzzi`,
         },

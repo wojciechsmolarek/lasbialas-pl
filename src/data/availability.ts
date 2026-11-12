@@ -7,7 +7,7 @@
 // Pusta lista [] = „brak wolnych terminów” dla danego domku.
 
 // Data ostatniej aktualizacji terminów (pokazywana w boksie).
-export const updated = '2026-11-11';
+export const updated = '2026-11-13';
 
 // Minimalny pobyt (liczba dób).
 export const minNights = 2;
@@ -17,5 +17,5 @@ export const d1: string[][] = [
 ];
 
 export const d2: string[][] = [
-  ['2026-11-11', '2026-11-30'],
+  ['2026-11-13', '2026-11-30'],
 ];

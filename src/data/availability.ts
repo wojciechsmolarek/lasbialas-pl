@@ -7,7 +7,7 @@
 // Pusta lista [] = „brak wolnych terminów” dla danego domku.
 
 // Data ostatniej aktualizacji terminów (pokazywana w boksie).
-export const updated = '2026-11-13';
+export const updated = '2026-11-12';
 
 // Minimalny pobyt (liczba dób).
 export const minNights = 2;

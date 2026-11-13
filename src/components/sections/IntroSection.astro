@@ -1,15 +1,19 @@
 ---
 import { Picture } from 'astro:assets';
-import lasbialasJacuzzi1 from '../../assets/foto/lasbialas-jacuzzi1.webp';
-import sauna1 from '../../assets/foto/sauna1.webp';
-import lasbialasJacuzzi3 from '../../assets/foto/lasbialas-jacuzzi3.webp';
+import w1 from '../../assets/foto/w1.webp';
+import w2 from '../../assets/foto/w2.webp';
+import w3 from '../../assets/foto/w3.webp';
+import w4 from '../../assets/foto/w4.webp';
 import w6 from '../../assets/foto/w6.webp';
-import lasbialas4 from '../../assets/foto/lasbialas4.webp';
-import lasbialas7 from '../../assets/foto/lasbialas7.webp';
-import balia from '../../assets/foto/balia.jpg';
-import grill from '../../assets/foto/grill.webp';
-import jezioroBiale from '../../assets/foto/jezioro-biale.webp';
-import plaza from '../../assets/foto/plaza.webp';
+import w7 from '../../assets/foto/w7.webp';
+import w13 from '../../assets/foto/w13.webp';
+import w15 from '../../assets/foto/w15.webp';
+import w17 from '../../assets/foto/w17.webp';
+import w18 from '../../assets/foto/w18.webp';
+import wiatrak from '../../assets/foto/wiatrak.webp';
+import ekspres from '../../assets/foto/ekspres.webp';
+import lodowka from '../../assets/foto/lodowka.webp';
+import type { ImageMetadata } from 'astro';
 import ImageHints from '../ui/ImageHints.astro';
 import { imageHint, insertHint } from '../ui/imageHint';
 
@@ -21,163 +25,297 @@ const { lang } = Astro.props;
 
 const t = {
   pl: {
-    title: 'Całoroczne domki na wynajem w Puszczy Noteckiej',
-    p1: 'Zapraszamy do Las Biala\'s w Białej, wsi nad {lake}, w sercu Puszczy Noteckiej. Z dala od miejskiego zgiełku, na ogrodzonym leśnym terenie, około 400 m od {beach}, stoją dwa całoroczne domki przeznaczone dla dorosłych gości.',
-    p2: 'Na miejscu jest {sauna} z {tub}, a za dopłatą również {jacuzzi} przy domku. Bez dodatkowych opłat dostępne są {grill}, {bikes}. Domki są ogrzewane przez cały rok, a temperaturę w każdym pomieszczeniu ustawia się osobnym {thermostat}.',
-    lakeWord: 'Jeziorem Białym',
-    lakeAlt: 'Jezioro Białe w Puszczy Noteckiej',
-    beachWord: 'plaży',
-    beachAlt: 'Plaża nad Jeziorem Białym',
-    thermostatWord: 'termostatem',
-    thermostatAlt: 'Termostat ogrzewania w domku',
-    tubWord: 'balią',
-    tubAlt: 'Balia z zimną wodą do schładzania przy saunie',
-    saunaWord: 'sauna fińska',
-    saunaAlt: 'Wnętrze sauny fińskiej',
-    jacuzziWord: 'prywatne jacuzzi',
-    jacuzziAlt: 'Prywatne jacuzzi na terenie domku',
-    grillWord: 'grill',
-    grillAlt: 'Murowany grill przy domku',
-    bikesWord: 'rowery i deski SUP',
-    bikesAlt: 'Rowery trekkingowe i deski SUP dla gości',
-    banner1: 'Prywatnie i kameralnie',
-    banner2: 'w środku lasu',
-    bannerSub: 'SAUNA · JACUZZI · TYLKO 18+',
-    altJacuzzi1: 'Prywatne jacuzzi przy domku, wśród sosen',
-    altSauna: 'Sauna fińska z balią w lesie',
-    altJacuzzi2: 'Prywatne jacuzzi na terenie domku',
-
-    adultTitle: 'Domki tylko dla dorosłych (18+)',
-    adultText: 'Las Biala\'s to miejsce do spokojnego odpoczynku we dwoje lub w małym gronie. Dlatego przyjmujemy wyłącznie osoby dorosłe, bez zwierząt. Na ogrodzonym terenie stoją tylko dwa domki, oddzielone drzewami, z wejściami oddalonymi od siebie o około 50 m. Formuła 18+ to świadomy wybór: cisza, prywatność i czas tylko dla siebie.',
-    petTitle: 'Zasady dotyczące zwierząt',
-    petText: 'Z uwagi na charakter obiektu oraz względy organizacyjne <b>nie przyjmujemy pobytów ze zwierzętami</b>.',
+    title: 'Komfortowe, dobrze wyposażone wnętrza',
+    intro: 'Każdy domek ma dwie sypialnie, salon z aneksem kuchennym i łazienkę. W każdym pomieszczeniu działa niezależne ogrzewanie z termostatem, dostępne przez cały rok, także w chłodniejsze letnie dni, a w upały sypialnie chłodzą wentylatory sufitowe. Na terenie całego obiektu jest szybkie, bezpłatne Wi-Fi.',
+    bedrooms: {
+      title: 'Sypialnie',
+      intro: 'Sypialnie znajdują się po przeciwnych stronach domku, co zapewnia prywatność również przy pobycie dwóch par. W jednej z nich jest dodatkowo Smart TV z Netflixem. Na łóżkach czekają ręczniki, a w szafie szlafroki i ręczniki do sauny. Każda sypialnia ma:',
+      items: ['podwójne łóżko 140 × 200 cm', 'wygodny materac o wysokości 26 cm', 'bawełnianą pościel', 'moskitiery w oknach', 'wentylator sufitowy sterowany pilotem', 'rolety zewnętrzne i zasłony'],
+      images: [
+        { src: w1, alt: 'Większa sypialnia z podwójnym łóżkiem', tip: 'Większa sypialnia z łóżkiem 140 × 200 cm i wentylatorem sufitowym.' },
+        { src: w2, alt: 'Mniejsza sypialnia ze Smart TV', tip: 'Mniejsza sypialnia z łóżkiem 140 × 200 cm i Smart TV.' },
+        { src: w6, alt: 'Termostat ogrzewania w domku', tip: 'Niezależne ogrzewanie z termostatem w każdym pomieszczeniu.' },
+        { src: w4, alt: 'Mniejsza sypialnia z wentylatorem sufitowym', tip: 'Mniejsza sypialnia z wentylatorem sufitowym i Smart TV.' },
+      ],
+    },
+    living: {
+      title: 'Salon z aneksem kuchennym',
+      intro: 'W salonie stoi stół do posiłków z sofą i dwoma tapicerowanymi krzesłami, przy którym wygodnie usiądą cztery osoby. Jest tu też Smart TV z Netflixem, biblioteczka i gry planszowe. Aneks kuchenny jest dobrze wyposażony: ma dużą lodówkę z zamrażalnikiem, zmywarkę i płytę indukcyjną. Do dyspozycji gości są również:',
+      items: ['komplet garnków i patelni', 'talerze i miseczki (po 6 szt.)', 'kubki i szklanki', 'kieliszki do wina i inne szkło', 'sztućce i noże kuchenne', 'podstawowe akcesoria kuchenne', 'czajnik', 'toster', 'zaparzacz do herbaty', 'ekspres Nespresso De\'Longhi', 'zestaw 20 kapsułek kawy do ekspresu', 'herbata, cukier, sól i pieprz', 'płyn do naczyń i tabletki do zmywarki', 'gąbki, ścierki i ręczniki kuchenne', 'ręczniki papierowe', 'środek do czyszczenia blatów'],
+      images: [
+        { src: w13, alt: 'Salon z aneksem kuchennym', tip: 'Przestronny salon z aneksem kuchennym.' },
+        { src: w7, alt: 'Aneks kuchenny', tip: 'Aneks z lodówką, zmywarką i płytą indukcyjną.' },
+        { src: w15, alt: 'Biblioteczka i gry planszowe w salonie', tip: 'Biblioteczka i gry planszowe.' },
+        { src: w3, alt: 'Smart TV w salonie', tip: 'Smart TV z Netflixem.' },
+      ],
+    },
+    bathroom: {
+      title: 'Łazienka',
+      intro: 'Nowoczesna łazienka z prysznicem walk-in i deszczownicą. Na miejscu są:',
+      items: ['żel pod prysznic i szampon', 'mydło w płynie', 'papier toaletowy', 'suszarka do włosów', 'środki czystości', 'odkurzacz bezprzewodowy', 'suszarka na pranie'],
+      images: [
+        { src: w17, alt: 'Łazienka z prysznicem walk-in', tip: 'Przestronna łazienka z prysznicem walk-in.' },
+        { src: w18, alt: 'Wyposażenie łazienki', tip: 'Ręczniki, kosmetyki i suszarka do włosów.' },
+      ],
+    },
+    parking: {
+      title: 'Bezpłatny parking',
+      text: 'Przy każdym domku jest bezpłatne miejsce parkingowe. Teren jest ogrodzony i oświetlony, a każdy domek ma własną bramę wjazdową i furtkę.',
+    },
+    guide: {
+      title: 'Przewodnik Las Biala\'s',
+      text: 'Więcej szczegółów dotyczących wyposażenia, udogodnień i pobytu na miejscu znajdziesz w naszym <a href="{#guide}" target="_blank" class="text-brand-green underline">przewodniku</a>.',
+      btn: 'Przewodnik',
+    },
   },
   en: {
-    title: 'Year-Round Cottages for Rent in the Noteć Forest',
-    p1: 'Welcome to Las Biala\'s in Biała, a village on {lake} in the heart of the Noteć Forest. Away from the bustle of the city, on a fenced forest property about 400 m from the {beach}, stand two year-round cottages for adult guests.',
-    p2: 'On site there is a {sauna} with a {tub}, and a {jacuzzi} next to the cottage is available for an extra fee. The {grill} is free to use, as are the {bikes}. The cottages are heated all year round, and each room has its own {thermostat}.',
-    lakeWord: 'Lake Białe',
-    lakeAlt: 'Lake Białe in the Noteć Forest',
-    beachWord: 'beach',
-    beachAlt: 'Beach on Lake Białe',
-    thermostatWord: 'thermostat',
-    thermostatAlt: 'Heating thermostat in the cottage',
-    tubWord: 'cold plunge tub',
-    tubAlt: 'Cold plunge tub next to the sauna',
-    saunaWord: 'Finnish sauna',
-    saunaAlt: 'Inside the Finnish sauna',
-    jacuzziWord: 'private jacuzzi',
-    jacuzziAlt: 'Private jacuzzi on the cottage grounds',
-    grillWord: 'barbecue grill',
-    grillAlt: 'Brick barbecue grill by the cottage',
-    bikesWord: 'bikes and SUP boards',
-    bikesAlt: 'Trekking bikes and SUP boards for guests',
-    banner1: 'Private and secluded',
-    banner2: 'deep in the forest',
-    bannerSub: 'SAUNA · JACUZZI · ADULTS ONLY',
-    altJacuzzi1: 'Private jacuzzi by the cottage, among pine trees',
-    altSauna: 'Finnish sauna with a cold plunge tub in the forest',
-    altJacuzzi2: 'Private jacuzzi on the cottage grounds',
-
-    adultTitle: 'Adults-Only Cottages (18+)',
-    adultText: 'Las Biala\'s is a place for quiet time as a couple or in a small group. That is why we welcome adults only, with no pets. The fenced grounds hold just two cottages, separated by trees, with entrances about 50 m apart. The 18+ concept is a deliberate choice: silence, privacy and time just for yourselves.',
-    petTitle: 'Pet policy',
-    petText: 'Due to the character of the property and for organisational reasons, <b>stays with pets are not accepted</b>.',
+    title: 'Cosy, Well-Equipped Interiors',
+    intro: 'Each cottage has two bedrooms, a living room with a kitchenette and a bathroom. Every room has its own heating with a thermostat, available all year round, even on cooler summer days, while ceiling fans keep the bedrooms cool in hot weather. Fast, free Wi-Fi covers the whole property.',
+    bedrooms: {
+      title: 'Bedrooms',
+      intro: 'The bedrooms are on opposite sides of the cottage, which gives privacy even when two couples stay together. One of them also has a Smart TV with Netflix. Towels are laid out on the beds, and bathrobes and sauna towels are in the wardrobe. Each bedroom has:',
+      items: ['a double bed, 140 × 200 cm', 'a comfortable 26 cm mattress', 'cotton bedding', 'mosquito screens on the windows', 'a remote-controlled ceiling fan', 'external blinds and curtains'],
+      images: [
+        { src: w1, alt: 'Larger bedroom with a double bed', tip: 'Larger bedroom with a 140 × 200 cm bed and a ceiling fan.' },
+        { src: w2, alt: 'Smaller bedroom with a Smart TV', tip: 'Smaller bedroom with a 140 × 200 cm bed and a Smart TV.' },
+        { src: w6, alt: 'Heating thermostat in the cottage', tip: 'Separate heating with a thermostat in every room.' },
+        { src: w4, alt: 'Smaller bedroom with a ceiling fan', tip: 'Smaller bedroom with a ceiling fan and a Smart TV.' },
+      ],
+    },
+    living: {
+      title: 'Living Room with Kitchenette',
+      intro: 'The living room has a dining table with a sofa and two upholstered chairs, seating four people comfortably. There is also a Smart TV with Netflix, a bookshelf and board games. The kitchenette is well equipped, with a large fridge-freezer, a dishwasher and an induction hob. It also has:',
+      items: ['a set of pots and pans', 'plates and bowls (6 of each)', 'mugs and glasses', 'wine glasses and other glassware', 'cutlery and kitchen knives', 'basic kitchen utensils', 'a kettle', 'a toaster', 'a tea infuser', 'a Nespresso De\'Longhi coffee machine', 'a set of 20 coffee capsules', 'tea, sugar, salt and pepper', 'washing-up liquid and dishwasher tablets', 'sponges, cloths and tea towels', 'paper towels', 'surface cleaner'],
+      images: [
+        { src: w13, alt: 'Living room with kitchenette', tip: 'Spacious living room with a kitchenette.' },
+        { src: w7, alt: 'Kitchenette', tip: 'Kitchenette with a fridge, dishwasher and induction hob.' },
+        { src: w15, alt: 'Bookshelf and board games in the living room', tip: 'Bookshelf and board games.' },
+        { src: w3, alt: 'Smart TV in the living room', tip: 'Smart TV with Netflix.' },
+      ],
+    },
+    bathroom: {
+      title: 'Bathroom',
+      intro: 'A modern bathroom with a walk-in shower and a rainfall shower head. It is supplied with:',
+      items: ['shower gel and shampoo', 'liquid soap', 'toilet paper', 'a hair dryer', 'cleaning products', 'a cordless vacuum cleaner', 'a drying rack'],
+      images: [
+        { src: w17, alt: 'Bathroom with a walk-in shower', tip: 'Spacious bathroom with a walk-in shower.' },
+        { src: w18, alt: 'Bathroom amenities', tip: 'Towels, toiletries and a hair dryer.' },
+      ],
+    },
+    parking: {
+      title: 'Free Parking',
+      text: 'Free parking is available right by each cottage. The grounds are fenced and lit, and each cottage has its own driveway gate and garden gate.',
+    },
+    guide: {
+      title: 'Guidebook LAS BIALA\'S',
+      text: 'More details about the equipment, amenities and your stay can be found in our <a href="{#guide}" target="_blank" class="text-brand-green underline">guidebook</a>.',
+      btn: 'Guidebook',
+    },
   },
   de: {
-    title: 'Ganzjährige Ferienhäuser in der Puszcza Notecka',
-    p1: 'Willkommen bei Las Biala\'s in Biała, einem Dorf am {lake} im Herzen der Puszcza Notecka. Abseits vom Trubel der Stadt stehen auf einem eingezäunten Waldgrundstück, etwa 400 m vom {beach} entfernt, zwei ganzjährig nutzbare Ferienhäuser für erwachsene Gäste.',
-    p2: 'Vor Ort gibt es eine {sauna} mit {tub}, außerdem gegen Aufpreis einen {jacuzzi} direkt am Haus. Kostenlos zur Verfügung stehen ein {grill}, {bikes}. Die Häuser sind das ganze Jahr über beheizt, und jeder Raum hat einen eigenen {thermostat}.',
-    lakeWord: 'See Białe',
-    lakeAlt: 'See Białe in der Puszcza Notecka',
-    beachWord: 'Strand',
-    beachAlt: 'Strand am See Białe',
-    thermostatWord: 'Thermostat',
-    thermostatAlt: 'Heizungsthermostat im Ferienhaus',
-    tubWord: 'Kaltwasserbottich',
-    tubAlt: 'Kaltwasserbottich neben der Sauna',
-    saunaWord: 'finnische Sauna',
-    saunaAlt: 'Innenraum der finnischen Sauna',
-    jacuzziWord: 'privaten Whirlpool',
-    jacuzziAlt: 'Privater Whirlpool auf dem Grundstück',
-    grillWord: 'Grill',
-    grillAlt: 'Gemauerter Grill am Ferienhaus',
-    bikesWord: 'Fahrräder und SUP-Boards',
-    bikesAlt: 'Trekkingräder und SUP-Boards für Gäste',
-    banner1: 'Privat und ruhig',
-    banner2: 'mitten im Wald',
-    bannerSub: 'SAUNA · WHIRLPOOL · NUR 18+',
-    altJacuzzi1: 'Privater Whirlpool am Ferienhaus, zwischen Kiefern',
-    altSauna: 'Finnische Sauna mit Kaltwasserbottich im Wald',
-    altJacuzzi2: 'Privater Whirlpool auf dem Grundstück',
-
-    adultTitle: 'Nur für Erwachsene (18+)',
-    adultText: 'Las Biala\'s ist ein Ort für erholsame Tage zu zweit oder in kleiner Runde. Deshalb begrüßen wir ausschließlich Erwachsene, ohne Haustiere. Auf dem eingezäunten Gelände stehen nur zwei Ferienhäuser, durch Bäume voneinander getrennt, mit Eingängen in etwa 50 m Abstand. Das 18+-Konzept ist eine bewusste Entscheidung: Stille, Privatsphäre und Zeit nur für sich.',
-    petTitle: 'Haustierregelung',
-    petText: 'Aufgrund der Beschaffenheit des Objekts und aus organisatorischen Gründen sind <b>Aufenthalte mit Haustieren nicht möglich</b>.',
+    title: 'Gemütliche, gut ausgestattete Räume',
+    intro: 'Jedes Ferienhaus hat zwei Schlafzimmer, ein Wohnzimmer mit Küchenzeile und ein Badezimmer. In jedem Raum gibt es eine eigene Heizung mit Thermostat, die das ganze Jahr über nutzbar ist, auch an kühleren Sommertagen. An heißen Tagen sorgen Deckenventilatoren in den Schlafzimmern für Abkühlung. Auf dem gesamten Gelände steht schnelles, kostenloses WLAN zur Verfügung.',
+    bedrooms: {
+      title: 'Schlafzimmer',
+      intro: 'Die Schlafzimmer liegen an gegenüberliegenden Seiten des Hauses, was auch bei einem Aufenthalt von zwei Paaren für Privatsphäre sorgt. In einem der beiden gibt es zusätzlich einen Smart TV mit Netflix. Handtücher liegen auf den Betten bereit, Bademäntel und Saunatücher befinden sich im Kleiderschrank. Jedes Schlafzimmer hat:',
+      items: ['ein Doppelbett, 140 × 200 cm', 'eine bequeme, 26 cm hohe Matratze', 'Bettwäsche aus Baumwolle', 'Insektenschutzgitter an den Fenstern', 'einen Deckenventilator mit Fernbedienung', 'Außenrollläden und Vorhänge'],
+      images: [
+        { src: w1, alt: 'Größeres Schlafzimmer mit Doppelbett', tip: 'Größeres Schlafzimmer mit Bett 140 × 200 cm und Deckenventilator.' },
+        { src: w2, alt: 'Kleineres Schlafzimmer mit Smart TV', tip: 'Kleineres Schlafzimmer mit Bett 140 × 200 cm und Smart TV.' },
+        { src: w6, alt: 'Heizungsthermostat im Ferienhaus', tip: 'Eigene Heizung mit Thermostat in jedem Raum.' },
+        { src: w4, alt: 'Kleineres Schlafzimmer mit Deckenventilator', tip: 'Kleineres Schlafzimmer mit Deckenventilator und Smart TV.' },
+      ],
+    },
+    living: {
+      title: 'Wohnzimmer mit Küchenzeile',
+      intro: 'Im Wohnzimmer steht ein Esstisch mit Sofa und zwei gepolsterten Stühlen, an dem vier Personen bequem Platz finden. Außerdem gibt es einen Smart TV mit Netflix, ein Bücherregal und Brettspiele. Die Küchenzeile ist gut ausgestattet, mit einem großen Kühlschrank mit Gefrierfach, einer Spülmaschine und einem Induktionskochfeld. Außerdem vorhanden:',
+      items: ['Töpfe und Pfannen', 'Teller und Schalen (je 6 Stück)', 'Tassen und Gläser', 'Weingläser und weitere Gläser', 'Besteck und Küchenmesser', 'grundlegende Küchenutensilien', 'Wasserkocher', 'Toaster', 'Teesieb', 'Nespresso-Kaffeemaschine von De\'Longhi', 'ein Set mit 20 Kaffeekapseln', 'Tee, Zucker, Salz und Pfeffer', 'Spülmittel und Spülmaschinentabs', 'Schwämme, Lappen und Geschirrtücher', 'Küchenrolle', 'Oberflächenreiniger'],
+      images: [
+        { src: w13, alt: 'Wohnzimmer mit Küchenzeile', tip: 'Geräumiges Wohnzimmer mit Küchenzeile.' },
+        { src: w7, alt: 'Küchenzeile', tip: 'Küchenzeile mit Kühlschrank, Spülmaschine und Induktionskochfeld.' },
+        { src: w15, alt: 'Bücherregal und Brettspiele im Wohnzimmer', tip: 'Bücherregal und Brettspiele.' },
+        { src: w3, alt: 'Smart TV im Wohnzimmer', tip: 'Smart TV mit Netflix.' },
+      ],
+    },
+    bathroom: {
+      title: 'Badezimmer',
+      intro: 'Modernes Badezimmer mit Walk-in-Dusche und Regenduschkopf. Vorhanden sind:',
+      items: ['Duschgel und Shampoo', 'Flüssigseife', 'Toilettenpapier', 'Haartrockner', 'Reinigungsmittel', 'Akkustaubsauger', 'Wäscheständer'],
+      images: [
+        { src: w17, alt: 'Badezimmer mit Walk-in-Dusche', tip: 'Geräumiges Badezimmer mit Walk-in-Dusche.' },
+        { src: w18, alt: 'Ausstattung im Badezimmer', tip: 'Handtücher, Pflegeprodukte und Haartrockner.' },
+      ],
+    },
+    parking: {
+      title: 'Kostenloser Parkplatz',
+      text: 'Direkt an jedem Ferienhaus kann kostenlos geparkt werden. Das Gelände ist eingezäunt und beleuchtet, und jedes Haus hat ein eigenes Einfahrtstor und eine eigene Gartenpforte.',
+    },
+    guide: {
+      title: 'Gästeführer LAS BIALA\'S',
+      text: 'Weitere Details zur Ausstattung, zu den Annehmlichkeiten und zum Aufenthalt finden Sie in unserem <a href="{#guide}" target="_blank" class="text-brand-green underline">Gästeführer</a>.',
+      btn: 'Gästeführer',
+    },
   },
 }[lang];
 
-// Słowa z małym zdjęciem po najechaniu lub dotknięciu.
-const thermostatHint = await imageHint({ word: t.thermostatWord, image: w6, alt: t.thermostatAlt });
-const tubHint = await imageHint({ word: t.tubWord, image: balia, alt: t.tubAlt });
-const saunaHint = await imageHint({ word: t.saunaWord, image: lasbialas7, alt: t.saunaAlt });
-const jacuzziHint = await imageHint({ word: t.jacuzziWord, image: lasbialasJacuzzi3, alt: t.jacuzziAlt });
-const grillHint = await imageHint({ word: t.grillWord, image: grill, alt: t.grillAlt });
-const bikesHint = await imageHint({ word: t.bikesWord, image: lasbialas4, alt: t.bikesAlt });
-let p2 = insertHint(t.p2, '{thermostat}', thermostatHint);
-p2 = insertHint(p2, '{tub}', tubHint);
-p2 = insertHint(p2, '{bikes}', bikesHint);
-p2 = insertHint(p2, '{sauna}', saunaHint);
-p2 = insertHint(p2, '{jacuzzi}', jacuzziHint);
-p2 = insertHint(p2, '{grill}', grillHint);
-const lakeHint = await imageHint({ word: t.lakeWord, image: jezioroBiale, alt: t.lakeAlt });
-const beachHint = await imageHint({ word: t.beachWord, image: plaza, alt: t.beachAlt });
-const introP1 = insertHint(insertHint(t.p1, '{lake}', lakeHint), '{beach}', beachHint);
+const guideHref = {
+  pl: 'https://lasbialas.pl/info/#/na-miejscu/505',
+  en: 'https://lasbialas.pl/info/en/#/on-site/505',
+  de: 'https://lasbialas.pl/info/de/#/vor-ort/505',
+}[lang];
+
+const mainGuideHref = {
+  pl: 'https://lasbialas.pl/info/',
+  en: 'https://lasbialas.pl/info/en/',
+  de: 'https://lasbialas.pl/info/de/',
+}[lang];
+
+// Słowa ze zdjęciem po najechaniu lub dotknięciu (dymki).
+// Jeśli słowo zostanie zmienione w tekście powyżej, wyświetli się normalnie, bez zdjęcia.
+const hintWords = {
+  pl: {
+    fanIntro: 'wentylatory sufitowe',
+    fanItem: 'wentylator sufitowy',
+    fanAlt: 'Wentylator sufitowy w sypialni',
+    coffee: 'ekspres Nespresso De\'Longhi',
+    coffeeAlt: 'Ekspres do kawy Nespresso De\'Longhi w aneksie kuchennym',
+    fridge: 'dużą lodówkę z zamrażalnikiem',
+    fridgeAlt: 'Duża lodówka z zamrażalnikiem w aneksie kuchennym',
+  },
+  en: {
+    fanIntro: 'ceiling fans',
+    fanItem: 'ceiling fan',
+    fanAlt: 'Ceiling fan in the bedroom',
+    coffee: 'Nespresso De\'Longhi coffee machine',
+    coffeeAlt: 'Nespresso De\'Longhi coffee machine in the kitchenette',
+    fridge: 'large fridge-freezer',
+    fridgeAlt: 'Large fridge-freezer in the kitchenette',
+  },
+  de: {
+    fanIntro: 'Deckenventilatoren',
+    fanItem: 'Deckenventilator',
+    fanAlt: 'Deckenventilator im Schlafzimmer',
+    coffee: 'Nespresso-Kaffeemaschine',
+    coffeeAlt: 'Nespresso-Kaffeemaschine von De\'Longhi in der Küchenzeile',
+    fridge: 'großen Kühlschrank mit Gefrierfach',
+    fridgeAlt: 'Großer Kühlschrank mit Gefrierfach in der Küchenzeile',
+  },
+}[lang];
+
+const escapeHtml = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+async function withHint(text: string, word: string, image: ImageMetadata, alt: string): Promise<string> {
+  const escaped = escapeHtml(text);
+  if (!escaped.includes(word)) return escaped;
+  const html = await imageHint({ word, image, alt });
+  return insertHint(escaped.replace(word, '{hint}'), '{hint}', html);
+}
+
+const introHtml = await withHint(t.intro, hintWords.fanIntro, wiatrak, hintWords.fanAlt);
+const bedroomItems = await Promise.all(
+  t.bedrooms.items.map((item: string) => withHint(item, hintWords.fanItem, wiatrak, hintWords.fanAlt))
+);
+// Opis salonu może zawierać HTML (np. link do przewodnika), dlatego nie jest escapowany.
+const livingIntroRaw = t.living.intro.replace('{#guide}', guideHref);
+const livingIntroHtml = livingIntroRaw.includes(hintWords.fridge)
+  ? insertHint(
+      livingIntroRaw.replace(hintWords.fridge, '{hint}'),
+      '{hint}',
+      await imageHint({ word: hintWords.fridge, image: lodowka, alt: hintWords.fridgeAlt })
+    )
+  : livingIntroRaw;
+const livingItems = await Promise.all(
+  t.living.items.map((item: string) => withHint(item, hintWords.coffee, ekspres, hintWords.coffeeAlt))
+);
+
+const h3Class = 'text-[1.2rem] text-center mt-[40px] mb-[15px] font-semibold text-[#2c2c2c]';
+const sectionTextClass = 'text-base leading-[1.6] text-brand-black';
+const bulletUl = 'flex flex-wrap justify-center gap-y-[6px] gap-x-[16px] my-2.5 p-0 list-none';
+const bulletLi = 'm-0 leading-[1.4] text-[1rem] flex items-center';
+const miniGrid = 'grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] justify-center gap-[3px] mt-[40px] mb-[30px] max-[1342px]:grid-cols-2';
+// Łazienka ma 2 zdjęcia: stała siatka 4 kolumn, zdjęcia w 2. i 3. kolumnie (ta sama wielkość co w sypialniach, wyśrodkowane).
+// Poniżej 1342 px siatka ma 2 kolumny, tak jak pozostałe sekcje.
+const bathGrid = 'grid grid-cols-4 justify-center gap-[3px] mt-[40px] mb-[30px] max-[1342px]:grid-cols-2';
+const miniImg = 'max-w-full h-auto object-cover cursor-default transition-transform duration-200';
+const tipClass = 'invisible opacity-0 w-[320px] bg-black/70 text-white text-center rounded-[5px] p-[5px] absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-[65px] transition-opacity duration-300 font-[Arial] text-[14px] font-normal leading-[1.4] z-[1] pointer-events-none group-hover:visible group-hover:opacity-100 max-[768px]:hidden';
 ---
 
-<div id="domki" class="max-w-[73%] border border-[#ccc] rounded-[5px] py-[10px] px-[80px] mx-auto mb-5 bg-white text-base text-center max-[768px]:max-w-[96vw] max-[768px]:p-5 max-[768px]:my-[1px] max-[768px]:mb-5 max-[768px]:text-[0.6rem]">
+<div class="max-w-[73%] border border-[#ccc] rounded-[5px] py-[10px] px-[80px] mx-auto mb-5 bg-white text-base text-center max-[768px]:max-w-[96vw] max-[768px]:p-5 max-[768px]:my-[1px] max-[768px]:mb-5 max-[768px]:text-[0.6rem]">
   <h2 class="text-[24px] text-center mt-5 mb-5 text-brand-black font-bold">{t.title}</h2>
-  <p class="text-base leading-[1.6]" set:html={introP1}></p>
-  <p class="text-base leading-[1.6]" set:html={p2}></p>
+  <p class="text-base leading-[1.6]" set:html={introHtml}></p>
 
-  {/* Banner: hasło klimatu (nie nagłówek, żeby nie dublować sekcji „Sauna i jacuzzi”) */}
-  <div class="relative w-full h-[300px] max-[768px]:h-[200px] mt-[50px] mb-[50px] rounded-[6px] overflow-hidden">
-    <div class="absolute top-0 left-0 h-full w-[38%]">
-      <Picture src={lasbialasJacuzzi1} alt={t.altJacuzzi1 ?? ''} width={600} height={400} widths={[300, 450, 600]} sizes="(max-width: 768px) 40vw, 300px" formats={['avif', 'webp']} loading="lazy" decoding="async" class="w-full h-full object-cover" />
-    </div>
-    <div class="absolute top-0 left-[22%] h-full w-[56%]" style="-webkit-mask-image:linear-gradient(to right,transparent,#000 20%,#000 80%,transparent);mask-image:linear-gradient(to right,transparent,#000 20%,#000 80%,transparent)">
-      <Picture src={sauna1} alt={t.altSauna ?? ''} width={700} height={400} widths={[350, 525, 700]} sizes="(max-width: 768px) 55vw, 380px" formats={['avif', 'webp']} loading="lazy" decoding="async" class="w-full h-full object-cover" />
-    </div>
-    <div class="absolute top-0 right-0 h-full w-[34%]" style="-webkit-mask-image:linear-gradient(to right,transparent,#000 30%);mask-image:linear-gradient(to right,transparent,#000 30%)">
-      <Picture src={lasbialasJacuzzi3} alt={t.altJacuzzi2 ?? ''} width={500} height={400} widths={[250, 375, 500]} sizes="(max-width: 768px) 36vw, 260px" formats={['avif', 'webp']} loading="lazy" decoding="async" class="w-full h-full object-cover" />
-    </div>
-    <div class="absolute inset-0 bg-black/45"></div>
-    <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-      <p class="text-white font-bold leading-[1.15] text-[2.4rem] max-[768px]:text-[1.4rem] drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)]">
-        {t.banner1}<br />{t.banner2}
-      </p>
-      <p class="text-white/90 mt-4 max-[768px]:mt-2 text-[0.95rem] max-[768px]:text-[0.7rem] tracking-[0.2em] drop-shadow-[0_1px_4px_rgba(0,0,0,0.7)]">
-        {t.bannerSub}
-      </p>
-    </div>
+  {/* Bedrooms */}
+  <h3 class={h3Class}>{t.bedrooms.title}</h3>
+  <div class={sectionTextClass}>
+    <p>{t.bedrooms.intro}</p>
+    <ul class={bulletUl}>
+      {bedroomItems.map((item: string) => (
+        <li class={bulletLi}><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2F6940" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mr-[.5em]"><path d="M5 12l5 5L20 7"/></svg><span set:html={item}></span></li>
+      ))}
+    </ul>
+  </div>
+  <div class={miniGrid}>
+    {t.bedrooms.images.map((img: any) => (
+      <div class="relative inline-block group">
+        <Picture alt={img.alt} width={834} height={834} loading="lazy" src={img.src} formats={['avif', 'webp']} sizes="(max-width: 1342px) 50vw, 25vw" class={miniImg} />
+        <span class={tipClass}>{img.tip}</span>
+      </div>
+    ))}
   </div>
 
-    {t.guideBtn && (
-    <div class="flex justify-center mt-[30px]">
-      <a class="inline-flex justify-center items-center w-auto h-[46px] text-base font-normal text-white bg-[#B5550E] border-none text-center no-underline normal-case cursor-pointer mb-[30px] mt-[10px] px-[15px] rounded-[6px] hover:bg-[#c4621a] transition-colors" href="#cennik">{t.guideBtn}</a>
-    </div>
-  )}
-
-  <div class="mt-5">
-    <h2 class="text-[24px] text-center mt-5 mb-5 text-brand-black font-bold">{t.adultTitle}</h2>
-    <p class="text-base leading-[1.6]" set:html={t.adultText}></p>
+  {/* Living Room */}
+  <h3 class={h3Class}>{t.living.title}</h3>
+  <div class={sectionTextClass}>
+    <p set:html={livingIntroHtml}></p>
+    <ul class={bulletUl}>
+      {livingItems.map((item: string) => (
+        <li class={bulletLi}><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2F6940" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mr-[.5em]"><path d="M5 12l5 5L20 7"/></svg><span set:html={item}></span></li>
+      ))}
+    </ul>
+  </div>
+  <div class={miniGrid}>
+    {t.living.images.map((img: any) => (
+      <div class="relative inline-block group">
+        <Picture alt={img.alt} width={834} height={834} loading="lazy" src={img.src} formats={['avif', 'webp']} sizes="(max-width: 1342px) 50vw, 25vw" class={miniImg} />
+        <span class={tipClass}>{img.tip}</span>
+      </div>
+    ))}
   </div>
 
-  {/* Pet policy */}
-  <div class="mt-5 mb-5">
-    <h3 class="text-[1.2rem] text-center mt-[40px] mb-[15px] font-semibold text-[#2c2c2c]">{t.petTitle}</h3>
-    <p class="text-base leading-[1.6]" set:html={t.petText}></p>
+  {/* Bathroom */}
+  <h3 class={h3Class}>{t.bathroom.title}</h3>
+  <div class={sectionTextClass}>
+    <p set:html={t.bathroom.intro}></p>
+    <ul class={bulletUl}>
+      {t.bathroom.items.map((item: string) => (
+        <li class={bulletLi}><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2F6940" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mr-[.5em]"><path d="M5 12l5 5L20 7"/></svg>{item}</li>
+      ))}
+    </ul>
+  </div>
+  <div class={bathGrid}>
+    {t.bathroom.images.map((img: any, i: number) => (
+      <div class={`relative inline-block group ${i === 0 ? 'col-start-2 max-[1342px]:col-start-auto' : ''}`}>
+        <Picture alt={img.alt} width={834} height={834} loading="lazy" src={img.src} formats={['avif', 'webp']} sizes="(max-width: 1342px) 50vw, 25vw" class={miniImg} />
+        <span class={tipClass}>{img.tip}</span>
+      </div>
+    ))}
+  </div>
+
+  {/* Parking */}
+  <h3 class={h3Class}>{t.parking.title}</h3>
+  <div class={sectionTextClass}>
+    <p>{t.parking.text}</p>
+  </div>
+
+  {/* Guide */}
+  <h3 class={h3Class}>{t.guide.title}</h3>
+  <div class={sectionTextClass}>
+    <p set:html={t.guide.text.replace('{#guide}', mainGuideHref)}></p>
+  </div>
+  <div class="flex justify-center mt-[30px]">
+    <a class="inline-flex justify-center items-center gap-1.5 h-[46px] w-full max-w-[320px] text-base font-medium text-brand-black bg-white border border-[#bbb] text-center no-underline normal-case cursor-pointer mb-[30px] mt-[10px] px-[15px] rounded-[6px] hover:border-[#2F6940] hover:text-[#2F6940] transition-colors" href={mainGuideHref} target="_blank" rel="noopener">
+      {t.guide.btn}
+      <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+    </a>
   </div>
 </div>
 

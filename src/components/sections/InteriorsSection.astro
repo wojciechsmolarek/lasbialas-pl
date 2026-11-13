@@ -231,7 +231,6 @@ const h3Class = 'text-[1.2rem] text-center mt-[40px] mb-[15px] font-semibold tex
 const sectionTextClass = 'text-base leading-[1.6] text-brand-black';
 const bulletUl = 'flex flex-wrap justify-center gap-y-[6px] gap-x-[16px] my-2.5 p-0 list-none';
 const bulletLi = 'm-0 leading-[1.4] text-[1rem] flex items-center';
-const bulletMarker = 'inline-block w-[0.45rem] h-[0.45rem] bg-[#2F6940] mr-[.5em] shrink-0';
 const miniGrid = 'grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] justify-center gap-[3px] mt-[40px] mb-[30px] max-[1342px]:grid-cols-2';
 // Łazienka ma 2 zdjęcia: stała siatka 4 kolumn, zdjęcia w 2. i 3. kolumnie (ta sama wielkość co w sypialniach, wyśrodkowane).
 // Poniżej 1342 px siatka ma 2 kolumny, tak jak pozostałe sekcje.
@@ -250,7 +249,7 @@ const tipClass = 'invisible opacity-0 w-[320px] bg-black/70 text-white text-cent
     <p>{t.bedrooms.intro}</p>
     <ul class={bulletUl}>
       {bedroomItems.map((item: string) => (
-        <li class={bulletLi}><span class={bulletMarker}></span><span set:html={item}></span></li>
+        <li class={bulletLi}><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2F6940" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mr-[.5em]"><path d="M5 12l5 5L20 7"/></svg><span set:html={item}></span></li>
       ))}
     </ul>
   </div>
@@ -269,7 +268,7 @@ const tipClass = 'invisible opacity-0 w-[320px] bg-black/70 text-white text-cent
     <p set:html={livingIntroHtml}></p>
     <ul class={bulletUl}>
       {livingItems.map((item: string) => (
-        <li class={bulletLi}><span class={bulletMarker}></span><span set:html={item}></span></li>
+        <li class={bulletLi}><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2F6940" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mr-[.5em]"><path d="M5 12l5 5L20 7"/></svg><span set:html={item}></span></li>
       ))}
     </ul>
   </div>
@@ -288,7 +287,7 @@ const tipClass = 'invisible opacity-0 w-[320px] bg-black/70 text-white text-cent
     <p set:html={t.bathroom.intro}></p>
     <ul class={bulletUl}>
       {t.bathroom.items.map((item: string) => (
-        <li class={bulletLi}><span class={bulletMarker}></span>{item}</li>
+        <li class={bulletLi}><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2F6940" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mr-[.5em]"><path d="M5 12l5 5L20 7"/></svg>{item}</li>
       ))}
     </ul>
   </div>

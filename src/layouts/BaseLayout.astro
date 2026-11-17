@@ -11,6 +11,7 @@ interface Props {
   canonical?: string;
   ogImage?: string;
   isHomePage?: boolean;
+  noindex?: boolean;
 }
 
 const {
@@ -19,7 +20,8 @@ const {
   lang = 'pl',
   canonical,
   ogImage = lasbialas8.src,
-  isHomePage = false
+  isHomePage = false,
+  noindex = false
 } = Astro.props;
 
 const siteUrl = 'https://lasbialas.pl';
@@ -83,6 +85,7 @@ const ogLocale = { pl: 'pl_PL', en: 'en_GB', de: 'de_DE' }[lang];
       title={title}
       description={description}
       canonical={canonicalUrl}
+      noindex={noindex}
       openGraph={{
         basic: {
           title: title,
@@ -303,6 +306,14 @@ const ogLocale = { pl: 'pl_PL', en: 'en_GB', de: 'de_DE' }[lang];
         }
       })();
     </script>
+
+    <!-- Język strony zapamiętany w karcie przeglądarki: strona podziękowania po PayPal pokaże właściwą wersję.
+         Na stronach noindex (np. podziękowanie) nie nadpisujemy zapamiętanego języka. -->
+    {!noindex && (
+      <script is:inline define:vars={{ lang }}>
+        try { sessionStorage.setItem('lb_lang', lang); } catch (e) {}
+      </script>
+    )}
 
     <slot name="head" />
   </head>

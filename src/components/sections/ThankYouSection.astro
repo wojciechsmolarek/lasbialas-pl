@@ -1,0 +1,151 @@
+---
+// Strona podziękowania po powrocie z płatności PayPal (PL / EN / DE).
+interface Props {
+  lang: 'pl' | 'en' | 'de';
+}
+
+const { lang } = Astro.props;
+
+// Po ilu sekundach przenieść gościa na stronę główną.
+const seconds = 10;
+
+const t = {
+  pl: {
+    title: 'Dziękujemy za płatność',
+    lead: 'Płatność przez PayPal została przekazana. Gdy PayPal ją potwierdzi, otrzymasz e-mail z potwierdzeniem rezerwacji na adres podany w formularzu.',
+    nextTitle: 'Co dalej?',
+    next: [
+      'Potwierdzenie rezerwacji przychodzi zwykle w ciągu kilku minut. Jeśli go nie widzisz, sprawdź folder spam lub oferty.',
+      'Krótko przed przyjazdem wyślemy informacje o dojeździe, zameldowaniu i pobycie.',
+    ],
+    contact: 'W razie pytań jesteśmy dostępni:',
+    phone: 'Telefon',
+    home: 'Strona główna',
+    guide: 'Przewodnik dla gości',
+    redirectBefore: 'Za',
+    redirectAfter: 's przeniesiemy Cię na stronę główną.',
+    stay: 'Zostań na tej stronie',
+    stayed: 'Przekierowanie zatrzymane.',
+    homeHref: '/',
+    guideHref: '/info/',
+  },
+  en: {
+    title: 'Thank you for your payment',
+    lead: 'Your PayPal payment has been submitted. Once PayPal confirms it, you will receive an email confirming your booking at the address given in the form.',
+    nextTitle: 'What happens next?',
+    next: [
+      'The booking confirmation usually arrives within a few minutes. If you cannot see it, please check your spam or promotions folder.',
+      'Shortly before your arrival we will send you information about directions, check-in and your stay.',
+    ],
+    contact: 'If you have any questions, you can reach us here:',
+    phone: 'Phone',
+    home: 'Home page',
+    guide: 'Guest guide',
+    redirectBefore: 'You will be taken to the home page in',
+    redirectAfter: 's.',
+    stay: 'Stay on this page',
+    stayed: 'Redirect stopped.',
+    homeHref: '/en',
+    guideHref: '/info/en/',
+  },
+  de: {
+    title: 'Vielen Dank für Ihre Zahlung',
+    lead: 'Ihre Zahlung über PayPal wurde übermittelt. Sobald PayPal sie bestätigt, erhalten Sie eine E-Mail mit der Buchungsbestätigung an die im Formular angegebene Adresse.',
+    nextTitle: 'Wie geht es weiter?',
+    next: [
+      'Die Buchungsbestätigung kommt in der Regel innerhalb weniger Minuten. Falls Sie sie nicht sehen, prüfen Sie bitte den Spam- oder Werbeordner.',
+      'Kurz vor Ihrer Anreise senden wir Ihnen Informationen zu Anreise, Check-in und Aufenthalt.',
+    ],
+    contact: 'Bei Fragen erreichen Sie uns hier:',
+    phone: 'Telefon',
+    home: 'Startseite',
+    guide: 'Gästeinfo',
+    redirectBefore: 'In',
+    redirectAfter: 's werden Sie zur Startseite weitergeleitet.',
+    stay: 'Auf dieser Seite bleiben',
+    stayed: 'Weiterleitung angehalten.',
+    homeHref: '/de',
+    guideHref: '/info/de/',
+  },
+}[lang];
+
+// Adresy stron podziękowania w każdym języku (do przekierowania na właściwą wersję językową).
+const thankYouPaths = { pl: '/dziekujemy', en: '/en/thank-you', de: '/de/danke' };
+
+const checkIcon = '<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2F6940" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-[0.35em]"><path d="M5 12l5 5L20 7"/></svg>';
+---
+
+<section class="max-w-[720px] w-[calc(100%-2rem)] mx-auto my-10 border border-[#ccc] rounded-[5px] bg-white px-10 py-10 text-center max-[768px]:px-5 max-[768px]:py-8 max-[768px]:my-5">
+  <div class="mx-auto mb-5 flex items-center justify-center w-[64px] h-[64px] rounded-full bg-[#E8F2EA]" aria-hidden="true">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2F6940" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>
+  </div>
+
+  <h1 class="text-[1.8rem] max-[768px]:text-[1.4rem] font-semibold text-brand-black leading-[1.25] mb-4">{t.title}</h1>
+  <p class="text-base leading-[1.6] text-[#272727] mb-8">{t.lead}</p>
+
+  <div class="text-left border-t border-[#e5e5e5] pt-6">
+    <h2 class="text-[1.1rem] font-semibold text-brand-black mb-3">{t.nextTitle}</h2>
+    <ul class="list-none m-0 p-0 space-y-2">
+      {t.next.map((item) => (
+        <li class="flex gap-2 text-base leading-[1.5] text-[#272727]">
+          <Fragment set:html={checkIcon} />
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+
+    <p class="text-base text-[#272727] mt-6 mb-2">{t.contact}</p>
+    <ul class="list-none m-0 p-0 flex flex-wrap gap-x-6 gap-y-1">
+      <li><a href="tel:+48789773285" class="text-[#2F6940] font-semibold underline">{t.phone}: +48 789 773 285</a></li>
+      <li><a href="https://wa.me/48660194187" class="text-[#2F6940] font-semibold underline">WhatsApp: +48 660 194 187</a></li>
+      <li><a href="mailto:domki@lasbialas.pl" class="text-[#2F6940] font-semibold underline">domki@lasbialas.pl</a></li>
+    </ul>
+  </div>
+
+  <div class="flex flex-col sm:flex-row gap-2 mt-8">
+    <a href={t.homeHref} class="w-full sm:flex-1 flex justify-center items-center h-[46px] text-base font-semibold text-white bg-[#2F6940] no-underline rounded-[6px] hover:bg-[#24522f] transition-colors">{t.home}</a>
+    <a href={t.guideHref} class="w-full sm:flex-1 inline-flex justify-center items-center gap-1.5 h-[46px] text-base font-medium text-brand-black bg-white border border-[#bbb] no-underline rounded-[6px] hover:border-[#2F6940] hover:text-[#2F6940] transition-colors">
+      {t.guide}
+      <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>
+    </a>
+  </div>
+
+  <p id="ty-redirect" class="text-[0.9rem] text-[#555] mt-6">
+    <span id="ty-redirect-text">{t.redirectBefore} <span id="ty-count">{seconds}</span> {t.redirectAfter}</span>
+    <button type="button" id="ty-stay" class="ml-1 text-[#2F6940] font-medium underline bg-transparent border-0 p-0 cursor-pointer">{t.stay}</button>
+  </p>
+</section>
+
+<script is:inline define:vars={{ lang, seconds, homeHref: t.homeHref, stayed: t.stayed, thankYouPaths }}>
+  (function () {
+    // Jeśli gość rezerwował na stronie w innym języku, pokaż mu stronę podziękowania w tym języku.
+    try {
+      var saved = sessionStorage.getItem('lb_lang');
+      if (saved && saved !== lang && thankYouPaths[saved]) {
+        location.replace(thankYouPaths[saved] + location.search);
+        return;
+      }
+    } catch (e) {}
+
+    var left = seconds;
+    var countEl = document.getElementById('ty-count');
+    var timer = setInterval(function () {
+      left -= 1;
+      if (countEl) countEl.textContent = String(left);
+      if (left <= 0) {
+        clearInterval(timer);
+        location.href = homeHref;
+      }
+    }, 1000);
+
+    var stay = document.getElementById('ty-stay');
+    if (stay) {
+      stay.addEventListener('click', function () {
+        clearInterval(timer);
+        var text = document.getElementById('ty-redirect-text');
+        if (text) text.textContent = stayed;
+        stay.remove();
+      });
+    }
+  })();
+</script>

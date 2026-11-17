@@ -1,0 +1,16 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import PaymentFailedSection from '../../components/sections/PaymentFailedSection.astro';
+
+const lang = 'de';
+---
+
+<!-- Strona po nieudanej lub anulowanej płatności PayPal: wyłączona z indeksowania (noindex) -->
+<PageLayout
+  title="Zahlung nicht abgeschlossen | Las Biala's"
+  description="Ihre PayPal-Zahlung wurde nicht abgeschlossen. Sie können es erneut versuchen oder per BLIK bzw. Überweisung zahlen."
+  lang={lang}
+  noindex={true}
+>
+  <PaymentFailedSection lang={lang} />
+</PageLayout>

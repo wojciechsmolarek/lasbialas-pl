@@ -1,0 +1,104 @@
+---
+// Strona powrotu po nieudanej lub anulowanej płatności PayPal (PL / EN / DE).
+interface Props {
+  lang: 'pl' | 'en' | 'de';
+}
+
+const { lang } = Astro.props;
+
+const t = {
+  pl: {
+    title: 'Płatność nie została zakończona',
+    lead: 'Płatność przez PayPal została przerwana lub odrzucona, więc PayPal nie pobrał żadnej kwoty.',
+    optionsTitle: 'Co możesz zrobić?',
+    options: [
+      'Spróbować ponownie: otworzyć formularz rezerwacji i jeszcze raz wybrać płatność.',
+      'Zapłacić zadatek inną metodą, BLIK-iem lub przelewem. Wystarczy się z nami skontaktować, a podamy dane do płatności.',
+      'Jeśli e-mail z przyjęciem rezerwacji już dotarł, zadatek trzeba wpłacić w ciągu 24 godzin od jego otrzymania, inaczej rezerwacja zostanie anulowana.',
+    ],
+    contact: 'Kontakt:',
+    phone: 'Telefon',
+    retry: 'Spróbuj ponownie',
+    home: 'Strona główna',
+    homeHref: '/',
+  },
+  en: {
+    title: 'Your payment was not completed',
+    lead: 'The PayPal payment was cancelled or declined, so PayPal has not charged any amount.',
+    optionsTitle: 'What can you do?',
+    options: [
+      'Try again: open the booking form and choose the payment once more.',
+      'Pay the deposit another way, by BLIK or bank transfer. Just contact us and we will send you the payment details.',
+      'If you have already received the booking acceptance email, the deposit must be paid within 24 hours of receiving it, otherwise the booking will be cancelled.',
+    ],
+    contact: 'Contact:',
+    phone: 'Phone',
+    retry: 'Try again',
+    home: 'Home page',
+    homeHref: '/en',
+  },
+  de: {
+    title: 'Die Zahlung wurde nicht abgeschlossen',
+    lead: 'Die PayPal-Zahlung wurde abgebrochen oder abgelehnt, daher hat PayPal keinen Betrag abgebucht.',
+    optionsTitle: 'Was können Sie tun?',
+    options: [
+      'Es erneut versuchen: das Buchungsformular öffnen und die Zahlung noch einmal wählen.',
+      'Die Anzahlung auf anderem Weg leisten, per BLIK oder Überweisung. Kontaktieren Sie uns, wir senden Ihnen die Zahlungsdaten.',
+      'Wenn Sie die E-Mail mit der Buchungsannahme bereits erhalten haben, muss die Anzahlung innerhalb von 24 Stunden nach Erhalt geleistet werden, sonst wird die Buchung storniert.',
+    ],
+    contact: 'Kontakt:',
+    phone: 'Telefon',
+    retry: 'Erneut versuchen',
+    home: 'Startseite',
+    homeHref: '/de',
+  },
+}[lang];
+
+// Adresy tej strony w każdym języku (do przekierowania na wersję w języku rezerwacji).
+const failedPaths = { pl: '/platnosc-nieudana', en: '/en/payment-failed', de: '/de/zahlung-fehlgeschlagen' };
+
+const checkIcon = '<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2F6940" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-[0.35em]"><path d="M5 12l5 5L20 7"/></svg>';
+---
+
+<section class="max-w-[720px] w-[calc(100%-2rem)] mx-auto my-10 border border-[#ccc] rounded-[5px] bg-white px-10 py-10 text-center max-[768px]:px-5 max-[768px]:py-8 max-[768px]:my-5">
+  <div class="mx-auto mb-5 flex items-center justify-center w-[64px] h-[64px] rounded-full bg-[#FBEFE6]" aria-hidden="true">
+    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#B5550E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v9"/><path d="M12 19h.01"/></svg>
+  </div>
+
+  <h1 class="text-[1.8rem] max-[768px]:text-[1.4rem] font-semibold text-brand-black leading-[1.25] mb-4">{t.title}</h1>
+  <p class="text-base leading-[1.6] text-[#272727] mb-8">{t.lead}</p>
+
+  <div class="flex flex-col sm:flex-row gap-2 mb-8">
+    <a href="#" onclick="openReservation(); return false;" class="w-full sm:flex-1 flex justify-center items-center h-[46px] text-base font-semibold text-white bg-[#2F6940] no-underline rounded-[6px] hover:bg-[#24522f] transition-colors">{t.retry}</a>
+    <a href={t.homeHref} class="w-full sm:flex-1 flex justify-center items-center h-[46px] text-base font-medium text-brand-black bg-white border border-[#bbb] no-underline rounded-[6px] hover:border-[#2F6940] hover:text-[#2F6940] transition-colors">{t.home}</a>
+  </div>
+
+  <div class="text-left border-t border-[#e5e5e5] pt-6">
+    <h2 class="text-[1.1rem] font-semibold text-brand-black mb-3">{t.optionsTitle}</h2>
+    <ul class="list-none m-0 p-0 space-y-2">
+      {t.options.map((item) => (
+        <li class="flex gap-2 text-base leading-[1.5] text-[#272727]">
+          <Fragment set:html={checkIcon} />
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+
+    <p class="text-base text-[#272727] mt-6 mb-2">{t.contact}</p>
+    <ul class="list-none m-0 p-0 flex flex-wrap gap-x-6 gap-y-1">
+      <li><a href="tel:+48789773285" class="text-[#2F6940] font-semibold underline">{t.phone}: +48 789 773 285</a></li>
+      <li><a href="https://wa.me/48660194187" class="text-[#2F6940] font-semibold underline">WhatsApp: +48 660 194 187</a></li>
+      <li><a href="mailto:domki@lasbialas.pl" class="text-[#2F6940] font-semibold underline">domki@lasbialas.pl</a></li>
+    </ul>
+  </div>
+</section>
+
+<script is:inline define:vars={{ lang, failedPaths }}>
+  // Jeśli gość rezerwował na stronie w innym języku, pokaż mu tę stronę w tym języku.
+  try {
+    var saved = sessionStorage.getItem('lb_lang');
+    if (saved && saved !== lang && failedPaths[saved]) {
+      location.replace(failedPaths[saved] + location.search);
+    }
+  } catch (e) {}
+</script>

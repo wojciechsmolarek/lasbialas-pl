@@ -74,10 +74,18 @@ body .bookero-plugin-form .field .multiselect__option--highlight {
   background: #2F6940 !important;
 }
 
+/* Dni kalendarza: nieco ciemniejsze ramki (Bookero: #e6e6e6) i czytelniejsze cyfry dni niedostępnych (Bookero: #ccc).
+   Puste pola przed 1. dniem miesiąca (.is-offset) zostają bez ramki. */
+body .bookero-plugin-form .calendar-days-list-cell:not(.is-offset) {
+  border-color: #c8c8c8 !important;
+  color: #a6a6a6 !important;
+}
+
+/* Dni dostępne: zielone cyfry na szarym tle, z wyraźniejszą ramką */
 body .bookero-plugin-form .calendar-days-list-cell.is-valid {
   color: #2F6940 !important;
   background: #e8e8e8 !important;
-  border-color: #e8e8e8 !important;
+  border-color: #b5b5b5 !important;
 }
 
 body .bookero-plugin-form .calendar-days-list-cell.is-selected,
@@ -173,6 +181,24 @@ body .bookero-plugin-form .field .multiselect__tags {
    Zaznaczone pole zostaje zielone dzięki regule .switcher.is-active powyżej. */
 body #bookero-plugin .switcher {
   border: 1px solid #767676 !important;
+}
+
+/* Nawigacja miesiąca w kalendarzu: ciemniejsza obwódka (zmienia tylko kolor istniejącej ramki) */
+body .bookero-plugin-form .calendar-nav,
+body .bookero-plugin-form .calendar-nav-prev,
+body .bookero-plugin-form .calendar-nav-next {
+  border-color: #767676 !important;
+}
+
+/* „Wróć do rezerwacji”: Bookero ustawia jasnoszary #979797 (2,9:1) i cienką czcionkę 300 */
+body #bookero-plugin .back-button {
+  color: #555 !important;
+  font-weight: 500 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+}
+body #bookero-plugin .back-button:hover {
+  color: #131212 !important;
 }
 
 /* Tekst wpisany i wybrany w polach: ciemny, ten sam rozmiar we wszystkich polach */

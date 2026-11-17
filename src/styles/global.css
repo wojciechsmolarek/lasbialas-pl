@@ -103,14 +103,18 @@ body .bookero-plugin-form .bookero-plugin-header {
   font-size: 32px;
 }
 
+/* Linki w formularzu podkreślone (WCAG 1.4.1: link nie może różnić się od tekstu tylko kolorem) */
 body .bookero-plugin-form-wrapper a {
   color: #2F6940 !important;
-  text-decoration: none !important;
+  text-decoration: underline !important;
 }
 
-body .bookero-plugin-form .submit-section .submit-button:active,
-body .bookero-plugin-form .submit-section .submit-button:focus,
+/* Przycisk wysyłki: ciemniejszy przy najechaniu, żeby było widać reakcję */
 body .bookero-plugin-form .submit-section .submit-button:hover {
+  background: #24522f !important;
+}
+body .bookero-plugin-form .submit-section .submit-button:active,
+body .bookero-plugin-form .submit-section .submit-button:focus {
   background: #2F6940 !important;
 }
 
@@ -148,11 +152,29 @@ body #bookero-plugin .payment-section .payment-methods-item:hover {
 body #bookero-plugin .payment-section .payment-methods-item.is-active {
   border-color: #2F6940 !important;
   background-color: #2F6940 !important;
+  color: #fff !important; /* biały tekst na zielonym tle (kontrast 6,5:1) */
 }
 
 body #bookero-plugin .bookero-plugin-form .field .multiselect__option,
 body #bookero-plugin .bookero-plugin-form-heading {
   font-weight: 500;
+}
+
+/* Pola formularza: wyraźna ramka (WCAG 1.4.11, kontrast 4,5:1 na białym tle) */
+body .bookero-plugin-form .field input,
+body .bookero-plugin-form .field select,
+body .bookero-plugin-form .field textarea {
+  border: 1px solid #767676 !important;
+}
+
+/* Widoczny fokus z klawiatury (WCAG 2.4.7): pola, przycisk wysyłki, przycisk sticky */
+body .bookero-plugin-form .field input:focus-visible,
+body .bookero-plugin-form .field select:focus-visible,
+body .bookero-plugin-form .field textarea:focus-visible,
+body .bookero-plugin-form .submit-section .submit-button:focus-visible,
+body #bookero-plugin .bookero-sticky-plugin-toggle:focus-visible {
+  outline: 2px solid #2F6940 !important;
+  outline-offset: 2px !important;
 }
 
 /* Prose styling for content pages (regulamin, privacy policy, RODO) */

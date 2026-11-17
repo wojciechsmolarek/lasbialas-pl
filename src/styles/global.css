@@ -160,19 +160,46 @@ body #bookero-plugin .bookero-plugin-form-heading {
   font-weight: 500;
 }
 
-/* Pola formularza: wyraźna ramka (WCAG 1.4.11, kontrast 4,5:1 na białym tle) */
+/* Pola formularza: wyraźna ramka (WCAG 1.4.11, kontrast 4,5:1 na białym tle).
+   Pola wyboru Bookero to .multiselect__tags (nie <select>), dlatego są tu osobno. */
 body .bookero-plugin-form .field input,
 body .bookero-plugin-form .field select,
-body .bookero-plugin-form .field textarea {
+body .bookero-plugin-form .field textarea,
+body .bookero-plugin-form .field .multiselect__tags {
   border: 1px solid #767676 !important;
 }
 
-/* Widoczny fokus z klawiatury (WCAG 2.4.7): pola, przycisk wysyłki, przycisk sticky */
-body .bookero-plugin-form .field input:focus-visible,
-body .bookero-plugin-form .field select:focus-visible,
-body .bookero-plugin-form .field textarea:focus-visible,
-body .bookero-plugin-form .submit-section .submit-button:focus-visible,
-body #bookero-plugin .bookero-sticky-plugin-toggle:focus-visible {
+/* Tekst wpisany i wybrany w polach: ciemny, ten sam rozmiar we wszystkich polach */
+body .bookero-plugin-form .field input,
+body .bookero-plugin-form .field textarea,
+body .bookero-plugin-form .field .multiselect__tags,
+body .bookero-plugin-form .field .multiselect__single {
+  color: #131212 !important;
+  font-size: 16px !important;
+}
+
+/* Podpowiedzi w pustych polach (placeholder): #979797 miało 2,9:1, #767676 ma 4,5:1 */
+body #bookero-plugin *::placeholder,
+body #bookero-plugin .multiselect__placeholder {
+  color: #767676 !important;
+  opacity: 1 !important;
+}
+
+/* Etykiety nad polami */
+body .bookero-plugin-form .field .label-param {
+  color: #131212 !important;
+}
+
+/* Dopisek „* pola wymagane”: Bookero ustawia 12 px i przezroczystość 66%, przez co tekst jest blady */
+body #bookero-plugin .required-fields-notice {
+  font-size: 14px !important;
+  color: #555 !important;
+  opacity: 1 !important;
+}
+
+/* Widoczny fokus z klawiatury (WCAG 2.4.7). Bookero wyłącza obrysy dla wszystkich swoich elementów
+   (#bookero-plugin * { outline: none }), więc przywracamy je dla całego formularza. */
+body #bookero-plugin *:focus-visible {
   outline: 2px solid #2F6940 !important;
   outline-offset: 2px !important;
 }

@@ -169,6 +169,12 @@ body .bookero-plugin-form .field .multiselect__tags {
   border: 1px solid #767676 !important;
 }
 
+/* Pola zaznaczenia (zgody i opcje): ciemniejsza ramka, jak w polach formularza.
+   Zaznaczone pole zostaje zielone dzięki regule .switcher.is-active powyżej. */
+body #bookero-plugin .switcher {
+  border: 1px solid #767676 !important;
+}
+
 /* Tekst wpisany i wybrany w polach: ciemny, ten sam rozmiar we wszystkich polach */
 body .bookero-plugin-form .field input,
 body .bookero-plugin-form .field textarea,

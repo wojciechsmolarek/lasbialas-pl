@@ -7,7 +7,8 @@ interface Props {
 const { lang } = Astro.props;
 
 // Po ilu sekundach przenieść gościa na stronę główną.
-const seconds = 10;
+// Każde przewinięcie, kliknięcie lub naciśnięcie klawisza zatrzymuje przekierowanie (gość czyta stronę).
+const seconds = 30;
 
 const t = {
   pl: {
@@ -81,7 +82,12 @@ const checkIcon = '<svg aria-hidden="true" width="14" height="14" viewBox="0 0 2
   </div>
 
   <h1 class="text-[1.8rem] max-[768px]:text-[1.4rem] font-semibold text-brand-black leading-[1.25] mb-4">{t.title}</h1>
-  <p class="text-base leading-[1.6] text-[#272727] mb-8">{t.lead}</p>
+  <p class="text-base leading-[1.6] text-[#272727] mb-4">{t.lead}</p>
+
+  <p id="ty-redirect" class="inline-block text-[0.9rem] text-[#555] bg-[#f4f4f4] rounded-[6px] px-4 py-2 mb-8">
+    <span id="ty-redirect-text">{t.redirectBefore} <span id="ty-count">{seconds}</span> {t.redirectAfter}</span>
+    <button type="button" id="ty-stay" class="ml-1 text-[#2F6940] font-medium underline bg-transparent border-0 p-0 cursor-pointer">{t.stay}</button>
+  </p>
 
   <div class="text-left border-t border-[#e5e5e5] pt-6">
     <h2 class="text-[1.1rem] font-semibold text-brand-black mb-3">{t.nextTitle}</h2>
@@ -110,10 +116,6 @@ const checkIcon = '<svg aria-hidden="true" width="14" height="14" viewBox="0 0 2
     </a>
   </div>
 
-  <p id="ty-redirect" class="text-[0.9rem] text-[#555] mt-6">
-    <span id="ty-redirect-text">{t.redirectBefore} <span id="ty-count">{seconds}</span> {t.redirectAfter}</span>
-    <button type="button" id="ty-stay" class="ml-1 text-[#2F6940] font-medium underline bg-transparent border-0 p-0 cursor-pointer">{t.stay}</button>
-  </p>
 </section>
 
 <script is:inline define:vars={{ lang, seconds, homeHref: t.homeHref, stayed: t.stayed, thankYouPaths }}>
@@ -139,13 +141,20 @@ const checkIcon = '<svg aria-hidden="true" width="14" height="14" viewBox="0 0 2
     }, 1000);
 
     var stay = document.getElementById('ty-stay');
-    if (stay) {
-      stay.addEventListener('click', function () {
-        clearInterval(timer);
-        var text = document.getElementById('ty-redirect-text');
-        if (text) text.textContent = stayed;
-        stay.remove();
-      });
+    var stopped = false;
+    function stop() {
+      if (stopped) return;
+      stopped = true;
+      clearInterval(timer);
+      var text = document.getElementById('ty-redirect-text');
+      if (text) text.textContent = stayed;
+      if (stay) stay.remove();
+      events.forEach(function (ev) { window.removeEventListener(ev, stop); });
     }
+    if (stay) stay.addEventListener('click', stop);
+
+    // Gość czyta lub coś klika: nie przenosimy go w trakcie.
+    var events = ['scroll', 'wheel', 'touchstart', 'pointerdown', 'keydown'];
+    events.forEach(function (ev) { window.addEventListener(ev, stop, { passive: true }); });
   })();
 </script>

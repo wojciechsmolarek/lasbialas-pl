@@ -236,6 +236,90 @@ body #bookero-plugin .required-fields-notice {
   opacity: 1 !important;
 }
 
+/* ===== Czytelność tekstów formularza (na podstawie stylów Bookero v1.6.6) ===== */
+
+/* Bookero ustawia całemu formularzowi cienką czcionkę (300), przez co teksty wyglądają blado */
+body #bookero-plugin .bookero-plugin-form {
+  font-weight: 400 !important;
+}
+
+/* Teksty #434343 → #272727: „Cena:”, metoda płatności, „Posiadam kod rabatowy” i zgody, pola podsumowania
+   („Termin:”, domek, liczba osób), etykiety pól */
+body #bookero-plugin .temporary-price-section .temporary-price-quote,
+body #bookero-plugin .temporary-price-section .temporary-price-method,
+body #bookero-plugin .temporary-price-section .temporary-price-advance-quote,
+body #bookero-plugin .temporary-price-section .temporary-price-lefttopay-quote,
+body #bookero-plugin .switcher-label,
+body #bookero-plugin .inquiry,
+body #bookero-plugin .bookero-plugin-form .field label {
+  color: #272727 !important;
+}
+
+/* Dopiski pod polami, np. „Preferowana liczba osób: 1 - 4” i „* pole wymagane” (Bookero: #979797, 13 px, cienka) */
+body #bookero-plugin .bookero-plugin-form .field-note,
+body #bookero-plugin .bookero-plugin-form .field .note,
+body #bookero-plugin .bookero-plugin-form .field .note.is-required {
+  color: #555 !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+}
+
+/* Gwiazdki pól wymaganych: bez półprzezroczystości */
+body #bookero-plugin .bookero-plugin-form .field.is-required > label::after,
+body #bookero-plugin .switcher-label .is-required {
+  opacity: 1 !important;
+}
+
+/* Nazwy metod płatności (Bookero: #777) */
+body #bookero-plugin .payment-section .payment-methods-item-name {
+  color: #555 !important;
+}
+
+/* Rabat i kod rabatowy: zielony Bookero #56b528 (2,6:1) → zielony marki */
+body #bookero-plugin .bookero-plugin-discount-code-status.is-valid,
+body #bookero-plugin .payment-summary-section-discount-quote > span:last-child,
+body #bookero-plugin .payment-summary-section-passcode-quote > span:last-child,
+body #bookero-plugin .inquiry .is-discount-applied,
+body #bookero-plugin .inquiry .is-pass-applied {
+  color: #2F6940 !important;
+}
+
+/* Przyciski −/+ przy liczbie osób i dni: ciemniejsze, a po najechaniu zielone zamiast niebieskiego Bookero */
+body #bookero-plugin .people-section .people-number-minus,
+body #bookero-plugin .people-section .people-number-plus,
+body #bookero-plugin .people-section .children-number-minus,
+body #bookero-plugin .people-section .children-number-plus,
+body #bookero-plugin .days-section .days-number-minus,
+body #bookero-plugin .days-section .days-number-plus {
+  color: #555 !important;
+}
+body #bookero-plugin .people-section .people-number-minus:hover,
+body #bookero-plugin .people-section .people-number-plus:hover,
+body #bookero-plugin .people-section .children-number-minus:hover,
+body #bookero-plugin .people-section .children-number-plus:hover,
+body #bookero-plugin .days-section .days-number-minus:hover,
+body #bookero-plugin .days-section .days-number-plus:hover {
+  color: #2F6940 !important;
+}
+
+/* Strzałka w polach wyboru (Bookero rysuje ją dwiema kreskami w kolorze #a6a6a6) i ramka rozwiniętej listy (#e6e6e6) */
+body #bookero-plugin .bookero-plugin-form .field .multiselect__select::before,
+body #bookero-plugin .bookero-plugin-form .field .multiselect__select::after {
+  background: #767676 !important;
+}
+body #bookero-plugin .bookero-plugin-form .field .multiselect__content-wrapper {
+  border-color: #767676 !important;
+}
+
+/* Komunikaty informacyjne i dopisek o płatności SSL po wysłaniu */
+body .bookero-plugin-form-message[data-type=info] {
+  color: #2F6940 !important;
+}
+body #bookero-plugin .result-popup-content-payment-ssl {
+  color: #555 !important;
+  opacity: 1 !important;
+}
+
 /* Widoczny fokus z klawiatury (WCAG 2.4.7). Bookero wyłącza obrysy dla wszystkich swoich elementów
    (#bookero-plugin * { outline: none }), więc przywracamy je dla całego formularza. */
 body #bookero-plugin *:focus-visible {

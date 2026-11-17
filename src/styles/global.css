@@ -52,15 +52,19 @@ body #bookero-plugin[data-mode=sticky] .bookero-sticky-plugin-toggle {
   }
 }
 
-/* "Zamknij" — szary i węższy; "Rezerwacja" zostaje zielony */
+/* "Zamknij" — przycisk drugorzędny: białe tło, szara ramka, ciemny tekst bez pogrubienia,
+   żeby nie konkurował z zielonym „Przejdź do podsumowania” / „Wyślij"; "Rezerwacja" zostaje zielony */
 body #bookero-plugin[data-mode="sticky"] .bookero-sticky-plugin-content .bookero-sticky-plugin-toggle {
-  background: #4a4a4a !important;
+  background: #fff !important;
+  color: #131212 !important;
+  border: 1px solid #767676 !important;
+  font-weight: 500 !important;
   left: 3.5% !important;
   right: 3.5% !important;
   width: 93% !important;
 }
 body #bookero-plugin[data-mode="sticky"] .bookero-sticky-plugin-content .bookero-sticky-plugin-toggle:hover {
-  background: #333 !important;
+  background: #f2f2f2 !important;
 }
 
 body .bookero-plugin-hideable-part .bookero-plugin-header {
@@ -100,8 +104,11 @@ body .bookero-plugin-form .calendar-days-list-cell.is-sub-selected:before {
   background: #2F6940 !important;
 }
 
+/* Przyciski „Przejdź do podsumowania” i „Wyślij”: biały, pogrubiony napis na zielonym tle (6,5:1) */
 body .bookero-plugin-form .submit-section .submit-button {
   background: #2F6940 !important;
+  color: #fff !important;
+  font-weight: 600 !important;
 }
 
 body .bookero-plugin-form .bookero-plugin-header {

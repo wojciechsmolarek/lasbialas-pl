@@ -249,7 +249,7 @@ const boxClass = 'flex-[0_0_49%] max-[1367px]:flex-[0_0_100%] max-[1367px]:w-ful
   <!-- Na miejscu + przed przyjazdem -->
   <div class={boxClass + ' flex flex-col'}>
     <h2 class="text-[1.4rem] font-semibold text-brand-black mb-3">{t.onSite}</h2>
-    <ul class="grid grid-cols-2 min-[1600px]:grid-cols-3 gap-x-4 gap-y-2 list-none m-0 p-0">
+    <ul class="grid grid-cols-2 gap-x-4 gap-y-2 list-none m-0 p-0">
       {amenityHtml.map((html, i) => (
         <li class="flex items-baseline gap-2">
           <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2F6940" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 translate-y-[2px]"><path d="M5 12l5 5L20 7"/></svg>
@@ -281,3 +281,11 @@ const boxClass = 'flex-[0_0_49%] max-[1367px]:flex-[0_0_100%] max-[1367px]:w-ful
 </div>
 
 <ImageHints />
+
+<style is:global>
+  /* Słowa ze zdjęciem w boksie „Na miejscu”: przy zawijaniu do drugiej linii tekst zostaje wyrównany do lewej
+     (przycisk dymka domyślnie centruje tekst). */
+  #terminy .img-hint__trigger {
+    text-align: left;
+  }
+</style>

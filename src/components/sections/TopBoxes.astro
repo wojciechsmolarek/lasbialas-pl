@@ -194,6 +194,12 @@ for (const a of amenities) {
   amenityHtml.push(html);
 }
 
+// Lewa kolumna: udogodnienia bez dopisku, prawa: z dopiskiem (za dopłatą, w sezonie, maj–paź).
+const amenityColumns = [
+  amenities.map((a, i) => i).filter((i) => !amenities[i].tag),
+  amenities.map((a, i) => i).filter((i) => amenities[i].tag),
+];
+
 const boxClass = 'flex-[0_0_49%] max-[1367px]:flex-[0_0_100%] max-[1367px]:w-full border border-[#ccc] rounded-[5px] py-[20px] px-[40px] mb-5 bg-white text-base text-left max-[768px]:max-w-[96vw] max-[768px]:mx-auto max-[768px]:p-5 max-[768px]:mt-[1px] max-[768px]:mb-[20px] max-[768px]:text-[1rem]';
 ---
 <div id="terminy" class="flex gap-[20px] items-stretch max-w-[73%] mx-auto flex-wrap max-[1367px]:flex-col max-[1367px]:max-w-full max-[1367px]:gap-[1px] max-[1367px]:px-4 max-[768px]:px-0">
@@ -249,17 +255,21 @@ const boxClass = 'flex-[0_0_49%] max-[1367px]:flex-[0_0_100%] max-[1367px]:w-ful
   <!-- Na miejscu + przed przyjazdem -->
   <div class={boxClass + ' flex flex-col'}>
     <h2 class="text-[1.4rem] font-semibold text-brand-black mb-3">{t.onSite}</h2>
-    <ul class="grid grid-cols-2 gap-x-4 gap-y-2 list-none m-0 p-0">
-      {amenityHtml.map((html, i) => (
-        <li class="flex items-baseline gap-2">
-          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2F6940" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 translate-y-[2px]"><path d="M5 12l5 5L20 7"/></svg>
-          <span>
-            <span set:html={html} />
-            {amenities[i].tag && <span class="block text-[0.8rem] text-[#777] leading-[1.3] mt-0.5 whitespace-nowrap">{amenities[i].tag}</span>}
-          </span>
-        </li>
+    <div class="grid grid-cols-2 gap-x-4">
+      {amenityColumns.map((col) => (
+        <ul class="flex flex-col gap-y-2 list-none m-0 p-0">
+          {col.map((i) => (
+            <li class="flex items-baseline gap-2">
+              <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2F6940" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 translate-y-[2px]"><path d="M5 12l5 5L20 7"/></svg>
+              <span>
+                <span set:html={amenityHtml[i]} />
+                {amenities[i].tag && <span class="block text-[0.8rem] text-[#777] leading-[1.3] mt-0.5 whitespace-nowrap">{amenities[i].tag}</span>}
+              </span>
+            </li>
+          ))}
+        </ul>
       ))}
-    </ul>
+    </div>
 
     <!-- „Przed przyjazdem” dosunięte w dół boksu, żeby przycisk przewodnika stał na wysokości „Rezerwuj” -->
     <div class="mt-auto pt-6">

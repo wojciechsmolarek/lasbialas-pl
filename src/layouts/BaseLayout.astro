@@ -293,6 +293,28 @@ const ogLocale = { pl: 'pl_PL', en: 'en_GB', de: 'de_DE' }[lang];
           return INFO_ICON + '<strong>Dobrze wiedzieć:</strong> jeśli w terminie Twojego pobytu wystąpią silne lub długotrwałe mrozy, jacuzzi może być czasowo niedostępne. Rezerwację możesz złożyć normalnie, a dostępność jacuzzi potwierdzimy przed Twoim przyjazdem. Pytania: tel. ' + TEL + '789 773 285</a>, WhatsApp ' + WA + '660 194 187</a>.';
         }
 
+        // Dopisek do pola „Uwagi”, zapisywany w rezerwacji, gdy jacuzzi jest rezerwowane warunkowo.
+        var NOTE = {
+          pl: 'Jacuzzi rezerwowane warunkowo: przy silnych lub długotrwałych mrozach może być niedostępne, dostępność zostanie potwierdzona przed przyjazdem.',
+          en: 'Jacuzzi booked conditionally: may be unavailable during severe or prolonged frost, availability will be confirmed before arrival.',
+          de: 'Whirlpool unter Vorbehalt gebucht: bei starkem oder anhaltendem Frost möglicherweise nicht verfügbar, die Verfügbarkeit wird vor der Anreise bestätigt.'
+        };
+        var NOTE_PREFIXES = ['Jacuzzi rezerwowane warunkowo', 'Jacuzzi booked conditionally', 'Whirlpool unter Vorbehalt gebucht'];
+        function syncNote(show) {
+          var ta = document.querySelector('#bookero-plugin .params-section textarea') || document.querySelector('#bookero-plugin .field textarea');
+          if (!ta || document.activeElement === ta) return; // nie ruszamy pola, gdy gość w nim pisze
+          var kept = ta.value.split('\n').filter(function (l) {
+            return !NOTE_PREFIXES.some(function (p) { return l.trim().indexOf(p) === 0; });
+          });
+          while (kept.length && kept[kept.length - 1].trim() === '') kept.pop();
+          if (show) kept.push(NOTE[lang] || NOTE.pl);
+          var value = kept.join('\n');
+          if (value !== ta.value) {
+            ta.value = value;
+            ta.dispatchEvent(new Event('input', { bubbles: true })); // Bookero zapisuje zmianę w formularzu
+          }
+        }
+
         var arrival = null; // ostatnio wybrana data przyjazdu (UTC)
         var violated = null;
 
@@ -364,6 +386,7 @@ const ogLocale = { pl: 'pl_PL', en: 'en_GB', de: 'de_DE' }[lang];
             showJacuzzi = jacuzziPeriods.some(function (p) { return overlaps(dep, p); });
           }
           place('lb-jacuzzi-msg', field, showJacuzzi ? jacuzziHtml() : '', true);
+          syncNote(showJacuzzi);
         }
 
         // Blokada przycisku „Przejdź do podsumowania” / „Wyślij”, dopóki pobyt jest za krótki.
@@ -393,6 +416,7 @@ const ogLocale = { pl: 'pl_PL', en: 'en_GB', de: 'de_DE' }[lang];
         }).observe(document.documentElement, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ['class', 'value'] });
         document.addEventListener('input', schedule, true);
         document.addEventListener('change', schedule, true);
+        document.addEventListener('focusout', schedule, true);
       })();
     </script>
 

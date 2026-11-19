@@ -21,4 +21,5 @@ export const minStayRules: { from: string; to: string; minNights: number }[] = [
 // pod polem pojawia się informacja o możliwej niedostępności przy silnych mrozach.
 export const jacuzziNoticePeriods: { from: string; to: string }[] = [
   { from: '2026-12-20', to: '2026-12-31' }, // grudzień (sprawdź daty)
+  { from: '2027-01-3', to: '2027-01-10' }, // 3 Króli
 ];

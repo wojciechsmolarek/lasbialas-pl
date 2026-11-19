@@ -15,5 +15,6 @@
 export const minStayRules: { from: string; to: string; minNights: number }[] = [
   { from: '2026-12-22', to: '2027-12-27', minNights: 4 }, // Święta
   { from: '2026-12-27', to: '2027-01-03', minNights: 4 }, // Sylwester
-  { from: '2027-01-03', to: '2027-01-06', minNights: 3 }, // Sylwester
+  { from: '2027-01-03', to: '2027-01-06', minNights: 3 }, // 3 Króli
+  { from: '2027-04-29', to: '2027-05-04', minNights: 4 }, // Majówka
 ];

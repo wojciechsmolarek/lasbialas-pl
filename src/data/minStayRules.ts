@@ -19,5 +19,5 @@ export const minStayRules: { from: string; to: string; minNights: number }[] = [
 // Gdy pobyt obejmuje taki okres, a w polu jacuzzi wybrano wynajem lub decyzję przed przyjazdem,
 // pod polem pojawia się informacja o możliwej niedostępności przy silnych mrozach.
 export const jacuzziNoticePeriods: { from: string; to: string }[] = [
-  { from: '2026-12-05', to: '2027-01-01' }, // grudzień (sprawdź daty)
+  { from: '2026-12-13', to: '2027-01-31' }, // grudzień (sprawdź daty)
 ];

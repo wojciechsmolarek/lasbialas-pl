@@ -13,9 +13,9 @@ export const updated = '2026-11-19';
 export const minNights = 2;
 
 export const d1: string[][] = [
-  ['2026-11-22', '2026-11-26'],
+  ['2026-12-01', '2026-12-14'],
 ];
 
 export const d2: string[][] = [
-  ['2026-11-19', '2026-11-30'],
+  ['2026-11-20', '2026-11-30'],
 ];

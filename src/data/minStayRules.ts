@@ -11,13 +11,13 @@
 // Przykład: { from: '2026-12-29', to: '2027-01-03', minNights: 4 }
 // = noce 29.12–2.01 (wyjazd 3.01); pobyt obejmujący którąkolwiek z nich musi mieć min. 4 doby.
 export const minStayRules: { from: string; to: string; minNights: number }[] = [
-  { from: '2026-12-29', to: '2027-01-03', minNights: 4 }, // Sylwester
-  { from: '2027-04-30', to: '2027-05-03', minNights: 3 }, // majówka (sprawdź daty)
+  { from: '2026-12-22', to: '2027-01-03', minNights: 4 }, // Sylwester
+
 ];
 
 // 2) JACUZZI ZIMĄ – komunikat informacyjny (nie blokuje rezerwacji)
 // Gdy pobyt obejmuje taki okres, a w polu jacuzzi wybrano wynajem lub decyzję przed przyjazdem,
 // pod polem pojawia się informacja o możliwej niedostępności przy silnych mrozach.
 export const jacuzziNoticePeriods: { from: string; to: string }[] = [
-  { from: '2026-12-05', to: '2027-01-01' }, // grudzień (sprawdź daty)
+  { from: '2026-12-20', to: '2026-12-31' }, // grudzień (sprawdź daty)
 ];

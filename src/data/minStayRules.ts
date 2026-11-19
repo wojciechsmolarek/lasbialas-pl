@@ -11,7 +11,8 @@
 // Przykład: { from: '2026-12-29', to: '2027-01-03', minNights: 4 }
 // = noce 29.12–2.01 (wyjazd 3.01); pobyt obejmujący którąkolwiek z nich musi mieć min. 4 doby.
 export const minStayRules: { from: string; to: string; minNights: number }[] = [
-  { from: '2026-12-22', to: '2027-01-03', minNights: 4 }, // Sylwester
+  { from: '2026-12-22', to: '2027-01-27', minNights: 4 }, // Święta
+  { from: '2027-01-3', to: '2027-01-10', minNights: 4 }, // 3 Króli
 
 ];
 

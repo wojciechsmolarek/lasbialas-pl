@@ -284,10 +284,13 @@ const ogLocale = { pl: 'pl_PL', en: 'en_GB', de: 'de_DE' }[lang];
           if (lang === 'de') return 'Im Zeitraum ' + a + '.–' + b + '. beträgt der Mindestaufenthalt ' + n + ' Nächte. Bitte erhöhen Sie die Anzahl der Nächte oder wählen Sie einen anderen Zeitraum.';
           return 'W okresie ' + a + '–' + b + ' minimalny pobyt to ' + n + ' ' + nightsPl(n) + '. Zwiększ liczbę dób albo wybierz inny termin.';
         }
+        // Jacuzzi zimą: spokojna informacja (żółte tło, ikona „i”), nie ostrzeżenie. Rezerwacji nie wstrzymuje.
+        var INFO_STYLE = 'margin:12px 0;padding:10px 14px;border-left:4px solid #D4A72C;background:#FFF8E1;color:#272727;font-size:14px;line-height:1.5;border-radius:5px;';
+        var INFO_ICON = '<span aria-hidden="true" style="display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;margin-right:6px;border-radius:50%;background:#D4A72C;color:#fff;font-size:12px;font-weight:700;vertical-align:-3px;">i</span>';
         function jacuzziHtml() {
-          if (lang === 'en') return '<strong>Please note:</strong> on your selected dates the jacuzzi may be unavailable in case of severe or prolonged frost. Please contact us before booking to confirm its availability: phone ' + TEL + '+48 789 773 285</a>, WhatsApp ' + WA + '+48 660 194 187</a>.';
-          if (lang === 'de') return '<strong>Hinweis:</strong> Zu Ihrem gewählten Termin ist der Whirlpool bei starkem oder anhaltendem Frost möglicherweise nicht verfügbar. Bitte kontaktieren Sie uns vor der Buchung, um die Verfügbarkeit zu bestätigen: Tel. ' + TEL + '+48 789 773 285</a>, WhatsApp ' + WA + '+48 660 194 187</a>.';
-          return '<strong>Uwaga:</strong> w wybranym terminie jacuzzi może być niedostępne w przypadku silnych lub długotrwałych mrozów. Skontaktuj się z nami przed rezerwacją, aby potwierdzić jego dostępność: tel. ' + TEL + '789 773 285</a>, WhatsApp ' + WA + '660 194 187</a>.';
+          if (lang === 'en') return INFO_ICON + '<strong>Good to know:</strong> during severe or prolonged frost the jacuzzi may be temporarily unavailable. You can complete your booking as usual, and we will confirm jacuzzi availability before your arrival. Questions: phone ' + TEL + '+48 789 773 285</a>, WhatsApp ' + WA + '+48 660 194 187</a>.';
+          if (lang === 'de') return INFO_ICON + '<strong>Gut zu wissen:</strong> Bei starkem oder anhaltendem Frost kann der Whirlpool vorübergehend nicht verfügbar sein. Sie können Ihre Buchung wie gewohnt abschließen, die Verfügbarkeit des Whirlpools bestätigen wir vor Ihrer Anreise. Fragen: Tel. ' + TEL + '+48 789 773 285</a>, WhatsApp ' + WA + '+48 660 194 187</a>.';
+          return INFO_ICON + '<strong>Dobrze wiedzieć:</strong> przy silnych lub długotrwałych mrozach jacuzzi może być czasowo niedostępne. Rezerwację możesz złożyć normalnie, a dostępność jacuzzi potwierdzimy przed Twoim przyjazdem. Pytania: tel. ' + TEL + '789 773 285</a>, WhatsApp ' + WA + '660 194 187</a>.';
         }
 
         var arrival = null; // ostatnio wybrana data przyjazdu (UTC)
@@ -332,7 +335,7 @@ const ogLocale = { pl: 'pl_PL', en: 'en_GB', de: 'de_DE' }[lang];
             box = document.createElement('div');
             box.id = id;
             box.setAttribute('role', id === 'lb-minstay-msg' ? 'alert' : 'status');
-            box.style.cssText = BOX_STYLE;
+            box.style.cssText = id === 'lb-jacuzzi-msg' ? INFO_STYLE : BOX_STYLE;
           }
           if (isHtml) { if (box.innerHTML !== html) box.innerHTML = html; } else if (box.textContent !== html) { box.textContent = html; }
           if (box.previousElementSibling !== anchor) anchor.insertAdjacentElement('afterend', box);
@@ -384,6 +387,8 @@ const ogLocale = { pl: 'pl_PL', en: 'en_GB', de: 'de_DE' }[lang];
             var t = list[i].target;
             if (t.closest && (t.closest('#lb-minstay-msg') || t.closest('#lb-jacuzzi-msg'))) continue;
             if (t.closest && t.closest('#bookero-plugin')) { schedule(); return; }
+            // Formularz Bookero dodany do strony w całości (np. przy pierwszym otwarciu)
+            if (list[i].type === 'childList' && t.querySelector && t.querySelector('#bookero-plugin')) { schedule(); return; }
           }
         }).observe(document.documentElement, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ['class', 'value'] });
         document.addEventListener('input', schedule, true);

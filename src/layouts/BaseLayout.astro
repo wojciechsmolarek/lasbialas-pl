@@ -3,6 +3,7 @@ import { SEO } from 'astro-seo';
 import SchemaOrg from '../components/seo/SchemaOrg.astro';
 import '../styles/global.css';
 import lasbialas8 from '../assets/foto/lasbialas8.webp';
+import { minStayRules } from '../data/minStayRules';
 
 interface Props {
   title: string;
@@ -252,6 +253,105 @@ const ogLocale = { pl: 'pl_PL', en: 'en_GB', de: 'de_DE' }[lang];
             setTimeout(initObserver, 1000);
           });
         }
+      })();
+    </script>
+
+    <!-- Minimalny pobyt w wybranych okresach (święta, długie weekendy). Okresy: src/data/minStayRules.ts.
+         Gdy wybrany pobyt obejmuje taki okres i jest za krótki, pod kalendarzem pojawia się komunikat,
+         a przycisk przejścia dalej jest blokowany do czasu zmiany liczby dób lub terminu. -->
+    <script is:inline define:vars={{ minStayRules, lang }}>
+      (function () {
+        var DAY = 86400000;
+        function toUTC(s) { var p = s.split('-'); return Date.UTC(+p[0], +p[1] - 1, +p[2]); }
+        var rules = minStayRules.map(function (r) { return { from: toUTC(r.from), to: toUTC(r.to), min: r.minNights }; });
+        if (!rules.length) return;
+
+        // Miesiące z nagłówka kalendarza Bookero (PL / EN / DE), po pierwszych 3 literach.
+        var MONTHS = { sty:0, jan:0, lut:1, feb:1, mar:2, 'mär':2, kwi:3, apr:3, maj:4, may:4, mai:4, cze:5, jun:5,
+          lip:6, jul:6, sie:7, aug:7, wrz:8, sep:8, 'paź':9, oct:9, okt:9, lis:10, nov:10, gru:11, dec:11, dez:11 };
+
+        function dd(t) { var d = new Date(t); return ('0' + d.getUTCDate()).slice(-2) + '.' + ('0' + (d.getUTCMonth() + 1)).slice(-2); }
+        function nightsPl(n) { var l = n % 10, t = n % 100; return (l >= 2 && l <= 4 && (t < 12 || t > 14)) ? 'doby' : 'dób'; }
+        function message(rule) {
+          var a = dd(rule.from), b = dd(rule.to), n = rule.min;
+          if (lang === 'en') return 'Between ' + a + ' and ' + b + ' the minimum stay is ' + n + ' nights. Please increase the number of nights or choose other dates.';
+          if (lang === 'de') return 'Im Zeitraum ' + a + '.–' + b + '. beträgt der Mindestaufenthalt ' + n + ' Nächte. Bitte erhöhen Sie die Anzahl der Nächte oder wählen Sie einen anderen Zeitraum.';
+          return 'W okresie ' + a + '–' + b + ' minimalny pobyt to ' + n + ' ' + nightsPl(n) + '. Zwiększ liczbę dób albo wybierz inny termin.';
+        }
+
+        var arrival = null; // ostatnio wybrana data przyjazdu (UTC)
+        var violated = null;
+
+        function readArrival() {
+          var cell = document.querySelector('#bookero-plugin .calendar-days-list-cell.is-selected:not(.is-offset)');
+          var nav = document.querySelector('#bookero-plugin .calendar-nav-month');
+          if (!cell || !nav) return;
+          var day = parseInt(cell.textContent, 10);
+          var txt = nav.textContent.trim().toLowerCase();
+          var year = parseInt((txt.match(/\d{4}/) || [])[0], 10);
+          var month = MONTHS[txt.slice(0, 3)];
+          if (day && year && month !== undefined) arrival = Date.UTC(year, month, day);
+        }
+
+        function readNights() {
+          var el = document.getElementById('bookero-plugin-days-number');
+          return el ? (parseInt(el.value, 10) || 0) : 0;
+        }
+
+        function check() {
+          readArrival();
+          var nights = readNights();
+          violated = null;
+          if (arrival !== null && nights > 0) {
+            var dep = arrival + nights * DAY;
+            rules.forEach(function (r) {
+              if (arrival < r.to && dep > r.from && nights < r.min && (!violated || r.min > violated.min)) violated = r;
+            });
+          }
+          render();
+        }
+
+        function render() {
+          var box = document.getElementById('lb-minstay-msg');
+          if (!violated) { if (box) box.remove(); return; }
+          var anchor = document.querySelector('#bookero-plugin .calendar-wrapper') || document.querySelector('#bookero-plugin .submit-section');
+          if (!anchor) return;
+          if (!box) {
+            box = document.createElement('div');
+            box.id = 'lb-minstay-msg';
+            box.setAttribute('role', 'alert');
+            box.style.cssText = 'margin:12px 0;padding:10px 14px;border-left:4px solid #B5550E;background:#FBEFE6;color:#272727;font-size:14px;line-height:1.5;border-radius:5px;';
+          }
+          box.textContent = message(violated);
+          if (box.previousElementSibling !== anchor) anchor.insertAdjacentElement('afterend', box);
+        }
+
+        // Blokada przycisku „Przejdź do podsumowania” / „Wyślij”, dopóki pobyt jest za krótki.
+        document.addEventListener('click', function (e) {
+          var btn = e.target.closest && e.target.closest('#bookero-plugin .submit-section .submit-button');
+          if (!btn) return;
+          check();
+          if (violated) {
+            e.preventDefault();
+            e.stopImmediatePropagation();
+            var box = document.getElementById('lb-minstay-msg');
+            if (box) box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }, true);
+
+        // Sprawdzanie po każdej zmianie w formularzu (wybór dnia, zmiana liczby dób, zmiana miesiąca).
+        var queued = false;
+        function schedule() { if (queued) return; queued = true; requestAnimationFrame(function () { queued = false; check(); }); }
+        new MutationObserver(function (list) {
+          for (var i = 0; i < list.length; i++) {
+            var t = list[i].target;
+            if (t.id === 'lb-minstay-msg' || (t.parentNode && t.parentNode.id === 'lb-minstay-msg')) continue;
+            if (t.closest && t.closest('#bookero-plugin')) { schedule(); return; }
+          }
+        }).observe(document.documentElement, { subtree: true, childList: true, attributes: true, attributeFilter: ['class', 'value'] });
+        document.addEventListener('input', schedule, true);
+        document.addEventListener('change', schedule, true);
+        document.body && document.body.addEventListener('bookero-plugin:days-changed', schedule);
       })();
     </script>
 

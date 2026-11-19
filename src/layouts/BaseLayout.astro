@@ -3,7 +3,7 @@ import { SEO } from 'astro-seo';
 import SchemaOrg from '../components/seo/SchemaOrg.astro';
 import '../styles/global.css';
 import lasbialas8 from '../assets/foto/lasbialas8.webp';
-import { minStayRules } from '../data/minStayRules';
+import { minStayRules, jacuzziNoticePeriods } from '../data/minStayRules';
 
 interface Props {
   title: string;
@@ -256,27 +256,38 @@ const ogLocale = { pl: 'pl_PL', en: 'en_GB', de: 'de_DE' }[lang];
       })();
     </script>
 
-    <!-- Minimalny pobyt w wybranych okresach (święta, długie weekendy). Okresy: src/data/minStayRules.ts.
-         Gdy wybrany pobyt obejmuje taki okres i jest za krótki, pod kalendarzem pojawia się komunikat,
-         a przycisk przejścia dalej jest blokowany do czasu zmiany liczby dób lub terminu. -->
-    <script is:inline define:vars={{ minStayRules, lang }}>
+    <!-- Reguły formularza w wybranych terminach (src/data/minStayRules.ts):
+         1) minimalny pobyt: komunikat pod kalendarzem i blokada przejścia dalej, gdy pobyt jest za krótki;
+         2) jacuzzi zimą: komunikat informacyjny pod polem jacuzzi (bez blokady). -->
+    <script is:inline define:vars={{ minStayRules, jacuzziNoticePeriods, lang }}>
       (function () {
         var DAY = 86400000;
         function toUTC(s) { var p = s.split('-'); return Date.UTC(+p[0], +p[1] - 1, +p[2]); }
         var rules = minStayRules.map(function (r) { return { from: toUTC(r.from), to: toUTC(r.to), min: r.minNights }; });
-        if (!rules.length) return;
+        var jacuzziPeriods = jacuzziNoticePeriods.map(function (r) { return { from: toUTC(r.from), to: toUTC(r.to) }; });
+        if (!rules.length && !jacuzziPeriods.length) return;
 
         // Miesiące z nagłówka kalendarza Bookero (PL / EN / DE), po pierwszych 3 literach.
         var MONTHS = { sty:0, jan:0, lut:1, feb:1, mar:2, 'mär':2, kwi:3, apr:3, maj:4, may:4, mai:4, cze:5, jun:5,
           lip:6, jul:6, sie:7, aug:7, wrz:8, sep:8, 'paź':9, oct:9, okt:9, lis:10, nov:10, gru:11, dec:11, dez:11 };
 
+        var BOX_STYLE = 'margin:12px 0;padding:10px 14px;border-left:4px solid #B5550E;background:#FBEFE6;color:#272727;font-size:14px;line-height:1.5;border-radius:5px;';
+        var LINK_STYLE = 'color:#2F6940;font-weight:600;text-decoration:underline;';
+        var TEL = '<a href="tel:+48789773285" style="' + LINK_STYLE + '">';
+        var WA = '<a href="https://wa.me/48660194187" target="_blank" rel="noopener" style="' + LINK_STYLE + '">';
+
         function dd(t) { var d = new Date(t); return ('0' + d.getUTCDate()).slice(-2) + '.' + ('0' + (d.getUTCMonth() + 1)).slice(-2); }
         function nightsPl(n) { var l = n % 10, t = n % 100; return (l >= 2 && l <= 4 && (t < 12 || t > 14)) ? 'doby' : 'dób'; }
-        function message(rule) {
+        function minStayText(rule) {
           var a = dd(rule.from), b = dd(rule.to), n = rule.min;
           if (lang === 'en') return 'Between ' + a + ' and ' + b + ' the minimum stay is ' + n + ' nights. Please increase the number of nights or choose other dates.';
           if (lang === 'de') return 'Im Zeitraum ' + a + '.–' + b + '. beträgt der Mindestaufenthalt ' + n + ' Nächte. Bitte erhöhen Sie die Anzahl der Nächte oder wählen Sie einen anderen Zeitraum.';
           return 'W okresie ' + a + '–' + b + ' minimalny pobyt to ' + n + ' ' + nightsPl(n) + '. Zwiększ liczbę dób albo wybierz inny termin.';
+        }
+        function jacuzziHtml() {
+          if (lang === 'en') return '<strong>Please note:</strong> on your selected dates the jacuzzi may be unavailable in case of severe or prolonged frost. Please contact us before booking to confirm its availability: phone ' + TEL + '+48 789 773 285</a>, WhatsApp ' + WA + '+48 660 194 187</a>.';
+          if (lang === 'de') return '<strong>Hinweis:</strong> Zu Ihrem gewählten Termin ist der Whirlpool bei starkem oder anhaltendem Frost möglicherweise nicht verfügbar. Bitte kontaktieren Sie uns vor der Buchung, um die Verfügbarkeit zu bestätigen: Tel. ' + TEL + '+48 789 773 285</a>, WhatsApp ' + WA + '+48 660 194 187</a>.';
+          return '<strong>Uwaga:</strong> w wybranym terminie jacuzzi może być niedostępne w przypadku silnych lub długotrwałych mrozów. Skontaktuj się z nami przed rezerwacją, aby potwierdzić jego dostępność: tel. ' + TEL + '789 773 285</a>, WhatsApp ' + WA + '660 194 187</a>.';
         }
 
         var arrival = null; // ostatnio wybrana data przyjazdu (UTC)
@@ -292,38 +303,64 @@ const ogLocale = { pl: 'pl_PL', en: 'en_GB', de: 'de_DE' }[lang];
           var month = MONTHS[txt.slice(0, 3)];
           if (day && year && month !== undefined) arrival = Date.UTC(year, month, day);
         }
-
         function readNights() {
           var el = document.getElementById('bookero-plugin-days-number');
           return el ? (parseInt(el.value, 10) || 0) : 0;
+        }
+        function overlaps(dep, p) { return arrival < p.to && dep > p.from; }
+
+        // Pole jacuzzi rozpoznajemy po etykiecie (PL/EN: „jacuzzi”, DE: „Whirlpool”).
+        function jacuzziField() {
+          var labels = document.querySelectorAll('#bookero-plugin .field .label-param');
+          for (var i = 0; i < labels.length; i++) {
+            if (/jacuzzi|whirlpool/i.test(labels[i].textContent)) return labels[i].closest('.field');
+          }
+          return null;
+        }
+        // Komunikat dla każdej wybranej opcji poza rezygnacją („Nie będę korzystać”, „I will not use”, „… nicht nutzen”).
+        function jacuzziWanted(field) {
+          var el = field.querySelector('.multiselect__single') || field.querySelector('.multiselect__option--selected');
+          var txt = el ? el.textContent.trim() : '';
+          if (!txt) return false;
+          return !/nie będę|nie bede|will not|won't|nicht/i.test(txt);
+        }
+
+        function place(id, anchor, html, isHtml) {
+          var box = document.getElementById(id);
+          if (!html || !anchor) { if (box) box.remove(); return; }
+          if (!box) {
+            box = document.createElement('div');
+            box.id = id;
+            box.setAttribute('role', id === 'lb-minstay-msg' ? 'alert' : 'status');
+            box.style.cssText = BOX_STYLE;
+          }
+          if (isHtml) { if (box.innerHTML !== html) box.innerHTML = html; } else if (box.textContent !== html) { box.textContent = html; }
+          if (box.previousElementSibling !== anchor) anchor.insertAdjacentElement('afterend', box);
         }
 
         function check() {
           readArrival();
           var nights = readNights();
+          var dep = arrival !== null && nights > 0 ? arrival + nights * DAY : null;
+
+          // 1) minimalny pobyt
           violated = null;
-          if (arrival !== null && nights > 0) {
-            var dep = arrival + nights * DAY;
+          if (dep !== null) {
             rules.forEach(function (r) {
-              if (arrival < r.to && dep > r.from && nights < r.min && (!violated || r.min > violated.min)) violated = r;
+              if (overlaps(dep, r) && nights < r.min && (!violated || r.min > violated.min)) violated = r;
             });
           }
-          render();
-        }
+          place('lb-minstay-msg',
+            document.querySelector('#bookero-plugin .calendar-wrapper') || document.querySelector('#bookero-plugin .submit-section'),
+            violated ? minStayText(violated) : '', false);
 
-        function render() {
-          var box = document.getElementById('lb-minstay-msg');
-          if (!violated) { if (box) box.remove(); return; }
-          var anchor = document.querySelector('#bookero-plugin .calendar-wrapper') || document.querySelector('#bookero-plugin .submit-section');
-          if (!anchor) return;
-          if (!box) {
-            box = document.createElement('div');
-            box.id = 'lb-minstay-msg';
-            box.setAttribute('role', 'alert');
-            box.style.cssText = 'margin:12px 0;padding:10px 14px;border-left:4px solid #B5550E;background:#FBEFE6;color:#272727;font-size:14px;line-height:1.5;border-radius:5px;';
+          // 2) jacuzzi zimą
+          var field = jacuzziField();
+          var showJacuzzi = false;
+          if (field && dep !== null && jacuzziWanted(field)) {
+            showJacuzzi = jacuzziPeriods.some(function (p) { return overlaps(dep, p); });
           }
-          box.textContent = message(violated);
-          if (box.previousElementSibling !== anchor) anchor.insertAdjacentElement('afterend', box);
+          place('lb-jacuzzi-msg', field, showJacuzzi ? jacuzziHtml() : '', true);
         }
 
         // Blokada przycisku „Przejdź do podsumowania” / „Wyślij”, dopóki pobyt jest za krótki.
@@ -339,19 +376,18 @@ const ogLocale = { pl: 'pl_PL', en: 'en_GB', de: 'de_DE' }[lang];
           }
         }, true);
 
-        // Sprawdzanie po każdej zmianie w formularzu (wybór dnia, zmiana liczby dób, zmiana miesiąca).
+        // Sprawdzanie po każdej zmianie w formularzu (wybór dnia, liczba dób, miesiąc, opcja jacuzzi).
         var queued = false;
         function schedule() { if (queued) return; queued = true; requestAnimationFrame(function () { queued = false; check(); }); }
         new MutationObserver(function (list) {
           for (var i = 0; i < list.length; i++) {
             var t = list[i].target;
-            if (t.id === 'lb-minstay-msg' || (t.parentNode && t.parentNode.id === 'lb-minstay-msg')) continue;
+            if (t.closest && (t.closest('#lb-minstay-msg') || t.closest('#lb-jacuzzi-msg'))) continue;
             if (t.closest && t.closest('#bookero-plugin')) { schedule(); return; }
           }
-        }).observe(document.documentElement, { subtree: true, childList: true, attributes: true, attributeFilter: ['class', 'value'] });
+        }).observe(document.documentElement, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ['class', 'value'] });
         document.addEventListener('input', schedule, true);
         document.addEventListener('change', schedule, true);
-        document.body && document.body.addEventListener('bookero-plugin:days-changed', schedule);
       })();
     </script>
 

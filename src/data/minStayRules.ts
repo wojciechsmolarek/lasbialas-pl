@@ -1,20 +1,23 @@
-// MINIMALNY POBYT W WYBRANYCH TERMINACH – edytuj tylko ten plik.
+// REGUŁY FORMULARZA REZERWACJI W WYBRANYCH TERMINACH – edytuj tylko ten plik.
 //
-// Domyślny minimalny pobyt (2 doby) ustawia skrypt w BaseLayout.astro.
-// Tutaj dopisujesz okresy, w których obowiązuje dłuższe minimum (święta, długie weekendy).
-//
-// from      = pierwsza noc okresu (RRRR-MM-DD)
-// to        = dzień wyjazdu, czyli koniec okresu (RRRR-MM-DD)
-// minNights = minimalna liczba dób, jeśli choć jedna noc pobytu wypada w tym okresie
-//
-// Przykład: { from: '2026-12-29', to: '2027-01-03', minNights: 4 }
-// = noce 29.12, 30.12, 31.12, 1.01 i 2.01 (wyjazd 3.01); pobyt obejmujący którąkolwiek z nich musi mieć min. 4 doby.
-//
+// Daty w formacie RRRR-MM-DD.
+// from = pierwsza noc okresu, to = dzień wyjazdu, czyli koniec okresu.
+// Reguła działa, jeśli choć jedna noc wybranego pobytu wypada w danym okresie.
 // Okresy, które już minęły, nie mają znaczenia, można je zostawić albo usunąć.
 
+// 1) MINIMALNY POBYT
+// Domyślny minimalny pobyt (2 doby) ustawia skrypt w BaseLayout.astro.
+// Tutaj dopisujesz okresy z dłuższym minimum. Za krótki pobyt blokuje przejście dalej w formularzu.
+// Przykład: { from: '2026-12-29', to: '2027-01-03', minNights: 4 }
+// = noce 29.12–2.01 (wyjazd 3.01); pobyt obejmujący którąkolwiek z nich musi mieć min. 4 doby.
 export const minStayRules: { from: string; to: string; minNights: number }[] = [
-  { from: '2026-12-22', to: '2027-12-27', minNights: 4 }, // Święta
-  { from: '2026-12-27', to: '2027-01-03', minNights: 4 }, // Sylwester
-  { from: '2027-01-03', to: '2027-01-06', minNights: 3 }, // 3 Króli
-  { from: '2027-04-29', to: '2027-05-04', minNights: 4 }, // Majówka
+  { from: '2026-12-29', to: '2027-01-03', minNights: 4 }, // Sylwester
+  { from: '2027-04-30', to: '2027-05-03', minNights: 3 }, // majówka (sprawdź daty)
+];
+
+// 2) JACUZZI ZIMĄ – komunikat informacyjny (nie blokuje rezerwacji)
+// Gdy pobyt obejmuje taki okres, a w polu jacuzzi wybrano wynajem lub decyzję przed przyjazdem,
+// pod polem pojawia się informacja o możliwej niedostępności przy silnych mrozach.
+export const jacuzziNoticePeriods: { from: string; to: string }[] = [
+  { from: '2026-12-05', to: '2027-01-01' }, // grudzień (sprawdź daty)
 ];

@@ -39,8 +39,9 @@ const sourceIcon: Record<string, string> = {
 
 <article class="border border-[#e0e0e0] rounded-[5px] p-5 bg-[#fafafa] flex flex-col text-left h-full">
   <div class="flex items-center gap-[12px] mb-3">
-    {/* Zamiast zdjęcia autora: kółko z pierwszą literą imienia (bez ładowania obrazków z zewnątrz). */}
-    <div class="w-12 h-12 rounded-full bg-brand-green text-white flex items-center justify-center text-[18px] font-bold shrink-0" aria-hidden="true">
+    {/* Zamiast zdjęcia autora: kółko z pierwszą literą imienia (bez ładowania obrazków z zewnątrz),
+        jasnozielone tło i ciemnozielona litera, żeby nie konkurowało z przyciskami. */}
+    <div class="w-12 h-12 rounded-full bg-[#E8F2EA] text-[#2F6940] flex items-center justify-center text-[18px] font-semibold shrink-0" aria-hidden="true">
       {review.author.charAt(0).toUpperCase()}
     </div>
     <div class="flex flex-col min-w-0">

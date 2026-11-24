@@ -2,10 +2,6 @@
 import { useTranslations } from '../../i18n/utils';
 import { Picture } from 'astro:assets';
 import lasbialasLogo from '../../assets/images/lasbialas.png';
-import telefonG from '../../assets/images/telefon-g.png';
-import whatsappGreen from '../../assets/images/whatsapp-green.png';
-import mailG from '../../assets/images/mail-g.png';
-import instagram from '../../assets/images/instagram.png';
 import cart from '../../assets/images/cart.png';
 
 interface Props {
@@ -85,6 +81,15 @@ const m = {
   },
 }[lang];
 
+// Ikony kontaktu rysowane w kodzie (konturowe, kolor z klasy text-…)
+const icon = {
+  phone: '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>',
+  whatsapp: '<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M9.2 7.6c.5-.4 1.1-.2 1.3.3l.6 1.4c.1.3 0 .6-.2.8l-.6.5a6.2 6.2 0 0 0 3 3l.5-.6c.2-.2.5-.3.8-.2l1.4.6c.5.2.7.8.3 1.3l-.4.5c-.5.6-1.3.8-2 .5a9.6 9.6 0 0 1-5-5c-.3-.7-.1-1.5.5-2z"/>',
+  mail: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>',
+  instagram: '<rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/>',
+};
+const svgAttrs = { 'aria-hidden': 'true', viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', 'stroke-width': '1.75', 'stroke-linecap': 'round', 'stroke-linejoin': 'round' };
+
 // Na stronie głównej sam #kotwica, na podstronach adres strony głównej + #kotwica
 const anchorHref = (id: string) => (isHomePage ? `#${id}` : `${homeUrl}#${id}`);
 ---
@@ -110,20 +115,20 @@ const anchorHref = (id: string) => (isHomePage ? `#${id}` : `${homeUrl}#${id}`);
     </div>
     <div>
       <div class="hidden flex-wrap items-center gap-2 lg:gap-3 xl:gap-4 min-[1070px]:flex">
-        <a href="tel:+48789773285" class="flex items-center gap-1 lg:gap-2 text-brand-black no-underline hover:underline hover:text-brand-green transition-colors text-sm lg:text-base">
-          <Picture alt="" src={telefonG} width={24} height={24} formats={['avif', 'webp']} class="w-5 h-5 lg:w-6 lg:h-6 align-middle" />+48 789 773 285
+        <a href="tel:+48789773285" class="group flex items-center gap-1 lg:gap-2 text-brand-black no-underline hover:underline hover:text-brand-green transition-colors text-sm lg:text-base">
+          <svg {...svgAttrs} width="24" height="24" class="w-5 h-5 lg:w-6 lg:h-6 flex-shrink-0 text-[#555] group-hover:text-brand-green transition-colors" set:html={icon.phone} />+48 789 773 285
         </a>
 
-        <a href="https://wa.me/48660194187" class="flex items-center gap-1 lg:gap-2 text-brand-black no-underline hover:underline hover:text-brand-green transition-colors text-sm lg:text-base">
-          <Picture alt="WhatsApp" src={whatsappGreen} width={24} height={24} formats={['avif', 'webp']} class="w-5 h-5 lg:w-6 lg:h-6 align-middle" />660 194 187
+        <a href="https://wa.me/48660194187" class="group flex items-center gap-1 lg:gap-2 text-brand-black no-underline hover:underline hover:text-brand-green transition-colors text-sm lg:text-base">
+          <svg {...svgAttrs} width="24" height="24" class="w-5 h-5 lg:w-6 lg:h-6 flex-shrink-0 text-[#555] group-hover:text-brand-green transition-colors" set:html={icon.whatsapp} /><span class="sr-only">WhatsApp:</span>660 194 187
         </a>
 
-        <a href="mailto:domki@lasbialas.pl" class="flex items-center gap-1 lg:gap-2 text-brand-black no-underline hover:underline hover:text-brand-green transition-colors text-sm lg:text-base hidden lg:flex">
-          <Picture alt="" src={mailG} width={24} height={24} formats={['avif', 'webp']} class="w-5 h-5 lg:w-6 lg:h-6 align-middle" />domki@lasbialas.pl
+        <a href="mailto:domki@lasbialas.pl" class="group flex items-center gap-1 lg:gap-2 text-brand-black no-underline hover:underline hover:text-brand-green transition-colors text-sm lg:text-base hidden lg:flex">
+          <svg {...svgAttrs} width="24" height="24" class="w-5 h-5 lg:w-6 lg:h-6 flex-shrink-0 text-[#555] group-hover:text-brand-green transition-colors" set:html={icon.mail} />domki@lasbialas.pl
         </a>
 
-        <a href="https://www.instagram.com/lasbialas" rel="nofollow noopener noreferrer" target="_blank" class="flex items-center gap-1 lg:gap-2 text-brand-black no-underline hover:underline hover:text-brand-green transition-colors text-sm lg:text-base hidden lg:flex">
-          <Picture alt="Instagram" src={instagram} width={24} height={24} formats={['avif', 'webp']} class="w-5 h-5 lg:w-6 lg:h-6 align-middle" />/lasbialas
+        <a href="https://www.instagram.com/lasbialas" rel="nofollow noopener noreferrer" target="_blank" class="group flex items-center gap-1 lg:gap-2 text-brand-black no-underline hover:underline hover:text-brand-green transition-colors text-sm lg:text-base hidden lg:flex">
+          <svg {...svgAttrs} width="24" height="24" class="w-5 h-5 lg:w-6 lg:h-6 flex-shrink-0 text-[#555] group-hover:text-brand-green transition-colors" set:html={icon.instagram} /><span class="sr-only">Instagram:</span>/lasbialas
         </a>
 
         <div class="flex items-center gap-1 lg:gap-2">
@@ -223,7 +228,7 @@ const anchorHref = (id: string) => (isHomePage ? `#${id}` : `${homeUrl}#${id}`);
     <div class="text-xs uppercase tracking-wider text-white/60 mb-1 px-2">{m.contact}</div>
     <div class="space-y-1">
       <a href="tel:+48789773285" class="flex items-center gap-3 py-2.5 text-white no-underline hover:bg-white/15 rounded-lg transition-colors px-2">
-        <Picture alt="" src={telefonG} width={24} height={24} formats={['avif', 'webp']} sizes="24px" class="w-[24px] h-[24px] flex-shrink-0" />
+        <svg {...svgAttrs} width="24" height="24" class="w-[24px] h-[24px] flex-shrink-0 text-white" set:html={icon.phone} />
         <div>
           <div class="font-medium">+48 789 773 285</div>
           <div class="text-xs text-white/70">{m.phone}</div>
@@ -231,7 +236,7 @@ const anchorHref = (id: string) => (isHomePage ? `#${id}` : `${homeUrl}#${id}`);
       </a>
 
       <a href="https://wa.me/48660194187" class="flex items-center gap-3 py-2.5 text-white no-underline hover:bg-white/15 rounded-lg transition-colors px-2">
-        <Picture alt="" src={whatsappGreen} width={24} height={24} formats={['avif', 'webp']} sizes="24px" class="w-[24px] h-[24px] flex-shrink-0" />
+        <svg {...svgAttrs} width="24" height="24" class="w-[24px] h-[24px] flex-shrink-0 text-white" set:html={icon.whatsapp} />
         <div>
           <div class="font-medium">660 194 187</div>
           <div class="text-xs text-white/70">WhatsApp</div>
@@ -239,7 +244,7 @@ const anchorHref = (id: string) => (isHomePage ? `#${id}` : `${homeUrl}#${id}`);
       </a>
 
       <a href="mailto:domki@lasbialas.pl" class="flex items-center gap-3 py-2.5 text-white no-underline hover:bg-white/15 rounded-lg transition-colors px-2">
-        <Picture alt="" src={mailG} width={24} height={24} formats={['avif', 'webp']} sizes="24px" class="w-[24px] h-[24px] flex-shrink-0" />
+        <svg {...svgAttrs} width="24" height="24" class="w-[24px] h-[24px] flex-shrink-0 text-white" set:html={icon.mail} />
         <div>
           <div class="font-medium">domki@lasbialas.pl</div>
           <div class="text-xs text-white/70">Email</div>
@@ -247,7 +252,7 @@ const anchorHref = (id: string) => (isHomePage ? `#${id}` : `${homeUrl}#${id}`);
       </a>
 
       <a href="https://www.instagram.com/lasbialas" rel="nofollow noopener noreferrer" target="_blank" class="flex items-center gap-3 py-2.5 text-white no-underline hover:bg-white/15 rounded-lg transition-colors px-2">
-        <Picture alt="" src={instagram} width={24} height={24} formats={['avif', 'webp']} sizes="24px" class="w-[24px] h-[24px] flex-shrink-0" />
+        <svg {...svgAttrs} width="24" height="24" class="w-[24px] h-[24px] flex-shrink-0 text-white" set:html={icon.instagram} />
         <div>
           <div class="font-medium">@lasbialas</div>
           <div class="text-xs text-white/70">Instagram</div>

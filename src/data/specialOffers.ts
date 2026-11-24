@@ -33,7 +33,7 @@ export type SpecialOffer = {
 // PRZYKŁADY – uzupełnij treść i ceny, a potem zmień active na true lub false aby wyłączyć
 export const specialOffers: SpecialOffer[] = [
   {
-    active: true,
+    active: false,
     showFrom: '2026-11-24',
     showUntil: '2026-12-03',
     arrival: '2026-12-03',

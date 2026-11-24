@@ -15,7 +15,7 @@ const t = {
     title: 'Wynajem jacuzzi',
     intro: 'Wynajem jacuzzi jest opcjonalny i obejmuje <b>nieograniczone korzystanie przez cały pobyt</b>. Cena zależy od długości pobytu i liczby osób. Jacuzzi zamawia się razem z pobytem: w formularzu rezerwacji na stronie, zaznaczając tę opcję, albo podając tę informację przy rezerwacji mailowej, telefonicznej, SMS-em lub przez WhatsApp. Jacuzzi jest gotowe do korzystania od przyjazdu. W okresie dużych mrozów może być niedostępne, dlatego przy pobytach zimą jego dostępność potwierdzamy przed przyjazdem.',
     infoTitle: 'Dobrze wiedzieć',
-    cols: ['Długość pobytu', 'Cena jacuzzi za pobyt (1–2 os.)'],
+    cols: ['Długość pobytu', 'Cena jacuzzi za pobyt <span class="whitespace-nowrap">(1–2 os.)</span>'],
     rows: [
       ['2–3 doby', jacuzzi2to3Nights + ' zł'],
       ['4 doby', jacuzzi4Nights + ' zł'],
@@ -31,7 +31,7 @@ const t = {
     title: 'Jacuzzi rental',
     intro: 'The jacuzzi rental is optional and includes <b>unlimited use throughout your stay</b>. The price depends on the length of stay and the number of guests. The jacuzzi is ordered together with the stay: by selecting this option in the booking form on the website, or by mentioning it when booking by email, phone, text message or WhatsApp. It is ready for use from your arrival. During severe frosts it may be unavailable, so for winter stays we confirm availability before your arrival.',
     infoTitle: 'Good to know',
-    cols: ['Length of stay', 'Jacuzzi price per stay (1–2 guests)'],
+    cols: ['Length of stay', 'Jacuzzi price per stay <span class="whitespace-nowrap">(1–2 guests)</span>'],
     rows: [
       ['2–3 nights', jacuzzi2to3Nights + ' PLN'],
       ['4 nights', jacuzzi4Nights + ' PLN'],
@@ -47,7 +47,7 @@ const t = {
     title: 'Whirlpool-Miete',
     intro: 'Die Miete des Whirlpools ist optional und umfasst die <b>unbegrenzte Nutzung während des gesamten Aufenthalts</b>. Der Preis hängt von der Aufenthaltsdauer und der Personenzahl ab. Der Whirlpool wird zusammen mit dem Aufenthalt bestellt: durch Auswahl dieser Option im Buchungsformular auf der Website oder durch einen entsprechenden Hinweis bei der Buchung per E-Mail, Telefon, SMS oder WhatsApp. Er ist ab der Anreise nutzungsbereit. Bei starkem Frost kann er nicht verfügbar sein, daher bestätigen wir die Verfügbarkeit für Aufenthalte im Winter vor Ihrer Anreise.',
     infoTitle: 'Gut zu wissen',
-    cols: ['Aufenthaltsdauer', 'Whirlpool-Preis pro Aufenthalt (1–2 Pers.)'],
+    cols: ['Aufenthaltsdauer', 'Whirlpool-Preis pro Aufenthalt <span class="whitespace-nowrap">(1–2 Pers.)</span>'],
     rows: [
       ['2–3 Nächte', jacuzzi2to3Nights + ' PLN'],
       ['4 Nächte', jacuzzi4Nights + ' PLN'],
@@ -61,7 +61,11 @@ const t = {
   },
 }[lang];
 
-const tableClass = 'w-full max-w-[900px] border-collapse text-base max-[768px]:text-[1rem] my-[30px] mx-auto bg-[#F7F7F7] border-2 border-white text-center table-fixed';
+// Tabela w opakowaniu z lekko zaokrąglonymi rogami (jak sekcje). Zewnętrzne białe krawędzie komórek są wyłączone
+// (edge), żeby zaokrąglenie było widać na ciemnym nagłówku i szarych wierszach.
+const edge = (i: number, n: number) => (i === 0 ? ' border-l-0' : '') + (i === n - 1 ? ' border-r-0' : '');
+const tableWrapClass = 'max-w-[900px] mx-auto my-[30px] rounded-[5px] overflow-hidden';
+const tableClass = 'w-full border-collapse text-base max-[768px]:text-[1rem] bg-[#F7F7F7] text-center table-fixed';
 const thClass = 'bg-[#362e27] text-white font-semibold px-[6px] py-[4px] h-[40px] border-2 border-white align-middle w-[50%] max-[768px]:text-[1rem] max-[768px]:leading-[1.2] max-[768px]:break-words max-[768px]:whitespace-normal';
 const tdClass = 'h-[60px] p-[6px] border-2 border-white align-middle max-[768px]:text-[1rem] max-[768px]:h-[48px] max-[768px]:break-words';
 ---
@@ -71,24 +75,26 @@ const tdClass = 'h-[60px] p-[6px] border-2 border-white align-middle max-[768px]
   <p class="text-base max-[768px]:text-[1rem] leading-[1.6]" set:html={t.intro}></p>
 
   {/* Pricing table */}
+  <div class={tableWrapClass}>
   <table class={tableClass}>
     <thead>
       <tr>
-        {t.cols.map((col: string) => (
-          <th class={thClass} set:html={col}></th>
+        {t.cols.map((col: string, i: number) => (
+          <th class={`${thClass} border-t-0${edge(i, t.cols.length)}`} set:html={col}></th>
         ))}
       </tr>
     </thead>
     <tbody>
-      {t.rows.map((row: string[]) => (
+      {t.rows.map((row: string[], r: number) => (
         <tr>
-          {row.map((cell: string) => (
-            <td class={tdClass} set:html={cell}></td>
+          {row.map((cell: string, i: number) => (
+            <td class={`${tdClass}${edge(i, row.length)}${r === t.rows.length - 1 ? ' border-b-0' : ''}`} set:html={cell}></td>
           ))}
         </tr>
       ))}
     </tbody>
   </table>
+  </div>
 
   {/* Ważne informacje: szare tło, delikatna ramka jak w innych boksach, ikonka „i”, lista wyrównana do lewej */}
   <div class="max-w-[82%] max-[768px]:max-w-full mx-auto my-[10px] mb-[30px] bg-[#F7F7F7] border border-[#ccc] rounded-[5px] px-5 py-4 text-left text-[1rem] text-[#272727]">

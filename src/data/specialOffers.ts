@@ -7,6 +7,8 @@
 // showFrom   – od kiedy pokazywać ofertę na stronie (RRRR-MM-DD)
 // showUntil  – do kiedy pokazywać (włącznie); po tej dacie oferta znika sama, także bez nowego wdrożenia
 // arrival    – dzień przyjazdu, departure – dzień wyjazdu (liczba nocy liczy się sama)
+// arrivalLatest – opcjonalnie: najpóźniejszy możliwy przyjazd przy elastycznym terminie
+//              (arrival = najwcześniejszy przyjazd, departure = wyjazd dla najwcześniejszego przyjazdu)
 // price      – cena w zł; priceNote – za co jest cena (np. za cały pobyt, domek 1–2 os.)
 // title, description, included – teksty w PL / EN / DE
 // whatsapp   – gotowa wiadomość, która otworzy się gościowi w WhatsAppie
@@ -21,6 +23,7 @@ export type SpecialOffer = {
   showFrom: string;
   showUntil: string;
   arrival: string;
+  arrivalLatest?: string;
   departure: string;
   price: number;
   priceNote: T;
@@ -48,9 +51,9 @@ export const specialOffers: SpecialOffer[] = [
       de: 'Drei ruhige Nächte im Ferienhaus mit Sauna und privatem Whirlpool, fernab vom Stadtlärm.',
     },
     included: {
-      pl: ['prywatne jacuzzi przez cały pobyt', 'sauna fińska z balią', 'butelka wina na powitanie', 'późne wymeldowanie do 14:00'],
-      en: ['private jacuzzi for the whole stay', 'Finnish sauna with cold plunge tub', 'a welcome bottle of wine', 'late check-out until 2 pm'],
-      de: ['privater Whirlpool für den gesamten Aufenthalt', 'finnische Sauna mit Kaltwasserbottich', 'eine Flasche Wein zur Begrüßung', 'später Check-out bis 14 Uhr'],
+      pl: ['prywatne jacuzzi przez cały pobyt', 'sauna fińska z balią', 'późne wymeldowanie do 14:00'],
+      en: ['private jacuzzi for the whole stay', 'Finnish sauna with cold plunge tub', 'late check-out until 2 pm'],
+      de: ['privater Whirlpool für den gesamten Aufenthalt', 'finnische Sauna mit Kaltwasserbottich', 'später Check-out bis 14 Uhr'],
     },
     whatsapp: {
       pl: 'Dzień dobry, interesuje mnie oferta „Mikołajki w lesie” (przyjazd 3 lub 4 grudnia).',

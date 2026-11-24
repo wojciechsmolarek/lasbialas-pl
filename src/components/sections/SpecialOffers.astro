@@ -11,9 +11,9 @@ interface Props {
 const { lang, position } = Astro.props;
 
 const t = {
-  pl: { tag: 'Oferta specjalna', included: 'W cenie:', call: 'Zadzwoń', whatsapp: 'Napisz na WhatsApp', online: 'lub zarezerwuj online', currency: 'zł' },
-  en: { tag: 'Special offer', included: 'Included:', call: 'Call', whatsapp: 'Message on WhatsApp', online: 'or book online', currency: 'PLN' },
-  de: { tag: 'Sonderangebot', included: 'Im Preis enthalten:', call: 'Anrufen', whatsapp: 'Per WhatsApp schreiben', online: 'oder online buchen', currency: 'PLN' },
+  pl: { tag: 'Oferta specjalna', included: 'W cenie:', call: 'Zadzwoń', whatsapp: 'Napisz na WhatsApp', currency: 'zł', choose: 'do wyboru' },
+  en: { tag: 'Special offer', included: 'Included:', call: 'Call', whatsapp: 'Message on WhatsApp', currency: 'PLN', choose: 'choose one' },
+  de: { tag: 'Sonderangebot', included: 'Im Preis enthalten:', call: 'Anrufen', whatsapp: 'Per WhatsApp schreiben', currency: 'PLN', choose: 'zur Auswahl' },
 }[lang];
 
 const monthNames = {
@@ -45,6 +45,19 @@ function nightsLabel(n: number) {
   if (last >= 2 && last <= 4 && (lastTwo < 12 || lastTwo > 14)) return n + ' noce';
   return n + ' nocy';
 }
+// Termin z dniem tygodnia, np. „czw 3 – nd 6 gru” / „Thu 3 – Sun 6 Dec” / „Do. 3. – So. 6. Dez.”
+const weekdays = {
+  pl: ['nd', 'pn', 'wt', 'śr', 'czw', 'pt', 'sb'],
+  en: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+  de: ['So.', 'Mo.', 'Di.', 'Mi.', 'Do.', 'Fr.', 'Sa.'],
+}[lang];
+function withWeekday(a: Date, b: Date) {
+  const wa = weekdays[a.getUTCDay()], wb = weekdays[b.getUTCDay()];
+  const same = a.getUTCMonth() === b.getUTCMonth();
+  if (lang === 'de') return wa + ' ' + a.getUTCDate() + '.' + (same ? '' : ' ' + monthNames[a.getUTCMonth()]) + ' – ' + wb + ' ' + b.getUTCDate() + '. ' + monthNames[b.getUTCMonth()];
+  return wa + ' ' + a.getUTCDate() + (same ? '' : ' ' + monthNames[a.getUTCMonth()]) + ' – ' + wb + ' ' + b.getUTCDate() + ' ' + monthNames[b.getUTCMonth()];
+}
+
 const formatPrice = (n: number) => n.toLocaleString('pl-PL').replace(/ /g, ' ');
 
 // Oferty aktywne w chwili budowania strony. Daty pokazywania sprawdza też skrypt w przeglądarce (niżej),
@@ -57,9 +70,21 @@ const offers = position === offersPosition
       .map((o) => {
         const a = parseDate(o.arrival), d = parseDate(o.departure);
         const nights = Math.round((d.getTime() - a.getTime()) / 86400000);
+        // Elastyczny przyjazd: kilka terminów do wyboru, każdy z tą samą liczbą nocy,
+        // np. „czw 3 – nd 6 gru” i „pt 4 – pn 7 gru” z podpisem „3 noce, do wyboru”.
+        let dates = formatRange(a, d) + ' · ' + nightsLabel(nights);
+        let options: string[] = [];
+        if (o.arrivalLatest) {
+          const aLast = parseDate(o.arrivalLatest);
+          for (let x = a.getTime(); x <= aLast.getTime(); x += 86400000) {
+            options.push(withWeekday(new Date(x), new Date(x + nights * 86400000)));
+          }
+          dates = nightsLabel(nights) + ', ' + t.choose + ':';
+        }
         return {
           ...o,
-          dates: formatRange(a, d) + ' · ' + nightsLabel(nights),
+          dates,
+          options,
           waHref: 'https://wa.me/48660194187?text=' + encodeURIComponent(o.whatsapp[lang]),
         };
       })
@@ -70,22 +95,40 @@ const checkIcon = '<svg aria-hidden="true" width="14" height="14" viewBox="0 0 2
 ---
 
 {offers.length > 0 && (
-  <section data-offers class={`grid ${offers.length > 1 ? 'grid-cols-2' : 'grid-cols-1'} gap-[20px] max-w-[73%] mx-auto mb-5 max-[1367px]:grid-cols-1 max-[1367px]:max-w-full max-[1367px]:px-4 max-[768px]:px-0 max-[768px]:gap-[1px]`}>
+  <section data-offers class={`grid ${offers.length > 1 ? 'grid-cols-2' : 'grid-cols-1 is-single'} gap-[20px] max-w-[73%] mx-auto mb-5 max-[1367px]:grid-cols-1 max-[1367px]:max-w-full max-[1367px]:px-4 max-[768px]:px-0 max-[768px]:gap-[1px]`}>
     {offers.map((o) => (
       <article data-offer data-show-from={o.showFrom} data-show-until={o.showUntil} class={cardClass + ' max-[768px]:mb-[20px]'}>
+        <div class="lb-offer-main flex flex-col">
         <span class="self-start inline-block rounded-[4px] bg-[#FBEFE6] text-[#B5550E] text-[0.8rem] font-semibold px-2.5 py-1">{t.tag}</span>
         <h2 class="text-[1.4rem] font-semibold text-brand-black mt-3 mb-1">{o.title[lang]}</h2>
         <p class="text-[0.95rem] text-[#555] leading-[1.5] mb-3">{o.description[lang]}</p>
 
-        <span class="self-start inline-flex items-center gap-1.5 rounded-full bg-[#E8F2EA] text-[#2F6940] text-[0.95rem] font-medium px-3.5 py-1.5 mb-4">
-          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg>
-          {o.dates}
-        </span>
+        {o.options.length === 0 ? (
+          <span class="self-start inline-flex items-center gap-1.5 rounded-full bg-[#E8F2EA] text-[#2F6940] text-[0.95rem] font-medium px-3.5 py-1.5 mb-4">
+            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg>
+            {o.dates}
+          </span>
+        ) : (
+          <div class="mb-4">
+            <p class="text-[0.9rem] text-[#555] mb-1.5">{o.dates}</p>
+            <div class="flex flex-wrap gap-2">
+              {o.options.map((opt) => (
+                <span class="inline-flex items-center gap-1.5 rounded-full bg-[#E8F2EA] text-[#2F6940] text-[0.95rem] font-medium px-3.5 py-1.5 whitespace-nowrap">
+                  <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg>
+                  {opt}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
 
         <div class="border-t border-[#e5e5e5] pt-3">
           <p class="text-brand-black leading-[1.2]"><span class="text-[1.8rem] font-semibold">{formatPrice(o.price)} {t.currency}</span></p>
           <p class="text-[0.85rem] text-[#555] mt-1">{o.priceNote[lang]}</p>
         </div>
+        </div>
+
+        <div class="lb-offer-side flex flex-col flex-1">
 
         <p class="text-[0.95rem] font-semibold text-brand-black mt-4 mb-2">{t.included}</p>
         <ul class="list-none m-0 p-0 flex flex-col gap-y-1.5 mb-5">
@@ -103,7 +146,7 @@ const checkIcon = '<svg aria-hidden="true" width="14" height="14" viewBox="0 0 2
             <img src={whatsappGreen.src} width="20" height="20" alt="" />
             {t.whatsapp}
           </a>
-          <a href="#" onclick="openReservation(); return false;" class="self-center text-[0.9rem] text-[#555] underline mt-1 hover:text-[#2F6940]">{t.online}</a>
+        </div>
         </div>
       </article>
     ))}
@@ -124,7 +167,24 @@ const checkIcon = '<svg aria-hidden="true" width="14" height="14" viewBox="0 0 2
         if (on) visible++;
       });
       if (!visible) sec.style.display = 'none';
-      else if (visible === 1) sec.classList.remove('grid-cols-2');
+      else if (visible === 1) { sec.classList.remove('grid-cols-2'); sec.classList.add('is-single'); }
     });
   })();
 </script>
+
+<style is:global>
+  /* Jedna oferta: karta na całą szerokość, podzielona na dwie kolumny
+     (po lewej opis, termin i cena, po prawej „W cenie” i przyciski). Na węższych ekranach jedna pod drugą. */
+  @media (min-width: 1024px) {
+    [data-offers].is-single [data-offer] {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      column-gap: 48px;
+      align-items: stretch;
+    }
+    [data-offers].is-single .lb-offer-side {
+      border-left: 1px solid #e5e5e5;
+      padding-left: 48px;
+    }
+  }
+</style>

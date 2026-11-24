@@ -30,21 +30,21 @@ export type SpecialOffer = {
   whatsapp: T;
 };
 
-// PRZYKŁADY – uzupełnij treść i ceny, a potem zmień active na true.
+// PRZYKŁADY – uzupełnij treść i ceny, a potem zmień active na true lub false aby wyłączyć
 export const specialOffers: SpecialOffer[] = [
   {
-    active: false,
+    active: true,
     showFrom: '2026-11-24',
-    showUntil: '2026-12-28',
-    arrival: '2026-12-29',
-    departure: '2027-01-02',
-    price: 2600,
+    showUntil: '2026-12-03',
+    arrival: '2026-12-04',
+    departure: '2026-12-07',
+    price: 1790,
     priceNote: { pl: 'za cały pobyt (domek, 1–2 os.)', en: 'for the whole stay (cottage, 1–2 guests)', de: 'für den gesamten Aufenthalt (Ferienhaus, 1–2 Pers.)' },
-    title: { pl: 'Sylwester w lesie', en: 'New Year\'s Eve in the forest', de: 'Silvester im Wald' },
+    title: { pl: 'Mikołajki w lesie', en: 'St Nicholas weekend in the forest', de: 'Nikolauswochenende im Wald' },
     description: {
-      pl: 'Cztery spokojne noce w domku z sauną i prywatnym jacuzzi, z dala od miejskiego hałasu.',
-      en: 'Four quiet nights in a cottage with a sauna and private jacuzzi, far from the city noise.',
-      de: 'Vier ruhige Nächte im Ferienhaus mit Sauna und privatem Whirlpool, fernab vom Stadtlärm.',
+      pl: 'Trzy spokojne noce w domku z sauną i prywatnym jacuzzi, z dala od miejskiego hałasu.',
+      en: 'Three quiet nights in a cottage with a sauna and private jacuzzi, far from the city noise.',
+      de: 'Drei ruhige Nächte im Ferienhaus mit Sauna und privatem Whirlpool, fernab vom Stadtlärm.',
     },
     included: {
       pl: ['prywatne jacuzzi przez cały pobyt', 'sauna fińska z balią', 'butelka wina na powitanie', 'późne wymeldowanie do 14:00'],
@@ -52,9 +52,9 @@ export const specialOffers: SpecialOffer[] = [
       de: ['privater Whirlpool für den gesamten Aufenthalt', 'finnische Sauna mit Kaltwasserbottich', 'eine Flasche Wein zur Begrüßung', 'später Check-out bis 14 Uhr'],
     },
     whatsapp: {
-      pl: 'Dzień dobry, interesuje mnie oferta „Sylwester w lesie” (29.12–02.01).',
-      en: 'Hello, I am interested in the "New Year\'s Eve in the forest" offer (29.12–02.01).',
-      de: 'Guten Tag, ich interessiere mich für das Angebot „Silvester im Wald“ (29.12.–02.01.).',
+      pl: 'Dzień dobry, interesuje mnie oferta „Mikołajki w lesie” (04.12–07.12).',
+      en: 'Hello, I am interested in the "New Year\'s Eve in the forest" offer (04.12–07.12).',
+      de: 'Guten Tag, ich interessiere mich für das Angebot „Silvester im Wald“ (04.12–07.12.).',
     },
   },
   {

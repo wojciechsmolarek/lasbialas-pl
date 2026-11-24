@@ -36,20 +36,27 @@ const benefitKeysByLang = {
 };
 
 const benefitKeys = benefitKeysByLang[lang];
+
+// Przycisk pod listą otwiera formularz rezerwacji (Bookero)
+const cta = { pl: 'Zarezerwuj bezpośrednio', en: 'Book direct', de: 'Direkt buchen' }[lang];
 ---
 
+<!-- Jasne tło z ciemnym tekstem; jedynym mocnym zielonym elementem jest przycisk rezerwacji -->
 <div class="flex justify-center gap-[10px] flex-wrap my-[30px] mx-auto max-w-[73%] max-[768px]:gap-[20px] max-[768px]:max-w-[96%]">
-  <div class="flex-[1_1_48%] border border-[#ccc] rounded-[5px] p-5 text-white text-base text-center leading-[1.6] box-border bg-gradient-to-b from-[#3c9b55cc] to-[#2F6940] max-[768px]:flex-[1_1_100%] max-[768px]:max-w-[96vw] max-[768px]:mb-5">
-    <span class="block text-center mb-[10px] text-[1.2em] font-bold text-white">
+  <div class="flex-[1_1_48%] border border-[#B9D4BF] rounded-[5px] p-5 text-brand-black text-base text-center leading-[1.6] box-border bg-[#E8F2EA] max-[768px]:flex-[1_1_100%] max-[768px]:max-w-[96vw] max-[768px]:mb-5">
+    <h2 class="block text-center mt-[10px] mb-[10px] text-[1.2em] font-bold text-brand-black">
       {t('benefits.direct_booking_title')}
-    </span>
-    <ul class="flex flex-wrap justify-center gap-y-[.4em] gap-x-[1em] my-[.6em] p-0 list-none">
+    </h2>
+    <ul class="flex flex-wrap justify-center gap-y-[.4em] gap-x-[1.2em] my-[.6em] p-0 list-none">
       {benefitKeys.map((key: string) => (
-        <li class="m-0 leading-[1.2] flex items-center">
-          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mr-[.5em]"><path d="M5 12l5 5L20 7"/></svg>
+        <li class="m-0 leading-[1.3] flex items-center text-[#272727]">
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2F6940" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mr-[.5em]"><path d="M5 12l5 5L20 7"/></svg>
           {t(key)}
         </li>
       ))}
     </ul>
+    <div class="flex justify-center mt-[18px] mb-[10px]">
+      <button type="button" onclick="openReservation();" class="inline-flex justify-center items-center h-[46px] px-[28px] text-base font-semibold text-white bg-[#2F6940] border-0 rounded-[6px] cursor-pointer hover:bg-[#24522f] transition-colors">{cta}</button>
+    </div>
   </div>
 </div>

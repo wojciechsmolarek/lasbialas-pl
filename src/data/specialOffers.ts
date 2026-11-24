@@ -1,0 +1,85 @@
+// OFERTY SPECJALNE – edytuj tylko ten plik.
+//
+// Oferty pokazują się na stronie głównej nad boksem „Najbliższe wolne terminy” (albo pod nim, patrz offersPosition).
+// Gdy żadna oferta nie jest aktywna, sekcja znika i strona wygląda jak zwykle.
+//
+// active     – true = oferta włączona, false = wyłączona (ręczny przełącznik)
+// showFrom   – od kiedy pokazywać ofertę na stronie (RRRR-MM-DD)
+// showUntil  – do kiedy pokazywać (włącznie); po tej dacie oferta znika sama, także bez nowego wdrożenia
+// arrival    – dzień przyjazdu, departure – dzień wyjazdu (liczba nocy liczy się sama)
+// price      – cena w zł; priceNote – za co jest cena (np. za cały pobyt, domek 1–2 os.)
+// title, description, included – teksty w PL / EN / DE
+// whatsapp   – gotowa wiadomość, która otworzy się gościowi w WhatsAppie
+
+// Położenie sekcji ofert: 'above' = nad boksami „Najbliższe wolne terminy” i „Na miejscu”, 'below' = pod nimi.
+export const offersPosition: 'above' | 'below' = 'above';
+
+type T = { pl: string; en: string; de: string };
+type L = { pl: string[]; en: string[]; de: string[] };
+export type SpecialOffer = {
+  active: boolean;
+  showFrom: string;
+  showUntil: string;
+  arrival: string;
+  departure: string;
+  price: number;
+  priceNote: T;
+  title: T;
+  description: T;
+  included: L;
+  whatsapp: T;
+};
+
+// PRZYKŁADY – uzupełnij treść i ceny, a potem zmień active na true.
+export const specialOffers: SpecialOffer[] = [
+  {
+    active: false,
+    showFrom: '2026-11-24',
+    showUntil: '2026-12-28',
+    arrival: '2026-12-29',
+    departure: '2027-01-02',
+    price: 2600,
+    priceNote: { pl: 'za cały pobyt (domek, 1–2 os.)', en: 'for the whole stay (cottage, 1–2 guests)', de: 'für den gesamten Aufenthalt (Ferienhaus, 1–2 Pers.)' },
+    title: { pl: 'Sylwester w lesie', en: 'New Year\'s Eve in the forest', de: 'Silvester im Wald' },
+    description: {
+      pl: 'Cztery spokojne noce w domku z sauną i prywatnym jacuzzi, z dala od miejskiego hałasu.',
+      en: 'Four quiet nights in a cottage with a sauna and private jacuzzi, far from the city noise.',
+      de: 'Vier ruhige Nächte im Ferienhaus mit Sauna und privatem Whirlpool, fernab vom Stadtlärm.',
+    },
+    included: {
+      pl: ['prywatne jacuzzi przez cały pobyt', 'sauna fińska z balią', 'butelka wina na powitanie', 'późne wymeldowanie do 14:00'],
+      en: ['private jacuzzi for the whole stay', 'Finnish sauna with cold plunge tub', 'a welcome bottle of wine', 'late check-out until 2 pm'],
+      de: ['privater Whirlpool für den gesamten Aufenthalt', 'finnische Sauna mit Kaltwasserbottich', 'eine Flasche Wein zur Begrüßung', 'später Check-out bis 14 Uhr'],
+    },
+    whatsapp: {
+      pl: 'Dzień dobry, interesuje mnie oferta „Sylwester w lesie” (29.12–02.01).',
+      en: 'Hello, I am interested in the "New Year\'s Eve in the forest" offer (29.12–02.01).',
+      de: 'Guten Tag, ich interessiere mich für das Angebot „Silvester im Wald“ (29.12.–02.01.).',
+    },
+  },
+  {
+    active: false,
+    showFrom: '2027-02-01',
+    showUntil: '2027-04-29',
+    arrival: '2027-04-30',
+    departure: '2027-05-03',
+    price: 1900,
+    priceNote: { pl: 'za cały pobyt (domek, 1–2 os.)', en: 'for the whole stay (cottage, 1–2 guests)', de: 'für den gesamten Aufenthalt (Ferienhaus, 1–2 Pers.)' },
+    title: { pl: 'Majówka w lesie', en: 'May long weekend in the forest', de: 'Maiwochenende im Wald' },
+    description: {
+      pl: 'Długi weekend nad jeziorem: rowery, deski SUP i wieczory przy saunie.',
+      en: 'A long weekend by the lake: bikes, SUP boards and evenings at the sauna.',
+      de: 'Ein langes Wochenende am See: Fahrräder, SUP-Boards und Abende an der Sauna.',
+    },
+    included: {
+      pl: ['prywatne jacuzzi przez cały pobyt', 'sauna fińska z balią', 'rowery i deski SUP'],
+      en: ['private jacuzzi for the whole stay', 'Finnish sauna with cold plunge tub', 'bikes and SUP boards'],
+      de: ['privater Whirlpool für den gesamten Aufenthalt', 'finnische Sauna mit Kaltwasserbottich', 'Fahrräder und SUP-Boards'],
+    },
+    whatsapp: {
+      pl: 'Dzień dobry, interesuje mnie oferta „Majówka w lesie” (30.04–03.05).',
+      en: 'Hello, I am interested in the "May long weekend in the forest" offer (30.04–03.05).',
+      de: 'Guten Tag, ich interessiere mich für das Angebot „Maiwochenende im Wald“ (30.04.–03.05.).',
+    },
+  },
+];

@@ -11,9 +11,9 @@ interface Props {
 const { lang, position } = Astro.props;
 
 const t = {
-  pl: { tag: 'Oferta specjalna', included: 'W cenie:', call: 'Zadzwoń', whatsapp: 'Napisz na WhatsApp', currency: 'zł' },
-  en: { tag: 'Special offer', included: 'Included:', call: 'Call', whatsapp: 'Message on WhatsApp', currency: 'PLN' },
-  de: { tag: 'Sonderangebot', included: 'Im Preis enthalten:', call: 'Anrufen', whatsapp: 'Per WhatsApp schreiben', currency: 'PLN' },
+  pl: { tag: 'Oferta specjalna', included: 'W cenie:', call: 'Zadzwoń', whatsapp: 'Napisz na WhatsApp', online: 'lub zarezerwuj online', currency: 'zł' },
+  en: { tag: 'Special offer', included: 'Included:', call: 'Call', whatsapp: 'Message on WhatsApp', online: 'or book online', currency: 'PLN' },
+  de: { tag: 'Sonderangebot', included: 'Im Preis enthalten:', call: 'Anrufen', whatsapp: 'Per WhatsApp schreiben', online: 'oder online buchen', currency: 'PLN' },
 }[lang];
 
 const monthNames = {
@@ -103,6 +103,7 @@ const checkIcon = '<svg aria-hidden="true" width="14" height="14" viewBox="0 0 2
             <img src={whatsappGreen.src} width="20" height="20" alt="" />
             {t.whatsapp}
           </a>
+          <a href="#" onclick="openReservation(); return false;" class="self-center text-[0.9rem] text-[#555] underline mt-1 hover:text-[#2F6940]">{t.online}</a>
         </div>
       </article>
     ))}

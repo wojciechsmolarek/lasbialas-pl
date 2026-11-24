@@ -14,6 +14,7 @@ import DirectionsSection from '../../components/sections/DirectionsSection.astro
 import FAQSection from '../../components/sections/FAQSection.astro';
 import ReviewsSection from '../../components/sections/ReviewsSection.astro';
 import RatingsBar from '../../components/sections/RatingsBar.astro';
+import SpecialOffers from '../../components/sections/SpecialOffers.astro';
 
 const lang = 'en';
 ---
@@ -28,7 +29,9 @@ const lang = 'en';
   <RatingsBar lang={lang} />
   <Gallery lang={lang} />
   <AmenitiesSection lang={lang} />
+  <SpecialOffers lang={lang} position="above" />
   <TopBoxes lang={lang} />
+  <SpecialOffers lang={lang} position="below" />
   <IntroSection lang={lang} />
   <InteriorsSection lang={lang} />
   <SaunaJacuzziSection lang={lang} />

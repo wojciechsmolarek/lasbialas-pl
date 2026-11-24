@@ -22,7 +22,7 @@ const categories = faqData[lang];
     {categories.map((cat: any, ci: number) => (
       <div class="faq-category mb-3 border border-[#e0e0e0] rounded-[5px] overflow-hidden" data-category={ci}>
         <button
-          class="faq-category-btn w-full flex items-center justify-between px-[20px] py-[14px] bg-[#f8f8f8] hover:bg-[#f0f0f0] transition-colors cursor-pointer border-0 text-left"
+          class="faq-category-btn w-full flex items-center justify-between px-[20px] py-[14px] bg-[#F7F7F7] hover:bg-[#EFEFEF] transition-colors cursor-pointer border-0 text-left"
           onclick="faqToggleCategory(this)"
           aria-expanded="false"
         >
@@ -33,7 +33,7 @@ const categories = faqData[lang];
           {cat.questions.map((item: any, qi: number) => (
             <div class="faq-question-wrapper border-t border-[#eee]" data-question={`${ci}-${qi}`}>
               <button
-                class="faq-question-btn w-full flex items-center justify-between px-[20px] py-[12px] bg-white hover:bg-[#fafafa] transition-colors cursor-pointer border-0 text-left"
+                class="faq-question-btn w-full flex items-center justify-between px-[20px] py-[12px] bg-white hover:bg-[#F7F7F7] transition-colors cursor-pointer border-0 text-left"
                 onclick="faqToggleQuestion(this)"
                 aria-expanded="false"
               >

@@ -12,7 +12,7 @@
 // whatsapp   – gotowa wiadomość, która otworzy się gościowi w WhatsAppie
 
 // Położenie sekcji ofert: 'above' = nad boksami „Najbliższe wolne terminy” i „Na miejscu”, 'below' = pod nimi.
-export const offersPosition: 'above' | 'below' = 'above';
+export const offersPosition: 'above' | 'below' = 'below';
 
 type T = { pl: string; en: string; de: string };
 type L = { pl: string[]; en: string[]; de: string[] };
@@ -33,7 +33,7 @@ export type SpecialOffer = {
 // PRZYKŁADY – uzupełnij treść i ceny, a potem zmień active na true lub false aby wyłączyć
 export const specialOffers: SpecialOffer[] = [
   {
-    active: false,
+    active: true,
     showFrom: '2026-11-24',
     showUntil: '2026-12-03',
     arrival: '2026-12-03',

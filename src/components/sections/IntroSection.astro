@@ -3,7 +3,6 @@ import { Picture } from 'astro:assets';
 import lasbialasJacuzzi1 from '../../assets/foto/lasbialas-jacuzzi1.webp';
 import sauna1 from '../../assets/foto/sauna1.webp';
 import lasbialasJacuzzi3 from '../../assets/foto/lasbialas-jacuzzi3.webp';
-import w6 from '../../assets/foto/w6.webp';
 import lasbialas4 from '../../assets/foto/lasbialas4.webp';
 import lasbialas7 from '../../assets/foto/lasbialas7.webp';
 import balia from '../../assets/foto/balia.jpg';
@@ -23,13 +22,11 @@ const t = {
   pl: {
     title: 'Całoroczne domki na wynajem w Puszczy Noteckiej',
     p1: 'Zapraszamy do Las Biala\'s w Białej, wsi nad {lake}, w sercu Puszczy Noteckiej. Z dala od miejskiego zgiełku, na ogrodzonym leśnym terenie, około 400 m od {beach}, stoją dwa całoroczne domki przeznaczone dla dorosłych gości.',
-    p2: 'Na miejscu jest {sauna} z {tub}, a za dopłatą również {jacuzzi} przy domku. Bez dodatkowych opłat dostępne są {grill}, {bikes}. Domki są ogrzewane przez cały rok, a temperaturę w każdym pomieszczeniu ustawia się osobnym {thermostat}.',
+    p2: 'Na miejscu jest {sauna} z {tub}, a za dopłatą również {jacuzzi} przy domku. Bez dodatkowych opłat dostępne są {grill}, {bikes}.',
     lakeWord: 'Jeziorem Białym',
     lakeAlt: 'Jezioro Białe w Puszczy Noteckiej',
     beachWord: 'plaży',
     beachAlt: 'Plaża nad Jeziorem Białym',
-    thermostatWord: 'termostatem',
-    thermostatAlt: 'Termostat ogrzewania w domku',
     tubWord: 'balią',
     tubAlt: 'Balia z zimną wodą do schładzania przy saunie',
     saunaWord: 'sauna fińska',
@@ -55,13 +52,11 @@ const t = {
   en: {
     title: 'Year-Round Cottages for Rent in the Noteć Forest',
     p1: 'Welcome to Las Biala\'s in Biała, a village on {lake} in the heart of the Noteć Forest. Away from the bustle of the city, on a fenced forest property about 400 m from the {beach}, stand two year-round cottages for adult guests.',
-    p2: 'On site there is a {sauna} with a {tub}, and a {jacuzzi} next to the cottage is available for an extra fee. The {grill} is free to use, as are the {bikes}. The cottages are heated all year round, and each room has its own {thermostat}.',
+    p2: 'On site there is a {sauna} with a {tub}, and a {jacuzzi} next to the cottage is available for an extra fee. The {grill} is free to use, as are the {bikes}.',
     lakeWord: 'Lake Białe',
     lakeAlt: 'Lake Białe in the Noteć Forest',
     beachWord: 'beach',
     beachAlt: 'Beach on Lake Białe',
-    thermostatWord: 'thermostat',
-    thermostatAlt: 'Heating thermostat in the cottage',
     tubWord: 'cold plunge tub',
     tubAlt: 'Cold plunge tub next to the sauna',
     saunaWord: 'Finnish sauna',
@@ -87,13 +82,11 @@ const t = {
   de: {
     title: 'Ganzjährige Ferienhäuser in der Puszcza Notecka',
     p1: 'Willkommen bei Las Biala\'s in Biała, einem Dorf am {lake} im Herzen der Puszcza Notecka. Abseits vom Trubel der Stadt stehen auf einem eingezäunten Waldgrundstück, etwa 400 m vom {beach} entfernt, zwei ganzjährig nutzbare Ferienhäuser für erwachsene Gäste.',
-    p2: 'Vor Ort gibt es eine {sauna} mit {tub}, außerdem gegen Aufpreis einen {jacuzzi} direkt am Haus. Kostenlos zur Verfügung stehen ein {grill}, {bikes}. Die Häuser sind das ganze Jahr über beheizt, und jeder Raum hat einen eigenen {thermostat}.',
+    p2: 'Vor Ort gibt es eine {sauna} mit {tub}, außerdem gegen Aufpreis einen {jacuzzi} direkt am Haus. Kostenlos zur Verfügung stehen ein {grill}, {bikes}.',
     lakeWord: 'See Białe',
     lakeAlt: 'See Białe in der Puszcza Notecka',
     beachWord: 'Strand',
     beachAlt: 'Strand am See Białe',
-    thermostatWord: 'Thermostat',
-    thermostatAlt: 'Heizungsthermostat im Ferienhaus',
     tubWord: 'Kaltwasserbottich',
     tubAlt: 'Kaltwasserbottich neben der Sauna',
     saunaWord: 'finnische Sauna',
@@ -119,14 +112,12 @@ const t = {
 }[lang];
 
 // Słowa z małym zdjęciem po najechaniu lub dotknięciu.
-const thermostatHint = await imageHint({ word: t.thermostatWord, image: w6, alt: t.thermostatAlt });
 const tubHint = await imageHint({ word: t.tubWord, image: balia, alt: t.tubAlt });
 const saunaHint = await imageHint({ word: t.saunaWord, image: lasbialas7, alt: t.saunaAlt });
 const jacuzziHint = await imageHint({ word: t.jacuzziWord, image: lasbialasJacuzzi3, alt: t.jacuzziAlt });
 const grillHint = await imageHint({ word: t.grillWord, image: grill, alt: t.grillAlt });
 const bikesHint = await imageHint({ word: t.bikesWord, image: lasbialas4, alt: t.bikesAlt });
-let p2 = insertHint(t.p2, '{thermostat}', thermostatHint);
-p2 = insertHint(p2, '{tub}', tubHint);
+let p2 = insertHint(t.p2, '{tub}', tubHint);
 p2 = insertHint(p2, '{bikes}', bikesHint);
 p2 = insertHint(p2, '{sauna}', saunaHint);
 p2 = insertHint(p2, '{jacuzzi}', jacuzziHint);
@@ -138,8 +129,8 @@ const introP1 = insertHint(insertHint(t.p1, '{lake}', lakeHint), '{beach}', beac
 
 <div id="domki" class="max-w-[73%] border border-[#ccc] rounded-[5px] py-[10px] px-[80px] mx-auto mb-5 bg-white text-base text-center max-[768px]:max-w-[96vw] max-[768px]:p-5 max-[768px]:my-[1px] max-[768px]:mb-5 max-[768px]:text-[0.6rem]">
   <h2 class="text-[24px] text-center mt-5 mb-5 text-brand-black font-bold">{t.title}</h2>
-  <p class="text-base leading-[1.6]" set:html={introP1}></p>
-  <p class="text-base leading-[1.6]" set:html={p2}></p>
+  {/* Jeden akapit (p1 + p2), żeby wyśrodkowany tekst nie tworzył „choinki” */}
+  <p class="text-base leading-[1.6]" set:html={introP1 + ' ' + p2}></p>
 
   {/* Banner: hasło klimatu (nie nagłówek, żeby nie dublować sekcji „Sauna i jacuzzi”) */}
   <div class="relative w-full h-[300px] max-[768px]:h-[200px] mt-[50px] mb-[50px] rounded-[6px] overflow-hidden">

@@ -8,6 +8,8 @@ import baliaImg from '../../assets/foto/balia.jpg';
 import grillImg from '../../assets/foto/grill.webp';
 import roweryImg from '../../assets/foto/rowery.webp';
 import supImg from '../../assets/foto/sup.webp';
+import d1Img from '../../assets/foto/lasbialas-jacuzzi1.webp';
+import d2Img from '../../assets/foto/lasbialas1.webp';
 import phoneGreen from '../../assets/images/phone-green.webp';
 import whatsappGreen from '../../assets/images/whatsapp-green.webp';
 import ImageHints from '../ui/ImageHints.astro';
@@ -143,9 +145,15 @@ function buildRanges(list: string[][]) {
   return out;
 }
 
+// Nazwa domku ze zdjęciem po najechaniu lub dotknięciu (dymek), żeby gość widział, co rezerwuje.
+const cottageAlt = {
+  pl: ['Domek D1 Las Biala\'s z prywatnym jacuzzi wśród sosen', 'Domek D2 Las Biala\'s w lesie'],
+  en: ['Las Biala\'s cottage D1 with a private jacuzzi among the pines', 'Las Biala\'s cottage D2 in the forest'],
+  de: ['Ferienhaus D1 von Las Biala\'s mit privatem Whirlpool zwischen Kiefern', 'Ferienhaus D2 von Las Biala\'s im Wald'],
+}[lang];
 const cottages = [
-  { name: t.d1, ranges: buildRanges(d1) },
-  { name: t.d2, ranges: buildRanges(d2) },
+  { name: t.d1, nameHtml: await imageHint({ word: t.d1, image: d1Img, alt: cottageAlt[0] }), ranges: buildRanges(d1) },
+  { name: t.d2, nameHtml: await imageHint({ word: t.d2, image: d2Img, alt: cottageAlt[1] }), ranges: buildRanges(d2) },
 ];
 const updatedLabel = dayMonth(parseDate(updated));
 
@@ -212,7 +220,7 @@ const boxClass = 'flex-[0_0_49%] max-[1367px]:flex-[0_0_100%] max-[1367px]:w-ful
     <div class="border-t border-[#e5e5e5]">
       {cottages.map((c) => (
         <div class="flex items-center justify-between gap-3 py-2.5 border-b border-[#e5e5e5] flex-wrap">
-          <span class="font-medium text-brand-black">{c.name}</span>
+          <span class="font-medium text-brand-black" set:html={c.nameHtml} />
           <span class="flex flex-wrap justify-end gap-1.5">
             {c.ranges.length > 0
               ? c.ranges.map((r) => (
@@ -236,7 +244,7 @@ const boxClass = 'flex-[0_0_49%] max-[1367px]:flex-[0_0_100%] max-[1367px]:w-ful
     </div>
 
     <div class="flex flex-col gap-2 mt-4">
-      <a href="#" onclick="openReservation(); return false;" class="flex justify-center items-center h-[46px] w-full text-base font-medium text-white bg-[#2F6940] no-underline rounded-[6px] hover:bg-[#40a95c] transition-colors">{t.reserve}</a>
+      <a href="#" onclick="openReservation(); return false;" class="flex justify-center items-center h-[46px] w-full text-base font-medium text-white bg-[#2F6940] no-underline rounded-[6px] hover:bg-[#24522f] transition-colors">{t.reserve}</a>
       <a href="#cennik" class="flex justify-center items-center h-[46px] w-full text-base font-medium text-[#B5550E] bg-white border border-[#B5550E] no-underline rounded-[6px] hover:bg-[#B5550E] hover:text-white transition-colors">{t.prices}</a>
     </div>
 

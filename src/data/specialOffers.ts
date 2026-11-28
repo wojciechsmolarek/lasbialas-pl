@@ -42,7 +42,7 @@ export const specialOffers: SpecialOffer[] = [
     arrival: '2026-12-03',
     arrivalLatest: '2026-12-04',
     departure: '2026-12-06',
-    price: 1785,
+    price: 1740,
     priceNote: { pl: 'za cały pobyt (domek, 1–2 os.)', en: 'for the whole stay (cottage, 1–2 guests)', de: 'für den gesamten Aufenthalt (Ferienhaus, 1–2 Pers.)' },
     title: { pl: 'Mikołajki w lesie', en: 'St Nicholas weekend in the forest', de: 'Nikolauswochenende im Wald' },
     description: {
